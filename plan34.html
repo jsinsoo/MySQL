@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="ko"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>2026학년도 2학기 정보융합탐구과제 34차시 연간수업계획</title>
+<style>
+:root{--navy:#102a43;--blue:#2463a9;--sky:#eaf4ff;--mint:#e7f7f1;--gold:#f4b942;--ink:#1c2733;--line:#d9e2ec;--paper:#f6f8fb}
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:linear-gradient(145deg,#edf4fb,#f8fbff 45%,#eef8f4);color:var(--ink);font-family:"Malgun Gothic","Apple SD Gothic Neo",sans-serif;line-height:1.62}
+.topbar{position:sticky;top:0;z-index:20;background:rgba(16,42,67,.95);backdrop-filter:blur(8px);box-shadow:0 4px 16px #102a4322}.topbar-inner{max-width:1480px;margin:auto;display:flex;align-items:center;gap:12px;padding:9px 22px}.brand{color:white;font-weight:800;white-space:nowrap}nav{display:flex;gap:5px;overflow-x:auto}nav a{color:#dbeafe;text-decoration:none;padding:6px 10px;border-radius:8px;font-size:13px;white-space:nowrap}nav a:hover{background:#ffffff1c;color:white}.print-btn{margin-left:auto;border:0;border-radius:8px;padding:7px 12px;background:var(--gold);font-weight:800;cursor:pointer}
+.page{max-width:1480px;margin:26px auto;padding:0 22px 60px}.hero{position:relative;overflow:hidden;background:linear-gradient(125deg,#102a43,#174f78 60%,#16817a);color:white;border-radius:24px;padding:48px 46px;box-shadow:0 18px 46px #173b5f2b}.hero:after{content:"";position:absolute;width:340px;height:340px;border:58px solid #ffffff12;border-radius:50%;right:-100px;top:-120px}.eyebrow{display:inline-block;background:#ffffff18;border:1px solid #ffffff30;border-radius:30px;padding:5px 13px;font-size:13px;letter-spacing:.08em}h1{font-size:clamp(30px,4vw,52px);line-height:1.18;margin:16px 0 12px}.hero p{max-width:900px;font-size:17px;color:#e8f4ff}.hero-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:10px;margin-top:27px;position:relative;z-index:2}.hero-stat{background:#ffffff12;border:1px solid #ffffff20;border-radius:14px;padding:14px;text-align:center}.hero-stat b{display:block;font-size:22px;color:#ffe08a}
+.section{margin-top:28px;background:white;border:1px solid var(--line);border-radius:20px;padding:28px;box-shadow:0 9px 28px #334e6810}.section h2{margin:0 0 17px;color:var(--navy);font-size:27px}.section h2:after{content:"";display:block;width:56px;height:4px;background:linear-gradient(90deg,var(--blue),#3fb6a8);border-radius:5px;margin-top:8px}.info-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}.info{padding:18px;border-radius:14px;background:var(--paper);border-left:5px solid var(--blue)}.info b{display:block;color:var(--navy);margin-bottom:5px}.goal-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}.goal{background:linear-gradient(145deg,#f8fbff,#edf7ff);border:1px solid #d5e8fa;border-radius:15px;padding:18px}.goal b{color:#145a8d}.assess-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:10px}.assess{border-radius:14px;padding:17px 12px;text-align:center;background:var(--sky);border:1px solid #cfe5fb}.assess:nth-child(5){background:var(--mint);border-color:#bce8d8}.assess strong{display:block;font-size:28px;color:var(--blue)}.assess span{font-weight:800}.notice{margin-top:15px;padding:14px 17px;background:#fff8df;border-left:5px solid var(--gold);border-radius:10px}
+.table-wrap{overflow:auto;border-radius:14px;border:1px solid var(--line)}table{width:100%;border-collapse:collapse;min-width:1050px}th,td{border-bottom:1px solid var(--line);border-right:1px solid var(--line);padding:13px 14px;vertical-align:top}th:last-child,td:last-child{border-right:0}thead th{position:static;background:var(--navy);color:white;text-align:center;z-index:1}tbody tr:nth-child(even){background:#f8fbfe}tbody tr:hover{background:#eef7ff}.week{font-weight:900;text-align:center;color:var(--blue);white-space:nowrap}td strong{display:block;color:var(--navy);font-size:15px;margin:7px 0 3px}td p{margin:0 0 5px;font-size:14px}td small{display:block;color:#536b7e}.lesson-no{display:inline-block;background:#e7eff8;color:#174f78;border-radius:6px;padding:2px 7px;font-size:12px;font-weight:800}.lesson-no.mysql{background:#dff5ed;color:#12664f}
+.rubric-card{margin-top:20px;border:1px solid var(--line);border-radius:18px;padding:22px;background:#fff}.rubric-head{display:flex;align-items:center;gap:13px;margin-bottom:14px}.badge{display:grid;place-items:center;width:48px;height:48px;border-radius:13px;background:linear-gradient(145deg,var(--blue),#174f78);color:white;font-size:25px;font-weight:900}.rubric-head h3{margin:0;color:var(--navy)}.rubric-head p{margin:2px 0;color:#60758a}.rubric-table{min-width:1150px;font-size:13px}.rubric-table tbody th{background:#eef5fb;color:var(--navy);width:155px}.score-note{font-size:13px;color:#526777;background:#f6f8fa;padding:10px 13px;border-radius:8px}.tag-list{display:flex;flex-wrap:wrap;gap:8px}.tag{background:#edf5ff;color:#24577f;padding:7px 11px;border-radius:20px;font-size:13px;border:1px solid #d7e8f7}.footer{text-align:center;color:#60758a;padding:28px 8px 0;font-size:13px}
+@media(max-width:900px){.hero-grid,.assess-grid{grid-template-columns:repeat(2,1fr)}.info-grid,.goal-grid{grid-template-columns:1fr 1fr}.hero{padding:34px 24px}}@media(max-width:570px){.info-grid,.goal-grid{grid-template-columns:1fr}.topbar-inner{padding:8px}.brand{display:none}.page{padding:0 10px 40px}.section{padding:18px}}@media print{body{background:white}.topbar,.print-btn{display:none!important}.page{max-width:none;margin:0;padding:0}.hero,.section{box-shadow:none;break-inside:avoid}.hero{border-radius:0}thead th{position:static}.rubric-card{break-before:page}}
+
+#overview,#goals,#assessment,#schedule,#rubrics,#records{scroll-margin-top:78px}
+#schedule .table-wrap{margin-top:10px}
+#schedule tbody tr:first-child td{padding-top:18px;padding-bottom:18px}
+</style></head><body>
+<header class="topbar"><div class="topbar-inner"><div class="brand">정보융합탐구과제</div><nav><a href="#overview">운영 개요</a><a href="#goals">목표·성취</a><a href="#assessment">평가 계획</a><a href="#schedule">34차시</a><a href="#rubrics">루브릭</a><a href="#records">기록·유의사항</a></nav><button class="print-btn" onclick="window.print()">인쇄·PDF</button></div></header>
+<main class="page">
+<section class="hero"><span class="eyebrow">2022 개정 교육과정 · 2026학년도 2학기</span><h1>고등학교 정보융합탐구과제<br>34차시 연간수업계획</h1><p>학생이 실제 문제를 발견하고 데이터를 수집·관리하며, 알고리즘과 데이터베이스를 활용해 해결안을 구현·검증·공유하는 프로젝트 중심 수업입니다. 매주 2차시 중 1차시는 정보융합탐구, 1차시는 MySQL 실습으로 운영합니다.</p><div class="hero-grid"><div class="hero-stat"><b>17주</b>학기 운영</div><div class="hero-stat"><b>34차시</b>주 2차시</div><div class="hero-stat"><b>17차시</b>MySQL</div><div class="hero-stat"><b>100%</b>수행평가</div><div class="hero-stat"><b>0%</b>지필고사</div></div></section>
+<section class="section" id="overview"><h2>Ⅰ. 운영 개요</h2><div class="info-grid"><div class="info"><b>과목</b>정보융합탐구과제</div><div class="info"><b>대상·학기</b>고등학교 · 2026학년도 2학기</div><div class="info"><b>시수</b>17주 × 주 2차시 = 34차시</div><div class="info"><b>수업 구조</b>주 1차시 융합 탐구 + 주 1차시 MySQL</div><div class="info"><b>수업 형태</b>개념 기반·프로젝트 기반·문제 해결 중심</div><div class="info"><b>평가</b>수행평가 100%, 지필고사 0%</div><div class="info"><b>핵심 산출물</b>탐구계획서·데이터·프로그램·발표·DB 프로젝트</div><div class="info"><b>핵심 역량</b>컴퓨팅 사고력·데이터 문해력·융합적 문제 해결·협업</div></div><div class="notice">학교 행사, 재량휴업일, 학사 일정과 학생 수준에 따라 차시 순서와 산출물 제출 시점은 조정할 수 있습니다.</div></section>
+<section class="section" id="goals"><h2>Ⅱ. 과목 목표와 성취 방향</h2><div class="goal-grid"><div class="goal"><b>문제 발견</b><br>실생활과 여러 교과의 현상에서 정보기술로 탐구할 가치가 있는 문제를 발견하고 검증 가능한 질문으로 구체화한다.</div><div class="goal"><b>데이터 탐구</b><br>신뢰할 수 있는 데이터를 윤리적으로 수집·구조화·전처리·분석하고 근거 중심으로 의미를 해석한다.</div><div class="goal"><b>컴퓨팅 구현</b><br>문제를 분해하고 알고리즘, 프로그래밍, 데이터베이스를 활용해 해결 산출물을 구현한다.</div><div class="goal"><b>검증과 개선</b><br>정상·경계·예외 상황을 테스트하고 오류와 한계를 기록하며 반복적으로 결과물을 개선한다.</div><div class="goal"><b>융합과 소통</b><br>탐구 결과를 다른 교과 개념 및 사회 문제와 연결하고 시각 자료와 논리적 설명으로 공유한다.</div><div class="goal"><b>윤리와 책임</b><br>개인정보, 저작권, 공정성, 보안, 사회적 영향을 고려하여 책임 있게 정보기술을 활용한다.</div></div><h3>수업에 적용하는 성취 요소</h3><div class="tag-list"><span class="tag">탐구 문제 정의</span><span class="tag">연구 질문·가설</span><span class="tag">데이터 출처 평가</span><span class="tag">데이터 수집·전처리</span><span class="tag">알고리즘 설계</span><span class="tag">프로그램 구현</span><span class="tag">데이터베이스 모델링</span><span class="tag">SQL 질의</span><span class="tag">테스트·디버깅</span><span class="tag">시각화·해석</span><span class="tag">융합적 확장</span><span class="tag">정보 윤리·협업·성찰</span></div></section>
+<section class="section" id="assessment"><h2>Ⅲ. 평가 계획</h2><div class="assess-grid"><div class="assess"><strong>20%</strong><span>A. 탐구 주제·문제 정의</span></div><div class="assess"><strong>20%</strong><span>B. 데이터 수집·관리·전처리</span></div><div class="assess"><strong>20%</strong><span>C. 알고리즘·프로토타입 구현</span></div><div class="assess"><strong>20%</strong><span>D. 분석·융합·발표·성찰</span></div><div class="assess"><strong>20%</strong><span>E. MySQL 데이터베이스 프로젝트</span></div></div><div class="notice"><b>총점 100점:</b> A 20점 + B 20점 + C 20점 + D 20점 + E 20점. 전 영역 과정 중심 평가를 적용하며, 결과물뿐 아니라 계획·수정·협업·성찰 기록을 함께 평가합니다.</div></section>
+<section class="section" id="schedule"><h2>Ⅳ. 17주 × 2차시 세부 운영 계획</h2><div class="table-wrap"><table><thead><tr><th style="width:72px">주</th><th>정보융합탐구과제 · 1차시</th><th>MySQL · 1차시</th><th style="width:190px">주요 산출물·평가 연계</th></tr></thead><tbody><tr>
+      <td class="week">1주</td>
+      <td><span class="lesson-no">1차시</span><strong>과목 안내와 융합 탐구의 이해</strong><p>2022 개정 교육과정의 방향, 정보융합탐구과제의 성격과 평가 체계를 이해하고 관심 분야를 탐색한다.</p><small>탐구 질문 만들기, 관심 분야 지도 작성</small></td>
+      <td><span class="lesson-no mysql">2차시 · MySQL</span><strong>MySQL 환경 이해와 설치 점검</strong><p>DBMS·관계형 데이터베이스·MySQL의 역할을 이해하고 실습 환경을 점검한다.</p></td>
+      <td>오리엔테이션 기록지</td>
+    </tr>
+<tr>
+      <td class="week">2주</td>
+      <td><span class="lesson-no">3차시</span><strong>문제 발견과 탐구 주제 구체화</strong><p>생활·과학·사회 현상에서 정보기술로 해결할 수 있는 문제를 찾아 탐구 주제로 구체화한다.</p><small>문제 상황 관찰, 5Why, 주제 후보 비교</small></td>
+      <td><span class="lesson-no mysql">4차시 · MySQL</span><strong>데이터베이스와 테이블 생성</strong><p>CREATE DATABASE, USE, CREATE TABLE을 활용해 탐구 데이터 저장 구조를 만든다.</p></td>
+      <td>A영역 주제 제안서 초안</td>
+    </tr>
+<tr>
+      <td class="week">3주</td>
+      <td><span class="lesson-no">5차시</span><strong>연구 질문과 가설 설정</strong><p>측정 가능하고 검증 가능한 연구 질문과 가설을 작성하고 변인 관계를 설명한다.</p><small>독립·종속·통제 변인, 조작적 정의</small></td>
+      <td><span class="lesson-no mysql">6차시 · MySQL</span><strong>자료형과 제약조건</strong><p>INT, VARCHAR, DATE, DECIMAL과 PRIMARY KEY, NOT NULL을 적용한다.</p></td>
+      <td>연구 질문·가설</td>
+    </tr>
+<tr>
+      <td class="week">4주</td>
+      <td><span class="lesson-no">7차시</span><strong>자료 출처와 수집 계획</strong><p>공공데이터, 센서, 설문, 실험 자료의 특성을 비교하고 신뢰할 수 있는 수집 계획을 세운다.</p><small>출처 평가, 수집 주기, 표본과 윤리</small></td>
+      <td><span class="lesson-no mysql">8차시 · MySQL</span><strong>데이터 입력과 조회</strong><p>INSERT와 SELECT를 활용해 데이터를 저장하고 전체 자료를 확인한다.</p></td>
+      <td>A영역 제출</td>
+    </tr>
+<tr>
+      <td class="week">5주</td>
+      <td><span class="lesson-no">9차시</span><strong>데이터 윤리와 개인정보 보호</strong><p>개인정보, 저작권, 편향, 데이터 최소 수집 원칙을 탐구 설계에 반영한다.</p><small>비식별화, 동의, 출처 표시, CCL</small></td>
+      <td><span class="lesson-no mysql">10차시 · MySQL</span><strong>조건 검색</strong><p>WHERE, 비교·논리 연산자, BETWEEN, IN, LIKE로 필요한 레코드를 찾는다.</p></td>
+      <td>윤리 점검표</td>
+    </tr>
+<tr>
+      <td class="week">6주</td>
+      <td><span class="lesson-no">11차시</span><strong>데이터 구조화와 전처리 설계</strong><p>수집 자료의 변수, 자료형, 결측값, 이상값 처리 기준을 정하고 데이터 사전을 작성한다.</p><small>데이터 사전, 코딩 규칙, 결측 처리</small></td>
+      <td><span class="lesson-no mysql">12차시 · MySQL</span><strong>정렬과 결과 제한</strong><p>ORDER BY, LIMIT, DISTINCT로 조회 결과를 목적에 맞게 정리한다.</p></td>
+      <td>B영역 데이터 설계서 초안</td>
+    </tr>
+<tr>
+      <td class="week">7주</td>
+      <td><span class="lesson-no">13차시</span><strong>데이터 수집과 품질 검증</strong><p>계획에 따라 자료를 수집하고 정확성·완전성·일관성을 점검한다.</p><small>검증 규칙, 중복 제거, 오류 기록</small></td>
+      <td><span class="lesson-no mysql">14차시 · MySQL</span><strong>데이터 수정과 삭제</strong><p>UPDATE와 DELETE를 안전하게 사용하고 WHERE 절의 중요성을 설명한다.</p></td>
+      <td>수집 데이터 1차본</td>
+    </tr>
+<tr>
+      <td class="week">8주</td>
+      <td><span class="lesson-no">15차시</span><strong>기초 통계와 탐색적 분석</strong><p>빈도, 평균, 중앙값, 범위 등 기초 통계를 활용해 데이터의 특징을 해석한다.</p><small>요약 통계, 분포, 비교</small></td>
+      <td><span class="lesson-no mysql">16차시 · MySQL</span><strong>집계 함수</strong><p>COUNT, SUM, AVG, MIN, MAX로 탐구 데이터의 요약 값을 구한다.</p></td>
+      <td>B영역 제출</td>
+    </tr>
+<tr>
+      <td class="week">9주</td>
+      <td><span class="lesson-no">17차시</span><strong>시각화 설계와 정보 전달</strong><p>자료의 특성과 전달 목적에 맞는 시각화 유형을 선택하고 오해를 줄이는 표현을 설계한다.</p><small>막대·선·산점도·히스토그램, 축과 범례</small></td>
+      <td><span class="lesson-no mysql">18차시 · MySQL</span><strong>그룹화 분석</strong><p>GROUP BY와 HAVING으로 범주별 통계를 계산하고 조건에 맞는 그룹을 선별한다.</p></td>
+      <td>시각화 설계안</td>
+    </tr>
+<tr>
+      <td class="week">10주</td>
+      <td><span class="lesson-no">19차시</span><strong>알고리즘적 문제 해결 설계</strong><p>탐구 문제를 입력·처리·출력으로 분해하고 해결 절차를 의사코드와 순서도로 표현한다.</p><small>기능 분해, 알고리즘, 예외 상황</small></td>
+      <td><span class="lesson-no mysql">20차시 · MySQL</span><strong>문자열·날짜·수치 함수</strong><p>CONCAT, ROUND, DATE_FORMAT 등 내장 함수를 분석에 활용한다.</p></td>
+      <td>C영역 알고리즘 설계서 초안</td>
+    </tr>
+<tr>
+      <td class="week">11주</td>
+      <td><span class="lesson-no">21차시</span><strong>프로토타입 구현 Ⅰ</strong><p>수집·전처리·분석 기능을 구현하고 작은 데이터로 정상 동작을 확인한다.</p><small>모듈화, 함수, 입력 검증</small></td>
+      <td><span class="lesson-no mysql">22차시 · MySQL</span><strong>다중 테이블과 관계</strong><p>기본키와 외래키를 이해하고 1:N 관계의 테이블을 설계한다.</p></td>
+      <td>프로토타입 1차</td>
+    </tr>
+<tr>
+      <td class="week">12주</td>
+      <td><span class="lesson-no">23차시</span><strong>프로토타입 구현 Ⅱ</strong><p>시각화 또는 사용자 인터페이스를 추가하고 사용 흐름을 개선한다.</p><small>상호작용, 사용성, 오류 메시지</small></td>
+      <td><span class="lesson-no mysql">24차시 · MySQL</span><strong>INNER JOIN</strong><p>INNER JOIN으로 여러 테이블의 관련 데이터를 결합하여 조회한다.</p></td>
+      <td>C영역 중간 점검</td>
+    </tr>
+<tr>
+      <td class="week">13주</td>
+      <td><span class="lesson-no">25차시</span><strong>검증 계획과 테스트</strong><p>정상·경계·예외 사례를 포함한 테스트를 설계하고 오류를 재현·수정·기록한다.</p><small>테스트 케이스, 디버깅 로그, 재현성</small></td>
+      <td><span class="lesson-no mysql">26차시 · MySQL</span><strong>LEFT JOIN과 NULL</strong><p>LEFT JOIN과 IS NULL을 사용해 누락 데이터와 불일치 관계를 찾는다.</p></td>
+      <td>테스트 보고서</td>
+    </tr>
+<tr>
+      <td class="week">14주</td>
+      <td><span class="lesson-no">27차시</span><strong>분석 결과 해석과 개선</strong><p>분석 결과를 연구 질문과 연결해 해석하고 한계, 대안 설명, 개선 방향을 제시한다.</p><small>상관과 인과 구분, 한계, 재검증</small></td>
+      <td><span class="lesson-no mysql">28차시 · MySQL</span><strong>서브쿼리와 뷰</strong><p>서브쿼리와 VIEW를 활용해 복잡한 분석 절차를 구조화한다.</p></td>
+      <td>C영역 제출</td>
+    </tr>
+<tr>
+      <td class="week">15주</td>
+      <td><span class="lesson-no">29차시</span><strong>융합적 확장과 사회적 영향</strong><p>탐구 결과를 다른 교과 개념 및 실제 문제와 연결하고 기술의 사회적 영향을 평가한다.</p><small>교과 융합, 지속가능성, 공정성</small></td>
+      <td><span class="lesson-no mysql">30차시 · MySQL</span><strong>인덱스와 성능</strong><p>인덱스의 원리와 장단점을 이해하고 EXPLAIN으로 조회 성능을 비교한다.</p></td>
+      <td>D영역 발표 자료 초안</td>
+    </tr>
+<tr>
+      <td class="week">16주</td>
+      <td><span class="lesson-no">31차시</span><strong>성과 공유와 동료 평가</strong><p>근거 중심으로 탐구 과정과 결과를 발표하고 루브릭에 따라 동료 산출물을 평가한다.</p><small>발표, 질의응답, 동료 피드백</small></td>
+      <td><span class="lesson-no mysql">32차시 · MySQL</span><strong>트랜잭션과 데이터 안전</strong><p>COMMIT, ROLLBACK, 트랜잭션의 원자성을 이해하고 안전한 변경 절차를 실습한다.</p></td>
+      <td>D영역 발표·동료평가</td>
+    </tr>
+<tr>
+      <td class="week">17주</td>
+      <td><span class="lesson-no">33차시</span><strong>최종 성찰과 데이터베이스 프로젝트</strong><p>탐구 전 과정을 성찰하고 피드백을 반영해 최종 산출물과 성장 기록을 완성한다.</p><small>최종 수정, 자기평가, 진로 연결</small></td>
+      <td><span class="lesson-no mysql">34차시 · MySQL</span><strong>MySQL 통합 프로젝트</strong><p>데이터베이스 설계·입력·질의·집계·조인을 종합 적용하고 결과를 설명한다.</p></td>
+      <td>E영역 제출·최종 포트폴리오</td>
+    </tr></tbody></table></div></section>
+<section class="section" id="rubrics"><h2>Ⅴ. 수행평가 5영역 루브릭</h2><p>각 영역은 3개 평가 요소로 구성하며, 학생에게 평가 기준을 사전에 공개합니다. 교사는 관찰 기록, 버전별 산출물, 발표, 자기·동료평가, 실행 결과를 종합하여 판단합니다.</p>
+    <section class="rubric-card" id="rubric-A">
+      <div class="rubric-head"><span class="badge">A</span><div><h3>탐구 주제·문제 정의</h3><p>20% · 운영: 1~4주</p></div></div>
+      <div class="table-wrap"><table class="rubric-table">
+        <thead><tr><th>평가 요소</th><th>4수준 · 매우 우수</th><th>3수준 · 우수</th><th>2수준 · 보통</th><th>1수준 · 보완 필요</th></tr></thead>
+        <tbody><tr><th>연구 문제의 가치와 구체성</th><td>현실적·융합적 가치가 높고 연구 질문이 명확하며 검증 가능함</td><td>주제와 질문이 구체적이나 일부 범위 조정이 필요함</td><td>주제는 있으나 질문이 넓거나 검증 방법이 불명확함</td><td>문제 정의와 연구 질문이 미완성임</td></tr><tr><th>배경 조사와 근거</th><td>다양하고 신뢰할 수 있는 자료를 비교·종합하고 출처를 정확히 표시함</td><td>관련 자료를 적절히 활용하고 출처를 표시함</td><td>자료의 양·신뢰성·출처 표시가 일부 부족함</td><td>근거 자료가 매우 부족하거나 출처가 불분명함</td></tr><tr><th>연구 설계</th><td>변인·자료·절차·윤리를 일관되게 설계하고 실현 가능성을 검토함</td><td>주요 요소를 포함한 실행 가능한 계획을 제시함</td><td>계획에 일부 누락 또는 모순이 있음</td><td>탐구 절차를 구체적으로 제시하지 못함</td></tr></tbody>
+      </table></div>
+      <p class="score-note">권장 환산: 평가 요소별 4·3·2·1점 → 영역 내 합산 후 20점 만점으로 환산. 미제출은 학교 학업성적관리규정에 따라 처리한다.</p>
+    </section>
+    <section class="rubric-card" id="rubric-B">
+      <div class="rubric-head"><span class="badge">B</span><div><h3>데이터 수집·관리·전처리</h3><p>20% · 운영: 5~8주</p></div></div>
+      <div class="table-wrap"><table class="rubric-table">
+        <thead><tr><th>평가 요소</th><th>4수준 · 매우 우수</th><th>3수준 · 우수</th><th>2수준 · 보통</th><th>1수준 · 보완 필요</th></tr></thead>
+        <tbody><tr><th>데이터 수집의 적절성</th><td>연구 질문에 적합한 자료를 충분히 수집하고 표본·신뢰성을 설명함</td><td>적절한 자료를 수집하고 기본적인 타당성을 설명함</td><td>자료의 양 또는 대표성이 부족함</td><td>연구 질문과 자료의 관련성이 낮음</td></tr><tr><th>데이터 품질 관리</th><td>결측·이상·중복·오류 처리 기준을 세우고 변경 이력을 체계적으로 기록함</td><td>주요 오류를 점검하고 적절히 전처리함</td><td>전처리가 일부 수행되었으나 기준과 기록이 부족함</td><td>품질 점검과 전처리가 거의 이루어지지 않음</td></tr><tr><th>정보 윤리</th><td>개인정보 최소 수집·비식별화·저작권·출처 표시를 전 과정에 충실히 적용함</td><td>필수 윤리 기준을 대체로 준수함</td><td>윤리 기준 적용에 일부 누락이 있음</td><td>개인정보·저작권·출처 관련 문제가 있음</td></tr></tbody>
+      </table></div>
+      <p class="score-note">권장 환산: 평가 요소별 4·3·2·1점 → 영역 내 합산 후 20점 만점으로 환산. 미제출은 학교 학업성적관리규정에 따라 처리한다.</p>
+    </section>
+    <section class="rubric-card" id="rubric-C">
+      <div class="rubric-head"><span class="badge">C</span><div><h3>알고리즘·프로토타입 구현</h3><p>20% · 운영: 9~14주</p></div></div>
+      <div class="table-wrap"><table class="rubric-table">
+        <thead><tr><th>평가 요소</th><th>4수준 · 매우 우수</th><th>3수준 · 우수</th><th>2수준 · 보통</th><th>1수준 · 보완 필요</th></tr></thead>
+        <tbody><tr><th>알고리즘 설계</th><td>문제를 논리적으로 분해하고 효율적 절차와 예외 처리를 명확히 설계함</td><td>목표 기능을 수행하는 알고리즘을 적절히 설계함</td><td>기본 절차는 있으나 논리·예외 처리가 미흡함</td><td>알고리즘이 불완전하거나 구현과 연결되지 않음</td></tr><tr><th>구현 완성도</th><td>핵심 기능이 안정적으로 동작하며 코드 구조·가독성·재사용성이 우수함</td><td>핵심 기능이 대체로 정상 동작하고 코드가 이해 가능함</td><td>일부 기능 오류가 있거나 코드 구조가 미흡함</td><td>핵심 기능이 동작하지 않거나 구현량이 매우 부족함</td></tr><tr><th>검증과 개선</th><td>다양한 테스트로 오류를 재현·수정하고 전후 변화를 근거로 설명함</td><td>주요 테스트와 오류 수정을 수행함</td><td>테스트 사례와 개선 기록이 제한적임</td><td>검증과 개선 과정이 거의 없음</td></tr></tbody>
+      </table></div>
+      <p class="score-note">권장 환산: 평가 요소별 4·3·2·1점 → 영역 내 합산 후 20점 만점으로 환산. 미제출은 학교 학업성적관리규정에 따라 처리한다.</p>
+    </section>
+    <section class="rubric-card" id="rubric-D">
+      <div class="rubric-head"><span class="badge">D</span><div><h3>분석·융합·발표·성찰</h3><p>20% · 운영: 15~17주</p></div></div>
+      <div class="table-wrap"><table class="rubric-table">
+        <thead><tr><th>평가 요소</th><th>4수준 · 매우 우수</th><th>3수준 · 우수</th><th>2수준 · 보통</th><th>1수준 · 보완 필요</th></tr></thead>
+        <tbody><tr><th>결과 해석과 융합</th><td>결과를 연구 질문과 연결해 해석하고 교과 간 개념 및 실제 맥락으로 확장함</td><td>결과를 적절히 해석하고 관련 교과·생활 맥락과 연결함</td><td>결과 설명은 있으나 근거와 융합 연결이 약함</td><td>결과를 단순 나열하거나 해석이 부정확함</td></tr><tr><th>의사소통과 발표</th><td>시각 자료가 정확·명료하며 발표 구조와 질의응답이 논리적임</td><td>핵심 내용을 이해하기 쉽게 발표하고 질문에 응답함</td><td>자료 또는 설명의 명료성이 일부 부족함</td><td>발표 준비가 부족하고 핵심 전달이 어려움</td></tr><tr><th>성찰과 협업</th><td>역할 수행·피드백 반영·성장 과정을 구체적 증거와 함께 성찰함</td><td>협업과 피드백 반영 과정을 적절히 설명함</td><td>성찰 내용이 일반적이며 증거가 부족함</td><td>협업·성찰 기록이 매우 부족함</td></tr></tbody>
+      </table></div>
+      <p class="score-note">권장 환산: 평가 요소별 4·3·2·1점 → 영역 내 합산 후 20점 만점으로 환산. 미제출은 학교 학업성적관리규정에 따라 처리한다.</p>
+    </section>
+    <section class="rubric-card" id="rubric-E">
+      <div class="rubric-head"><span class="badge">E</span><div><h3>MySQL 데이터베이스 프로젝트</h3><p>20% · 운영: 매주 1차시</p></div></div>
+      <div class="table-wrap"><table class="rubric-table">
+        <thead><tr><th>평가 요소</th><th>4수준 · 매우 우수</th><th>3수준 · 우수</th><th>2수준 · 보통</th><th>1수준 · 보완 필요</th></tr></thead>
+        <tbody><tr><th>데이터베이스 설계</th><td>요구사항을 분석해 테이블·키·관계를 정규화 관점에서 일관되게 설계함</td><td>목적에 맞는 테이블·기본키·관계를 적절히 설계함</td><td>기본 구조는 있으나 키·관계·자료형에 일부 오류가 있음</td><td>테이블 구조가 목적과 맞지 않거나 설계가 미완성임</td></tr><tr><th>SQL 활용</th><td>DDL·DML·조건·집계·JOIN·서브쿼리를 정확히 조합해 복합 문제를 해결함</td><td>주요 SQL 문법을 정확히 사용해 요구 결과를 산출함</td><td>기본 질의는 가능하나 복합 질의에서 오류가 있음</td><td>기본 SQL 작성과 실행에 지속적인 어려움이 있음</td></tr><tr><th>데이터 안전·성능·설명</th><td>제약조건·트랜잭션·인덱스를 적절히 적용하고 실행 결과와 선택 이유를 명확히 설명함</td><td>데이터 안전을 고려하고 쿼리 결과를 설명함</td><td>안전·성능 고려 또는 결과 설명이 일부 부족함</td><td>무분별한 수정·삭제 위험이 있으며 결과 설명이 어려움</td></tr></tbody>
+      </table></div>
+      <p class="score-note">권장 환산: 평가 요소별 4·3·2·1점 → 영역 내 합산 후 20점 만점으로 환산. 미제출은 학교 학업성적관리규정에 따라 처리한다.</p>
+    </section></section>
+<section class="section" id="records"><h2>Ⅵ. 과정 기록과 운영 유의사항</h2><div class="goal-grid"><div class="goal"><b>개인별 과정 기록</b><br>주제 선택 이유, 맡은 역할, 수정 전후 변화, 오류 해결, 피드백 반영 내용, 배운 점을 주차별로 남긴다.</div><div class="goal"><b>공동 산출물과 개인 평가</b><br>모둠 프로젝트라도 개인별 기여 증거와 설명 능력을 별도로 확인하여 평가의 공정성을 확보한다.</div><div class="goal"><b>데이터 보호</b><br>실제 개인정보 대신 비식별·가상 데이터를 우선 사용하며, 민감정보 수집을 금지하고 접근 권한을 제한한다.</div><div class="goal"><b>생성형 인공지능 활용</b><br>활용 사실과 범위, 프롬프트, 수정 내용을 기록하고 결과의 정확성·편향·저작권을 학생이 직접 검증한다.</div><div class="goal"><b>MySQL 안전 수칙</b><br>UPDATE·DELETE 전 SELECT로 대상을 확인하고, 백업·트랜잭션·권한 분리 원칙을 적용한다.</div><div class="goal"><b>피드백 운영</b><br>초안→교사·동료 피드백→수정본→최종본의 순환 구조를 통해 성장 과정이 드러나게 한다.</div></div><div class="notice">교육부는 2022 개정 교육과정에서 탐구와 개념 기반의 깊이 있는 학습, 디지털·인공지능 기반 학생 참여형 수업, 학습 과정을 중시하는 평가를 강조합니다. 본 계획은 이러한 방향을 학교 수업에 적용할 수 있도록 재구성한 예시입니다.</div></section>
+<div class="footer">2026학년도 2학기 정보융합탐구과제 연간수업계획 · 2022 개정 교육과정 기반 학교 교육과정 재구성안</div></main></body></html>
