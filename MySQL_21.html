@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>MySQL 21차시 목표지향 개념기반 수업지도안</title>
+<style>
+:root{--navy:#1c344d;--blue:#336fd8;--sky:#eaf3ff;--mint:#eaf9f1;--green:#278a62;--red:#dc654e;--purple:#7058c8;--gold:#b88926;--text:#293a4b;--muted:#6a7a8b;--line:#dbe5ee;--bg:#f5f8fc;--shadow:0 12px 28px rgba(28,52,77,.10)}
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;font-family:"Pretendard","Noto Sans KR","Malgun Gothic",sans-serif;color:var(--text);background:linear-gradient(180deg,#fcfdff,var(--bg));line-height:1.72}.topbar{position:sticky;top:0;z-index:40;background:#fffffff2;border-bottom:1px solid var(--line);backdrop-filter:blur(10px)}.topbar-inner{max-width:1240px;margin:auto;padding:10px 18px;display:flex;align-items:center;justify-content:space-between;gap:10px}.brand{font-weight:900;color:var(--navy)}.nav{display:flex;gap:6px;flex-wrap:wrap}.nav a{text-decoration:none;color:var(--navy);font-weight:800;font-size:.82rem;padding:6px 9px;border:1px solid var(--line);border-radius:999px}.btn{border:0;border-radius:11px;background:var(--blue);color:#fff;padding:10px 15px;font-weight:900;cursor:pointer}.hero,main{max-width:1240px;margin:auto;padding:0 18px}.hero{margin-top:28px}.hero-card{position:relative;overflow:hidden;background:linear-gradient(135deg,#1c344d,#4f5068 53%,#8d6f22);color:#fff;border-radius:28px;padding:42px;box-shadow:var(--shadow)}.hero-card:after{content:"PK · FK · UNIQUE · CHECK";position:absolute;right:16px;top:29px;font-size:43px;font-weight:900;color:#ffffff0d;transform:rotate(-5deg)}.badge{display:inline-block;padding:6px 12px;border-radius:999px;background:#ffffff24;border:1px solid #ffffff44;font-weight:900}h1{font-size:clamp(2rem,4vw,3.2rem);line-height:1.15;margin:13px 0}.hero p{max-width:900px;color:#fff9e5}.hero-grid{position:relative;z-index:2;display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-top:22px}.hero-stat{padding:14px;border-radius:16px;background:#ffffff1c;border:1px solid #ffffff33}.hero-stat strong{display:block}main{padding-bottom:70px}section{margin-top:30px}.section-title{color:var(--navy)}.grid{display:grid;grid-template-columns:repeat(2,1fr);gap:14px}.card,.story-block,.teacher-message,.ending-card,.last-message{background:#fff;border:1px solid var(--line);border-radius:20px;padding:22px;box-shadow:var(--shadow)}.tags{display:flex;gap:8px;flex-wrap:wrap}.tag{padding:7px 11px;border-radius:999px;background:#fff5d9;color:#96701c;font-weight:900}.concept-flow{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-top:15px}.concept-flow div{text-align:center;padding:13px;border-radius:14px;background:#fff6de;color:#96701c;font-weight:900}.story-wrap,.ending-grid,.code-list,.ox-list{display:grid;gap:14px}.humanities{border-left:7px solid #b47b35}.philosophy{border-left:7px solid var(--purple)}.science{border-left:7px solid var(--green)}.math{border-left:7px solid var(--blue)}.teacher-message{background:linear-gradient(135deg,#fff7df,#fff)}.code-card{background:#fff;border:1px solid var(--line);border-radius:22px;box-shadow:var(--shadow);overflow:hidden}.code-head{display:flex;gap:15px;padding:20px}.num{min-width:46px;height:46px;display:grid;place-items:center;border-radius:14px;background:var(--gold);color:#fff;font-weight:900}.code-head h3{margin:0;color:var(--navy)}.code-head p{margin:4px 0 0;color:var(--muted)}pre{position:relative;margin:0;padding:22px;background:#1d1c19;color:#fff8dc;overflow:auto;font:15px/1.6 Consolas,monospace}.copy-btn{position:absolute;right:12px;top:12px;border:1px solid #68624b;background:#343127;color:#fff;border-radius:9px;padding:6px 10px}.mini-quiz{padding:20px;background:#fbfdff}.choice{display:flex;gap:9px;padding:8px}.hint{color:var(--red);font-weight:800}.good{color:var(--green)}.bad{color:var(--red)}.feedback,.ox-feedback{font-weight:900}.ox-item{display:grid;grid-template-columns:42px 1fr auto auto;gap:12px;align-items:center;background:#fff;border:1px solid var(--line);border-radius:14px;padding:13px}.ox-num{width:34px;height:34px;display:grid;place-items:center;border-radius:10px;background:#fff5d9;color:#96701c;font-weight:900}.ox-feedback{grid-column:2/5}.poetry{border-top:6px solid #da7b93}.novel{border-top:6px solid #aa7b4e}.drama{border-top:6px solid var(--purple)}.theater{border-top:6px solid var(--green)}.music{border-top:6px solid var(--blue)}.last-message{background:linear-gradient(135deg,#fff7df,#fff)}.student-box{display:grid;grid-template-columns:1fr 1fr;gap:12px}input[type=text]{width:100%;padding:12px;border:1px solid var(--line);border-radius:11px}.action-bar{display:flex;gap:10px;flex-wrap:wrap;margin-top:15px}.secondary{background:var(--navy)}.danger{background:var(--red)}.score-box{display:none;margin-top:16px;padding:18px;border-radius:16px;background:var(--mint);font-weight:900}
+@media(max-width:700px){.grid,.hero-grid,.student-box,.concept-flow{grid-template-columns:1fr}.nav{display:none}.hero-card{padding:28px 20px}.hero-card:after{display:none}}@media print{.topbar,.copy-btn,.action-bar{display:none!important}.card,.code-card,.story-block,.ending-card{box-shadow:none;break-inside:avoid}}
+</style>
+</head>
+<body>
+<header class="topbar"><div class="topbar-inner"><div class="brand">MySQL 21차시 · 제약 조건</div>
+<nav class="nav"><a href="#standard">성취기준</a><a href="#story">시작 이야기</a><a href="#codes">코드 10개</a><a href="#quiz">OX</a><a href="#ending">마무리</a><a href="#submit">제출</a></nav>
+<button class="btn" onclick="window.print()">인쇄</button></div></header>
+
+<div class="hero"><div class="hero-card"><span class="badge">목표지향 · 개념기반 · 신뢰할 수 있는 데이터의 약속</span>
+<h1>MySQL 21차시<br>제약 조건과 데이터 무결성</h1>
+<p>PRIMARY KEY, FOREIGN KEY, UNIQUE, NOT NULL, CHECK, DEFAULT를 활용하여 데이터의 정확성·일관성·참조 무결성을 지킵니다.</p>
+<div class="hero-grid"><div class="hero-stat"><strong>핵심 질문</strong>잘못된 데이터는 언제, 어떻게 막아야 할까?</div>
+<div class="hero-stat"><strong>전이 목표</strong>업무 규칙을 제약 조건으로 변환</div><div class="hero-stat"><strong>실습</strong>제약 조건 코드 10개</div>
+<div class="hero-stat"><strong>평가</strong>복수정답 10 + OX 10</div></div></div></div>
+
+<main>
+<section id="standard"><h2 class="section-title">1. 성취기준과 학습 목표</h2>
+<div class="grid"><div class="card"><h3>성취기준</h3>
+<p>데이터 무결성의 의미를 이해하고 기본키, 외래키, 고유성, 필수값, 범위, 기본값에 관한 업무 규칙을 제약 조건으로 표현할 수 있다.</p>
+<p>CREATE TABLE과 ALTER TABLE을 이용하여 제약 조건을 생성·확인·변경하고, 잘못된 데이터 입력을 예방할 수 있다.</p></div>
+<div class="card"><h3>학습 목표</h3><ol><li>제약 조건과 데이터 무결성의 관계를 설명한다.</li>
+<li>PRIMARY KEY, UNIQUE, NOT NULL의 차이를 구분한다.</li><li>CHECK와 DEFAULT를 이용해 값의 규칙을 설계한다.</li>
+<li>FOREIGN KEY로 참조 무결성을 구현하고 제약 조건을 관리한다.</li></ol></div></div></section>
+
+<section><h2 class="section-title">2. 학습할 개념</h2><div class="card">
+<div class="tags"><span class="tag">데이터 무결성</span><span class="tag">개체 무결성</span><span class="tag">참조 무결성</span>
+<span class="tag">PRIMARY KEY</span><span class="tag">FOREIGN KEY</span><span class="tag">UNIQUE</span>
+<span class="tag">NOT NULL</span><span class="tag">CHECK</span><span class="tag">DEFAULT</span><span class="tag">ALTER TABLE</span></div>
+<div class="concept-flow"><div>업무 규칙 찾기</div><div>허용 범위 정의</div><div>제약 조건 구현</div><div>오류 입력 검증</div></div>
+<p><strong>일반화:</strong> 제약 조건은 업무 규칙을 데이터베이스 구조에 직접 반영하여 잘못된 데이터가 저장되기 전에 차단하고, 여러 사용자가 데이터를 다루더라도 일관성과 신뢰성을 유지하게 한다.</p>
+<p><strong>핵심 질문:</strong> 어떤 값은 반드시 있어야 하는가, 무엇은 중복되면 안 되는가, 어떤 범위만 허용할 것인가, 어떤 부모 데이터와 연결되어야 하는가?</p></div></section>
+
+<section id="story"><h2 class="section-title">3. 수업 시작 이야기</h2><div class="story-wrap">
+<div class="story-block humanities"><h3>📚 인문학자의 이야기 — 자유를 지키는 약속</h3><p>사람들은 규칙을 자유의 반대라고 생각하기도 합니다. 그러나 서로의 권리를 지키는 약속이 없다면 강한 사람의 자유만 남고, 약한 사람의 자유는 사라질 수 있습니다.</p><p>데이터베이스의 제약 조건도 입력을 무조건 막기 위한 벽이 아닙니다. 잘못된 데이터 때문에 전체 시스템의 신뢰가 무너지지 않도록 지켜 주는 공동의 약속입니다.</p></div>
+<div class="story-block philosophy"><h3>🏛 철학자의 이야기 — 경계는 정체성을 만든다</h3><p>철학에서는 어떤 것이 무엇인지 설명할 때 그것이 무엇이 아닌지도 함께 밝힙니다. 경계가 있어야 개념이 분명해집니다.</p><p>점수는 0점에서 100점 사이이고, 학생 번호는 중복되지 않으며, 이름은 비어 있지 않아야 한다는 경계가 데이터의 정체성을 만듭니다.</p></div>
+<div class="story-block science"><h3>🔬 과학자의 이야기 — 측정값에도 유효 범위가 있다</h3><p>과학자는 센서가 기록한 값이라고 해서 모두 사실로 받아들이지 않습니다. 온도가 갑자기 천만 도로 기록되었다면 측정 범위와 장비 상태를 확인합니다.</p><p>CHECK와 NOT NULL은 데이터가 들어오는 순간 유효성을 검사하여 분석 이전에 오류를 발견하게 합니다.</p></div>
+<div class="story-block math"><h3>➗ 수학자의 이야기 — 정의역 밖의 값은 함수의 답이 아니다</h3><p>함수에는 입력 가능한 값의 범위인 정의역이 있습니다. 정의역 밖의 값을 넣으면 올바른 결과를 기대할 수 없습니다.</p><p>제약 조건은 데이터베이스의 정의역을 정합니다. 허용되는 값의 집합을 분명히 하여 계산과 판단의 신뢰성을 높입니다.</p></div>
+<div class="teacher-message"><strong>교사의 시작 이야기</strong><p>오늘 배울 제약 조건은 학생을 감시하는 규칙과 다릅니다. 실수로 1000점을 입력하거나, 존재하지 않는 학생에게 성적을 연결하거나, 같은 이메일을 여러 번 등록하는 일을 데이터베이스가 먼저 막아 주는 안전장치입니다. 좋은 제약 조건은 사용자를 불편하게 만드는 것이 아니라 사용자의 실수를 조용히 보호합니다.</p></div>
+</div></section>
+<section id="codes"><h2 class="section-title">4. 학습할 코드 10개와 상세 설명</h2><div class="code-list">
+<article class="code-card">
+<div class="code-head"><span class="num">01</span><div><h3>기본키와 NOT NULL 설정</h3><p>학생 번호를 기본키로 지정하여 각 행을 유일하게 식별합니다. 학생 이름과 학년에는 NOT NULL을 적용하여 반드시 값이 입력되도록 합니다.</p></div></div>
+<pre><code>CREATE TABLE students (
+    student_id INT PRIMARY KEY,
+    student_name VARCHAR(30) NOT NULL,
+    grade INT NOT NULL
+);</code><button class="copy-btn" onclick="copyCode(this)">복사</button></pre>
+<div class="mini-quiz"><h4>코드 1에 대한 설명으로 옳은 것을 모두 고르세요.</h4>
+<p class="hint">옳은 설명 3개를 빠짐없이 선택하세요.</p><label class="choice"><input type="checkbox" value="0"><span>1. student_id는 기본키이다.</span></label><label class="choice"><input type="checkbox" value="1"><span>2. student_name과 grade는 NULL을 허용하지 않는다.</span></label><label class="choice"><input type="checkbox" value="2"><span>3. 기본키는 각 학생을 유일하게 식별한다.</span></label><label class="choice"><input type="checkbox" value="3"><span>4. student_name은 반드시 중복될 수 없다.</span></label><label class="choice"><input type="checkbox" value="4"><span>5. NOT NULL은 자동으로 번호를 증가시킨다.</span></label><div class="feedback"></div></div>
+</article>
+<article class="code-card">
+<div class="code-head"><span class="num">02</span><div><h3>AUTO_INCREMENT 기본키</h3><p>book_id를 자동 증가 기본키로 설정합니다. 새로운 도서를 입력할 때 번호를 직접 지정하지 않아도 MySQL이 순서대로 값을 생성합니다.</p></div></div>
+<pre><code>CREATE TABLE books (
+    book_id INT AUTO_INCREMENT PRIMARY KEY,
+    title VARCHAR(100) NOT NULL,
+    author VARCHAR(50) NOT NULL
+);</code><button class="copy-btn" onclick="copyCode(this)">복사</button></pre>
+<div class="mini-quiz"><h4>코드 2에 대한 설명으로 옳은 것을 모두 고르세요.</h4>
+<p class="hint">옳은 설명 3개를 빠짐없이 선택하세요.</p><label class="choice"><input type="checkbox" value="0"><span>1. book_id는 자동 증가 기본키이다.</span></label><label class="choice"><input type="checkbox" value="1"><span>2. title과 author는 필수 입력값이다.</span></label><label class="choice"><input type="checkbox" value="2"><span>3. 도서 번호를 생략하면 MySQL이 생성할 수 있다.</span></label><label class="choice"><input type="checkbox" value="3"><span>4. AUTO_INCREMENT는 문자열을 자동 번역한다.</span></label><label class="choice"><input type="checkbox" value="4"><span>5. book_id에는 같은 값이 반복 저장된다.</span></label><div class="feedback"></div></div>
+</article>
+<article class="code-card">
+<div class="code-head"><span class="num">03</span><div><h3>UNIQUE로 중복 방지</h3><p>회원 이메일에 UNIQUE를 적용하여 같은 이메일이 중복 저장되는 것을 방지합니다. 기본키와 달리 UNIQUE 열은 테이블에 여러 개 둘 수 있습니다.</p></div></div>
+<pre><code>CREATE TABLE members (
+    member_id INT AUTO_INCREMENT PRIMARY KEY,
+    member_name VARCHAR(30) NOT NULL,
+    email VARCHAR(100) UNIQUE
+);</code><button class="copy-btn" onclick="copyCode(this)">복사</button></pre>
+<div class="mini-quiz"><h4>코드 3에 대한 설명으로 옳은 것을 모두 고르세요.</h4>
+<p class="hint">옳은 설명 3개를 빠짐없이 선택하세요.</p><label class="choice"><input type="checkbox" value="0"><span>1. email 중복을 막는다.</span></label><label class="choice"><input type="checkbox" value="1"><span>2. member_id는 기본키이다.</span></label><label class="choice"><input type="checkbox" value="2"><span>3. 한 테이블에 UNIQUE 제약을 여러 개 둘 수 있다.</span></label><label class="choice"><input type="checkbox" value="3"><span>4. UNIQUE는 모든 열의 NULL을 반드시 금지한다.</span></label><label class="choice"><input type="checkbox" value="4"><span>5. email이 기본키로 선언되어 있다.</span></label><div class="feedback"></div></div>
+</article>
+<article class="code-card">
+<div class="code-head"><span class="num">04</span><div><h3>DEFAULT 기본값 설정</h3><p>값을 생략했을 때 사용할 기본 상태와 생성 시각을 지정합니다. DEFAULT는 반복 입력을 줄이고 초기 상태를 일관되게 만듭니다.</p></div></div>
+<pre><code>CREATE TABLE assignments (
+    assignment_id INT PRIMARY KEY,
+    title VARCHAR(100) NOT NULL,
+    status VARCHAR(20) DEFAULT &#x27;미제출&#x27;,
+    created_at DATETIME DEFAULT CURRENT_TIMESTAMP
+);</code><button class="copy-btn" onclick="copyCode(this)">복사</button></pre>
+<div class="mini-quiz"><h4>코드 4에 대한 설명으로 옳은 것을 모두 고르세요.</h4>
+<p class="hint">옳은 설명 3개를 빠짐없이 선택하세요.</p><label class="choice"><input type="checkbox" value="0"><span>1. status의 기본값은 미제출이다.</span></label><label class="choice"><input type="checkbox" value="1"><span>2. created_at에는 현재 시각이 기본값으로 들어갈 수 있다.</span></label><label class="choice"><input type="checkbox" value="2"><span>3. DEFAULT는 값이 생략될 때 적용된다.</span></label><label class="choice"><input type="checkbox" value="3"><span>4. DEFAULT는 모든 입력값을 강제로 삭제한다.</span></label><label class="choice"><input type="checkbox" value="4"><span>5. title의 기본값은 자동으로 과제이다.</span></label><div class="feedback"></div></div>
+</article>
+<article class="code-card">
+<div class="code-head"><span class="num">05</span><div><h3>CHECK로 점수 범위 제한</h3><p>점수가 0점부터 100점 사이에만 저장되도록 CHECK 제약 조건을 설정합니다. 범위를 벗어난 값은 입력이나 수정 과정에서 거부됩니다.</p></div></div>
+<pre><code>CREATE TABLE scores (
+    score_id INT AUTO_INCREMENT PRIMARY KEY,
+    student_id INT NOT NULL,
+    subject VARCHAR(30) NOT NULL,
+    score INT NOT NULL,
+    CHECK (score BETWEEN 0 AND 100)
+);</code><button class="copy-btn" onclick="copyCode(this)">복사</button></pre>
+<div class="mini-quiz"><h4>코드 5에 대한 설명으로 옳은 것을 모두 고르세요.</h4>
+<p class="hint">옳은 설명 3개를 빠짐없이 선택하세요.</p><label class="choice"><input type="checkbox" value="0"><span>1. 점수는 0부터 100 사이여야 한다.</span></label><label class="choice"><input type="checkbox" value="1"><span>2. CHECK는 입력값의 조건을 검사한다.</span></label><label class="choice"><input type="checkbox" value="2"><span>3. score는 NOT NULL이다.</span></label><label class="choice"><input type="checkbox" value="3"><span>4. 101점도 정상 저장된다.</span></label><label class="choice"><input type="checkbox" value="4"><span>5. CHECK는 행을 정렬하는 기능이다.</span></label><div class="feedback"></div></div>
+</article>
+<article class="code-card">
+<div class="code-head"><span class="num">06</span><div><h3>FOREIGN KEY로 참조 무결성 설정</h3><p>수강 테이블의 학생 번호와 과목 번호가 실제 부모 테이블에 존재하도록 외래키를 설정합니다. 존재하지 않는 학생이나 과목의 수강 기록을 막습니다.</p></div></div>
+<pre><code>CREATE TABLE enrollments (
+    enrollment_id INT AUTO_INCREMENT PRIMARY KEY,
+    student_id INT NOT NULL,
+    course_id INT NOT NULL,
+    FOREIGN KEY (student_id)
+        REFERENCES students(student_id),
+    FOREIGN KEY (course_id)
+        REFERENCES courses(course_id)
+);</code><button class="copy-btn" onclick="copyCode(this)">복사</button></pre>
+<div class="mini-quiz"><h4>코드 6에 대한 설명으로 옳은 것을 모두 고르세요.</h4>
+<p class="hint">옳은 설명 3개를 빠짐없이 선택하세요.</p><label class="choice"><input type="checkbox" value="0"><span>1. 학생과 과목의 존재 여부를 외래키로 확인한다.</span></label><label class="choice"><input type="checkbox" value="1"><span>2. 참조 무결성을 유지하는 데 도움을 준다.</span></label><label class="choice"><input type="checkbox" value="2"><span>3. 존재하지 않는 부모 키의 입력을 막을 수 있다.</span></label><label class="choice"><input type="checkbox" value="3"><span>4. FOREIGN KEY는 중복 행을 자동 삭제한다.</span></label><label class="choice"><input type="checkbox" value="4"><span>5. course_id는 문자열만 저장할 수 있다.</span></label><div class="feedback"></div></div>
+</article>
+<article class="code-card">
+<div class="code-head"><span class="num">07</span><div><h3>복합 UNIQUE 제약 조건</h3><p>같은 장소가 같은 날짜와 교시에 중복 예약되지 않도록 세 열의 조합에 UNIQUE를 적용합니다.</p></div></div>
+<pre><code>CREATE TABLE reservations (
+    reservation_id INT AUTO_INCREMENT PRIMARY KEY,
+    room_id INT NOT NULL,
+    reservation_date DATE NOT NULL,
+    period_no INT NOT NULL,
+    UNIQUE (room_id, reservation_date, period_no)
+);</code><button class="copy-btn" onclick="copyCode(this)">복사</button></pre>
+<div class="mini-quiz"><h4>코드 7에 대한 설명으로 옳은 것을 모두 고르세요.</h4>
+<p class="hint">옳은 설명 3개를 빠짐없이 선택하세요.</p><label class="choice"><input type="checkbox" value="0"><span>1. 장소·날짜·교시 조합의 중복을 막는다.</span></label><label class="choice"><input type="checkbox" value="1"><span>2. 복합 UNIQUE 제약 조건이다.</span></label><label class="choice"><input type="checkbox" value="2"><span>3. 서로 다른 교시라면 같은 장소와 날짜를 사용할 수 있다.</span></label><label class="choice"><input type="checkbox" value="3"><span>4. room_id 하나만 항상 중복 금지된다.</span></label><label class="choice"><input type="checkbox" value="4"><span>5. UNIQUE는 예약 날짜를 자동 생성한다.</span></label><div class="feedback"></div></div>
+</article>
+<article class="code-card">
+<div class="code-head"><span class="num">08</span><div><h3>이름을 붙인 CHECK 제약 조건</h3><p>가격과 재고가 음수가 되지 않도록 이름 있는 CHECK 제약 조건을 정의합니다. 이름을 지정하면 오류 확인과 제약 조건 관리가 쉬워집니다.</p></div></div>
+<pre><code>CREATE TABLE products (
+    product_id INT PRIMARY KEY,
+    product_name VARCHAR(50) NOT NULL,
+    price DECIMAL(10, 2) NOT NULL,
+    stock INT DEFAULT 0,
+    CONSTRAINT chk_product_price
+        CHECK (price &gt;= 0),
+    CONSTRAINT chk_product_stock
+        CHECK (stock &gt;= 0)
+);</code><button class="copy-btn" onclick="copyCode(this)">복사</button></pre>
+<div class="mini-quiz"><h4>코드 8에 대한 설명으로 옳은 것을 모두 고르세요.</h4>
+<p class="hint">옳은 설명 3개를 빠짐없이 선택하세요.</p><label class="choice"><input type="checkbox" value="0"><span>1. 가격과 재고의 음수 입력을 제한한다.</span></label><label class="choice"><input type="checkbox" value="1"><span>2. 제약 조건에 이름을 부여했다.</span></label><label class="choice"><input type="checkbox" value="2"><span>3. DEFAULT로 재고의 초기값을 0으로 둘 수 있다.</span></label><label class="choice"><input type="checkbox" value="3"><span>4. price는 음수만 저장할 수 있다.</span></label><label class="choice"><input type="checkbox" value="4"><span>5. CHECK 이름은 테이블 데이터를 정렬한다.</span></label><div class="feedback"></div></div>
+</article>
+<article class="code-card">
+<div class="code-head"><span class="num">09</span><div><h3>ALTER TABLE로 제약 조건 추가</h3><p>이미 만들어진 students 테이블에 UNIQUE와 CHECK 제약 조건을 추가합니다. ALTER TABLE을 이용하면 테이블을 다시 만들지 않고 구조를 보완할 수 있습니다.</p></div></div>
+<pre><code>ALTER TABLE students
+ADD CONSTRAINT uq_students_email
+UNIQUE (email);
+
+ALTER TABLE students
+ADD CONSTRAINT chk_students_grade
+CHECK (grade BETWEEN 1 AND 3);</code><button class="copy-btn" onclick="copyCode(this)">복사</button></pre>
+<div class="mini-quiz"><h4>코드 9에 대한 설명으로 옳은 것을 모두 고르세요.</h4>
+<p class="hint">옳은 설명 3개를 빠짐없이 선택하세요.</p><label class="choice"><input type="checkbox" value="0"><span>1. 기존 테이블에 제약 조건을 추가한다.</span></label><label class="choice"><input type="checkbox" value="1"><span>2. email 중복 방지와 학년 범위 검사를 설정한다.</span></label><label class="choice"><input type="checkbox" value="2"><span>3. ALTER TABLE을 사용한다.</span></label><label class="choice"><input type="checkbox" value="3"><span>4. 테이블의 모든 행을 삭제한다.</span></label><label class="choice"><input type="checkbox" value="4"><span>5. grade는 1부터 100까지 허용한다.</span></label><div class="feedback"></div></div>
+</article>
+<article class="code-card">
+<div class="code-head"><span class="num">10</span><div><h3>제약 조건 확인과 삭제</h3><p>SHOW CREATE TABLE로 현재 테이블의 정의와 제약 조건을 확인합니다. 이름이 있는 CHECK 제약 조건은 DROP CONSTRAINT로 제거할 수 있습니다.</p></div></div>
+<pre><code>SHOW CREATE TABLE students;
+
+ALTER TABLE students
+DROP CONSTRAINT chk_students_grade;</code><button class="copy-btn" onclick="copyCode(this)">복사</button></pre>
+<div class="mini-quiz"><h4>코드 10에 대한 설명으로 옳은 것을 모두 고르세요.</h4>
+<p class="hint">옳은 설명 3개를 빠짐없이 선택하세요.</p><label class="choice"><input type="checkbox" value="0"><span>1. 현재 테이블 정의를 확인할 수 있다.</span></label><label class="choice"><input type="checkbox" value="1"><span>2. 이름 있는 CHECK 제약을 삭제한다.</span></label><label class="choice"><input type="checkbox" value="2"><span>3. 제약 조건 이름을 알아야 관리하기 쉽다.</span></label><label class="choice"><input type="checkbox" value="3"><span>4. students 테이블 자체를 삭제한다.</span></label><label class="choice"><input type="checkbox" value="4"><span>5. SHOW CREATE TABLE은 새 테이블을 생성한다.</span></label><div class="feedback"></div></div>
+</article></div></section>
+<section id="quiz"><h2 class="section-title">5. 형성평가 OX 퀴즈 10개</h2><div class="ox-list"><div class="ox-item" data-answer="O">
+<div class="ox-num">1</div><div>제약 조건은 데이터가 정해진 규칙을 지키도록 제한하는 장치이다.</div>
+<label><input type="radio" name="ox1" value="O"> O</label>
+<label><input type="radio" name="ox1" value="X"> X</label>
+<div class="ox-feedback"></div></div><div class="ox-item" data-answer="O">
+<div class="ox-num">2</div><div>PRIMARY KEY는 각 행을 유일하게 식별하며 NULL을 허용하지 않는다.</div>
+<label><input type="radio" name="ox2" value="O"> O</label>
+<label><input type="radio" name="ox2" value="X"> X</label>
+<div class="ox-feedback"></div></div><div class="ox-item" data-answer="X">
+<div class="ox-num">3</div><div>한 테이블에는 PRIMARY KEY를 여러 개 독립적으로 지정할 수 있다.</div>
+<label><input type="radio" name="ox3" value="O"> O</label>
+<label><input type="radio" name="ox3" value="X"> X</label>
+<div class="ox-feedback"></div></div><div class="ox-item" data-answer="O">
+<div class="ox-num">4</div><div>UNIQUE는 특정 열이나 열 조합의 중복을 제한한다.</div>
+<label><input type="radio" name="ox4" value="O"> O</label>
+<label><input type="radio" name="ox4" value="X"> X</label>
+<div class="ox-feedback"></div></div><div class="ox-item" data-answer="O">
+<div class="ox-num">5</div><div>NOT NULL은 반드시 값이 입력되도록 한다.</div>
+<label><input type="radio" name="ox5" value="O"> O</label>
+<label><input type="radio" name="ox5" value="X"> X</label>
+<div class="ox-feedback"></div></div><div class="ox-item" data-answer="O">
+<div class="ox-num">6</div><div>DEFAULT는 값이 생략될 때 사용할 기본값을 지정한다.</div>
+<label><input type="radio" name="ox6" value="O"> O</label>
+<label><input type="radio" name="ox6" value="X"> X</label>
+<div class="ox-feedback"></div></div><div class="ox-item" data-answer="O">
+<div class="ox-num">7</div><div>CHECK는 입력값이 논리 조건을 만족하는지 검사한다.</div>
+<label><input type="radio" name="ox7" value="O"> O</label>
+<label><input type="radio" name="ox7" value="X"> X</label>
+<div class="ox-feedback"></div></div><div class="ox-item" data-answer="X">
+<div class="ox-num">8</div><div>FOREIGN KEY는 부모 테이블에 없는 값을 자유롭게 입력하도록 한다.</div>
+<label><input type="radio" name="ox8" value="O"> O</label>
+<label><input type="radio" name="ox8" value="X"> X</label>
+<div class="ox-feedback"></div></div><div class="ox-item" data-answer="O">
+<div class="ox-num">9</div><div>복합 UNIQUE는 여러 열의 조합을 기준으로 중복을 제한할 수 있다.</div>
+<label><input type="radio" name="ox9" value="O"> O</label>
+<label><input type="radio" name="ox9" value="X"> X</label>
+<div class="ox-feedback"></div></div><div class="ox-item" data-answer="X">
+<div class="ox-num">10</div><div>제약 조건은 테이블 생성 시에만 설정할 수 있고 나중에는 추가할 수 없다.</div>
+<label><input type="radio" name="ox10" value="O"> O</label>
+<label><input type="radio" name="ox10" value="X"> X</label>
+<div class="ox-feedback"></div></div></div></section>
+<section id="ending"><h2 class="section-title">6. 수업 끝 이야기</h2><div class="ending-grid">
+<div class="ending-card poetry"><h3>🌙 시인의 이야기 — 운율에도 지켜야 할 박자가 있다</h3><p>시는 자유롭지만 아무 글자나 흩뿌린다고 모두 시가 되지는 않습니다. 제약 속에서 리듬을 만들 때 문장이 오래 남습니다. 다만 CHECK를 너무 많이 걸면 시인도 입력 거부를 당할 수 있습니다.</p></div>
+<div class="ending-card novel"><h3>📖 소설가의 이야기 — 주인공의 이름은 장마다 바뀌지 않는다</h3><p>첫 장의 주인공이 둘째 장에서 이유 없이 다른 이름으로 등장하면 독자는 당황합니다. UNIQUE와 PRIMARY KEY는 등장인물의 정체성을 끝까지 지켜 주는 편집자입니다.</p></div>
+<div class="ending-card drama"><h3>🎭 희곡인의 이야기 — 무대의 안전선은 배우를 가두지 않는다</h3><p>무대의 표시선은 배우의 자유를 빼앗기 위한 것이 아니라 어둠 속 추락을 막기 위한 것입니다. 데이터 제약 조건도 멋진 실행을 위한 보이지 않는 안전선입니다.</p></div>
+<div class="ending-card theater"><h3>🎬 연극인의 이야기 — 소품은 제자리에 있어야 한다</h3><p>왕관이 냉장고 안에 있고 검이 객석에 있다면 창의적인 연극일 수는 있지만 진행은 어려워집니다. DEFAULT와 FOREIGN KEY는 필요한 소품을 제자리에 둡니다.</p></div>
+<div class="ending-card music"><h3>🎼 음악인의 이야기 — 쉼표도 규칙이다</h3><p>음악에서 쉼표는 아무것도 하지 않는 시간이 아니라 다음 음을 살리는 약속입니다. NOT NULL은 빈칸을 막지만, 때로는 NULL을 허용하는 지혜도 필요합니다. 모든 악기가 쉬지 않으면 음악도 데이터베이스도 숨이 찹니다.</p></div>
+<div class="last-message"><strong>오늘의 오래 남는 마지막 이야기</strong><p>삶의 제약은 때때로 우리를 답답하게 합니다. 시간, 환경, 실패, 책임은 마음대로 없앨 수 없는 조건처럼 느껴집니다. 그러나 모든 제약이 꿈을 막는 벽은 아닙니다.</p><p><strong>어떤 제약은 방향을 잃지 않게 하는 난간이고, 어떤 원칙은 나를 지키는 기본키입니다. 할 수 없는 일만 바라보기보다 지금의 조건 안에서 할 수 있는 가장 좋은 선택을 찾아보십시오. 여러분의 가능성에는 CHECK 제약이 없습니다. 다만 자신의 가치와 타인의 존엄을 지키는 아름다운 제약만 오래 간직하기 바랍니다.</strong></p></div>
+</div></section>
+
+<section id="submit"><h2 class="section-title">7. 학번·이름 입력 및 결과 저장</h2><div class="card">
+<div class="student-box"><label><strong>학번</strong><input type="text" id="studentId" placeholder="예: 1101"></label>
+<label><strong>이름</strong><input type="text" id="studentName" placeholder="예: 홍길동"></label></div>
+<div class="action-bar"><button class="btn" onclick="gradeAll()">전체 채점</button>
+<button class="btn secondary" onclick="downloadResult()">TXT 결과 저장</button>
+<button class="btn danger" onclick="resetAll()">다시 풀기</button></div>
+<div id="scoreBox" class="score-box"></div><p>저장 파일명: 학번_이름_점수_21차시_응시시각.txt</p></div></section>
+</main>
+
+<script>
+let lastResult=null;
+function copyCode(b){navigator.clipboard.writeText(b.parentElement.querySelector('code').innerText);b.textContent='복사됨';setTimeout(()=>b.textContent='복사',900)}
+function selected(q){return [...q.querySelectorAll('input[type=checkbox]:checked')].map(x=>+x.value).sort()}
+function gradeAll(){
+ const sid=studentId.value.trim(),name=studentName.value.trim();
+ if(!sid||!name){alert('학번과 이름을 입력하세요.');return}
+ let c=0,o=0,detail=[];
+ document.querySelectorAll('.mini-quiz').forEach((q,i)=>{
+   let s=selected(q),ok=JSON.stringify(s)==='[0,1,2]',f=q.querySelector('.feedback');
+   f.textContent=ok?'정답입니다.':'오답입니다. 정답: 1, 2, 3번';f.className='feedback '+(ok?'good':'bad');
+   if(ok)c++;detail.push(`코드 ${i+1}: ${ok?'정답':'오답'} / 응답 ${s.map(x=>x+1).join(', ')||'미응답'}`);
+ });
+ document.querySelectorAll('.ox-item').forEach((q,i)=>{
+   let x=q.querySelector('input:checked'),v=x?x.value:'',ok=v===q.dataset.answer,f=q.querySelector('.ox-feedback');
+   f.textContent=ok?'정답':'오답 · 정답: '+q.dataset.answer;f.className='ox-feedback '+(ok?'good':'bad');
+   if(ok)o++;detail.push(`OX ${i+1}: ${ok?'정답':'오답'} / 응답 ${v||'미응답'}`);
+ });
+ let total=(c+o)*5,time=new Date();lastResult={sid,name,c,o,total,detail,time};
+ scoreBox.style.display='block';scoreBox.innerHTML=`총점 ${total}점 / 100점<br>복수정답 ${c} / 10 · OX ${o} / 10`;
+ scoreBox.scrollIntoView({behavior:'smooth'});
+}
+function pad(n){return String(n).padStart(2,'0')}
+function stamp(t){return `${t.getFullYear()}${pad(t.getMonth()+1)}${pad(t.getDate())}_${pad(t.getHours())}${pad(t.getMinutes())}${pad(t.getSeconds())}`}
+function downloadResult(){
+ if(!lastResult){gradeAll();if(!lastResult)return}
+ let r=lastResult,text=['MySQL 21차시 형성평가 결과',`학번: ${r.sid}`,`이름: ${r.name}`,
+ `점수: ${r.total}점`,`복수정답: ${r.c}/10`,`OX: ${r.o}/10`,`응시시각: ${r.time.toLocaleString()}`,'',...r.detail].join('\n');
+ let blob=new Blob(['\ufeff'+text],{type:'text/plain;charset=utf-8'}),a=document.createElement('a');
+ a.href=URL.createObjectURL(blob);a.download=`${r.sid}_${r.name}_${r.total}점_21차시_${stamp(r.time)}.txt`;a.click();
+ setTimeout(()=>URL.revokeObjectURL(a.href),1000);
+}
+function resetAll(){
+ document.querySelectorAll('input').forEach(x=>{if(x.type!=='text')x.checked=false});
+ document.querySelectorAll('.feedback,.ox-feedback').forEach(x=>x.textContent='');
+ scoreBox.style.display='none';lastResult=null;
+}
+</script></body></html>

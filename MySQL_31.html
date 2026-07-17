@@ -1,0 +1,363 @@
+<!DOCTYPE html><html lang="ko"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>MySQL 31차시 목표지향 개념기반 수업지도안</title>
+<style>
+:root{--navy:#23364d;--indigo:#5367a9;--blue:#4a83bd;--green:#2d8b67;--red:#d8604b;--gold:#b78536;--purple:#735bc2;--text:#2c3b4d;--muted:#69798a;--line:#dce5ec;--bg:#f5f8fb;--shadow:0 12px 28px rgba(35,54,77,.10)}
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;font-family:"Pretendard","Noto Sans KR","Malgun Gothic",sans-serif;color:var(--text);background:linear-gradient(180deg,#fdfefe,var(--bg));line-height:1.72}
+.topbar{position:sticky;top:0;z-index:30;background:#fffffff2;border-bottom:1px solid var(--line);backdrop-filter:blur(10px)}.topbar-inner{max-width:1240px;margin:auto;padding:10px 18px;display:flex;align-items:center;justify-content:space-between;gap:10px}.brand{font-weight:900;color:var(--navy)}.nav{display:flex;gap:6px;flex-wrap:wrap}.nav a{text-decoration:none;color:var(--navy);font-weight:800;font-size:.82rem;padding:6px 9px;border:1px solid var(--line);border-radius:999px}.btn{border:0;border-radius:10px;background:var(--blue);color:#fff;padding:10px 14px;font-weight:900;cursor:pointer}
+.hero,main{max-width:1240px;margin:auto;padding:0 18px}.hero{margin-top:28px}.hero-card{position:relative;overflow:hidden;padding:44px;border-radius:28px;color:white;background:linear-gradient(135deg,#23364d,#5367a9 58%,#7594c8);box-shadow:var(--shadow)}.hero-card:after{content:"PLAN · DESIGN · ERD · CRUD";position:absolute;right:12px;top:30px;font-size:38px;font-weight:900;color:#ffffff0d;transform:rotate(-5deg)}.badge{display:inline-block;padding:7px 12px;border-radius:999px;background:#ffffff22;border:1px solid #ffffff44;font-weight:900}h1{font-size:clamp(2rem,4vw,3.25rem);line-height:1.15;margin:13px 0}.hero-card>p{max-width:900px;color:#eef1ff}.stats{position:relative;z-index:2;display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-top:23px}.stat{padding:14px;border-radius:16px;background:#ffffff1a;border:1px solid #ffffff33}.stat strong{display:block}
+main{padding-bottom:70px}section{margin-top:30px}.section-title{color:var(--navy)}.grid{display:grid;grid-template-columns:repeat(2,1fr);gap:14px}.card,.story,.teacher,.ending,.last{background:#fff;border:1px solid var(--line);border-radius:20px;padding:22px;box-shadow:var(--shadow)}.concepts{display:flex;gap:8px;flex-wrap:wrap}.tag{padding:7px 11px;border-radius:999px;background:#eef1fb;color:var(--indigo);font-weight:900}.flow{display:grid;grid-template-columns:repeat(5,1fr);gap:9px;margin-top:16px}.flow div{padding:12px;text-align:center;border-radius:13px;background:#eef1fb;color:var(--indigo);font-weight:900}
+.story-list,.ending-list,.code-list,.ox-list{display:grid;gap:14px}.humanities{border-left:7px solid var(--gold)}.philosophy{border-left:7px solid var(--purple)}.science{border-left:7px solid var(--green)}.math{border-left:7px solid var(--blue)}.teacher,.last{background:linear-gradient(135deg,#eef1fb,#fff)}
+.code-card{background:white;border:1px solid var(--line);border-radius:22px;overflow:hidden;box-shadow:var(--shadow)}.code-card header{display:flex;gap:15px;padding:20px}.number{min-width:46px;height:46px;border-radius:14px;background:var(--indigo);color:white;display:grid;place-items:center;font-weight:900}.code-card h3,.code-card header p{margin:0}.code-card header p{color:var(--muted);margin-top:4px}pre{position:relative;margin:0;padding:22px;background:#1d273d;color:#f0f3ff;overflow:auto;font:15px/1.6 Consolas,monospace}pre button{position:absolute;right:12px;top:12px;border:1px solid #59647b;background:#33405a;color:#fff;border-radius:8px;padding:6px 10px}.question{padding:20px;background:#fbfcff}.question>p{color:var(--red);font-weight:800}.choice{display:flex;gap:9px;padding:8px}.feedback,.ox-feedback{font-weight:900}.good{color:var(--green)}.bad{color:var(--red)}
+.ox-item{display:grid;grid-template-columns:40px 1fr auto auto;gap:12px;align-items:center;background:#fff;border:1px solid var(--line);border-radius:14px;padding:13px}.ox-number{width:34px;height:34px;border-radius:10px;background:#eef1fb;color:var(--indigo);display:grid;place-items:center;font-weight:900}.ox-feedback{grid-column:2/5}.ending{border-top:6px solid var(--indigo)}.poetry{border-color:#da7b93}.novel{border-color:#ae7e4c}.drama{border-color:var(--purple)}.theater{border-color:var(--green)}.music{border-color:var(--blue)}
+.student{display:grid;grid-template-columns:1fr 1fr;gap:12px}.student input{width:100%;padding:12px;border:1px solid var(--line);border-radius:10px}.actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:15px}.dark{background:var(--navy)}.danger{background:var(--red)}#score{display:none;margin-top:15px;padding:17px;border-radius:14px;background:#edf8f2;font-weight:900}
+@media(max-width:760px){.grid,.stats,.student,.flow{grid-template-columns:1fr}.nav{display:none}.hero-card{padding:29px 20px}.hero-card:after{display:none}}
+@media print{.topbar,.actions,pre button{display:none!important}.card,.story,.ending,.code-card{box-shadow:none;break-inside:avoid}}
+</style>
+</head><body>
+<header class="topbar"><div class="topbar-inner"><div class="brand">MySQL 31차시 · 프로젝트 기획과 설계</div>
+<nav class="nav"><a href="#goal">목표</a><a href="#story">시작 이야기</a><a href="#codes">코드 10개</a><a href="#quiz">OX</a><a href="#ending">마무리</a><a href="#submit">제출</a></nav>
+<button class="btn" onclick="window.print()">인쇄</button></div></header>
+<div class="hero"><div class="hero-card"><span class="badge">목표지향 · 개념기반 · 생각을 설계도로 바꾸는 프로젝트 수업</span>
+<h1>MySQL 31차시<br>프로젝트 기획과 설계</h1>
+<p>학교생활의 문제를 데이터베이스 프로젝트로 전환하고 사용자 요구, 필수 기능, ERD, CRUD, 화면 흐름, 일정과 역할, 위험 대응을 체계적으로 설계합니다.</p>
+<div class="stats"><div class="stat"><strong>핵심 질문</strong>좋은 아이디어를 구현 가능한 계획으로 어떻게 바꿀까?</div>
+<div class="stat"><strong>전이 목표</strong>요구 분석에서 프로젝트 계획서까지</div><div class="stat"><strong>실습</strong>설계 코드 10개</div><div class="stat"><strong>평가</strong>복수정답 10 + OX 10</div></div></div></div>
+<main>
+<section id="goal"><h2 class="section-title">1. 성취기준과 학습 목표</h2><div class="grid">
+<div class="card"><h3>성취기준</h3><p>실생활의 문제를 데이터베이스 프로젝트 주제로 정의하고 이해관계자와 사용자 요구를 분석하여 필수 기능과 선택 기능을 구분할 수 있다.</p><p>개체·속성·관계를 도출하여 ERD와 CRUD 기능을 설계하고 화면 흐름, 일정, 역할, 위험 대응을 포함한 프로젝트 계획서를 작성할 수 있다.</p></div>
+<div class="card"><h3>학습 목표</h3><ol><li>문제 상황과 프로젝트 목표를 구체적으로 표현한다.</li><li>사용자별 요구와 기능 우선순위를 결정한다.</li><li>개체·속성·관계와 CRUD 기능을 설계한다.</li><li>화면 흐름, 일정, 역할 및 위험 대응 계획을 완성한다.</li></ol></div></div></section>
+<section><h2 class="section-title">2. 학습할 개념</h2><div class="card"><div class="concepts">
+<span class="tag">문제 정의</span><span class="tag">이해관계자</span><span class="tag">사용자 요구</span><span class="tag">필수·선택 기능</span><span class="tag">우선순위</span><span class="tag">Entity</span><span class="tag">Attribute</span><span class="tag">Relationship</span><span class="tag">ERD</span><span class="tag">CRUD</span><span class="tag">화면 흐름</span><span class="tag">일정·역할</span><span class="tag">위험 관리</span></div>
+<div class="flow"><div>문제와 사용자</div><div>요구와 범위</div><div>데이터·ERD</div><div>기능·화면</div><div>일정·위험</div></div>
+<p><strong>일반화:</strong> 좋은 데이터베이스 프로젝트는 코딩보다 먼저 문제와 사용자를 이해하고, 요구사항을 데이터 구조와 기능으로 변환하며, 제한된 시간과 위험을 고려해 구현 가능한 범위로 설계한다.</p>
+<p><strong>핵심 질문:</strong> 누구의 어떤 문제를 해결할 것인가, 반드시 필요한 기능은 무엇인가, 어떤 데이터를 어떤 관계로 저장할 것인가, 제한된 시간 안에 무엇부터 구현하며 실패 가능성에 어떻게 대비할 것인가?</p></div></section>
+<section id="story"><h2 class="section-title">3. 수업 시작 이야기</h2><div class="story-list">
+<div class="story humanities"><h3>📚 인문학자의 이야기 — 좋은 질문이 좋은 기록의 시작이다</h3><p>역사가와 작가는 글을 쓰기 전에 무엇을 남길 것인지, 누구에게 보여 줄 것인지, 왜 기록해야 하는지를 먼저 고민합니다. 질문이 흐리면 기록도 방향을 잃습니다.</p><p>프로젝트 기획도 코드를 쓰기 전에 해결할 문제와 사용자를 분명히 하는 데서 출발합니다.</p></div>
+<div class="story philosophy"><h3>🏛 철학자의 이야기 — 목적을 모르면 빠른 길도 길을 잃는다</h3><p>철학은 “어떻게 할 것인가”보다 먼저 “왜 해야 하는가”를 묻습니다. 목표가 불분명하면 기능을 많이 만들어도 좋은 프로젝트가 되기 어렵습니다.</p><p>기획은 속도를 늦추는 과정이 아니라 올바른 방향을 찾는 과정입니다.</p></div>
+<div class="story science"><h3>🔬 과학자의 이야기 — 가설 없는 실험은 결과를 해석하기 어렵다</h3><p>과학자는 실험 전에 문제를 정의하고 변인을 정하며 예상되는 위험과 측정 방법을 준비합니다. 이 계획이 있어야 결과를 검증할 수 있습니다.</p><p>데이터베이스 프로젝트의 요구 분석, ERD, 기능 명세도 구현 결과를 검증하기 위한 설계도입니다.</p></div>
+<div class="story math"><h3>➗ 수학자의 이야기 — 조건을 정확히 읽는 것이 풀이의 절반이다</h3><p>수학 문제는 계산부터 시작하지 않습니다. 주어진 조건과 구해야 할 값을 구분하고 관계를 구조화합니다.</p><p>프로젝트에서도 사용자, 데이터, 기능, 제약 조건을 먼저 구조화하면 복잡한 구현을 작은 문제로 나눌 수 있습니다.</p></div>
+<div class="teacher"><strong>교사의 시작 이야기</strong><p>멋진 프로그램을 만들고 싶을 때 우리는 종종 코드를 먼저 열고 싶어집니다. 그러나 건축가가 설계도 없이 벽돌부터 쌓지 않듯, 데이터베이스 프로젝트도 문제 정의와 ERD 없이 코드를 시작하면 중간에 구조를 다시 뜯어고치게 됩니다. 오늘은 코드를 적게 쓰더라도 생각을 깊게 기록하는 시간입니다. 좋은 계획서는 미래의 자신과 팀원에게 보내는 가장 친절한 설명서입니다.</p></div>
+</div></section>
+<section id="codes"><h2 class="section-title">4. 학습할 코드 10개와 상세 설명</h2><div class="code-list"><article class="code-card">
+<header><span class="number">01</span><div><h3>프로젝트 주제와 문제 정의</h3><p>프로젝트 제목, 해결할 문제, 최종 목표를 딕셔너리로 정리합니다. 구현 전에 왜 이 프로젝트가 필요한지 명확히 정의하는 단계입니다.</p></div></header>
+<pre><code>project = {
+    &quot;title&quot;: &quot;과학 실험 장비 예약 관리 시스템&quot;,
+    &quot;problem&quot;: (
+        &quot;종이 예약표는 중복 예약과 &quot;
+        &quot;사용 기록 누락이 자주 발생한다.&quot;
+    ),
+    &quot;goal&quot;: (
+        &quot;장비 예약과 사용 이력을 &quot;
+        &quot;데이터베이스로 통합 관리한다.&quot;
+    )
+}
+
+print(project[&quot;title&quot;])
+print(project[&quot;problem&quot;])
+print(project[&quot;goal&quot;])</code><button onclick="copyCode(this)">복사</button></pre>
+<div class="question"><h4>코드 1에 대한 설명으로 옳은 것을 모두 고르세요.</h4>
+<p>옳은 설명 3개를 빠짐없이 선택하세요.</p><label class="choice"><input type="checkbox" value="0"><span>1. 프로젝트 제목을 정리한다.</span></label><label class="choice"><input type="checkbox" value="1"><span>2. 해결할 문제를 정의한다.</span></label><label class="choice"><input type="checkbox" value="2"><span>3. 프로젝트 목표를 기록한다.</span></label><label class="choice"><input type="checkbox" value="3"><span>4. 테이블을 즉시 삭제한다.</span></label><label class="choice"><input type="checkbox" value="4"><span>5. 구현 완료 후에만 문제를 정한다.</span></label><div class="feedback"></div></div></article><article class="code-card">
+<header><span class="number">02</span><div><h3>이해관계자와 사용자 정의</h3><p>시스템을 사용할 사람과 각 사용자의 요구를 구분합니다. 사용자마다 필요한 기능과 권한이 다를 수 있습니다.</p></div></header>
+<pre><code>users = [
+    {
+        &quot;role&quot;: &quot;학생&quot;,
+        &quot;need&quot;: &quot;사용 가능한 장비를 조회하고 예약한다.&quot;
+    },
+    {
+        &quot;role&quot;: &quot;교사&quot;,
+        &quot;need&quot;: &quot;예약 승인과 사용 이력을 관리한다.&quot;
+    },
+    {
+        &quot;role&quot;: &quot;관리자&quot;,
+        &quot;need&quot;: &quot;장비 상태와 계정을 관리한다.&quot;
+    }
+]
+
+for user in users:
+    print(user[&quot;role&quot;], &quot;:&quot;, user[&quot;need&quot;])</code><button onclick="copyCode(this)">복사</button></pre>
+<div class="question"><h4>코드 2에 대한 설명으로 옳은 것을 모두 고르세요.</h4>
+<p>옳은 설명 3개를 빠짐없이 선택하세요.</p><label class="choice"><input type="checkbox" value="0"><span>1. 사용자 역할을 구분한다.</span></label><label class="choice"><input type="checkbox" value="1"><span>2. 역할별 요구를 기록한다.</span></label><label class="choice"><input type="checkbox" value="2"><span>3. 권한 설계의 기초가 된다.</span></label><label class="choice"><input type="checkbox" value="3"><span>4. 모든 사용자의 요구가 항상 같다.</span></label><label class="choice"><input type="checkbox" value="4"><span>5. 사용자를 정의하면 DB가 자동 생성된다.</span></label><div class="feedback"></div></div></article><article class="code-card">
+<header><span class="number">03</span><div><h3>기능 요구사항 목록</h3><p>반드시 구현해야 할 필수 기능과 여유가 있을 때 추가할 선택 기능을 구분합니다. 범위를 조절해 프로젝트 완성 가능성을 높입니다.</p></div></header>
+<pre><code>requirements = {
+    &quot;essential&quot;: [
+        &quot;회원 등록&quot;,
+        &quot;장비 조회&quot;,
+        &quot;예약 신청&quot;,
+        &quot;예약 승인&quot;,
+        &quot;예약 취소&quot;
+    ],
+    &quot;optional&quot;: [
+        &quot;장비 사진&quot;,
+        &quot;이용 통계&quot;,
+        &quot;알림 기능&quot;
+    ]
+}
+
+print(&quot;필수 기능:&quot;, requirements[&quot;essential&quot;])
+print(&quot;선택 기능:&quot;, requirements[&quot;optional&quot;])</code><button onclick="copyCode(this)">복사</button></pre>
+<div class="question"><h4>코드 3에 대한 설명으로 옳은 것을 모두 고르세요.</h4>
+<p>옳은 설명 3개를 빠짐없이 선택하세요.</p><label class="choice"><input type="checkbox" value="0"><span>1. 필수 기능과 선택 기능을 구분한다.</span></label><label class="choice"><input type="checkbox" value="1"><span>2. 프로젝트 범위를 조절할 수 있다.</span></label><label class="choice"><input type="checkbox" value="2"><span>3. 완성 가능성을 높이는 데 도움이 된다.</span></label><label class="choice"><input type="checkbox" value="3"><span>4. 선택 기능을 반드시 먼저 구현한다.</span></label><label class="choice"><input type="checkbox" value="4"><span>5. 기능 수가 많을수록 항상 좋은 프로젝트다.</span></label><div class="feedback"></div></div></article><article class="code-card">
+<header><span class="number">04</span><div><h3>요구사항 우선순위 결정</h3><p>각 기능에 우선순위를 부여하고 정렬합니다. 핵심 기능을 먼저 완성하고 부가 기능을 나중에 구현하도록 계획할 수 있습니다.</p></div></header>
+<pre><code>tasks = [
+    {&quot;name&quot;: &quot;DB 연결&quot;, &quot;priority&quot;: 1},
+    {&quot;name&quot;: &quot;장비 조회&quot;, &quot;priority&quot;: 2},
+    {&quot;name&quot;: &quot;예약 등록&quot;, &quot;priority&quot;: 3},
+    {&quot;name&quot;: &quot;통계 화면&quot;, &quot;priority&quot;: 5},
+    {&quot;name&quot;: &quot;알림 기능&quot;, &quot;priority&quot;: 4}
+]
+
+tasks.sort(key=lambda task: task[&quot;priority&quot;])
+
+for task in tasks:
+    print(task[&quot;priority&quot;], task[&quot;name&quot;])</code><button onclick="copyCode(this)">복사</button></pre>
+<div class="question"><h4>코드 4에 대한 설명으로 옳은 것을 모두 고르세요.</h4>
+<p>옳은 설명 3개를 빠짐없이 선택하세요.</p><label class="choice"><input type="checkbox" value="0"><span>1. priority를 기준으로 정렬한다.</span></label><label class="choice"><input type="checkbox" value="1"><span>2. 핵심 기능을 먼저 계획할 수 있다.</span></label><label class="choice"><input type="checkbox" value="2"><span>3. 작업 순서를 명확히 할 수 있다.</span></label><label class="choice"><input type="checkbox" value="3"><span>4. 숫자가 클수록 코드에서 먼저 출력된다.</span></label><label class="choice"><input type="checkbox" value="4"><span>5. 우선순위는 일정과 관계가 없다.</span></label><div class="feedback"></div></div></article><article class="code-card">
+<header><span class="number">05</span><div><h3>개체와 속성 설계</h3><p>프로젝트에 필요한 핵심 개체와 속성을 정리합니다. 이후 ERD와 CREATE TABLE 문을 작성하는 기초 자료가 됩니다.</p></div></header>
+<pre><code>entities = {
+    &quot;users&quot;: [
+        &quot;user_id&quot;,
+        &quot;user_name&quot;,
+        &quot;role&quot;
+    ],
+    &quot;equipment&quot;: [
+        &quot;equipment_id&quot;,
+        &quot;equipment_name&quot;,
+        &quot;status&quot;
+    ],
+    &quot;reservations&quot;: [
+        &quot;reservation_id&quot;,
+        &quot;user_id&quot;,
+        &quot;equipment_id&quot;,
+        &quot;start_time&quot;,
+        &quot;end_time&quot;,
+        &quot;approval_status&quot;
+    ]
+}
+
+for table, columns in entities.items():
+    print(table, &quot;-&gt;&quot;, columns)</code><button onclick="copyCode(this)">복사</button></pre>
+<div class="question"><h4>코드 5에 대한 설명으로 옳은 것을 모두 고르세요.</h4>
+<p>옳은 설명 3개를 빠짐없이 선택하세요.</p><label class="choice"><input type="checkbox" value="0"><span>1. 개체별 속성을 정리한다.</span></label><label class="choice"><input type="checkbox" value="1"><span>2. ERD 설계의 기초가 된다.</span></label><label class="choice"><input type="checkbox" value="2"><span>3. 테이블 열 후보를 확인할 수 있다.</span></label><label class="choice"><input type="checkbox" value="3"><span>4. 모든 속성을 한 테이블에 넣는다.</span></label><label class="choice"><input type="checkbox" value="4"><span>5. 외래키를 자동 삭제한다.</span></label><div class="feedback"></div></div></article><article class="code-card">
+<header><span class="number">06</span><div><h3>테이블 관계 정의</h3><p>사용자와 예약, 장비와 예약 사이의 일대다 관계를 정의합니다. 외래키는 테이블 사이의 연결과 참조 무결성을 유지합니다.</p></div></header>
+<pre><code>relationships = [
+    {
+        &quot;parent&quot;: &quot;users&quot;,
+        &quot;child&quot;: &quot;reservations&quot;,
+        &quot;type&quot;: &quot;1:N&quot;,
+        &quot;foreign_key&quot;: &quot;user_id&quot;
+    },
+    {
+        &quot;parent&quot;: &quot;equipment&quot;,
+        &quot;child&quot;: &quot;reservations&quot;,
+        &quot;type&quot;: &quot;1:N&quot;,
+        &quot;foreign_key&quot;: &quot;equipment_id&quot;
+    }
+]
+
+for relation in relationships:
+    print(
+        relation[&quot;parent&quot;],
+        relation[&quot;type&quot;],
+        relation[&quot;child&quot;],
+        relation[&quot;foreign_key&quot;]
+    )</code><button onclick="copyCode(this)">복사</button></pre>
+<div class="question"><h4>코드 6에 대한 설명으로 옳은 것을 모두 고르세요.</h4>
+<p>옳은 설명 3개를 빠짐없이 선택하세요.</p><label class="choice"><input type="checkbox" value="0"><span>1. 일대다 관계를 정의한다.</span></label><label class="choice"><input type="checkbox" value="1"><span>2. 외래키 후보를 확인한다.</span></label><label class="choice"><input type="checkbox" value="2"><span>3. 테이블 연결 구조를 설명한다.</span></label><label class="choice"><input type="checkbox" value="3"><span>4. reservations는 부모 테이블만 될 수 있다.</span></label><label class="choice"><input type="checkbox" value="4"><span>5. 관계 설계는 무결성과 관계없다.</span></label><div class="feedback"></div></div></article><article class="code-card">
+<header><span class="number">07</span><div><h3>CRUD 기능 명세 작성</h3><p>프로젝트의 주요 기능을 CRUD 관점으로 정리합니다. 기능 누락을 확인하고 SQL과 파이썬 함수 설계에 활용할 수 있습니다.</p></div></header>
+<pre><code>crud_plan = {
+    &quot;CREATE&quot;: &quot;새 예약을 등록한다.&quot;,
+    &quot;READ&quot;: &quot;장비와 예약 현황을 조회한다.&quot;,
+    &quot;UPDATE&quot;: &quot;예약 시간과 승인 상태를 수정한다.&quot;,
+    &quot;DELETE&quot;: &quot;취소된 예약을 삭제한다.&quot;
+}
+
+for action, description in crud_plan.items():
+    print(action, &quot;:&quot;, description)</code><button onclick="copyCode(this)">복사</button></pre>
+<div class="question"><h4>코드 7에 대한 설명으로 옳은 것을 모두 고르세요.</h4>
+<p>옳은 설명 3개를 빠짐없이 선택하세요.</p><label class="choice"><input type="checkbox" value="0"><span>1. CRUD 기능을 구분한다.</span></label><label class="choice"><input type="checkbox" value="1"><span>2. 기능 누락을 점검할 수 있다.</span></label><label class="choice"><input type="checkbox" value="2"><span>3. SQL과 함수 설계에 활용한다.</span></label><label class="choice"><input type="checkbox" value="3"><span>4. READ는 데이터를 삭제한다.</span></label><label class="choice"><input type="checkbox" value="4"><span>5. UPDATE는 새 테이블을 생성한다.</span></label><div class="feedback"></div></div></article><article class="code-card">
+<header><span class="number">08</span><div><h3>화면과 메뉴 흐름 설계</h3><p>사용자가 어떤 화면에서 어떤 기능으로 이동하는지 설계합니다. 구현 전에 화면 흐름을 점검하면 사용성과 기능 연결이 좋아집니다.</p></div></header>
+<pre><code>menu_flow = {
+    &quot;메인 메뉴&quot;: [
+        &quot;1. 장비 목록&quot;,
+        &quot;2. 예약 신청&quot;,
+        &quot;3. 내 예약 조회&quot;,
+        &quot;4. 예약 취소&quot;,
+        &quot;0. 종료&quot;
+    ],
+    &quot;관리자 메뉴&quot;: [
+        &quot;1. 예약 승인&quot;,
+        &quot;2. 장비 등록&quot;,
+        &quot;3. 장비 상태 수정&quot;
+    ]
+}
+
+for screen, menus in menu_flow.items():
+    print(&quot;\n[&quot; + screen + &quot;]&quot;)
+    for menu in menus:
+        print(menu)</code><button onclick="copyCode(this)">복사</button></pre>
+<div class="question"><h4>코드 8에 대한 설명으로 옳은 것을 모두 고르세요.</h4>
+<p>옳은 설명 3개를 빠짐없이 선택하세요.</p><label class="choice"><input type="checkbox" value="0"><span>1. 메뉴 구조를 미리 설계한다.</span></label><label class="choice"><input type="checkbox" value="1"><span>2. 사용자 이동 흐름을 확인한다.</span></label><label class="choice"><input type="checkbox" value="2"><span>3. 일반 사용자와 관리자 기능을 구분한다.</span></label><label class="choice"><input type="checkbox" value="3"><span>4. 화면 설계는 구현 후에만 가능하다.</span></label><label class="choice"><input type="checkbox" value="4"><span>5. 모든 사용자가 관리자 메뉴를 사용해야 한다.</span></label><div class="feedback"></div></div></article><article class="code-card">
+<header><span class="number">09</span><div><h3>일정과 역할 분담</h3><p>프로젝트 기간을 단계로 나누고 담당 역할을 지정합니다. 일정과 책임을 명확히 하면 협업 과정에서 누락과 중복을 줄일 수 있습니다.</p></div></header>
+<pre><code>schedule = [
+    {
+        &quot;week&quot;: 1,
+        &quot;task&quot;: &quot;요구 분석과 ERD&quot;,
+        &quot;owner&quot;: &quot;데이터 설계 담당&quot;
+    },
+    {
+        &quot;week&quot;: 2,
+        &quot;task&quot;: &quot;테이블과 샘플 데이터&quot;,
+        &quot;owner&quot;: &quot;SQL 담당&quot;
+    },
+    {
+        &quot;week&quot;: 3,
+        &quot;task&quot;: &quot;파이썬 CRUD 구현&quot;,
+        &quot;owner&quot;: &quot;프로그래밍 담당&quot;
+    },
+    {
+        &quot;week&quot;: 4,
+        &quot;task&quot;: &quot;테스트와 발표 자료&quot;,
+        &quot;owner&quot;: &quot;전체 협업&quot;
+    }
+]
+
+for item in schedule:
+    print(item[&quot;week&quot;], item[&quot;task&quot;], item[&quot;owner&quot;])</code><button onclick="copyCode(this)">복사</button></pre>
+<div class="question"><h4>코드 9에 대한 설명으로 옳은 것을 모두 고르세요.</h4>
+<p>옳은 설명 3개를 빠짐없이 선택하세요.</p><label class="choice"><input type="checkbox" value="0"><span>1. 프로젝트 일정을 단계로 나눈다.</span></label><label class="choice"><input type="checkbox" value="1"><span>2. 담당 역할을 지정한다.</span></label><label class="choice"><input type="checkbox" value="2"><span>3. 협업의 누락과 중복을 줄인다.</span></label><label class="choice"><input type="checkbox" value="3"><span>4. 한 사람이 모든 일을 해야 한다.</span></label><label class="choice"><input type="checkbox" value="4"><span>5. 일정 계획은 프로젝트 완성도와 무관하다.</span></label><div class="feedback"></div></div></article><article class="code-card">
+<header><span class="number">10</span><div><h3>위험 요소와 대응 계획</h3><p>발생 가능한 기술적·일정상 위험을 미리 예상하고 대응 방법을 기록합니다. 좋은 계획은 성공만 상상하지 않고 실패했을 때의 대안도 준비합니다.</p></div></header>
+<pre><code>risks = [
+    {
+        &quot;risk&quot;: &quot;DB 연결 실패&quot;,
+        &quot;response&quot;: &quot;서버 상태와 계정 정보를 점검한다.&quot;
+    },
+    {
+        &quot;risk&quot;: &quot;중복 예약&quot;,
+        &quot;response&quot;: &quot;시간 중복 검사와 트랜잭션을 적용한다.&quot;
+    },
+    {
+        &quot;risk&quot;: &quot;일정 지연&quot;,
+        &quot;response&quot;: &quot;필수 기능부터 완성하고 선택 기능을 조정한다.&quot;
+    },
+    {
+        &quot;risk&quot;: &quot;데이터 손실&quot;,
+        &quot;response&quot;: &quot;주기적으로 백업하고 복원 여부를 확인한다.&quot;
+    }
+]
+
+for item in risks:
+    print(&quot;위험:&quot;, item[&quot;risk&quot;])
+    print(&quot;대응:&quot;, item[&quot;response&quot;])</code><button onclick="copyCode(this)">복사</button></pre>
+<div class="question"><h4>코드 10에 대한 설명으로 옳은 것을 모두 고르세요.</h4>
+<p>옳은 설명 3개를 빠짐없이 선택하세요.</p><label class="choice"><input type="checkbox" value="0"><span>1. 위험 요소를 미리 예상한다.</span></label><label class="choice"><input type="checkbox" value="1"><span>2. 각 위험의 대응 방법을 기록한다.</span></label><label class="choice"><input type="checkbox" value="2"><span>3. 백업과 범위 조정도 대응 전략이 된다.</span></label><label class="choice"><input type="checkbox" value="3"><span>4. 위험은 발생한 뒤에만 생각한다.</span></label><label class="choice"><input type="checkbox" value="4"><span>5. 실패 가능성을 기록하면 프로젝트가 자동 실패한다.</span></label><div class="feedback"></div></div></article></div></section>
+<section id="quiz"><h2 class="section-title">5. 형성평가 OX 퀴즈 10개</h2><div class="ox-list"><div class="ox-item" data-answer="O">
+<span class="ox-number">1</span><div>프로젝트 기획은 구현할 문제와 목표를 명확히 하는 과정이다.</div>
+<label><input type="radio" name="ox1" value="O"> O</label>
+<label><input type="radio" name="ox1" value="X"> X</label><div class="ox-feedback"></div></div><div class="ox-item" data-answer="O">
+<span class="ox-number">2</span><div>사용자 요구 분석은 기능과 권한을 설계하는 데 도움이 된다.</div>
+<label><input type="radio" name="ox2" value="O"> O</label>
+<label><input type="radio" name="ox2" value="X"> X</label><div class="ox-feedback"></div></div><div class="ox-item" data-answer="O">
+<span class="ox-number">3</span><div>필수 기능과 선택 기능을 구분하면 프로젝트 범위를 조절할 수 있다.</div>
+<label><input type="radio" name="ox3" value="O"> O</label>
+<label><input type="radio" name="ox3" value="X"> X</label><div class="ox-feedback"></div></div><div class="ox-item" data-answer="O">
+<span class="ox-number">4</span><div>ERD는 개체, 속성, 관계를 표현하는 데 사용할 수 있다.</div>
+<label><input type="radio" name="ox4" value="O"> O</label>
+<label><input type="radio" name="ox4" value="X"> X</label><div class="ox-feedback"></div></div><div class="ox-item" data-answer="O">
+<span class="ox-number">5</span><div>외래키는 관련 테이블 사이의 관계를 표현하고 참조 무결성 유지에 도움을 준다.</div>
+<label><input type="radio" name="ox5" value="O"> O</label>
+<label><input type="radio" name="ox5" value="X"> X</label><div class="ox-feedback"></div></div><div class="ox-item" data-answer="O">
+<span class="ox-number">6</span><div>CRUD 계획은 생성, 조회, 수정, 삭제 기능의 누락을 확인하는 데 활용할 수 있다.</div>
+<label><input type="radio" name="ox6" value="O"> O</label>
+<label><input type="radio" name="ox6" value="X"> X</label><div class="ox-feedback"></div></div><div class="ox-item" data-answer="X">
+<span class="ox-number">7</span><div>화면 흐름은 프로그램 구현이 끝난 뒤에만 설계해야 한다.</div>
+<label><input type="radio" name="ox7" value="O"> O</label>
+<label><input type="radio" name="ox7" value="X"> X</label><div class="ox-feedback"></div></div><div class="ox-item" data-answer="O">
+<span class="ox-number">8</span><div>역할 분담과 일정 계획은 협업 프로젝트의 책임과 순서를 명확히 한다.</div>
+<label><input type="radio" name="ox8" value="O"> O</label>
+<label><input type="radio" name="ox8" value="X"> X</label><div class="ox-feedback"></div></div><div class="ox-item" data-answer="O">
+<span class="ox-number">9</span><div>좋은 프로젝트 계획은 기술적 위험과 일정 지연 가능성도 고려한다.</div>
+<label><input type="radio" name="ox9" value="O"> O</label>
+<label><input type="radio" name="ox9" value="X"> X</label><div class="ox-feedback"></div></div><div class="ox-item" data-answer="X">
+<span class="ox-number">10</span><div>기획 단계에서는 기능을 가능한 많이 추가하는 것이 항상 가장 중요하다.</div>
+<label><input type="radio" name="ox10" value="O"> O</label>
+<label><input type="radio" name="ox10" value="X"> X</label><div class="ox-feedback"></div></div></div></section>
+<section id="ending"><h2 class="section-title">6. 수업 끝 이야기</h2><div class="ending-list">
+<div class="ending poetry"><h3>🌙 시인의 이야기 — 빈 종이는 실패가 아니라 가능성이다</h3><p>시인은 빈 종이 앞에서 아직 쓰지 못한 문장을 두려워하기도 하지만, 그 여백 때문에 새로운 세계를 만들 수 있습니다. 프로젝트 계획서의 빈칸도 여러분의 생각이 들어올 자리입니다. 단, 모든 칸을 “추후 결정”으로 채우면 그것은 여백의 미가 아니라 일정의 위기입니다.</p></div>
+<div class="ending novel"><h3>📖 소설가의 이야기 — 결말을 알아야 복선을 심을 수 있다</h3><p>소설가는 결말과 인물의 목적을 생각하며 앞부분에 복선을 배치합니다. 프로젝트도 최종 사용 장면을 상상해야 필요한 데이터와 기능을 올바르게 설계할 수 있습니다.</p></div>
+<div class="ending drama"><h3>🎭 희곡인의 이야기 — 배역표가 있어야 모두가 주인공이 된다</h3><p>희곡에서 역할이 불분명하면 같은 대사를 두 사람이 읽거나 아무도 읽지 않습니다. 역할 분담은 누군가를 조연으로 만드는 것이 아니라 모두가 책임 있는 주인공이 되게 합니다.</p></div>
+<div class="ending theater"><h3>🎬 연극인의 이야기 — 리허설은 실패를 미리 발견하는 성공의 기술이다</h3><p>무대에 오르기 전 동선과 장면을 점검하면 실제 공연의 실수를 줄일 수 있습니다. 화면 흐름과 위험 계획은 프로그램의 리허설입니다.</p></div>
+<div class="ending music"><h3>🎼 음악인의 이야기 — 악보는 자유를 막지 않고 합주를 가능하게 한다</h3><p>악보와 박자가 있어야 서로 다른 악기가 같은 곡을 연주할 수 있습니다. 프로젝트 계획은 창의성을 가두는 규칙이 아니라 팀의 아이디어를 하나의 결과로 연결하는 공통 악보입니다. 박자를 잃으면 개발자는 밤샘이라는 즉흥 연주를 시작합니다.</p></div>
+<div class="last"><strong>오늘의 오래 남는 마지막 이야기</strong><p>큰 꿈은 처음부터 완성된 모습으로 나타나지 않습니다. 작은 문제를 발견하고, 필요한 사람의 목소리를 듣고, 한 단계씩 계획하면서 형태를 갖춥니다.</p><p><strong>여러분의 진로와 꿈도 하나의 프로젝트입니다. 목적을 적고, 필요한 배움을 설계하고, 함께할 사람을 찾고, 어려움에 대비하십시오. 계획대로 되지 않는 날이 와도 계획을 수정하면 됩니다. 설계가 바뀌었다고 꿈이 실패한 것은 아닙니다. 더 정확한 길을 찾아가는 중입니다.</strong></p></div>
+</div></section>
+<section id="submit"><h2 class="section-title">7. 학번·이름 입력 및 결과 저장</h2><div class="card">
+<div class="student"><label><strong>학번</strong><input type="text" id="studentId" placeholder="예: 1101"></label>
+<label><strong>이름</strong><input type="text" id="studentName" placeholder="예: 홍길동"></label></div>
+<div class="actions"><button class="btn" onclick="gradeAll()">전체 채점</button><button class="btn dark" onclick="downloadResult()">TXT 결과 저장</button><button class="btn danger" onclick="resetAll()">다시 풀기</button></div>
+<div id="score"></div><p>저장 파일명: 학번_이름_점수_31차시_응시시각.txt</p></div></section>
+</main>
+<script>
+let lastResult=null;
+function copyCode(button){
+ const text=button.parentElement.querySelector('code').innerText;
+ navigator.clipboard.writeText(text);
+ button.textContent='복사됨';
+ setTimeout(()=>button.textContent='복사',900);
+}
+function gradeAll(){
+ const sid=document.getElementById('studentId').value.trim();
+ const name=document.getElementById('studentName').value.trim();
+ if(!sid||!name){alert('학번과 이름을 입력하세요.');return;}
+ let codeScore=0,oxScore=0,details=[];
+ document.querySelectorAll('.question').forEach((q,i)=>{
+   const selected=[...q.querySelectorAll('input:checked')].map(x=>Number(x.value)).sort();
+   const ok=JSON.stringify(selected)==='[0,1,2]';
+   const f=q.querySelector('.feedback');
+   f.textContent=ok?'정답입니다.':'오답입니다. 정답: 1, 2, 3번';
+   f.className='feedback '+(ok?'good':'bad');
+   if(ok) codeScore++;
+   details.push(`코드 ${i+1}: ${ok?'정답':'오답'} / 응답 ${selected.map(x=>x+1).join(', ')||'미응답'}`);
+ });
+ document.querySelectorAll('.ox-item').forEach((q,i)=>{
+   const checked=q.querySelector('input:checked');
+   const value=checked?checked.value:'';
+   const ok=value===q.dataset.answer;
+   const f=q.querySelector('.ox-feedback');
+   f.textContent=ok?'정답':'오답 · 정답: '+q.dataset.answer;
+   f.className='ox-feedback '+(ok?'good':'bad');
+   if(ok) oxScore++;
+   details.push(`OX ${i+1}: ${ok?'정답':'오답'} / 응답 ${value||'미응답'}`);
+ });
+ const total=(codeScore+oxScore)*5;
+ const time=new Date();
+ lastResult={sid,name,codeScore,oxScore,total,time,details};
+ const box=document.getElementById('score');
+ box.style.display='block';
+ box.innerHTML=`총점 ${total}점 / 100점<br>복수정답 ${codeScore}/10 · OX ${oxScore}/10`;
+ box.scrollIntoView({behavior:'smooth'});
+}
+function pad(n){return String(n).padStart(2,'0');}
+function stamp(t){return `${t.getFullYear()}${pad(t.getMonth()+1)}${pad(t.getDate())}_${pad(t.getHours())}${pad(t.getMinutes())}${pad(t.getSeconds())}`;}
+function downloadResult(){
+ if(!lastResult){gradeAll();if(!lastResult)return;}
+ const r=lastResult;
+ const text=[
+  'MySQL 31차시 형성평가 결과',
+  `학번: ${r.sid}`,`이름: ${r.name}`,`점수: ${r.total}점`,
+  `복수정답: ${r.codeScore}/10`,`OX: ${r.oxScore}/10`,
+  `응시시각: ${r.time.toLocaleString()}`,'',...r.details
+ ].join('\n');
+ const blob=new Blob(['\ufeff'+text],{type:'text/plain;charset=utf-8'});
+ const a=document.createElement('a');
+ a.href=URL.createObjectURL(blob);
+ a.download=`${r.sid}_${r.name}_${r.total}점_31차시_${stamp(r.time)}.txt`;
+ a.click();
+ setTimeout(()=>URL.revokeObjectURL(a.href),1000);
+}
+function resetAll(){
+ document.querySelectorAll('input').forEach(x=>{if(x.type!=='text')x.checked=false;});
+ document.querySelectorAll('.feedback,.ox-feedback').forEach(x=>x.textContent='');
+ document.getElementById('score').style.display='none';
+ lastResult=null;
+}
+</script>
+</body></html>

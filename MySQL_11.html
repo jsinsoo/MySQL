@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>MySQL 11차시 목표지향 개념기반 수업지도안</title>
+<style>
+:root{--navy:#15334f;--blue:#2d70e8;--sky:#eaf3ff;--mint:#eafaf4;--green:#238c65;--orange:#f09a4a;--red:#df654f;--purple:#7158ce;--text:#26384a;--muted:#69798a;--line:#dbe5ef;--bg:#f5f8fc;--shadow:0 12px 28px rgba(21,51,79,.10)}
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;font-family:"Pretendard","Noto Sans KR","Malgun Gothic",sans-serif;color:var(--text);background:linear-gradient(180deg,#fcfdff,var(--bg));line-height:1.72}.topbar{position:sticky;top:0;z-index:40;background:#fffffff2;border-bottom:1px solid var(--line);backdrop-filter:blur(10px)}.topbar-inner{max-width:1240px;margin:auto;padding:10px 18px;display:flex;align-items:center;justify-content:space-between;gap:10px}.brand{font-weight:900;color:var(--navy)}.nav{display:flex;gap:6px;flex-wrap:wrap}.nav a{text-decoration:none;color:var(--navy);font-weight:800;font-size:.82rem;padding:6px 9px;border:1px solid var(--line);border-radius:999px}.btn{border:0;border-radius:11px;background:var(--blue);color:#fff;padding:10px 15px;font-weight:900;cursor:pointer}.hero,main{max-width:1240px;margin:auto;padding:0 18px}.hero{margin-top:28px}.hero-card{position:relative;overflow:hidden;background:linear-gradient(135deg,#15334f,#236492 56%,#2d70e8);color:#fff;border-radius:28px;padding:42px;box-shadow:var(--shadow)}.hero-card:after{content:"↕";position:absolute;right:45px;top:18px;font-size:150px;font-weight:900;color:#ffffff12}.badge{display:inline-block;padding:6px 12px;border-radius:999px;background:#ffffff24;border:1px solid #ffffff44;font-weight:900}h1{font-size:clamp(2rem,4vw,3.2rem);line-height:1.15;margin:13px 0}.hero p{max-width:900px;color:#eaf3ff}.hero-grid{position:relative;z-index:2;display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-top:22px}.hero-stat{padding:14px;border-radius:16px;background:#ffffff1c;border:1px solid #ffffff33}.hero-stat strong{display:block}main{padding-bottom:70px}section{margin-top:30px}.section-title{color:var(--navy)}.grid{display:grid;grid-template-columns:repeat(2,1fr);gap:14px}.card,.story-block,.teacher-message,.ending-card,.last-message{background:#fff;border:1px solid var(--line);border-radius:20px;padding:22px;box-shadow:var(--shadow)}.tags{display:flex;gap:8px;flex-wrap:wrap}.tag{padding:7px 11px;border-radius:999px;background:var(--sky);color:var(--blue);font-weight:900}.concept-flow{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-top:15px}.concept-flow div{text-align:center;padding:13px;border-radius:14px;background:var(--mint);color:var(--green);font-weight:900}.story-wrap,.ending-grid,.code-list,.ox-list{display:grid;gap:14px}.humanities{border-left:7px solid #b47b35}.philosophy{border-left:7px solid var(--purple)}.science{border-left:7px solid var(--green)}.math{border-left:7px solid var(--blue)}.teacher-message{background:linear-gradient(135deg,#eef5ff,#fff)}.code-card{background:#fff;border:1px solid var(--line);border-radius:22px;box-shadow:var(--shadow);overflow:hidden}.code-head{display:flex;gap:15px;padding:20px}.num{min-width:46px;height:46px;display:grid;place-items:center;border-radius:14px;background:var(--navy);color:#fff;font-weight:900}.code-head h3{margin:0;color:var(--navy)}.code-head p{margin:4px 0 0;color:var(--muted)}pre{position:relative;margin:0;padding:22px;background:#101827;color:#eef6ff;overflow:auto;font:15px/1.6 Consolas,monospace}.copy-btn{position:absolute;right:12px;top:12px;border:1px solid #44536b;background:#1d2a3d;color:#fff;border-radius:9px;padding:6px 10px}.mini-quiz{padding:20px;background:#fbfdff}.choice{display:flex;gap:9px;padding:8px}.hint{color:var(--red);font-weight:800}.good{color:var(--green)}.bad{color:var(--red)}.feedback,.ox-feedback{font-weight:900}.ox-item{display:grid;grid-template-columns:42px 1fr auto auto;gap:12px;align-items:center;background:#fff;border:1px solid var(--line);border-radius:14px;padding:13px}.ox-num{width:34px;height:34px;display:grid;place-items:center;border-radius:10px;background:var(--mint);color:var(--green);font-weight:900}.ox-feedback{grid-column:2/5}.poetry{border-top:6px solid #da7b93}.novel{border-top:6px solid #aa7b4e}.drama{border-top:6px solid var(--purple)}.theater{border-top:6px solid var(--green)}.music{border-top:6px solid var(--blue)}.last-message{background:linear-gradient(135deg,#fff7df,#fff)}.student-box{display:grid;grid-template-columns:1fr 1fr;gap:12px}input[type=text]{width:100%;padding:12px;border:1px solid var(--line);border-radius:11px}.action-bar{display:flex;gap:10px;flex-wrap:wrap;margin-top:15px}.secondary{background:var(--navy)}.danger{background:var(--red)}.score-box{display:none;margin-top:16px;padding:18px;border-radius:16px;background:var(--mint);font-weight:900}
+@media(max-width:700px){.grid,.hero-grid,.student-box,.concept-flow{grid-template-columns:1fr}.nav{display:none}.hero-card{padding:28px 20px}.hero-card:after{display:none}}@media print{.topbar,.copy-btn,.action-bar{display:none!important}.card,.code-card,.story-block,.ending-card{box-shadow:none;break-inside:avoid}}
+</style>
+</head>
+<body>
+<header class="topbar"><div class="topbar-inner"><div class="brand">MySQL 11차시 · 정렬과 출력 제한</div>
+<nav class="nav"><a href="#standard">성취기준</a><a href="#story">시작 이야기</a><a href="#codes">코드 10개</a><a href="#quiz">OX</a><a href="#ending">마무리</a><a href="#submit">제출</a></nav>
+<button class="btn" onclick="window.print()">인쇄</button></div></header>
+
+<div class="hero"><div class="hero-card"><span class="badge">목표지향 · 개념기반 · 정보의 우선순위</span>
+<h1>MySQL 11차시<br>정렬과 출력 제한</h1>
+<p>ORDER BY로 데이터의 배열 기준을 만들고, LIMIT과 OFFSET으로 필요한 범위만 선택하여 목적에 맞는 조회 결과를 구성합니다.</p>
+<div class="hero-grid"><div class="hero-stat"><strong>핵심 질문</strong>어떤 순서로 보여 주어야 의미가 잘 드러날까?</div>
+<div class="hero-stat"><strong>전이 목표</strong>목적에 맞는 우선순위 설계</div><div class="hero-stat"><strong>실습</strong>정렬·제한 코드 10개</div>
+<div class="hero-stat"><strong>평가</strong>복수정답 10 + OX 10</div></div></div></div>
+
+<main>
+<section id="standard"><h2 class="section-title">1. 성취기준과 학습 목표</h2>
+<div class="grid"><div class="card"><h3>성취기준</h3>
+<p>ORDER BY와 ASC, DESC를 활용하여 숫자·문자·날짜 자료를 목적에 맞게 정렬할 수 있다.</p>
+<p>여러 정렬 기준과 LIMIT, OFFSET을 결합하여 상위 자료 추출 및 페이지 단위 조회를 수행할 수 있다.</p></div>
+<div class="card"><h3>학습 목표</h3><ol><li>오름차순과 내림차순의 차이를 설명한다.</li>
+<li>숫자·문자·날짜 열을 기준으로 정렬한다.</li><li>여러 열을 서로 다른 방향으로 정렬한다.</li>
+<li>LIMIT과 OFFSET으로 출력 행의 범위를 제한한다.</li></ol></div></div></section>
+
+<section><h2 class="section-title">2. 학습할 개념</h2><div class="card">
+<div class="tags"><span class="tag">ORDER BY</span><span class="tag">ASC</span><span class="tag">DESC</span>
+<span class="tag">다중 정렬</span><span class="tag">LIMIT</span><span class="tag">OFFSET</span><span class="tag">상위 자료</span><span class="tag">페이지 나누기</span></div>
+<div class="concept-flow"><div>기준 선택</div><div>순서 결정</div><div>범위 제한</div><div>의미 해석</div></div>
+<p><strong>일반화:</strong> 데이터의 배열 순서와 출력 범위를 설계하면 같은 자료에서도 목적에 맞는 핵심 정보를 빠르게 드러낼 수 있다.</p>
+<p><strong>핵심 질문:</strong> 정렬 기준이 바뀌면 같은 데이터의 의미와 해석은 어떻게 달라질까?</p></div></section>
+
+<section id="story"><h2 class="section-title">3. 수업 시작 이야기</h2><div class="story-wrap">
+<div class="story-block humanities"><h3>📚 인문학자의 이야기 — 배열은 해석을 만든다</h3><p>박물관의 유물은 아무렇게나 놓이지 않습니다. 시대순으로 놓으면 변화가 보이고, 지역별로 놓으면 문화의 차이가 보이며, 주제별로 놓으면 공통된 질문이 드러납니다.</p><p>데이터도 마찬가지입니다. 같은 행이라도 어떤 기준으로 정렬하느냐에 따라 우리가 발견하는 이야기가 달라집니다. ORDER BY는 단순히 줄을 세우는 명령이 아니라, 데이터를 읽는 관점을 선택하는 명령입니다.</p></div>
+<div class="story-block philosophy"><h3>🏛 철학자의 이야기 — 먼저 본 것이 중요한가</h3><p>철학자는 순서가 판단에 어떤 영향을 주는지 묻습니다. 사람은 처음 본 정보에 더 큰 의미를 부여하기도 합니다.</p><p>점수를 높은 순으로 볼 때와 낮은 순으로 볼 때 우리는 서로 다른 질문을 떠올립니다. 정렬은 객관적인 기술처럼 보이지만, 무엇을 먼저 보여 줄지 결정하는 선택이기도 합니다. 그러므로 정렬 기준은 목적에 맞고 공정해야 합니다.</p></div>
+<div class="story-block science"><h3>🔬 과학자의 이야기 — 관측값을 정리해야 법칙이 보인다</h3><p>과학자는 측정값을 시간순, 크기순, 실험 조건순으로 정리합니다. 순서가 뒤섞여 있으면 변화 추세나 이상값을 발견하기 어렵습니다.</p><p>ORDER BY는 관측 자료를 해석 가능한 구조로 바꾸고, LIMIT은 방대한 결과에서 먼저 살펴볼 핵심 표본을 선택하게 합니다.</p></div>
+<div class="story-block math"><h3>➗ 수학자의 이야기 — 순서 관계와 상위 집합</h3><p>수학에서는 수의 크기를 비교하여 순서를 만들고, 조건에 따라 가장 큰 값이나 작은 값을 찾습니다. 다중 정렬은 첫 번째 기준이 같을 때 두 번째 기준으로 비교하는 사전식 순서와 닮았습니다.</p><p>LIMIT은 정렬된 집합에서 필요한 개수만 선택합니다. 정확한 상위 자료를 얻으려면 먼저 올바른 순서를 만들어야 합니다.</p></div>
+<div class="teacher-message"><strong>교사의 시작 이야기</strong><p>오늘은 데이터를 줄 세우는 수업이지만, 사람을 한 줄로 평가하는 수업은 아닙니다. 데이터의 순위는 특정 기준에서만 의미가 있습니다. 점수순, 이름순, 날짜순은 서로 다른 질문에 대한 답입니다. 정렬 기준을 분명히 하고, 결과를 공정하게 해석하는 개발자가 되어 봅시다.</p></div>
+</div></section>
+<section id="codes"><h2 class="section-title">4. 학습할 코드 10개와 상세 설명</h2><div class="code-list">
+<article class="code-card">
+<div class="code-head"><span class="num">01</span><div><h3>오름차순 정렬</h3><p>학생의 점수를 낮은 값부터 높은 값 순서로 정렬합니다. ASC는 오름차순이며 생략해도 기본값으로 적용됩니다.</p></div></div>
+<pre><code>SELECT student_id, name, score
+FROM students
+ORDER BY score ASC;</code><button class="copy-btn" onclick="copyCode(this)">복사</button></pre>
+<div class="mini-quiz"><h4>코드 1에 대한 설명으로 옳은 것을 모두 고르세요.</h4><p class="hint">옳은 설명 3개를 빠짐없이 선택하세요.</p><label class="choice"><input type="checkbox" value="0"><span>1. score를 낮은 값부터 높은 값 순으로 정렬한다.</span></label><label class="choice"><input type="checkbox" value="1"><span>2. ASC는 오름차순을 뜻한다.</span></label><label class="choice"><input type="checkbox" value="2"><span>3. 학생 번호·이름·점수를 조회한다.</span></label><label class="choice"><input type="checkbox" value="3"><span>4. 가장 높은 점수가 항상 첫 행에 나온다.</span></label><label class="choice"><input type="checkbox" value="4"><span>5. 학생 점수를 수정한다.</span></label><div class="feedback"></div></div>
+</article>
+<article class="code-card">
+<div class="code-head"><span class="num">02</span><div><h3>내림차순 정렬</h3><p>학생의 점수를 높은 값부터 낮은 값 순서로 정렬합니다. 성적 상위 학생을 먼저 확인할 때 유용합니다.</p></div></div>
+<pre><code>SELECT student_id, name, score
+FROM students
+ORDER BY score DESC;</code><button class="copy-btn" onclick="copyCode(this)">복사</button></pre>
+<div class="mini-quiz"><h4>코드 2에 대한 설명으로 옳은 것을 모두 고르세요.</h4><p class="hint">옳은 설명 3개를 빠짐없이 선택하세요.</p><label class="choice"><input type="checkbox" value="0"><span>1. score를 높은 값부터 낮은 값 순으로 정렬한다.</span></label><label class="choice"><input type="checkbox" value="1"><span>2. DESC는 내림차순을 뜻한다.</span></label><label class="choice"><input type="checkbox" value="2"><span>3. 상위 점수를 먼저 확인할 수 있다.</span></label><label class="choice"><input type="checkbox" value="3"><span>4. 낮은 점수가 먼저 나온다.</span></label><label class="choice"><input type="checkbox" value="4"><span>5. DESC는 중복을 제거한다.</span></label><div class="feedback"></div></div>
+</article>
+<article class="code-card">
+<div class="code-head"><span class="num">03</span><div><h3>문자열 오름차순 정렬</h3><p>학생 이름을 문자 정렬 기준에 따라 오름차순으로 배치합니다. 숫자뿐 아니라 문자열도 정렬할 수 있습니다.</p></div></div>
+<pre><code>SELECT student_id, name
+FROM students
+ORDER BY name ASC;</code><button class="copy-btn" onclick="copyCode(this)">복사</button></pre>
+<div class="mini-quiz"><h4>코드 3에 대한 설명으로 옳은 것을 모두 고르세요.</h4><p class="hint">옳은 설명 3개를 빠짐없이 선택하세요.</p><label class="choice"><input type="checkbox" value="0"><span>1. 이름을 기준으로 정렬한다.</span></label><label class="choice"><input type="checkbox" value="1"><span>2. 문자열 열도 정렬할 수 있다.</span></label><label class="choice"><input type="checkbox" value="2"><span>3. ASC 방식으로 조회한다.</span></label><label class="choice"><input type="checkbox" value="3"><span>4. 점수순으로 정렬한다.</span></label><label class="choice"><input type="checkbox" value="4"><span>5. 이름을 영구적으로 변경한다.</span></label><div class="feedback"></div></div>
+</article>
+<article class="code-card">
+<div class="code-head"><span class="num">04</span><div><h3>날짜 내림차순 정렬</h3><p>입학일이 최근인 학생부터 조회합니다. 날짜 자료도 시간의 앞뒤에 따라 정렬할 수 있습니다.</p></div></div>
+<pre><code>SELECT name, admission_date
+FROM students
+ORDER BY admission_date DESC;</code><button class="copy-btn" onclick="copyCode(this)">복사</button></pre>
+<div class="mini-quiz"><h4>코드 4에 대한 설명으로 옳은 것을 모두 고르세요.</h4><p class="hint">옳은 설명 3개를 빠짐없이 선택하세요.</p><label class="choice"><input type="checkbox" value="0"><span>1. 최근 입학일이 먼저 나온다.</span></label><label class="choice"><input type="checkbox" value="1"><span>2. 날짜 자료도 정렬할 수 있다.</span></label><label class="choice"><input type="checkbox" value="2"><span>3. DESC를 사용한다.</span></label><label class="choice"><input type="checkbox" value="3"><span>4. 가장 오래된 입학일이 항상 먼저 나온다.</span></label><label class="choice"><input type="checkbox" value="4"><span>5. 입학일을 삭제한다.</span></label><div class="feedback"></div></div>
+</article>
+<article class="code-card">
+<div class="code-head"><span class="num">05</span><div><h3>다중 정렬</h3><p>먼저 학년, 다음으로 반, 마지막으로 이름을 기준으로 정렬합니다. 앞의 기준이 같을 때 뒤의 기준이 적용됩니다.</p></div></div>
+<pre><code>SELECT grade, class_no, name
+FROM students
+ORDER BY grade ASC, class_no ASC, name ASC;</code><button class="copy-btn" onclick="copyCode(this)">복사</button></pre>
+<div class="mini-quiz"><h4>코드 5에 대한 설명으로 옳은 것을 모두 고르세요.</h4><p class="hint">옳은 설명 3개를 빠짐없이 선택하세요.</p><label class="choice"><input type="checkbox" value="0"><span>1. 학년이 첫 번째 정렬 기준이다.</span></label><label class="choice"><input type="checkbox" value="1"><span>2. 같은 학년에서는 반이 다음 기준이다.</span></label><label class="choice"><input type="checkbox" value="2"><span>3. 학년과 반이 같으면 이름을 기준으로 정렬한다.</span></label><label class="choice"><input type="checkbox" value="3"><span>4. name이 항상 가장 먼저 적용된다.</span></label><label class="choice"><input type="checkbox" value="4"><span>5. 모든 기준이 내림차순이다.</span></label><div class="feedback"></div></div>
+</article>
+<article class="code-card">
+<div class="code-head"><span class="num">06</span><div><h3>서로 다른 방향의 다중 정렬</h3><p>학년은 오름차순으로 묶고, 같은 학년 안에서는 점수가 높은 학생부터 정렬합니다.</p></div></div>
+<pre><code>SELECT grade, name, score
+FROM students
+ORDER BY grade ASC, score DESC;</code><button class="copy-btn" onclick="copyCode(this)">복사</button></pre>
+<div class="mini-quiz"><h4>코드 6에 대한 설명으로 옳은 것을 모두 고르세요.</h4><p class="hint">옳은 설명 3개를 빠짐없이 선택하세요.</p><label class="choice"><input type="checkbox" value="0"><span>1. 학년은 오름차순으로 정렬한다.</span></label><label class="choice"><input type="checkbox" value="1"><span>2. 같은 학년 안에서는 점수가 높은 순이다.</span></label><label class="choice"><input type="checkbox" value="2"><span>3. 정렬 방향을 열마다 다르게 지정할 수 있다.</span></label><label class="choice"><input type="checkbox" value="3"><span>4. 모든 학생을 점수 오름차순으로만 정렬한다.</span></label><label class="choice"><input type="checkbox" value="4"><span>5. grade 값을 변경한다.</span></label><div class="feedback"></div></div>
+</article>
+<article class="code-card">
+<div class="code-head"><span class="num">07</span><div><h3>LIMIT으로 상위 5개 출력</h3><p>점수 내림차순 정렬 후 처음 5행만 출력합니다. 정렬과 LIMIT을 결합하면 상위 자료를 추출할 수 있습니다.</p></div></div>
+<pre><code>SELECT name, score
+FROM students
+ORDER BY score DESC
+LIMIT 5;</code><button class="copy-btn" onclick="copyCode(this)">복사</button></pre>
+<div class="mini-quiz"><h4>코드 7에 대한 설명으로 옳은 것을 모두 고르세요.</h4><p class="hint">옳은 설명 3개를 빠짐없이 선택하세요.</p><label class="choice"><input type="checkbox" value="0"><span>1. 점수를 내림차순으로 정렬한다.</span></label><label class="choice"><input type="checkbox" value="1"><span>2. 처음 5행만 출력한다.</span></label><label class="choice"><input type="checkbox" value="2"><span>3. 상위 5명 조회에 활용할 수 있다.</span></label><label class="choice"><input type="checkbox" value="3"><span>4. LIMIT 5는 다섯 행을 건너뛴다.</span></label><label class="choice"><input type="checkbox" value="4"><span>5. 정렬 없이 임의의 최고 점수를 보장한다.</span></label><div class="feedback"></div></div>
+</article>
+<article class="code-card">
+<div class="code-head"><span class="num">08</span><div><h3>LIMIT과 OFFSET</h3><p>점수 내림차순 결과에서 처음 5행을 건너뛰고 다음 5행을 조회합니다. 페이지 나누기 기능에 활용할 수 있습니다.</p></div></div>
+<pre><code>SELECT name, score
+FROM students
+ORDER BY score DESC
+LIMIT 5 OFFSET 5;</code><button class="copy-btn" onclick="copyCode(this)">복사</button></pre>
+<div class="mini-quiz"><h4>코드 8에 대한 설명으로 옳은 것을 모두 고르세요.</h4><p class="hint">옳은 설명 3개를 빠짐없이 선택하세요.</p><label class="choice"><input type="checkbox" value="0"><span>1. 처음 5행을 건너뛴다.</span></label><label class="choice"><input type="checkbox" value="1"><span>2. 그다음 5행을 출력한다.</span></label><label class="choice"><input type="checkbox" value="2"><span>3. 페이지 나누기에 활용할 수 있다.</span></label><label class="choice"><input type="checkbox" value="3"><span>4. 총 10행을 모두 출력한다.</span></label><label class="choice"><input type="checkbox" value="4"><span>5. OFFSET은 열을 건너뛴다.</span></label><div class="feedback"></div></div>
+</article>
+<article class="code-card">
+<div class="code-head"><span class="num">09</span><div><h3>MySQL의 LIMIT 시작위치, 개수 문법</h3><p>정렬 결과에서 10행을 건너뛴 뒤 5행을 출력합니다. LIMIT 시작위치, 개수 형식은 OFFSET 표현과 같은 목적에 사용됩니다.</p></div></div>
+<pre><code>SELECT name, score
+FROM students
+ORDER BY score DESC
+LIMIT 10, 5;</code><button class="copy-btn" onclick="copyCode(this)">복사</button></pre>
+<div class="mini-quiz"><h4>코드 9에 대한 설명으로 옳은 것을 모두 고르세요.</h4><p class="hint">옳은 설명 3개를 빠짐없이 선택하세요.</p><label class="choice"><input type="checkbox" value="0"><span>1. 처음 10행을 건너뛴다.</span></label><label class="choice"><input type="checkbox" value="1"><span>2. 그다음 5행을 출력한다.</span></label><label class="choice"><input type="checkbox" value="2"><span>3. LIMIT 10, 5는 OFFSET 방식으로 바꿔 쓸 수 있다.</span></label><label class="choice"><input type="checkbox" value="3"><span>4. 처음 10행을 출력하고 종료한다.</span></label><label class="choice"><input type="checkbox" value="4"><span>5. 15번째 행부터 무제한 출력한다.</span></label><div class="feedback"></div></div>
+</article>
+<article class="code-card">
+<div class="code-head"><span class="num">10</span><div><h3>조건·정렬·출력 제한 결합</h3><p>2학년 학생만 선택한 뒤 점수가 높은 순으로 정렬하고, 동점이면 이름순으로 배치하여 상위 3명만 출력합니다.</p></div></div>
+<pre><code>SELECT name, grade, score
+FROM students
+WHERE grade = 2
+ORDER BY score DESC, name ASC
+LIMIT 3;</code><button class="copy-btn" onclick="copyCode(this)">복사</button></pre>
+<div class="mini-quiz"><h4>코드 10에 대한 설명으로 옳은 것을 모두 고르세요.</h4><p class="hint">옳은 설명 3개를 빠짐없이 선택하세요.</p><label class="choice"><input type="checkbox" value="0"><span>1. 2학년 학생만 대상으로 한다.</span></label><label class="choice"><input type="checkbox" value="1"><span>2. 점수 내림차순 뒤 이름 오름차순을 적용한다.</span></label><label class="choice"><input type="checkbox" value="2"><span>3. 최종적으로 3행만 출력한다.</span></label><label class="choice"><input type="checkbox" value="3"><span>4. 모든 학년에서 상위 3명을 출력한다.</span></label><label class="choice"><input type="checkbox" value="4"><span>5. 동점자는 이름 내림차순이다.</span></label><div class="feedback"></div></div>
+</article></div></section>
+<section id="quiz"><h2 class="section-title">5. 형성평가 OX 퀴즈 10개</h2><div class="ox-list"><div class="ox-item" data-answer="O">
+<div class="ox-num">1</div><div>ORDER BY는 조회 결과의 행 순서를 정할 때 사용한다.</div>
+<label><input type="radio" name="ox1" value="O"> O</label>
+<label><input type="radio" name="ox1" value="X"> X</label>
+<div class="ox-feedback"></div></div><div class="ox-item" data-answer="X">
+<div class="ox-num">2</div><div>ASC는 내림차순을 뜻한다.</div>
+<label><input type="radio" name="ox2" value="O"> O</label>
+<label><input type="radio" name="ox2" value="X"> X</label>
+<div class="ox-feedback"></div></div><div class="ox-item" data-answer="O">
+<div class="ox-num">3</div><div>DESC를 사용하면 큰 값이나 최근 날짜가 먼저 나타날 수 있다.</div>
+<label><input type="radio" name="ox3" value="O"> O</label>
+<label><input type="radio" name="ox3" value="X"> X</label>
+<div class="ox-feedback"></div></div><div class="ox-item" data-answer="O">
+<div class="ox-num">4</div><div>ORDER BY에서 여러 열을 정렬 기준으로 지정할 수 있다.</div>
+<label><input type="radio" name="ox4" value="O"> O</label>
+<label><input type="radio" name="ox4" value="X"> X</label>
+<div class="ox-feedback"></div></div><div class="ox-item" data-answer="X">
+<div class="ox-num">5</div><div>다중 정렬에서는 뒤에 적은 기준이 항상 먼저 적용된다.</div>
+<label><input type="radio" name="ox5" value="O"> O</label>
+<label><input type="radio" name="ox5" value="X"> X</label>
+<div class="ox-feedback"></div></div><div class="ox-item" data-answer="O">
+<div class="ox-num">6</div><div>LIMIT 5는 결과의 처음 5행만 출력한다.</div>
+<label><input type="radio" name="ox6" value="O"> O</label>
+<label><input type="radio" name="ox6" value="X"> X</label>
+<div class="ox-feedback"></div></div><div class="ox-item" data-answer="O">
+<div class="ox-num">7</div><div>LIMIT 5 OFFSET 5는 처음 5행을 건너뛴 뒤 다음 5행을 출력한다.</div>
+<label><input type="radio" name="ox7" value="O"> O</label>
+<label><input type="radio" name="ox7" value="X"> X</label>
+<div class="ox-feedback"></div></div><div class="ox-item" data-answer="X">
+<div class="ox-num">8</div><div>LIMIT은 출력 열의 개수를 제한하는 기능이다.</div>
+<label><input type="radio" name="ox8" value="O"> O</label>
+<label><input type="radio" name="ox8" value="X"> X</label>
+<div class="ox-feedback"></div></div><div class="ox-item" data-answer="O">
+<div class="ox-num">9</div><div>ORDER BY와 LIMIT을 함께 사용하면 상위 또는 하위 자료를 추출할 수 있다.</div>
+<label><input type="radio" name="ox9" value="O"> O</label>
+<label><input type="radio" name="ox9" value="X"> X</label>
+<div class="ox-feedback"></div></div><div class="ox-item" data-answer="O">
+<div class="ox-num">10</div><div>WHERE, ORDER BY, LIMIT을 한 조회문에서 함께 사용할 수 있다.</div>
+<label><input type="radio" name="ox10" value="O"> O</label>
+<label><input type="radio" name="ox10" value="X"> X</label>
+<div class="ox-feedback"></div></div></div></section>
+<section id="ending"><h2 class="section-title">6. 수업 끝 이야기</h2><div class="ending-grid">
+<div class="ending-card poetry"><h3>🌙 시인의 이야기 — 마지막 행이 첫 행보다 늦을 뿐</h3><p>시집에서 마지막에 실린 시가 가장 부족한 시는 아닙니다. 순서는 역할을 정할 뿐 가치를 결정하지 않습니다. 오늘 결과표에서 아래에 있다고 꿈까지 아래에 있는 것은 아닙니다.</p></div>
+<div class="ending-card novel"><h3>📖 소설가의 이야기 — 주인공은 첫 장에만 있지 않다</h3><p>소설의 중요한 인물은 때로 한참 뒤에 등장합니다. LIMIT 5에 보이지 않는다고 이야기에서 사라진 것은 아닙니다. 다음 페이지에는 새로운 주인공이 기다리고 있습니다.</p></div>
+<div class="ending-card drama"><h3>🎭 희곡의 이야기 — 등장 순서와 실력은 다르다</h3><p>배우가 무대에 늦게 등장한다고 대사를 잊은 것은 아닙니다. 다만 연출가의 ORDER BY가 그렇게 정했을 뿐입니다. SQL은 엄격하지만 배우의 잠재력까지 정렬하지는 못합니다.</p></div>
+<div class="ending-card theater"><h3>🎬 연극인의 이야기 — OFFSET 뒤에도 무대가 있다</h3><p>앞의 다섯 배우가 퇴장하면 다음 다섯 배우가 등장합니다. OFFSET은 누군가를 버리는 기능이 아니라, 다음 장면으로 넘어가는 장치입니다.</p></div>
+<div class="ending-card music"><h3>🎼 음악인의 이야기 — 빠르기와 높낮이에도 순서가 있다</h3><p>음악은 음을 아무렇게나 늘어놓지 않습니다. 낮은 음에서 높은 음으로, 조용함에서 힘찬 소리로 흐르며 감정을 만듭니다. ORDER BY도 데이터에 리듬을 줍니다. 단, DESC를 너무 사랑하면 모든 발표가 ‘높은 점수부터!’가 될 수 있으니 조심합시다.</p></div>
+<div class="last-message"><strong>오늘의 오래 남는 마지막 이야기</strong><p>정렬은 무엇을 먼저 볼지 정하는 기술이고, LIMIT은 지금 집중할 범위를 정하는 기술입니다. 그러나 순서가 가치 전체를 말해 주지는 않습니다.</p><p><strong>여러분이 오늘 어떤 순위에 있든 그것은 현재의 한 기준으로 정렬한 결과일 뿐입니다. 노력, 친절, 호기심, 끈기라는 열을 추가하면 순서는 다시 달라집니다. 인생에는 하나의 ORDER BY만 존재하지 않습니다. 자신만의 기준을 발견하고, 어제보다 한 행 앞으로 나아가십시오.</strong></p></div>
+</div></section>
+
+<section id="submit"><h2 class="section-title">7. 학번·이름 입력 및 결과 저장</h2><div class="card">
+<div class="student-box"><label><strong>학번</strong><input type="text" id="studentId" placeholder="예: 1101"></label>
+<label><strong>이름</strong><input type="text" id="studentName" placeholder="예: 홍길동"></label></div>
+<div class="action-bar"><button class="btn" onclick="gradeAll()">전체 채점</button>
+<button class="btn secondary" onclick="downloadResult()">TXT 결과 저장</button>
+<button class="btn danger" onclick="resetAll()">다시 풀기</button></div>
+<div id="scoreBox" class="score-box"></div><p>저장 파일명: 학번_이름_점수_11차시_응시시각.txt</p></div></section>
+</main>
+
+<script>
+let lastResult=null;
+function copyCode(b){navigator.clipboard.writeText(b.parentElement.querySelector('code').innerText);b.textContent='복사됨';setTimeout(()=>b.textContent='복사',900)}
+function selected(q){return [...q.querySelectorAll('input[type=checkbox]:checked')].map(x=>+x.value).sort()}
+function gradeAll(){
+ const sid=studentId.value.trim(),name=studentName.value.trim();
+ if(!sid||!name){alert('학번과 이름을 입력하세요.');return}
+ let c=0,o=0,detail=[];
+ document.querySelectorAll('.mini-quiz').forEach((q,i)=>{
+   let s=selected(q),ok=JSON.stringify(s)==='[0,1,2]',f=q.querySelector('.feedback');
+   f.textContent=ok?'정답입니다.':'오답입니다. 정답: 1, 2, 3번';f.className='feedback '+(ok?'good':'bad');
+   if(ok)c++;detail.push(`코드 ${i+1}: ${ok?'정답':'오답'} / 응답 ${s.map(x=>x+1).join(', ')||'미응답'}`);
+ });
+ document.querySelectorAll('.ox-item').forEach((q,i)=>{
+   let x=q.querySelector('input:checked'),v=x?x.value:'',ok=v===q.dataset.answer,f=q.querySelector('.ox-feedback');
+   f.textContent=ok?'정답':'오답 · 정답: '+q.dataset.answer;f.className='ox-feedback '+(ok?'good':'bad');
+   if(ok)o++;detail.push(`OX ${i+1}: ${ok?'정답':'오답'} / 응답 ${v||'미응답'}`);
+ });
+ let total=(c+o)*5,time=new Date();lastResult={sid,name,c,o,total,detail,time};
+ scoreBox.style.display='block';scoreBox.innerHTML=`총점 ${total}점 / 100점<br>복수정답 ${c} / 10 · OX ${o} / 10`;
+ scoreBox.scrollIntoView({behavior:'smooth'});
+}
+function pad(n){return String(n).padStart(2,'0')}
+function stamp(t){return `${t.getFullYear()}${pad(t.getMonth()+1)}${pad(t.getDate())}_${pad(t.getHours())}${pad(t.getMinutes())}${pad(t.getSeconds())}`}
+function downloadResult(){
+ if(!lastResult){gradeAll();if(!lastResult)return}
+ let r=lastResult,text=['MySQL 11차시 형성평가 결과',`학번: ${r.sid}`,`이름: ${r.name}`,
+ `점수: ${r.total}점`,`복수정답: ${r.c}/10`,`OX: ${r.o}/10`,`응시시각: ${r.time.toLocaleString()}`,'',...r.detail].join('\n');
+ let blob=new Blob(['\ufeff'+text],{type:'text/plain;charset=utf-8'}),a=document.createElement('a');
+ a.href=URL.createObjectURL(blob);a.download=`${r.sid}_${r.name}_${r.total}점_11차시_${stamp(r.time)}.txt`;a.click();
+ setTimeout(()=>URL.revokeObjectURL(a.href),1000);
+}
+function resetAll(){
+ document.querySelectorAll('input').forEach(x=>{if(x.type!=='text')x.checked=false});
+ document.querySelectorAll('.feedback,.ox-feedback').forEach(x=>x.textContent='');
+ scoreBox.style.display='none';lastResult=null;
+}
+</script></body></html>

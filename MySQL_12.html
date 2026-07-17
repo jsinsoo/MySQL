@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>MySQL 12차시 목표지향 개념기반 수업지도안</title>
+<style>
+:root{--navy:#18344f;--blue:#2f70e8;--sky:#eaf3ff;--mint:#eafaf4;--green:#238d66;--red:#df654f;--purple:#7057ce;--text:#26384a;--muted:#69798a;--line:#dbe5ef;--bg:#f5f8fc;--shadow:0 12px 28px rgba(24,52,79,.10)}
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;font-family:"Pretendard","Noto Sans KR","Malgun Gothic",sans-serif;color:var(--text);background:linear-gradient(180deg,#fcfdff,var(--bg));line-height:1.72}.topbar{position:sticky;top:0;z-index:40;background:#fffffff2;border-bottom:1px solid var(--line);backdrop-filter:blur(10px)}.topbar-inner{max-width:1240px;margin:auto;padding:10px 18px;display:flex;align-items:center;justify-content:space-between;gap:10px}.brand{font-weight:900;color:var(--navy)}.nav{display:flex;gap:6px;flex-wrap:wrap}.nav a{text-decoration:none;color:var(--navy);font-weight:800;font-size:.82rem;padding:6px 9px;border:1px solid var(--line);border-radius:999px}.btn{border:0;border-radius:11px;background:var(--blue);color:#fff;padding:10px 15px;font-weight:900;cursor:pointer}.hero,main{max-width:1240px;margin:auto;padding:0 18px}.hero{margin-top:28px}.hero-card{position:relative;overflow:hidden;background:linear-gradient(135deg,#18344f,#25638f 55%,#2f70e8);color:#fff;border-radius:28px;padding:42px;box-shadow:var(--shadow)}.hero-card:after{content:"ƒ(x)";position:absolute;right:35px;top:5px;font-size:118px;font-weight:900;color:#ffffff12}.badge{display:inline-block;padding:6px 12px;border-radius:999px;background:#ffffff24;border:1px solid #ffffff44;font-weight:900}h1{font-size:clamp(2rem,4vw,3.2rem);line-height:1.15;margin:13px 0}.hero p{max-width:900px;color:#eaf3ff}.hero-grid{position:relative;z-index:2;display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-top:22px}.hero-stat{padding:14px;border-radius:16px;background:#ffffff1c;border:1px solid #ffffff33}.hero-stat strong{display:block}main{padding-bottom:70px}section{margin-top:30px}.section-title{color:var(--navy)}.grid{display:grid;grid-template-columns:repeat(2,1fr);gap:14px}.card,.story-block,.teacher-message,.ending-card,.last-message{background:#fff;border:1px solid var(--line);border-radius:20px;padding:22px;box-shadow:var(--shadow)}.tags{display:flex;gap:8px;flex-wrap:wrap}.tag{padding:7px 11px;border-radius:999px;background:var(--sky);color:var(--blue);font-weight:900}.concept-flow{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-top:15px}.concept-flow div{text-align:center;padding:13px;border-radius:14px;background:var(--mint);color:var(--green);font-weight:900}.story-wrap,.ending-grid,.code-list,.ox-list{display:grid;gap:14px}.humanities{border-left:7px solid #b47b35}.philosophy{border-left:7px solid var(--purple)}.science{border-left:7px solid var(--green)}.math{border-left:7px solid var(--blue)}.teacher-message{background:linear-gradient(135deg,#eef5ff,#fff)}.code-card{background:#fff;border:1px solid var(--line);border-radius:22px;box-shadow:var(--shadow);overflow:hidden}.code-head{display:flex;gap:15px;padding:20px}.num{min-width:46px;height:46px;display:grid;place-items:center;border-radius:14px;background:var(--navy);color:#fff;font-weight:900}.code-head h3{margin:0;color:var(--navy)}.code-head p{margin:4px 0 0;color:var(--muted)}pre{position:relative;margin:0;padding:22px;background:#101827;color:#eef6ff;overflow:auto;font:15px/1.6 Consolas,monospace}.copy-btn{position:absolute;right:12px;top:12px;border:1px solid #44536b;background:#1d2a3d;color:#fff;border-radius:9px;padding:6px 10px}.mini-quiz{padding:20px;background:#fbfdff}.choice{display:flex;gap:9px;padding:8px}.hint{color:var(--red);font-weight:800}.good{color:var(--green)}.bad{color:var(--red)}.feedback,.ox-feedback{font-weight:900}.ox-item{display:grid;grid-template-columns:42px 1fr auto auto;gap:12px;align-items:center;background:#fff;border:1px solid var(--line);border-radius:14px;padding:13px}.ox-num{width:34px;height:34px;display:grid;place-items:center;border-radius:10px;background:var(--mint);color:var(--green);font-weight:900}.ox-feedback{grid-column:2/5}.poetry{border-top:6px solid #da7b93}.novel{border-top:6px solid #aa7b4e}.drama{border-top:6px solid var(--purple)}.theater{border-top:6px solid var(--green)}.music{border-top:6px solid var(--blue)}.last-message{background:linear-gradient(135deg,#fff7df,#fff)}.student-box{display:grid;grid-template-columns:1fr 1fr;gap:12px}input[type=text]{width:100%;padding:12px;border:1px solid var(--line);border-radius:11px}.action-bar{display:flex;gap:10px;flex-wrap:wrap;margin-top:15px}.secondary{background:var(--navy)}.danger{background:var(--red)}.score-box{display:none;margin-top:16px;padding:18px;border-radius:16px;background:var(--mint);font-weight:900}
+@media(max-width:700px){.grid,.hero-grid,.student-box,.concept-flow{grid-template-columns:1fr}.nav{display:none}.hero-card{padding:28px 20px}.hero-card:after{display:none}}@media print{.topbar,.copy-btn,.action-bar{display:none!important}.card,.code-card,.story-block,.ending-card{box-shadow:none;break-inside:avoid}}
+</style>
+</head>
+<body>
+<header class="topbar"><div class="topbar-inner"><div class="brand">MySQL 12차시 · 숫자·문자·날짜 함수</div>
+<nav class="nav"><a href="#standard">성취기준</a><a href="#story">시작 이야기</a><a href="#codes">코드 10개</a><a href="#quiz">OX</a><a href="#ending">마무리</a><a href="#submit">제출</a></nav>
+<button class="btn" onclick="window.print()">인쇄</button></div></header>
+
+<div class="hero"><div class="hero-card"><span class="badge">목표지향 · 개념기반 · 데이터 가공</span>
+<h1>MySQL 12차시<br>숫자·문자·날짜 함수</h1>
+<p>내장 함수를 활용하여 숫자를 계산하고, 문자열을 결합하며, 날짜와 시간을 읽기 좋은 형식으로 가공합니다.</p>
+<div class="hero-grid"><div class="hero-stat"><strong>핵심 질문</strong>같은 데이터를 어떻게 더 이해하기 쉽게 표현할까?</div>
+<div class="hero-stat"><strong>전이 목표</strong>목적에 맞는 함수 선택과 결합</div><div class="hero-stat"><strong>실습</strong>함수 활용 코드 10개</div>
+<div class="hero-stat"><strong>평가</strong>복수정답 10 + OX 10</div></div></div></div>
+
+<main>
+<section id="standard"><h2 class="section-title">1. 성취기준과 학습 목표</h2>
+<div class="grid"><div class="card"><h3>성취기준</h3>
+<p>MySQL의 숫자, 문자, 날짜 함수를 활용하여 저장된 데이터를 목적에 맞게 계산·결합·형식화할 수 있다.</p>
+<p>여러 함수를 SELECT와 ORDER BY에 결합하여 원본을 보존하면서 의미 있는 출력 결과를 만들 수 있다.</p></div>
+<div class="card"><h3>학습 목표</h3><ol><li>ROUND, CEIL, FLOOR, ABS의 역할을 설명한다.</li>
+<li>CONCAT, CONCAT_WS, LENGTH 계열 함수를 활용한다.</li><li>NOW, CURDATE, DATE_FORMAT으로 날짜와 시간을 처리한다.</li>
+<li>서로 다른 함수를 한 조회문에 결합한다.</li></ol></div></div></section>
+
+<section><h2 class="section-title">2. 학습할 개념</h2><div class="card">
+<div class="tags"><span class="tag">ROUND</span><span class="tag">CEIL</span><span class="tag">FLOOR</span><span class="tag">ABS</span>
+<span class="tag">CONCAT</span><span class="tag">CONCAT_WS</span><span class="tag">LENGTH</span><span class="tag">CHAR_LENGTH</span>
+<span class="tag">UPPER</span><span class="tag">LOWER</span><span class="tag">NOW</span><span class="tag">CURDATE</span><span class="tag">DATE_FORMAT</span></div>
+<div class="concept-flow"><div>입력값</div><div>함수 규칙</div><div>가공 결과</div><div>의미 있는 표현</div></div>
+<p><strong>일반화:</strong> 함수는 원본 데이터를 직접 바꾸지 않고도 계산, 결합, 형식화를 통해 새로운 의미와 표현을 만들어 낸다.</p>
+<p><strong>핵심 질문:</strong> 정확성을 유지하면서 데이터를 더 읽기 쉽고 유용하게 표현하려면 어떤 함수를 선택해야 할까?</p></div></section>
+
+<section id="story"><h2 class="section-title">3. 수업 시작 이야기</h2><div class="story-wrap">
+<div class="story-block humanities"><h3>📚 인문학자의 이야기 — 같은 사실도 표현에 따라 다르게 읽힌다</h3><p>인문학자는 같은 사건을 기록한 여러 문장을 비교하며, 표현 방식이 의미 전달에 어떤 영향을 주는지 살펴봅니다. 날짜를 숫자로만 적을 때와 ‘봄이 시작되던 날’이라고 적을 때 독자가 느끼는 인상은 다릅니다.</p><p>SQL 함수도 데이터를 새롭게 꾸며 보여 줍니다. 숫자는 반올림하고, 문자는 이어 붙이며, 날짜는 읽기 쉬운 형식으로 바꿉니다. 중요한 것은 사실을 왜곡하지 않으면서 더 잘 이해하도록 표현하는 것입니다.</p></div>
+<div class="story-block philosophy"><h3>🏛 철학자의 이야기 — 본질과 표현은 같은가</h3><p>철학자는 대상의 본질과 우리가 그것을 표현하는 방식이 같은지 질문합니다. 89.666이라는 값과 89.7이라는 표시는 서로 다르지만, 둘은 같은 측정 결과를 다른 정밀도로 보여 줍니다.</p><p>함수는 원본의 본질을 보존하면서 목적에 맞는 모습을 만들어 냅니다. 오늘 우리는 데이터를 바꾸는 것과 데이터를 표현하는 것의 차이를 분명히 배웁니다.</p></div>
+<div class="story-block science"><h3>🔬 과학자의 이야기 — 측정값은 적절한 정밀도로 보고한다</h3><p>과학자는 측정값을 무한히 긴 소수로 제시하지 않습니다. 실험의 정밀도에 맞게 반올림하고, 날짜와 시간을 일정한 형식으로 기록하여 누구나 결과를 재현할 수 있게 합니다.</p><p>ROUND와 DATE_FORMAT은 과학적 기록처럼 데이터를 정확하면서도 읽기 좋게 정리하는 도구입니다.</p></div>
+<div class="story-block math"><h3>➗ 수학자의 이야기 — 함수는 입력을 의미 있는 출력으로 바꾼다</h3><p>수학에서 함수는 입력값을 일정한 규칙에 따라 출력값으로 대응시킵니다. SQL 함수도 열의 값을 입력받아 새로운 결과를 만듭니다.</p><p>ROUND는 수치 표현을 조절하고, ABS는 크기를 구하며, LENGTH는 문자열의 길이를 측정합니다. 서로 다른 함수는 서로 다른 질문에 답합니다.</p></div>
+<div class="teacher-message"><strong>교사의 시작 이야기</strong><p>오늘은 데이터를 단순히 조회하는 데서 한 걸음 더 나아가, 사람에게 이해하기 좋은 모습으로 가공해 보겠습니다. 좋은 개발자는 값만 정확히 계산하는 사람이 아니라, 그 값을 누구나 오해 없이 읽도록 표현하는 사람입니다. 함수 하나를 쓸 때도 ‘왜 이 모양으로 보여 주는가’를 생각해 봅시다.</p></div>
+</div></section>
+<section id="codes"><h2 class="section-title">4. 학습할 코드 10개와 상세 설명</h2><div class="code-list">
+<article class="code-card">
+<div class="code-head"><span class="num">01</span><div><h3>ROUND로 소수점 반올림</h3><p>평균 점수를 소수점 첫째 자리까지 반올림하여 표시합니다. ROUND 함수는 조회 결과를 보기 쉽게 가공하며 원본 값을 직접 변경하지 않습니다.</p></div></div>
+<pre><code>SELECT name, ROUND(average_score, 1) AS rounded_average
+FROM students;</code><button class="copy-btn" onclick="copyCode(this)">복사</button></pre>
+<div class="mini-quiz"><h4>코드 1에 대한 설명으로 옳은 것을 모두 고르세요.</h4>
+<p class="hint">옳은 설명 3개를 빠짐없이 선택하세요.</p><label class="choice"><input type="checkbox" value="0"><span>1. ROUND는 평균 점수를 소수점 첫째 자리까지 반올림한다.</span></label><label class="choice"><input type="checkbox" value="1"><span>2. AS로 출력 열의 별칭을 지정한다.</span></label><label class="choice"><input type="checkbox" value="2"><span>3. 원본 average_score 값은 직접 수정되지 않는다.</span></label><label class="choice"><input type="checkbox" value="3"><span>4. 모든 점수를 정수로 영구 저장한다.</span></label><label class="choice"><input type="checkbox" value="4"><span>5. ROUND는 문자열을 연결하는 함수이다.</span></label><div class="feedback"></div></div>
+</article>
+<article class="code-card">
+<div class="code-head"><span class="num">02</span><div><h3>CEIL과 FLOOR로 올림·내림</h3><p>CEIL은 소수점 이하를 올림하고 FLOOR는 내림합니다. 같은 수치도 목적에 따라 서로 다른 방식으로 표현할 수 있습니다.</p></div></div>
+<pre><code>SELECT name,
+       CEIL(average_score) AS up_score,
+       FLOOR(average_score) AS down_score
+FROM students;</code><button class="copy-btn" onclick="copyCode(this)">복사</button></pre>
+<div class="mini-quiz"><h4>코드 2에 대한 설명으로 옳은 것을 모두 고르세요.</h4>
+<p class="hint">옳은 설명 3개를 빠짐없이 선택하세요.</p><label class="choice"><input type="checkbox" value="0"><span>1. CEIL은 값을 올림한다.</span></label><label class="choice"><input type="checkbox" value="1"><span>2. FLOOR는 값을 내림한다.</span></label><label class="choice"><input type="checkbox" value="2"><span>3. 두 함수는 서로 다른 정수 결과를 만들 수 있다.</span></label><label class="choice"><input type="checkbox" value="3"><span>4. CEIL은 항상 값을 감소시킨다.</span></label><label class="choice"><input type="checkbox" value="4"><span>5. FLOOR는 문자열 길이를 구한다.</span></label><div class="feedback"></div></div>
+</article>
+<article class="code-card">
+<div class="code-head"><span class="num">03</span><div><h3>ABS로 절댓값 구하기</h3><p>점수 변화량의 부호를 제거하고 변화의 크기만 확인합니다. ABS는 양수와 음수를 모두 0 이상의 값으로 바꿉니다.</p></div></div>
+<pre><code>SELECT name, score_change,
+       ABS(score_change) AS change_size
+FROM score_history;</code><button class="copy-btn" onclick="copyCode(this)">복사</button></pre>
+<div class="mini-quiz"><h4>코드 3에 대한 설명으로 옳은 것을 모두 고르세요.</h4>
+<p class="hint">옳은 설명 3개를 빠짐없이 선택하세요.</p><label class="choice"><input type="checkbox" value="0"><span>1. ABS는 부호를 제거한 크기를 반환한다.</span></label><label class="choice"><input type="checkbox" value="1"><span>2. 음수도 0 이상의 값으로 바뀐다.</span></label><label class="choice"><input type="checkbox" value="2"><span>3. 점수 변화의 크기를 비교할 수 있다.</span></label><label class="choice"><input type="checkbox" value="3"><span>4. ABS는 날짜를 형식화한다.</span></label><label class="choice"><input type="checkbox" value="4"><span>5. 원본 score_change를 삭제한다.</span></label><div class="feedback"></div></div>
+</article>
+<article class="code-card">
+<div class="code-head"><span class="num">04</span><div><h3>CONCAT으로 문자열 결합</h3><p>여러 열과 문자열을 하나의 문장으로 결합합니다. CONCAT은 출력용 문구나 보고서 형식의 결과를 만들 때 유용합니다.</p></div></div>
+<pre><code>SELECT CONCAT(grade, &#x27;학년 &#x27;, class_no, &#x27;반 &#x27;, name) AS student_info
+FROM students;</code><button class="copy-btn" onclick="copyCode(this)">복사</button></pre>
+<div class="mini-quiz"><h4>코드 4에 대한 설명으로 옳은 것을 모두 고르세요.</h4>
+<p class="hint">옳은 설명 3개를 빠짐없이 선택하세요.</p><label class="choice"><input type="checkbox" value="0"><span>1. CONCAT은 여러 값과 문자열을 이어 붙인다.</span></label><label class="choice"><input type="checkbox" value="1"><span>2. 출력용 학생 정보를 만들 수 있다.</span></label><label class="choice"><input type="checkbox" value="2"><span>3. 결합 결과에 별칭을 지정한다.</span></label><label class="choice"><input type="checkbox" value="3"><span>4. grade와 class_no를 더해 숫자로 계산한다.</span></label><label class="choice"><input type="checkbox" value="4"><span>5. 원본 name 값을 변경한다.</span></label><div class="feedback"></div></div>
+</article>
+<article class="code-card">
+<div class="code-head"><span class="num">05</span><div><h3>CONCAT_WS로 구분자 포함 결합</h3><p>지정한 구분자 &#x27;-&#x27;를 각 값 사이에 자동으로 넣어 학번 형식의 문자열을 만듭니다.</p></div></div>
+<pre><code>SELECT CONCAT_WS(&#x27;-&#x27;, grade, class_no, student_no) AS school_number
+FROM students;</code><button class="copy-btn" onclick="copyCode(this)">복사</button></pre>
+<div class="mini-quiz"><h4>코드 5에 대한 설명으로 옳은 것을 모두 고르세요.</h4>
+<p class="hint">옳은 설명 3개를 빠짐없이 선택하세요.</p><label class="choice"><input type="checkbox" value="0"><span>1. CONCAT_WS는 구분자를 값 사이에 넣는다.</span></label><label class="choice"><input type="checkbox" value="1"><span>2. &#x27;-&#x27;가 구분자로 사용된다.</span></label><label class="choice"><input type="checkbox" value="2"><span>3. 학번 형식의 문자열을 만들 수 있다.</span></label><label class="choice"><input type="checkbox" value="3"><span>4. 첫 번째 인수는 결합할 마지막 값이다.</span></label><label class="choice"><input type="checkbox" value="4"><span>5. 숫자 열을 자동으로 합산한다.</span></label><div class="feedback"></div></div>
+</article>
+<article class="code-card">
+<div class="code-head"><span class="num">06</span><div><h3>LENGTH와 CHAR_LENGTH 비교</h3><p>LENGTH는 바이트 수를, CHAR_LENGTH는 문자 수를 반환합니다. 한글처럼 여러 바이트를 사용하는 문자는 두 결과가 다를 수 있습니다.</p></div></div>
+<pre><code>SELECT name,
+       LENGTH(name) AS byte_length,
+       CHAR_LENGTH(name) AS char_count
+FROM students;</code><button class="copy-btn" onclick="copyCode(this)">복사</button></pre>
+<div class="mini-quiz"><h4>코드 6에 대한 설명으로 옳은 것을 모두 고르세요.</h4>
+<p class="hint">옳은 설명 3개를 빠짐없이 선택하세요.</p><label class="choice"><input type="checkbox" value="0"><span>1. LENGTH는 바이트 수를 반환한다.</span></label><label class="choice"><input type="checkbox" value="1"><span>2. CHAR_LENGTH는 문자 수를 반환한다.</span></label><label class="choice"><input type="checkbox" value="2"><span>3. 한글에서는 두 결과가 다를 수 있다.</span></label><label class="choice"><input type="checkbox" value="3"><span>4. 두 함수는 언제나 같은 값을 반환한다.</span></label><label class="choice"><input type="checkbox" value="4"><span>5. CHAR_LENGTH는 날짜 차이를 계산한다.</span></label><div class="feedback"></div></div>
+</article>
+<article class="code-card">
+<div class="code-head"><span class="num">07</span><div><h3>UPPER와 LOWER로 대소문자 변환</h3><p>영문 문자열을 대문자 또는 소문자로 변환하여 비교와 출력 형식을 통일합니다.</p></div></div>
+<pre><code>SELECT email,
+       UPPER(email) AS upper_email,
+       LOWER(email) AS lower_email
+FROM students;</code><button class="copy-btn" onclick="copyCode(this)">복사</button></pre>
+<div class="mini-quiz"><h4>코드 7에 대한 설명으로 옳은 것을 모두 고르세요.</h4>
+<p class="hint">옳은 설명 3개를 빠짐없이 선택하세요.</p><label class="choice"><input type="checkbox" value="0"><span>1. UPPER는 영문을 대문자로 변환한다.</span></label><label class="choice"><input type="checkbox" value="1"><span>2. LOWER는 영문을 소문자로 변환한다.</span></label><label class="choice"><input type="checkbox" value="2"><span>3. 이메일 출력 형식을 통일하는 데 활용할 수 있다.</span></label><label class="choice"><input type="checkbox" value="3"><span>4. 두 함수는 숫자를 반올림한다.</span></label><label class="choice"><input type="checkbox" value="4"><span>5. 원본 이메일을 영구 변경한다.</span></label><div class="feedback"></div></div>
+</article>
+<article class="code-card">
+<div class="code-head"><span class="num">08</span><div><h3>NOW와 CURDATE로 현재 시각·날짜 확인</h3><p>NOW는 현재 날짜와 시간을, CURDATE는 현재 날짜만 반환합니다.</p></div></div>
+<pre><code>SELECT NOW() AS current_datetime,
+       CURDATE() AS current_date;</code><button class="copy-btn" onclick="copyCode(this)">복사</button></pre>
+<div class="mini-quiz"><h4>코드 8에 대한 설명으로 옳은 것을 모두 고르세요.</h4>
+<p class="hint">옳은 설명 3개를 빠짐없이 선택하세요.</p><label class="choice"><input type="checkbox" value="0"><span>1. NOW는 현재 날짜와 시간을 반환한다.</span></label><label class="choice"><input type="checkbox" value="1"><span>2. CURDATE는 현재 날짜만 반환한다.</span></label><label class="choice"><input type="checkbox" value="2"><span>3. 함수 호출에 괄호를 사용한다.</span></label><label class="choice"><input type="checkbox" value="3"><span>4. CURDATE는 현재 시간만 반환한다.</span></label><label class="choice"><input type="checkbox" value="4"><span>5. NOW는 테이블의 모든 행을 삭제한다.</span></label><div class="feedback"></div></div>
+</article>
+<article class="code-card">
+<div class="code-head"><span class="num">09</span><div><h3>DATE_FORMAT으로 날짜 형식 바꾸기</h3><p>날짜 값을 &#x27;연도년 월월 일일&#x27; 형태의 읽기 쉬운 문자열로 표시합니다.</p></div></div>
+<pre><code>SELECT name,
+       DATE_FORMAT(admission_date, &#x27;%Y년 %m월 %d일&#x27;) AS formatted_date
+FROM students;</code><button class="copy-btn" onclick="copyCode(this)">복사</button></pre>
+<div class="mini-quiz"><h4>코드 9에 대한 설명으로 옳은 것을 모두 고르세요.</h4>
+<p class="hint">옳은 설명 3개를 빠짐없이 선택하세요.</p><label class="choice"><input type="checkbox" value="0"><span>1. DATE_FORMAT은 날짜 표시 형식을 바꾼다.</span></label><label class="choice"><input type="checkbox" value="1"><span>2. %Y, %m, %d는 연·월·일 표현에 사용된다.</span></label><label class="choice"><input type="checkbox" value="2"><span>3. 읽기 쉬운 날짜 문자열을 만들 수 있다.</span></label><label class="choice"><input type="checkbox" value="3"><span>4. 원본 날짜 열의 자료형을 영구 변경한다.</span></label><label class="choice"><input type="checkbox" value="4"><span>5. DATE_FORMAT은 숫자의 절댓값을 구한다.</span></label><div class="feedback"></div></div>
+</article>
+<article class="code-card">
+<div class="code-head"><span class="num">10</span><div><h3>숫자·문자·날짜 함수 종합</h3><p>문자열 결합, 숫자 반올림, 날짜 형식 변환을 한 조회문에서 함께 사용하고 가공한 평균 점수로 정렬합니다.</p></div></div>
+<pre><code>SELECT
+    CONCAT(name, &#x27; 학생&#x27;) AS student_name,
+    ROUND(average_score, 1) AS avg_score,
+    DATE_FORMAT(admission_date, &#x27;%Y-%m-%d&#x27;) AS admission
+FROM students
+ORDER BY avg_score DESC;</code><button class="copy-btn" onclick="copyCode(this)">복사</button></pre>
+<div class="mini-quiz"><h4>코드 10에 대한 설명으로 옳은 것을 모두 고르세요.</h4>
+<p class="hint">옳은 설명 3개를 빠짐없이 선택하세요.</p><label class="choice"><input type="checkbox" value="0"><span>1. CONCAT, ROUND, DATE_FORMAT을 함께 사용한다.</span></label><label class="choice"><input type="checkbox" value="1"><span>2. 가공한 평균 점수로 내림차순 정렬한다.</span></label><label class="choice"><input type="checkbox" value="2"><span>3. 여러 종류의 함수를 한 조회문에 결합할 수 있다.</span></label><label class="choice"><input type="checkbox" value="3"><span>4. WHERE 없이 작성하면 문법 오류가 발생한다.</span></label><label class="choice"><input type="checkbox" value="4"><span>5. 입학일이 가장 오래된 순서로 정렬한다.</span></label><div class="feedback"></div></div>
+</article></div></section>
+<section id="quiz"><h2 class="section-title">5. 형성평가 OX 퀴즈 10개</h2><div class="ox-list"><div class="ox-item" data-answer="O">
+<div class="ox-num">1</div><div>ROUND 함수는 숫자의 소수 자릿수를 반올림할 때 사용한다.</div>
+<label><input type="radio" name="ox1" value="O"> O</label>
+<label><input type="radio" name="ox1" value="X"> X</label>
+<div class="ox-feedback"></div></div><div class="ox-item" data-answer="X">
+<div class="ox-num">2</div><div>CEIL은 소수점 이하를 내림한다.</div>
+<label><input type="radio" name="ox2" value="O"> O</label>
+<label><input type="radio" name="ox2" value="X"> X</label>
+<div class="ox-feedback"></div></div><div class="ox-item" data-answer="O">
+<div class="ox-num">3</div><div>ABS는 음수의 부호를 제거하여 절댓값을 반환한다.</div>
+<label><input type="radio" name="ox3" value="O"> O</label>
+<label><input type="radio" name="ox3" value="X"> X</label>
+<div class="ox-feedback"></div></div><div class="ox-item" data-answer="O">
+<div class="ox-num">4</div><div>CONCAT은 여러 문자열과 값을 하나로 결합할 수 있다.</div>
+<label><input type="radio" name="ox4" value="O"> O</label>
+<label><input type="radio" name="ox4" value="X"> X</label>
+<div class="ox-feedback"></div></div><div class="ox-item" data-answer="O">
+<div class="ox-num">5</div><div>CONCAT_WS의 첫 번째 인수는 구분자이다.</div>
+<label><input type="radio" name="ox5" value="O"> O</label>
+<label><input type="radio" name="ox5" value="X"> X</label>
+<div class="ox-feedback"></div></div><div class="ox-item" data-answer="X">
+<div class="ox-num">6</div><div>LENGTH와 CHAR_LENGTH는 한글에서도 언제나 같은 결과를 반환한다.</div>
+<label><input type="radio" name="ox6" value="O"> O</label>
+<label><input type="radio" name="ox6" value="X"> X</label>
+<div class="ox-feedback"></div></div><div class="ox-item" data-answer="O">
+<div class="ox-num">7</div><div>UPPER와 LOWER는 영문 대소문자를 변환한다.</div>
+<label><input type="radio" name="ox7" value="O"> O</label>
+<label><input type="radio" name="ox7" value="X"> X</label>
+<div class="ox-feedback"></div></div><div class="ox-item" data-answer="X">
+<div class="ox-num">8</div><div>NOW는 현재 날짜만 반환한다.</div>
+<label><input type="radio" name="ox8" value="O"> O</label>
+<label><input type="radio" name="ox8" value="X"> X</label>
+<div class="ox-feedback"></div></div><div class="ox-item" data-answer="O">
+<div class="ox-num">9</div><div>DATE_FORMAT은 날짜의 출력 형식을 바꿀 수 있다.</div>
+<label><input type="radio" name="ox9" value="O"> O</label>
+<label><input type="radio" name="ox9" value="X"> X</label>
+<div class="ox-feedback"></div></div><div class="ox-item" data-answer="O">
+<div class="ox-num">10</div><div>SQL 함수는 SELECT, WHERE, ORDER BY 등과 함께 사용할 수 있다.</div>
+<label><input type="radio" name="ox10" value="O"> O</label>
+<label><input type="radio" name="ox10" value="X"> X</label>
+<div class="ox-feedback"></div></div></div></section>
+<section id="ending"><h2 class="section-title">6. 수업 끝 이야기</h2><div class="ending-grid">
+<div class="ending-card poetry"><h3>🌙 시인의 이야기 — ROUND로 마음까지 반올림하지 말기</h3><p>점수는 89.666을 89.7로 반올림할 수 있지만, 사람의 가능성은 소수점 한 자리로 줄일 수 없습니다. 여러분의 꿈은 자릿수 제한이 없는 자료형입니다.</p></div>
+<div class="ending-card novel"><h3>📖 소설가의 이야기 — CONCAT은 흩어진 장면을 연결한다</h3><p>소설가는 인물, 장소, 시간을 이어 하나의 이야기를 만듭니다. CONCAT도 흩어진 열을 연결합니다. 다만 숙제와 주말을 CONCAT하면 주말이 사라질 수 있으니 주의합시다.</p></div>
+<div class="ending-card drama"><h3>🎭 희곡의 이야기 — LENGTH보다 중요한 대사의 깊이</h3><p>긴 대사가 항상 좋은 대사는 아닙니다. SQL은 LENGTH를 세지만, 관객은 진심을 셉니다. 짧은 말 한마디가 긴 독백보다 오래 남기도 합니다.</p></div>
+<div class="ending-card theater"><h3>🎬 연극인의 이야기 — NOW는 늘 지금을 가리킨다</h3><p>무대에서 가장 중요한 시간은 막이 오른 바로 지금입니다. NOW()는 현재를 알려 주지만, 용기를 내는 함수는 아직 MySQL에 없습니다. 그 함수는 여러분이 직접 실행해야 합니다.</p></div>
+<div class="ending-card music"><h3>🎼 음악인의 이야기 — 형식이 달라도 마음은 같은 곡</h3><p>같은 멜로디도 피아노와 기타로 연주하면 느낌이 달라집니다. DATE_FORMAT도 같은 날짜를 다른 형식으로 보여 줍니다. 단, 월요일을 금요일 형식으로 바꾸는 기능은 아직 개발되지 않았습니다.</p></div>
+<div class="last-message"><strong>오늘의 오래 남는 마지막 이야기</strong><p>함수는 원본을 지우지 않고, 목적에 맞는 새로운 모습을 만들어 줍니다. 여러분도 지금의 자신을 부정할 필요 없이 표현 방식과 배움의 방법을 바꾸며 성장할 수 있습니다.</p><p><strong>점수가 완벽하지 않아도 ROUND로 숨기라는 뜻은 아닙니다. 부족한 부분은 정확히 바라보고, 장점은 CONCAT으로 연결하며, 실패의 아픔은 ABS로 크기를 이해하고, 오늘의 NOW에서 다시 시작하십시오. 여러분의 미래는 아직 형식이 정해지지 않은 가장 멋진 결과입니다.</strong></p></div>
+</div></section>
+
+<section id="submit"><h2 class="section-title">7. 학번·이름 입력 및 결과 저장</h2><div class="card">
+<div class="student-box"><label><strong>학번</strong><input type="text" id="studentId" placeholder="예: 1101"></label>
+<label><strong>이름</strong><input type="text" id="studentName" placeholder="예: 홍길동"></label></div>
+<div class="action-bar"><button class="btn" onclick="gradeAll()">전체 채점</button>
+<button class="btn secondary" onclick="downloadResult()">TXT 결과 저장</button>
+<button class="btn danger" onclick="resetAll()">다시 풀기</button></div>
+<div id="scoreBox" class="score-box"></div><p>저장 파일명: 학번_이름_점수_12차시_응시시각.txt</p></div></section>
+</main>
+
+<script>
+let lastResult=null;
+function copyCode(b){navigator.clipboard.writeText(b.parentElement.querySelector('code').innerText);b.textContent='복사됨';setTimeout(()=>b.textContent='복사',900)}
+function selected(q){return [...q.querySelectorAll('input[type=checkbox]:checked')].map(x=>+x.value).sort()}
+function gradeAll(){
+ const sid=studentId.value.trim(),name=studentName.value.trim();
+ if(!sid||!name){alert('학번과 이름을 입력하세요.');return}
+ let c=0,o=0,detail=[];
+ document.querySelectorAll('.mini-quiz').forEach((q,i)=>{
+   let s=selected(q),ok=JSON.stringify(s)==='[0,1,2]',f=q.querySelector('.feedback');
+   f.textContent=ok?'정답입니다.':'오답입니다. 정답: 1, 2, 3번';f.className='feedback '+(ok?'good':'bad');
+   if(ok)c++;detail.push(`코드 ${i+1}: ${ok?'정답':'오답'} / 응답 ${s.map(x=>x+1).join(', ')||'미응답'}`);
+ });
+ document.querySelectorAll('.ox-item').forEach((q,i)=>{
+   let x=q.querySelector('input:checked'),v=x?x.value:'',ok=v===q.dataset.answer,f=q.querySelector('.ox-feedback');
+   f.textContent=ok?'정답':'오답 · 정답: '+q.dataset.answer;f.className='ox-feedback '+(ok?'good':'bad');
+   if(ok)o++;detail.push(`OX ${i+1}: ${ok?'정답':'오답'} / 응답 ${v||'미응답'}`);
+ });
+ let total=(c+o)*5,time=new Date();lastResult={sid,name,c,o,total,detail,time};
+ scoreBox.style.display='block';scoreBox.innerHTML=`총점 ${total}점 / 100점<br>복수정답 ${c} / 10 · OX ${o} / 10`;
+ scoreBox.scrollIntoView({behavior:'smooth'});
+}
+function pad(n){return String(n).padStart(2,'0')}
+function stamp(t){return `${t.getFullYear()}${pad(t.getMonth()+1)}${pad(t.getDate())}_${pad(t.getHours())}${pad(t.getMinutes())}${pad(t.getSeconds())}`}
+function downloadResult(){
+ if(!lastResult){gradeAll();if(!lastResult)return}
+ let r=lastResult,text=['MySQL 12차시 형성평가 결과',`학번: ${r.sid}`,`이름: ${r.name}`,
+ `점수: ${r.total}점`,`복수정답: ${r.c}/10`,`OX: ${r.o}/10`,`응시시각: ${r.time.toLocaleString()}`,'',...r.detail].join('\n');
+ let blob=new Blob(['\ufeff'+text],{type:'text/plain;charset=utf-8'}),a=document.createElement('a');
+ a.href=URL.createObjectURL(blob);a.download=`${r.sid}_${r.name}_${r.total}점_12차시_${stamp(r.time)}.txt`;a.click();
+ setTimeout(()=>URL.revokeObjectURL(a.href),1000);
+}
+function resetAll(){
+ document.querySelectorAll('input').forEach(x=>{if(x.type!=='text')x.checked=false});
+ document.querySelectorAll('.feedback,.ox-feedback').forEach(x=>x.textContent='');
+ scoreBox.style.display='none';lastResult=null;
+}
+</script></body></html>

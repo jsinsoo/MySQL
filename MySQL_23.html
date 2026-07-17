@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>MySQL 23차시 목표지향 개념기반 수업지도안</title>
+<style>
+:root{--navy:#1c3148;--blue:#356fd1;--sky:#edf4ff;--mint:#eaf8f2;--green:#278a62;--red:#dc654e;--purple:#7058c8;--orange:#c77b31;--text:#293a4b;--muted:#6a7a8b;--line:#dbe5ee;--bg:#f5f8fc;--shadow:0 12px 28px rgba(28,49,72,.10)}
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;font-family:"Pretendard","Noto Sans KR","Malgun Gothic",sans-serif;color:var(--text);background:linear-gradient(180deg,#fcfdff,var(--bg));line-height:1.72}.topbar{position:sticky;top:0;z-index:40;background:#fffffff2;border-bottom:1px solid var(--line);backdrop-filter:blur(10px)}.topbar-inner{max-width:1240px;margin:auto;padding:10px 18px;display:flex;align-items:center;justify-content:space-between;gap:10px}.brand{font-weight:900;color:var(--navy)}.nav{display:flex;gap:6px;flex-wrap:wrap}.nav a{text-decoration:none;color:var(--navy);font-weight:800;font-size:.82rem;padding:6px 9px;border:1px solid var(--line);border-radius:999px}.btn{border:0;border-radius:11px;background:var(--blue);color:#fff;padding:10px 15px;font-weight:900;cursor:pointer}.hero,main{max-width:1240px;margin:auto;padding:0 18px}.hero{margin-top:28px}.hero-card{position:relative;overflow:hidden;background:linear-gradient(135deg,#1c3148,#375774 56%,#c77b31);color:#fff;border-radius:28px;padding:42px;box-shadow:var(--shadow)}.hero-card:after{content:"INDEX · EXPLAIN";position:absolute;right:18px;top:28px;font-size:55px;font-weight:900;color:#ffffff0d;transform:rotate(-5deg)}.badge{display:inline-block;padding:6px 12px;border-radius:999px;background:#ffffff24;border:1px solid #ffffff44;font-weight:900}h1{font-size:clamp(2rem,4vw,3.2rem);line-height:1.15;margin:13px 0}.hero p{max-width:900px;color:#fff6e9}.hero-grid{position:relative;z-index:2;display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-top:22px}.hero-stat{padding:14px;border-radius:16px;background:#ffffff1c;border:1px solid #ffffff33}.hero-stat strong{display:block}main{padding-bottom:70px}section{margin-top:30px}.section-title{color:var(--navy)}.grid{display:grid;grid-template-columns:repeat(2,1fr);gap:14px}.card,.story-block,.teacher-message,.ending-card,.last-message{background:#fff;border:1px solid var(--line);border-radius:20px;padding:22px;box-shadow:var(--shadow)}.tags{display:flex;gap:8px;flex-wrap:wrap}.tag{padding:7px 11px;border-radius:999px;background:#fff3e7;color:var(--orange);font-weight:900}.concept-flow{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-top:15px}.concept-flow div{text-align:center;padding:13px;border-radius:14px;background:#fff4e9;color:var(--orange);font-weight:900}.story-wrap,.ending-grid,.code-list,.ox-list{display:grid;gap:14px}.humanities{border-left:7px solid #b47b35}.philosophy{border-left:7px solid var(--purple)}.science{border-left:7px solid var(--green)}.math{border-left:7px solid var(--blue)}.teacher-message{background:linear-gradient(135deg,#fff2e5,#fff)}.code-card{background:#fff;border:1px solid var(--line);border-radius:22px;box-shadow:var(--shadow);overflow:hidden}.code-head{display:flex;gap:15px;padding:20px}.num{min-width:46px;height:46px;display:grid;place-items:center;border-radius:14px;background:var(--orange);color:#fff;font-weight:900}.code-head h3{margin:0;color:var(--navy)}.code-head p{margin:4px 0 0;color:var(--muted)}pre{position:relative;margin:0;padding:22px;background:#171f27;color:#fff3e7;overflow:auto;font:15px/1.6 Consolas,monospace}.copy-btn{position:absolute;right:12px;top:12px;border:1px solid #53616d;background:#263542;color:#fff;border-radius:9px;padding:6px 10px}.mini-quiz{padding:20px;background:#fbfdff}.choice{display:flex;gap:9px;padding:8px}.hint{color:var(--red);font-weight:800}.good{color:var(--green)}.bad{color:var(--red)}.feedback,.ox-feedback{font-weight:900}.ox-item{display:grid;grid-template-columns:42px 1fr auto auto;gap:12px;align-items:center;background:#fff;border:1px solid var(--line);border-radius:14px;padding:13px}.ox-num{width:34px;height:34px;display:grid;place-items:center;border-radius:10px;background:#fff3e7;color:var(--orange);font-weight:900}.ox-feedback{grid-column:2/5}.poetry{border-top:6px solid #da7b93}.novel{border-top:6px solid #aa7b4e}.drama{border-top:6px solid var(--purple)}.theater{border-top:6px solid var(--green)}.music{border-top:6px solid var(--blue)}.last-message{background:linear-gradient(135deg,#fff4e7,#fff)}.student-box{display:grid;grid-template-columns:1fr 1fr;gap:12px}input[type=text]{width:100%;padding:12px;border:1px solid var(--line);border-radius:11px}.action-bar{display:flex;gap:10px;flex-wrap:wrap;margin-top:15px}.secondary{background:var(--navy)}.danger{background:var(--red)}.score-box{display:none;margin-top:16px;padding:18px;border-radius:16px;background:var(--mint);font-weight:900}
+@media(max-width:700px){.grid,.hero-grid,.student-box,.concept-flow{grid-template-columns:1fr}.nav{display:none}.hero-card{padding:28px 20px}.hero-card:after{display:none}}@media print{.topbar,.copy-btn,.action-bar{display:none!important}.card,.code-card,.story-block,.ending-card{box-shadow:none;break-inside:avoid}}
+</style>
+</head>
+<body>
+<header class="topbar"><div class="topbar-inner"><div class="brand">MySQL 23차시 · 인덱스와 성능</div>
+<nav class="nav"><a href="#standard">성취기준</a><a href="#story">시작 이야기</a><a href="#codes">코드 10개</a><a href="#quiz">OX</a><a href="#ending">마무리</a><a href="#submit">제출</a></nav>
+<button class="btn" onclick="window.print()">인쇄</button></div></header>
+
+<div class="hero"><div class="hero-card"><span class="badge">목표지향 · 개념기반 · 빠른 탐색과 합리적 최적화</span>
+<h1>MySQL 23차시<br>인덱스와 성능</h1>
+<p>인덱스의 원리와 비용을 이해하고, CREATE INDEX와 EXPLAIN을 활용하여 실제 조회 패턴에 맞는 성능 개선 방법을 탐구합니다.</p>
+<div class="hero-grid"><div class="hero-stat"><strong>핵심 질문</strong>어떤 인덱스가 실제 쿼리를 빠르게 만드는가?</div>
+<div class="hero-stat"><strong>전이 목표</strong>측정 근거로 성능을 개선</div><div class="hero-stat"><strong>실습</strong>인덱스 코드 10개</div>
+<div class="hero-stat"><strong>평가</strong>복수정답 10 + OX 10</div></div></div></div>
+
+<main>
+<section id="standard"><h2 class="section-title">1. 성취기준과 학습 목표</h2>
+<div class="grid"><div class="card"><h3>성취기준</h3>
+<p>인덱스의 개념과 검색 성능 향상 원리를 이해하고 단일 열·고유·복합 인덱스를 생성하고 관리할 수 있다.</p>
+<p>EXPLAIN을 이용하여 실행 계획과 인덱스 사용 여부를 확인하고, 조회 성능과 입력·수정 비용을 함께 고려해 적절한 인덱스를 선택할 수 있다.</p></div>
+<div class="card"><h3>학습 목표</h3><ol><li>인덱스가 검색을 빠르게 하는 원리를 설명한다.</li>
+<li>단일·고유·복합 인덱스를 생성하고 차이를 구분한다.</li><li>EXPLAIN의 주요 항목으로 실행 계획을 해석한다.</li>
+<li>과도한 인덱스와 인덱스를 방해하는 조건을 분석한다.</li></ol></div></div></section>
+
+<section><h2 class="section-title">2. 학습할 개념</h2><div class="card">
+<div class="tags"><span class="tag">Index</span><span class="tag">보조 인덱스</span><span class="tag">UNIQUE INDEX</span>
+<span class="tag">복합 인덱스</span><span class="tag">선두 열</span><span class="tag">선택도</span>
+<span class="tag">EXPLAIN</span><span class="tag">실행 계획</span><span class="tag">SHOW INDEX</span><span class="tag">성능 비용</span></div>
+<div class="concept-flow"><div>느린 쿼리 발견</div><div>실행 계획 측정</div><div>인덱스 설계</div><div>전후 성능 검증</div></div>
+<p><strong>일반화:</strong> 인덱스는 데이터 검색 경로를 제공하여 조회 성능을 높이지만 저장 공간과 쓰기 비용을 요구하므로 실제 조회 조건과 실행 계획을 근거로 선택해야 한다.</p>
+<p><strong>핵심 질문:</strong> 어떤 열이 자주 조건과 정렬에 사용되는가, 복합 인덱스의 열 순서는 적절한가, 인덱스 생성 전후의 실행 계획은 어떻게 달라지는가?</p></div></section>
+
+<section id="story"><h2 class="section-title">3. 수업 시작 이야기</h2><div class="story-wrap">
+<div class="story-block humanities"><h3>📚 인문학자의 이야기 — 좋은 색인은 기억의 길을 만든다</h3><p>두꺼운 책에서 원하는 개념을 찾을 때 처음부터 끝까지 모든 페이지를 읽는다면 지식은 있어도 접근은 느립니다. 책 뒤의 색인은 중요한 단어와 페이지를 연결하여 독자가 빠르게 길을 찾게 합니다.</p><p>데이터베이스의 인덱스도 정보 자체를 대신하지 않습니다. 다만 수많은 행 사이에서 필요한 데이터로 가는 길을 만들어 줍니다.</p></div>
+<div class="story-block philosophy"><h3>🏛 철학자의 이야기 — 빠름보다 먼저 물어야 할 것은 방향이다</h3><p>철학은 무엇이 더 빠른가보다 어디로 가는가를 먼저 묻습니다. 잘못된 방향으로 빠르게 달리면 목적지에서 더 멀어집니다.</p><p>인덱스도 모든 곳에 만드는 것이 정답은 아닙니다. 자주 조회되는 열, 선택도가 높은 조건, 실제 사용 패턴을 분석하여 필요한 곳에 설계해야 합니다.</p></div>
+<div class="story-block science"><h3>🔬 과학자의 이야기 — 최적화는 측정에서 시작한다</h3><p>과학자는 느낌만으로 실험 결과를 판단하지 않습니다. 측정하고 비교하며 가설을 검증합니다.</p><p>쿼리 성능도 마찬가지입니다. EXPLAIN을 통해 어떤 인덱스를 사용하는지, 몇 행을 예상하는지 확인한 뒤 개선해야 합니다. 성능 최적화는 추측이 아니라 관찰의 기술입니다.</p></div>
+<div class="story-block math"><h3>➗ 수학자의 이야기 — 탐색 구조는 비교 횟수를 줄인다</h3><p>정렬된 구조를 이용하면 필요한 값을 찾기 위해 모든 항목을 하나씩 살펴보지 않아도 됩니다. 탐색의 효율은 자료의 구조와 비교 순서에 따라 크게 달라집니다.</p><p>인덱스는 이러한 수학적 아이디어를 데이터베이스에 적용하여 검색 비용을 줄입니다.</p></div>
+<div class="teacher-message"><strong>교사의 시작 이야기</strong><p>오늘의 목표는 인덱스를 많이 만드는 것이 아닙니다. 어떤 쿼리가 느린지 관찰하고, 그 이유를 설명하며, 필요한 인덱스를 선택하는 것입니다. 공부에서도 모든 내용을 똑같이 반복하는 것보다 중요한 개념에 길잡이를 만들어 두면 더 빠르게 이해할 수 있습니다. 인덱스는 데이터의 지름길이지만, 지름길도 목적지를 알고 만들 때 가치가 있습니다.</p></div>
+</div></section>
+<section id="codes"><h2 class="section-title">4. 학습할 코드 10개와 상세 설명</h2><div class="code-list">
+<article class="code-card">
+<div class="code-head"><span class="num">01</span><div><h3>단일 열 인덱스 생성</h3><p>학생 이름 열에 보조 인덱스를 생성합니다. 이름 조건 검색이 자주 실행되는 환경에서 전체 행을 순차적으로 확인하는 비용을 줄일 수 있습니다.</p></div></div>
+<pre><code>CREATE INDEX idx_students_name
+ON students(student_name);</code><button class="copy-btn" onclick="copyCode(this)">복사</button></pre>
+<div class="mini-quiz"><h4>코드 1에 대한 설명으로 옳은 것을 모두 고르세요.</h4>
+<p class="hint">옳은 설명 3개를 빠짐없이 선택하세요.</p><label class="choice"><input type="checkbox" value="0"><span>1. student_name 열에 인덱스를 만든다.</span></label><label class="choice"><input type="checkbox" value="1"><span>2. 이름 검색 성능 향상에 도움이 될 수 있다.</span></label><label class="choice"><input type="checkbox" value="2"><span>3. 원본 데이터와 별도로 탐색 구조가 만들어진다.</span></label><label class="choice"><input type="checkbox" value="3"><span>4. students 테이블의 모든 행을 삭제한다.</span></label><label class="choice"><input type="checkbox" value="4"><span>5. 인덱스를 만들면 모든 쿼리가 항상 빨라진다.</span></label><div class="feedback"></div></div>
+</article>
+<article class="code-card">
+<div class="code-head"><span class="num">02</span><div><h3>UNIQUE 인덱스 생성</h3><p>이메일 열에 고유 인덱스를 생성합니다. 검색 성능을 높이는 동시에 같은 이메일이 중복 저장되는 것을 막습니다.</p></div></div>
+<pre><code>CREATE UNIQUE INDEX idx_members_email
+ON members(email);</code><button class="copy-btn" onclick="copyCode(this)">복사</button></pre>
+<div class="mini-quiz"><h4>코드 2에 대한 설명으로 옳은 것을 모두 고르세요.</h4>
+<p class="hint">옳은 설명 3개를 빠짐없이 선택하세요.</p><label class="choice"><input type="checkbox" value="0"><span>1. email 검색 성능에 도움을 줄 수 있다.</span></label><label class="choice"><input type="checkbox" value="1"><span>2. email 중복 저장을 막는다.</span></label><label class="choice"><input type="checkbox" value="2"><span>3. 고유 인덱스를 생성한다.</span></label><label class="choice"><input type="checkbox" value="3"><span>4. NULL과 중복을 모두 무조건 허용한다.</span></label><label class="choice"><input type="checkbox" value="4"><span>5. members 테이블을 자동 백업한다.</span></label><div class="feedback"></div></div>
+</article>
+<article class="code-card">
+<div class="code-head"><span class="num">03</span><div><h3>복합 인덱스 생성</h3><p>student_id와 subject를 순서대로 묶은 복합 인덱스입니다. 학생별 과목 성적을 조회하는 조건에서 효율적일 수 있습니다.</p></div></div>
+<pre><code>CREATE INDEX idx_scores_student_subject
+ON scores(student_id, subject);</code><button class="copy-btn" onclick="copyCode(this)">복사</button></pre>
+<div class="mini-quiz"><h4>코드 3에 대한 설명으로 옳은 것을 모두 고르세요.</h4>
+<p class="hint">옳은 설명 3개를 빠짐없이 선택하세요.</p><label class="choice"><input type="checkbox" value="0"><span>1. 두 열로 구성된 복합 인덱스이다.</span></label><label class="choice"><input type="checkbox" value="1"><span>2. 열 순서는 student_id, subject이다.</span></label><label class="choice"><input type="checkbox" value="2"><span>3. 학생별 과목 검색에 활용될 수 있다.</span></label><label class="choice"><input type="checkbox" value="3"><span>4. subject만 항상 가장 먼저 탐색한다.</span></label><label class="choice"><input type="checkbox" value="4"><span>5. 복합 인덱스는 한 열만 포함할 수 있다.</span></label><div class="feedback"></div></div>
+</article>
+<article class="code-card">
+<div class="code-head"><span class="num">04</span><div><h3>복합 인덱스의 선두 열 활용</h3><p>복합 인덱스의 첫 번째 열인 student_id부터 조건에 사용합니다. 일반적으로 인덱스의 선두 열을 포함한 검색은 인덱스를 활용하기 쉽습니다.</p></div></div>
+<pre><code>SELECT *
+FROM scores
+WHERE student_id = 101
+  AND subject = &#x27;수학&#x27;;</code><button class="copy-btn" onclick="copyCode(this)">복사</button></pre>
+<div class="mini-quiz"><h4>코드 4에 대한 설명으로 옳은 것을 모두 고르세요.</h4>
+<p class="hint">옳은 설명 3개를 빠짐없이 선택하세요.</p><label class="choice"><input type="checkbox" value="0"><span>1. student_id 조건을 포함한다.</span></label><label class="choice"><input type="checkbox" value="1"><span>2. 복합 인덱스의 선두 열부터 사용한다.</span></label><label class="choice"><input type="checkbox" value="2"><span>3. 학생과 과목을 함께 조건으로 검색한다.</span></label><label class="choice"><input type="checkbox" value="3"><span>4. 인덱스 열 순서와 무관하게 항상 동일한 성능이다.</span></label><label class="choice"><input type="checkbox" value="4"><span>5. WHERE 절은 인덱스를 삭제한다.</span></label><div class="feedback"></div></div>
+</article>
+<article class="code-card">
+<div class="code-head"><span class="num">05</span><div><h3>EXPLAIN으로 실행 계획 확인</h3><p>쿼리를 실제로 실행하기 전에 MySQL이 어떤 방식으로 데이터를 찾을지 실행 계획을 확인합니다. type, key, rows 등을 통해 인덱스 사용 여부와 예상 탐색량을 살펴볼 수 있습니다.</p></div></div>
+<pre><code>EXPLAIN
+SELECT *
+FROM students
+WHERE student_name = &#x27;김별&#x27;;</code><button class="copy-btn" onclick="copyCode(this)">복사</button></pre>
+<div class="mini-quiz"><h4>코드 5에 대한 설명으로 옳은 것을 모두 고르세요.</h4>
+<p class="hint">옳은 설명 3개를 빠짐없이 선택하세요.</p><label class="choice"><input type="checkbox" value="0"><span>1. 실행 계획을 확인한다.</span></label><label class="choice"><input type="checkbox" value="1"><span>2. key와 rows 등을 살펴볼 수 있다.</span></label><label class="choice"><input type="checkbox" value="2"><span>3. 쿼리를 실제 실행하기 전에 접근 방법을 분석한다.</span></label><label class="choice"><input type="checkbox" value="3"><span>4. EXPLAIN은 테이블 데이터를 수정한다.</span></label><label class="choice"><input type="checkbox" value="4"><span>5. EXPLAIN은 인덱스를 자동 생성한다.</span></label><div class="feedback"></div></div>
+</article>
+<article class="code-card">
+<div class="code-head"><span class="num">06</span><div><h3>인덱스 목록 확인</h3><p>students 테이블에 생성된 인덱스의 이름, 대상 열, 고유 여부, 열 순서 등을 확인합니다.</p></div></div>
+<pre><code>SHOW INDEX
+FROM students;</code><button class="copy-btn" onclick="copyCode(this)">복사</button></pre>
+<div class="mini-quiz"><h4>코드 6에 대한 설명으로 옳은 것을 모두 고르세요.</h4>
+<p class="hint">옳은 설명 3개를 빠짐없이 선택하세요.</p><label class="choice"><input type="checkbox" value="0"><span>1. students의 인덱스 정보를 확인한다.</span></label><label class="choice"><input type="checkbox" value="1"><span>2. 인덱스 이름과 대상 열을 볼 수 있다.</span></label><label class="choice"><input type="checkbox" value="2"><span>3. 고유 여부와 열 순서를 확인할 수 있다.</span></label><label class="choice"><input type="checkbox" value="3"><span>4. 새 인덱스를 자동으로 생성한다.</span></label><label class="choice"><input type="checkbox" value="4"><span>5. students 테이블을 삭제한다.</span></label><div class="feedback"></div></div>
+</article>
+<article class="code-card">
+<div class="code-head"><span class="num">07</span><div><h3>ALTER TABLE로 인덱스 추가</h3><p>ALTER TABLE 문을 사용하여 기존 수강 테이블의 course_id 열에 인덱스를 추가합니다.</p></div></div>
+<pre><code>ALTER TABLE enrollments
+ADD INDEX idx_enrollments_course
+(course_id);</code><button class="copy-btn" onclick="copyCode(this)">복사</button></pre>
+<div class="mini-quiz"><h4>코드 7에 대한 설명으로 옳은 것을 모두 고르세요.</h4>
+<p class="hint">옳은 설명 3개를 빠짐없이 선택하세요.</p><label class="choice"><input type="checkbox" value="0"><span>1. 기존 테이블에 인덱스를 추가한다.</span></label><label class="choice"><input type="checkbox" value="1"><span>2. course_id 열을 대상으로 한다.</span></label><label class="choice"><input type="checkbox" value="2"><span>3. ALTER TABLE을 사용한다.</span></label><label class="choice"><input type="checkbox" value="3"><span>4. enrollments의 모든 행을 삭제한다.</span></label><label class="choice"><input type="checkbox" value="4"><span>5. course_id를 자동으로 기본키로 바꾼다.</span></label><div class="feedback"></div></div>
+</article>
+<article class="code-card">
+<div class="code-head"><span class="num">08</span><div><h3>인덱스 삭제</h3><p>더 이상 필요하지 않거나 효과가 낮은 보조 인덱스를 삭제합니다. 인덱스를 삭제해도 원본 데이터는 지워지지 않습니다.</p></div></div>
+<pre><code>DROP INDEX idx_students_name
+ON students;</code><button class="copy-btn" onclick="copyCode(this)">복사</button></pre>
+<div class="mini-quiz"><h4>코드 8에 대한 설명으로 옳은 것을 모두 고르세요.</h4>
+<p class="hint">옳은 설명 3개를 빠짐없이 선택하세요.</p><label class="choice"><input type="checkbox" value="0"><span>1. 보조 인덱스를 삭제한다.</span></label><label class="choice"><input type="checkbox" value="1"><span>2. 원본 데이터는 유지된다.</span></label><label class="choice"><input type="checkbox" value="2"><span>3. 불필요한 인덱스를 정리할 수 있다.</span></label><label class="choice"><input type="checkbox" value="3"><span>4. students 테이블 자체를 삭제한다.</span></label><label class="choice"><input type="checkbox" value="4"><span>5. 삭제 후 student_name 열도 사라진다.</span></label><div class="feedback"></div></div>
+</article>
+<article class="code-card">
+<div class="code-head"><span class="num">09</span><div><h3>인덱스가 어려운 조건</h3><p>열에 함수를 적용하면 일반적인 birth_date 인덱스를 충분히 활용하지 못할 수 있습니다. 실제 실행 계획을 확인하고 범위 조건 등으로 개선할 필요가 있습니다.</p></div></div>
+<pre><code>EXPLAIN
+SELECT *
+FROM students
+WHERE YEAR(birth_date) = 2010;</code><button class="copy-btn" onclick="copyCode(this)">복사</button></pre>
+<div class="mini-quiz"><h4>코드 9에 대한 설명으로 옳은 것을 모두 고르세요.</h4>
+<p class="hint">옳은 설명 3개를 빠짐없이 선택하세요.</p><label class="choice"><input type="checkbox" value="0"><span>1. YEAR 함수가 열에 적용된다.</span></label><label class="choice"><input type="checkbox" value="1"><span>2. 일반 인덱스 활용이 제한될 수 있다.</span></label><label class="choice"><input type="checkbox" value="2"><span>3. EXPLAIN으로 실제 계획을 확인해야 한다.</span></label><label class="choice"><input type="checkbox" value="3"><span>4. 항상 가장 효율적인 인덱스 검색이 보장된다.</span></label><label class="choice"><input type="checkbox" value="4"><span>5. birth_date 값이 자동 수정된다.</span></label><div class="feedback"></div></div>
+</article>
+<article class="code-card">
+<div class="code-head"><span class="num">10</span><div><h3>범위 조건으로 쿼리 개선</h3><p>열 자체에 함수를 적용하지 않고 날짜 범위를 지정합니다. birth_date에 인덱스가 있다면 인덱스를 활용하기 더 좋은 형태입니다.</p></div></div>
+<pre><code>EXPLAIN
+SELECT *
+FROM students
+WHERE birth_date &gt;= &#x27;2010-01-01&#x27;
+  AND birth_date &lt;  &#x27;2011-01-01&#x27;;</code><button class="copy-btn" onclick="copyCode(this)">복사</button></pre>
+<div class="mini-quiz"><h4>코드 10에 대한 설명으로 옳은 것을 모두 고르세요.</h4>
+<p class="hint">옳은 설명 3개를 빠짐없이 선택하세요.</p><label class="choice"><input type="checkbox" value="0"><span>1. 날짜 범위를 조건으로 사용한다.</span></label><label class="choice"><input type="checkbox" value="1"><span>2. 열에 직접 함수를 적용하지 않는다.</span></label><label class="choice"><input type="checkbox" value="2"><span>3. birth_date 인덱스를 활용하기 좋은 형태다.</span></label><label class="choice"><input type="checkbox" value="3"><span>4. 2010년이 아닌 모든 데이터만 조회한다.</span></label><label class="choice"><input type="checkbox" value="4"><span>5. 두 조건은 인덱스를 무조건 삭제한다.</span></label><div class="feedback"></div></div>
+</article></div></section>
+<section id="quiz"><h2 class="section-title">5. 형성평가 OX 퀴즈 10개</h2><div class="ox-list"><div class="ox-item" data-answer="O">
+<div class="ox-num">1</div><div>인덱스는 검색을 빠르게 하기 위한 별도의 탐색 구조이다.</div>
+<label><input type="radio" name="ox1" value="O"> O</label>
+<label><input type="radio" name="ox1" value="X"> X</label>
+<div class="ox-feedback"></div></div><div class="ox-item" data-answer="X">
+<div class="ox-num">2</div><div>인덱스를 많이 만들수록 INSERT와 UPDATE도 항상 빨라진다.</div>
+<label><input type="radio" name="ox2" value="O"> O</label>
+<label><input type="radio" name="ox2" value="X"> X</label>
+<div class="ox-feedback"></div></div><div class="ox-item" data-answer="O">
+<div class="ox-num">3</div><div>기본키에는 일반적으로 인덱스가 함께 생성된다.</div>
+<label><input type="radio" name="ox3" value="O"> O</label>
+<label><input type="radio" name="ox3" value="X"> X</label>
+<div class="ox-feedback"></div></div><div class="ox-item" data-answer="O">
+<div class="ox-num">4</div><div>복합 인덱스에서는 열의 순서가 중요할 수 있다.</div>
+<label><input type="radio" name="ox4" value="O"> O</label>
+<label><input type="radio" name="ox4" value="X"> X</label>
+<div class="ox-feedback"></div></div><div class="ox-item" data-answer="O">
+<div class="ox-num">5</div><div>EXPLAIN은 쿼리의 실행 계획을 확인하는 데 사용된다.</div>
+<label><input type="radio" name="ox5" value="O"> O</label>
+<label><input type="radio" name="ox5" value="X"> X</label>
+<div class="ox-feedback"></div></div><div class="ox-item" data-answer="O">
+<div class="ox-num">6</div><div>SHOW INDEX는 테이블의 인덱스 정보를 확인할 수 있다.</div>
+<label><input type="radio" name="ox6" value="O"> O</label>
+<label><input type="radio" name="ox6" value="X"> X</label>
+<div class="ox-feedback"></div></div><div class="ox-item" data-answer="X">
+<div class="ox-num">7</div><div>DROP INDEX는 원본 테이블의 모든 데이터를 삭제한다.</div>
+<label><input type="radio" name="ox7" value="O"> O</label>
+<label><input type="radio" name="ox7" value="X"> X</label>
+<div class="ox-feedback"></div></div><div class="ox-item" data-answer="O">
+<div class="ox-num">8</div><div>열에 함수를 적용한 조건은 일반 인덱스 활용을 어렵게 할 수 있다.</div>
+<label><input type="radio" name="ox8" value="O"> O</label>
+<label><input type="radio" name="ox8" value="X"> X</label>
+<div class="ox-feedback"></div></div><div class="ox-item" data-answer="O">
+<div class="ox-num">9</div><div>UNIQUE 인덱스는 중복 방지와 검색을 함께 지원할 수 있다.</div>
+<label><input type="radio" name="ox9" value="O"> O</label>
+<label><input type="radio" name="ox9" value="X"> X</label>
+<div class="ox-feedback"></div></div><div class="ox-item" data-answer="X">
+<div class="ox-num">10</div><div>모든 테이블과 모든 열에는 반드시 인덱스를 만들어야 한다.</div>
+<label><input type="radio" name="ox10" value="O"> O</label>
+<label><input type="radio" name="ox10" value="X"> X</label>
+<div class="ox-feedback"></div></div></div></section>
+<section id="ending"><h2 class="section-title">6. 수업 끝 이야기</h2><div class="ending-grid">
+<div class="ending-card poetry"><h3>🌙 시인의 이야기 — 한 단어가 긴 기억을 불러온다</h3><p>시는 짧은 단어 하나로 긴 계절을 불러옵니다. 인덱스도 작은 키 하나로 수많은 행 가운데 필요한 기억을 찾아냅니다. 다만 시집의 모든 글자를 색인으로 만들면 책보다 색인이 더 두꺼워질 수 있습니다.</p></div>
+<div class="ending-card novel"><h3>📖 소설가의 이야기 — 복선은 미래 장면의 인덱스다</h3><p>소설의 복선은 독자를 다음 장면으로 안내합니다. 좋은 복선은 이야기를 빠르게 이해하게 하지만, 모든 문장이 복선이면 독자는 쉬지 못합니다. 인덱스도 필요한 곳에만 있어야 합니다.</p></div>
+<div class="ending-card drama"><h3>🎭 희곡인의 이야기 — 배우는 출입구를 알아야 제시간에 등장한다</h3><p>무대가 아무리 넓어도 등장 위치를 모르면 배우는 대사를 놓칩니다. 인덱스는 데이터가 제시간에 등장할 수 있도록 만든 출입구입니다.</p></div>
+<div class="ending-card theater"><h3>🎬 연극인의 이야기 — 지름길이 많으면 무대 뒤가 더 복잡해진다</h3><p>배우를 위해 통로를 만들었는데 통로가 너무 많아 서로 부딪힌다면 최적화가 아닙니다. 인덱스도 검색은 빠르게 하지만 입력과 수정에는 관리 비용이 듭니다.</p></div>
+<div class="ending-card music"><h3>🎼 음악인의 이야기 — 지휘자는 필요한 파트를 바로 찾는다</h3><p>지휘자는 악보를 처음부터 넘기지 않고 연습할 마디를 바로 찾습니다. 마디 번호는 음악의 인덱스입니다. 다만 연주 중에 EXPLAIN을 외치면 오케스트라는 잠시 멈출 수 있습니다.</p></div>
+<div class="last-message"><strong>오늘의 오래 남는 마지막 이야기</strong><p>삶이 느리게 느껴질 때 우리는 자신에게 능력이 없다고 생각하기 쉽습니다. 그러나 문제는 능력이 아니라 길을 찾는 방법일 수 있습니다.</p><p><strong>여러분이 배운 것과 경험한 것에도 인덱스를 만들어 보십시오. 실패에는 배운 점을, 노력에는 성장한 부분을, 꿈에는 오늘 할 수 있는 작은 행동을 연결해 두십시오. 그러면 막막한 순간에도 자신 안의 가능성을 더 빨리 찾을 수 있습니다. 여러분의 미래는 느린 것이 아니라 아직 최적의 실행 계획을 찾는 중입니다.</strong></p></div>
+</div></section>
+
+<section id="submit"><h2 class="section-title">7. 학번·이름 입력 및 결과 저장</h2><div class="card">
+<div class="student-box"><label><strong>학번</strong><input type="text" id="studentId" placeholder="예: 1101"></label>
+<label><strong>이름</strong><input type="text" id="studentName" placeholder="예: 홍길동"></label></div>
+<div class="action-bar"><button class="btn" onclick="gradeAll()">전체 채점</button>
+<button class="btn secondary" onclick="downloadResult()">TXT 결과 저장</button>
+<button class="btn danger" onclick="resetAll()">다시 풀기</button></div>
+<div id="scoreBox" class="score-box"></div><p>저장 파일명: 학번_이름_점수_23차시_응시시각.txt</p></div></section>
+</main>
+
+<script>
+let lastResult=null;
+function copyCode(b){navigator.clipboard.writeText(b.parentElement.querySelector('code').innerText);b.textContent='복사됨';setTimeout(()=>b.textContent='복사',900)}
+function selected(q){return [...q.querySelectorAll('input[type=checkbox]:checked')].map(x=>+x.value).sort()}
+function gradeAll(){
+ const sid=studentId.value.trim(),name=studentName.value.trim();
+ if(!sid||!name){alert('학번과 이름을 입력하세요.');return}
+ let c=0,o=0,detail=[];
+ document.querySelectorAll('.mini-quiz').forEach((q,i)=>{
+   let s=selected(q),ok=JSON.stringify(s)==='[0,1,2]',f=q.querySelector('.feedback');
+   f.textContent=ok?'정답입니다.':'오답입니다. 정답: 1, 2, 3번';f.className='feedback '+(ok?'good':'bad');
+   if(ok)c++;detail.push(`코드 ${i+1}: ${ok?'정답':'오답'} / 응답 ${s.map(x=>x+1).join(', ')||'미응답'}`);
+ });
+ document.querySelectorAll('.ox-item').forEach((q,i)=>{
+   let x=q.querySelector('input:checked'),v=x?x.value:'',ok=v===q.dataset.answer,f=q.querySelector('.ox-feedback');
+   f.textContent=ok?'정답':'오답 · 정답: '+q.dataset.answer;f.className='ox-feedback '+(ok?'good':'bad');
+   if(ok)o++;detail.push(`OX ${i+1}: ${ok?'정답':'오답'} / 응답 ${v||'미응답'}`);
+ });
+ let total=(c+o)*5,time=new Date();lastResult={sid,name,c,o,total,detail,time};
+ scoreBox.style.display='block';scoreBox.innerHTML=`총점 ${total}점 / 100점<br>복수정답 ${c} / 10 · OX ${o} / 10`;
+ scoreBox.scrollIntoView({behavior:'smooth'});
+}
+function pad(n){return String(n).padStart(2,'0')}
+function stamp(t){return `${t.getFullYear()}${pad(t.getMonth()+1)}${pad(t.getDate())}_${pad(t.getHours())}${pad(t.getMinutes())}${pad(t.getSeconds())}`}
+function downloadResult(){
+ if(!lastResult){gradeAll();if(!lastResult)return}
+ let r=lastResult,text=['MySQL 23차시 형성평가 결과',`학번: ${r.sid}`,`이름: ${r.name}`,
+ `점수: ${r.total}점`,`복수정답: ${r.c}/10`,`OX: ${r.o}/10`,`응시시각: ${r.time.toLocaleString()}`,'',...r.detail].join('\n');
+ let blob=new Blob(['\ufeff'+text],{type:'text/plain;charset=utf-8'}),a=document.createElement('a');
+ a.href=URL.createObjectURL(blob);a.download=`${r.sid}_${r.name}_${r.total}점_23차시_${stamp(r.time)}.txt`;a.click();
+ setTimeout(()=>URL.revokeObjectURL(a.href),1000);
+}
+function resetAll(){
+ document.querySelectorAll('input').forEach(x=>{if(x.type!=='text')x.checked=false});
+ document.querySelectorAll('.feedback,.ox-feedback').forEach(x=>x.textContent='');
+ scoreBox.style.display='none';lastResult=null;
+}
+</script></body></html>

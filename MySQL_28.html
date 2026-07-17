@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>MySQL 28차시 목표지향 개념기반 수업지도안</title>
+<style>
+:root{--navy:#263544;--blue:#3b72a5;--mint:#edf8f2;--green:#26895f;--red:#d85e49;--orange:#c67a2b;--gold:#b28a38;--text:#2c3b49;--muted:#6c7a87;--line:#dce5ec;--bg:#f5f8fa;--shadow:0 12px 28px rgba(38,53,68,.10)}
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;font-family:"Pretendard","Noto Sans KR","Malgun Gothic",sans-serif;color:var(--text);background:linear-gradient(180deg,#fdfefe,var(--bg));line-height:1.72}.topbar{position:sticky;top:0;z-index:40;background:#fffffff2;border-bottom:1px solid var(--line);backdrop-filter:blur(10px)}.topbar-inner{max-width:1240px;margin:auto;padding:10px 18px;display:flex;align-items:center;justify-content:space-between;gap:10px}.brand{font-weight:900;color:var(--navy)}.nav{display:flex;gap:6px;flex-wrap:wrap}.nav a{text-decoration:none;color:var(--navy);font-weight:800;font-size:.82rem;padding:6px 9px;border:1px solid var(--line);border-radius:999px}.btn{border:0;border-radius:11px;background:var(--blue);color:#fff;padding:10px 15px;font-weight:900;cursor:pointer}.hero,main{max-width:1240px;margin:auto;padding:0 18px}.hero{margin-top:28px}.hero-card{position:relative;overflow:hidden;background:linear-gradient(135deg,#263544,#3b5669 55%,#6a7f55);color:#fff;border-radius:28px;padding:42px;box-shadow:var(--shadow)}.hero-card:after{content:"BACKUP · RESTORE · SECURITY";position:absolute;right:12px;top:28px;font-size:37px;font-weight:900;color:#ffffff0d;transform:rotate(-5deg)}.badge{display:inline-block;padding:6px 12px;border-radius:999px;background:#ffffff24;border:1px solid #ffffff44;font-weight:900}h1{font-size:clamp(2rem,4vw,3.2rem);line-height:1.15;margin:13px 0}.hero p{max-width:900px;color:#edf5ee}.hero-grid{position:relative;z-index:2;display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-top:22px}.hero-stat{padding:14px;border-radius:16px;background:#ffffff1c;border:1px solid #ffffff33}.hero-stat strong{display:block}main{padding-bottom:70px}section{margin-top:30px}.section-title{color:var(--navy)}.grid{display:grid;grid-template-columns:repeat(2,1fr);gap:14px}.card,.story-block,.teacher-message,.ending-card,.last-message{background:#fff;border:1px solid var(--line);border-radius:20px;padding:22px;box-shadow:var(--shadow)}.tags{display:flex;gap:8px;flex-wrap:wrap}.tag{padding:7px 11px;border-radius:999px;background:#eef4e8;color:#557543;font-weight:900}.concept-flow{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-top:15px}.concept-flow div{text-align:center;padding:13px;border-radius:14px;background:#eef4e8;color:#557543;font-weight:900}.story-wrap,.ending-grid,.code-list,.ox-list{display:grid;gap:14px}.humanities{border-left:7px solid #b47b35}.philosophy{border-left:7px solid #6f5bb4}.science{border-left:7px solid var(--green)}.math{border-left:7px solid var(--blue)}.teacher-message{background:linear-gradient(135deg,#f1f6e9,#fff)}.code-card{background:#fff;border:1px solid var(--line);border-radius:22px;box-shadow:var(--shadow);overflow:hidden}.code-head{display:flex;gap:15px;padding:20px}.num{min-width:46px;height:46px;display:grid;place-items:center;border-radius:14px;background:#607b51;color:#fff;font-weight:900}.code-head h3{margin:0;color:var(--navy)}.code-head p{margin:4px 0 0;color:var(--muted)}pre{position:relative;margin:0;padding:22px;background:#1d2924;color:#f0f8e9;overflow:auto;font:15px/1.6 Consolas,monospace}.copy-btn{position:absolute;right:12px;top:12px;border:1px solid #627464;background:#35483c;color:#fff;border-radius:9px;padding:6px 10px}.mini-quiz{padding:20px;background:#fbfdff}.choice{display:flex;gap:9px;padding:8px}.hint{color:var(--red);font-weight:800}.good{color:var(--green)}.bad{color:var(--red)}.feedback,.ox-feedback{font-weight:900}.ox-item{display:grid;grid-template-columns:42px 1fr auto auto;gap:12px;align-items:center;background:#fff;border:1px solid var(--line);border-radius:14px;padding:13px}.ox-num{width:34px;height:34px;display:grid;place-items:center;border-radius:10px;background:#eef4e8;color:#557543;font-weight:900}.ox-feedback{grid-column:2/5}.poetry{border-top:6px solid #da7b93}.novel{border-top:6px solid #aa7b4e}.drama{border-top:6px solid #6f5bb4}.theater{border-top:6px solid var(--green)}.music{border-top:6px solid var(--blue)}.last-message{background:linear-gradient(135deg,#f1f6e9,#fff)}.student-box{display:grid;grid-template-columns:1fr 1fr;gap:12px}input[type=text]{width:100%;padding:12px;border:1px solid var(--line);border-radius:11px}.action-bar{display:flex;gap:10px;flex-wrap:wrap;margin-top:15px}.secondary{background:var(--navy)}.danger{background:var(--red)}.score-box{display:none;margin-top:16px;padding:18px;border-radius:16px;background:var(--mint);font-weight:900}
+@media(max-width:700px){.grid,.hero-grid,.student-box,.concept-flow{grid-template-columns:1fr}.nav{display:none}.hero-card{padding:28px 20px}.hero-card:after{display:none}}@media print{.topbar,.copy-btn,.action-bar{display:none!important}.card,.code-card,.story-block,.ending-card{box-shadow:none;break-inside:avoid}}
+</style>
+</head>
+<body>
+<header class="topbar"><div class="topbar-inner"><div class="brand">MySQL 28차시 · 백업·복원과 보안</div>
+<nav class="nav"><a href="#standard">성취기준</a><a href="#story">시작 이야기</a><a href="#codes">코드 10개</a><a href="#quiz">OX</a><a href="#ending">마무리</a><a href="#submit">제출</a></nav>
+<button class="btn" onclick="window.print()">인쇄</button></div></header>
+
+<div class="hero"><div class="hero-card"><span class="badge">목표지향 · 개념기반 · 데이터를 지키고 안전하게 다시 시작하기</span>
+<h1>MySQL 28차시<br>백업·복원과 데이터베이스 보안</h1>
+<p>mysqldump를 활용해 데이터베이스를 백업하고 복원 결과를 검증하며, SQL 삽입 공격의 원리를 이해하고 준비된 문장과 트랜잭션으로 안전한 질의를 구현합니다.</p>
+<div class="hero-grid"><div class="hero-stat"><strong>핵심 질문</strong>데이터를 잃지 않고 외부 입력으로부터 보호하려면?</div>
+<div class="hero-stat"><strong>전이 목표</strong>복구 가능한 백업과 안전한 입력 처리 설계</div><div class="hero-stat"><strong>실습</strong>백업·보안 코드 10개</div>
+<div class="hero-stat"><strong>평가</strong>복수정답 10 + OX 10</div></div></div></div>
+
+<main>
+<section id="standard"><h2 class="section-title">1. 성취기준과 학습 목표</h2>
+<div class="grid"><div class="card"><h3>성취기준</h3>
+<p>데이터베이스 백업과 복원의 필요성을 이해하고 mysqldump와 mysql 명령을 사용하여 전체·부분·구조·데이터 백업과 복원을 수행할 수 있다.</p>
+<p>SQL 삽입 공격의 원인을 설명하고 준비된 문장, 입력값 분리, 예외 처리와 트랜잭션을 활용하여 안전한 데이터베이스 프로그램을 작성할 수 있다.</p></div>
+<div class="card"><h3>학습 목표</h3><ol><li>백업과 복원의 목적 및 차이를 설명한다.</li>
+<li>전체·부분·구조·데이터 백업을 구분하여 수행한다.</li><li>복원 후 테이블과 행 수를 점검한다.</li>
+<li>문자열 결합의 위험을 설명하고 준비된 문장으로 안전한 질의를 작성한다.</li></ol></div></div></section>
+
+<section><h2 class="section-title">2. 학습할 개념</h2><div class="card">
+<div class="tags"><span class="tag">Backup</span><span class="tag">Restore</span><span class="tag">mysqldump</span>
+<span class="tag">--no-data</span><span class="tag">--no-create-info</span><span class="tag">리디렉션</span>
+<span class="tag">복원 검증</span><span class="tag">SQL Injection</span><span class="tag">Prepared Statement</span>
+<span class="tag">Parameter Binding</span><span class="tag">COMMIT</span><span class="tag">ROLLBACK</span></div>
+<div class="concept-flow"><div>보호 대상과 범위 결정</div><div>백업 파일 생성</div><div>복원·무결성 검증</div><div>안전한 입력 처리</div></div>
+<p><strong>일반화:</strong> 신뢰할 수 있는 데이터 운영은 백업 파일을 만드는 데서 끝나지 않고 실제 복원 가능성을 검증하며, 외부 입력을 SQL 구조와 분리하여 오류와 공격으로부터 데이터를 보호하는 과정까지 포함한다.</p>
+<p><strong>핵심 질문:</strong> 무엇을 얼마나 자주 백업해야 하는가, 백업이 실제로 복원되는지 어떻게 확인할 것인가, 사용자 입력이 SQL 명령으로 해석되지 않게 하려면 어떻게 해야 하는가?</p></div></section>
+
+<section id="story"><h2 class="section-title">3. 수업 시작 이야기</h2><div class="story-wrap">
+<div class="story-block humanities"><h3>📚 인문학자의 이야기 — 기록을 보존하는 일은 미래와의 약속이다</h3><p>도서관과 기록 보관소는 오래된 문서를 단순히 쌓아 두지 않습니다. 원본이 훼손될 상황을 대비해 사본을 만들고, 분류하고, 다시 읽을 수 있는지 확인합니다.</p><p>데이터베이스 백업도 같은 철학을 가집니다. 오늘의 데이터를 내일의 누군가가 다시 사용할 수 있도록 책임 있게 보존하는 일입니다.</p></div>
+<div class="story-block philosophy"><h3>🏛 철학자의 이야기 — 안전은 두려움이 아니라 준비에서 시작된다</h3><p>철학은 피할 수 없는 불확실성을 인정하면서도 우리가 무엇을 준비할 수 있는지 묻습니다. 실수와 장애를 완전히 없앨 수는 없지만 피해를 줄이는 선택은 할 수 있습니다.</p><p>백업은 실패를 예상하는 비관이 아니라 다시 일어설 수 있도록 준비하는 낙관입니다.</p></div>
+<div class="story-block science"><h3>🔬 과학자의 이야기 — 실험 데이터는 재현 가능해야 한다</h3><p>중요한 실험 결과는 한 장치나 한 파일에만 저장하지 않습니다. 원자료와 분석 자료를 구분하고 복사본을 보관하며 실제로 다시 열리는지 점검합니다.</p><p>복원 시험이 없는 백업은 결과를 확인하지 않은 실험과 같습니다. 파일의 존재보다 재현 가능성이 중요합니다.</p></div>
+<div class="story-block math"><h3>➗ 수학자의 이야기 — 신뢰는 한 번의 계산이 아니라 검산에서 완성된다</h3><p>수학자는 답을 얻은 뒤 다른 방법으로 검산합니다. 백업도 파일을 만드는 것으로 끝나지 않고 테이블 수, 행 수, 주요 값이 올바른지 확인해야 합니다.</p><p>보안에서도 문자열 결합과 준비된 문장의 차이를 논리적으로 구분해야 안전한 시스템을 설계할 수 있습니다.</p></div>
+<div class="teacher-message"><strong>교사의 시작 이야기</strong><p>컴퓨터를 오래 사용한 사람에게는 공통된 경험이 있습니다. 저장하지 않은 문서가 사라진 순간, 세상이 잠깐 멈춘 듯한 느낌입니다. 데이터베이스에서는 그 순간의 규모가 한 사람의 과제보다 훨씬 클 수 있습니다. 오늘은 데이터를 잃지 않는 법뿐 아니라, 외부 입력이 데이터베이스의 명령이 되지 않게 막는 법을 함께 배웁니다. 백업은 과거를 지키고, 보안은 미래의 사고를 막는 기술입니다.</p></div>
+</div></section>
+<section id="codes"><h2 class="section-title">4. 학습할 코드 10개와 상세 설명</h2><div class="code-list">
+<article class="code-card">
+<div class="code-head"><span class="num">01</span><div><h3>전체 데이터베이스 백업</h3><p>MySQL 명령 프롬프트가 아니라 Windows CMD·PowerShell·터미널에서 실행합니다. school_db의 구조와 데이터를 SQL 파일로 저장합니다.</p></div></div>
+<pre><code>mysqldump -u root -p school_db &gt; school_db_backup.sql</code><button class="copy-btn" onclick="copyCode(this)">복사</button></pre>
+<div class="mini-quiz"><h4>코드 1에 대한 설명으로 옳은 것을 모두 고르세요.</h4>
+<p class="hint">옳은 설명 3개를 빠짐없이 선택하세요.</p><label class="choice"><input type="checkbox" value="0"><span>1. 운영체제 터미널에서 실행한다.</span></label><label class="choice"><input type="checkbox" value="1"><span>2. school_db를 SQL 파일로 백업한다.</span></label><label class="choice"><input type="checkbox" value="2"><span>3. 구조와 데이터가 기본적으로 포함된다.</span></label><label class="choice"><input type="checkbox" value="3"><span>4. MySQL SELECT문으로만 실행한다.</span></label><label class="choice"><input type="checkbox" value="4"><span>5. school_db를 즉시 삭제한다.</span></label><div class="feedback"></div></div>
+</article>
+<article class="code-card">
+<div class="code-head"><span class="num">02</span><div><h3>특정 테이블만 백업</h3><p>school_db 전체가 아니라 students와 scores 테이블만 선택하여 백업합니다. 필요한 범위만 보관할 때 유용합니다.</p></div></div>
+<pre><code>mysqldump -u root -p school_db students scores &gt; student_score_backup.sql</code><button class="copy-btn" onclick="copyCode(this)">복사</button></pre>
+<div class="mini-quiz"><h4>코드 2에 대한 설명으로 옳은 것을 모두 고르세요.</h4>
+<p class="hint">옳은 설명 3개를 빠짐없이 선택하세요.</p><label class="choice"><input type="checkbox" value="0"><span>1. 두 개의 테이블만 선택해 백업한다.</span></label><label class="choice"><input type="checkbox" value="1"><span>2. 백업 범위를 줄일 수 있다.</span></label><label class="choice"><input type="checkbox" value="2"><span>3. students와 scores가 대상이다.</span></label><label class="choice"><input type="checkbox" value="3"><span>4. 모든 데이터베이스를 백업한다.</span></label><label class="choice"><input type="checkbox" value="4"><span>5. 원본 테이블을 삭제한다.</span></label><div class="feedback"></div></div>
+</article>
+<article class="code-card">
+<div class="code-head"><span class="num">03</span><div><h3>구조만 백업</h3><p>--no-data 옵션은 행 데이터 없이 CREATE TABLE 등 구조 정보만 저장합니다. 동일한 구조의 빈 데이터베이스를 만들 때 활용할 수 있습니다.</p></div></div>
+<pre><code>mysqldump -u root -p --no-data school_db &gt; school_db_schema.sql</code><button class="copy-btn" onclick="copyCode(this)">복사</button></pre>
+<div class="mini-quiz"><h4>코드 3에 대한 설명으로 옳은 것을 모두 고르세요.</h4>
+<p class="hint">옳은 설명 3개를 빠짐없이 선택하세요.</p><label class="choice"><input type="checkbox" value="0"><span>1. --no-data를 사용한다.</span></label><label class="choice"><input type="checkbox" value="1"><span>2. 테이블 구조 중심으로 저장한다.</span></label><label class="choice"><input type="checkbox" value="2"><span>3. 행 데이터는 포함하지 않는다.</span></label><label class="choice"><input type="checkbox" value="3"><span>4. INSERT 데이터만 저장한다.</span></label><label class="choice"><input type="checkbox" value="4"><span>5. 백업 파일을 자동 복원한다.</span></label><div class="feedback"></div></div>
+</article>
+<article class="code-card">
+<div class="code-head"><span class="num">04</span><div><h3>데이터만 백업</h3><p>--no-create-info 옵션은 테이블 생성문을 제외하고 INSERT 중심의 데이터만 백업합니다.</p></div></div>
+<pre><code>mysqldump -u root -p --no-create-info school_db &gt; school_db_data.sql</code><button class="copy-btn" onclick="copyCode(this)">복사</button></pre>
+<div class="mini-quiz"><h4>코드 4에 대한 설명으로 옳은 것을 모두 고르세요.</h4>
+<p class="hint">옳은 설명 3개를 빠짐없이 선택하세요.</p><label class="choice"><input type="checkbox" value="0"><span>1. --no-create-info를 사용한다.</span></label><label class="choice"><input type="checkbox" value="1"><span>2. 데이터 중심으로 백업한다.</span></label><label class="choice"><input type="checkbox" value="2"><span>3. 테이블 생성문을 제외한다.</span></label><label class="choice"><input type="checkbox" value="3"><span>4. 구조만 저장한다.</span></label><label class="choice"><input type="checkbox" value="4"><span>5. 원본 데이터를 삭제한다.</span></label><div class="feedback"></div></div>
+</article>
+<article class="code-card">
+<div class="code-head"><span class="num">05</span><div><h3>백업 파일로 복원</h3><p>미리 생성한 school_db_restore 데이터베이스에 백업 SQL 파일의 내용을 입력하여 복원합니다. 이 명령도 운영체제 터미널에서 실행합니다.</p></div></div>
+<pre><code>mysql -u root -p school_db_restore &lt; school_db_backup.sql</code><button class="copy-btn" onclick="copyCode(this)">복사</button></pre>
+<div class="mini-quiz"><h4>코드 5에 대한 설명으로 옳은 것을 모두 고르세요.</h4>
+<p class="hint">옳은 설명 3개를 빠짐없이 선택하세요.</p><label class="choice"><input type="checkbox" value="0"><span>1. 백업 파일 내용을 데이터베이스에 입력한다.</span></label><label class="choice"><input type="checkbox" value="1"><span>2. 운영체제 터미널에서 실행한다.</span></label><label class="choice"><input type="checkbox" value="2"><span>3. school_db_restore가 복원 대상이다.</span></label><label class="choice"><input type="checkbox" value="3"><span>4. 백업 파일을 삭제하는 명령이다.</span></label><label class="choice"><input type="checkbox" value="4"><span>5. 출력 리디렉션 기호 &gt;를 사용한다.</span></label><div class="feedback"></div></div>
+</article>
+<article class="code-card">
+<div class="code-head"><span class="num">06</span><div><h3>데이터베이스 생성 후 복원</h3><p>복원 대상 데이터베이스가 없다면 먼저 생성합니다. 한글과 다양한 문자를 안정적으로 저장하기 위해 utf8mb4 문자 집합을 지정합니다.</p></div></div>
+<pre><code>CREATE DATABASE school_db_restore
+CHARACTER SET utf8mb4
+COLLATE utf8mb4_0900_ai_ci;</code><button class="copy-btn" onclick="copyCode(this)">복사</button></pre>
+<div class="mini-quiz"><h4>코드 6에 대한 설명으로 옳은 것을 모두 고르세요.</h4>
+<p class="hint">옳은 설명 3개를 빠짐없이 선택하세요.</p><label class="choice"><input type="checkbox" value="0"><span>1. 복원 대상 데이터베이스를 생성한다.</span></label><label class="choice"><input type="checkbox" value="1"><span>2. utf8mb4 문자 집합을 사용한다.</span></label><label class="choice"><input type="checkbox" value="2"><span>3. 한글과 다양한 문자 저장에 적합하다.</span></label><label class="choice"><input type="checkbox" value="3"><span>4. 테이블 데이터도 자동으로 복원한다.</span></label><label class="choice"><input type="checkbox" value="4"><span>5. 데이터베이스를 삭제한다.</span></label><div class="feedback"></div></div>
+</article>
+<article class="code-card">
+<div class="code-head"><span class="num">07</span><div><h3>백업 결과 기본 점검</h3><p>복원 후 테이블 목록과 주요 테이블의 행 수를 확인합니다. 파일이 존재하는 것만으로는 백업 성공을 보장할 수 없으므로 실제 복원 점검이 필요합니다.</p></div></div>
+<pre><code>SHOW TABLES;
+
+SELECT COUNT(*) AS student_count
+FROM students;
+
+SELECT COUNT(*) AS score_count
+FROM scores;</code><button class="copy-btn" onclick="copyCode(this)">복사</button></pre>
+<div class="mini-quiz"><h4>코드 7에 대한 설명으로 옳은 것을 모두 고르세요.</h4>
+<p class="hint">옳은 설명 3개를 빠짐없이 선택하세요.</p><label class="choice"><input type="checkbox" value="0"><span>1. 테이블 목록을 확인한다.</span></label><label class="choice"><input type="checkbox" value="1"><span>2. 주요 테이블의 행 수를 확인한다.</span></label><label class="choice"><input type="checkbox" value="2"><span>3. 복원 결과 검증에 활용할 수 있다.</span></label><label class="choice"><input type="checkbox" value="3"><span>4. 백업 파일을 암호화한다.</span></label><label class="choice"><input type="checkbox" value="4"><span>5. 모든 행을 삭제한다.</span></label><div class="feedback"></div></div>
+</article>
+<article class="code-card">
+<div class="code-head"><span class="num">08</span><div><h3>취약한 문자열 결합 예시</h3><p>사용자 입력을 SQL 문자열에 직접 이어 붙이는 취약한 방식입니다. 입력값이 SQL 문법으로 해석될 수 있어 SQL 삽입 공격 위험이 있습니다.</p></div></div>
+<pre><code>student_id = input(&quot;학번: &quot;)
+
+query = (
+    &quot;SELECT * FROM students &quot;
+    &quot;WHERE student_id = &quot; + student_id
+)
+
+cursor.execute(query)</code><button class="copy-btn" onclick="copyCode(this)">복사</button></pre>
+<div class="mini-quiz"><h4>코드 8에 대한 설명으로 옳은 것을 모두 고르세요.</h4>
+<p class="hint">옳은 설명 3개를 빠짐없이 선택하세요.</p><label class="choice"><input type="checkbox" value="0"><span>1. 입력을 SQL 문자열에 직접 결합한다.</span></label><label class="choice"><input type="checkbox" value="1"><span>2. SQL 삽입 공격 위험이 있다.</span></label><label class="choice"><input type="checkbox" value="2"><span>3. 권장되지 않는 방식이다.</span></label><label class="choice"><input type="checkbox" value="3"><span>4. 입력값과 SQL 구조를 안전하게 분리한다.</span></label><label class="choice"><input type="checkbox" value="4"><span>5. 항상 공격을 완전히 차단한다.</span></label><div class="feedback"></div></div>
+</article>
+<article class="code-card">
+<div class="code-head"><span class="num">09</span><div><h3>준비된 문장으로 안전하게 조회</h3><p>SQL 구조와 입력값을 분리하여 전달합니다. mysql-connector-python에서는 %s 자리표시자와 튜플 형태의 매개변수를 사용합니다.</p></div></div>
+<pre><code>student_id = input(&quot;학번: &quot;)
+
+query = &#x27;&#x27;&#x27;
+SELECT student_id,
+       student_name,
+       grade
+FROM students
+WHERE student_id = %s
+&#x27;&#x27;&#x27;
+
+cursor.execute(query, (student_id,))
+result = cursor.fetchall()</code><button class="copy-btn" onclick="copyCode(this)">복사</button></pre>
+<div class="mini-quiz"><h4>코드 9에 대한 설명으로 옳은 것을 모두 고르세요.</h4>
+<p class="hint">옳은 설명 3개를 빠짐없이 선택하세요.</p><label class="choice"><input type="checkbox" value="0"><span>1. %s 자리표시자를 사용한다.</span></label><label class="choice"><input type="checkbox" value="1"><span>2. 입력값을 별도 매개변수로 전달한다.</span></label><label class="choice"><input type="checkbox" value="2"><span>3. SQL 삽입 위험을 줄이는 데 도움을 준다.</span></label><label class="choice"><input type="checkbox" value="3"><span>4. 문자열 결합으로 SQL을 만든다.</span></label><label class="choice"><input type="checkbox" value="4"><span>5. 튜플 없이 반드시 실행해야 한다.</span></label><div class="feedback"></div></div>
+</article>
+<article class="code-card">
+<div class="code-head"><span class="num">10</span><div><h3>트랜잭션과 예외 처리를 포함한 안전한 입력</h3><p>준비된 문장으로 값을 전달하고 성공하면 COMMIT, 오류가 발생하면 ROLLBACK합니다. 보안과 데이터 일관성을 함께 고려한 입력 예입니다.</p></div></div>
+<pre><code>try:
+    query = &#x27;&#x27;&#x27;
+    INSERT INTO students(
+        student_name,
+        grade
+    )
+    VALUES (%s, %s)
+    &#x27;&#x27;&#x27;
+    cursor.execute(query, (name, grade))
+    connection.commit()
+
+except Exception as error:
+    connection.rollback()
+    print(&quot;저장 실패:&quot;, error)</code><button class="copy-btn" onclick="copyCode(this)">복사</button></pre>
+<div class="mini-quiz"><h4>코드 10에 대한 설명으로 옳은 것을 모두 고르세요.</h4>
+<p class="hint">옳은 설명 3개를 빠짐없이 선택하세요.</p><label class="choice"><input type="checkbox" value="0"><span>1. 성공 시 COMMIT한다.</span></label><label class="choice"><input type="checkbox" value="1"><span>2. 오류 시 ROLLBACK한다.</span></label><label class="choice"><input type="checkbox" value="2"><span>3. 준비된 문장과 예외 처리를 함께 사용한다.</span></label><label class="choice"><input type="checkbox" value="3"><span>4. 오류가 나도 항상 COMMIT한다.</span></label><label class="choice"><input type="checkbox" value="4"><span>5. 입력값을 SQL 문자열에 직접 이어 붙인다.</span></label><div class="feedback"></div></div>
+</article></div></section>
+<section id="quiz"><h2 class="section-title">5. 형성평가 OX 퀴즈 10개</h2><div class="ox-list"><div class="ox-item" data-answer="O">
+<div class="ox-num">1</div><div>mysqldump는 데이터베이스 구조와 데이터를 SQL 파일로 백업하는 데 사용할 수 있다.</div>
+<label><input type="radio" name="ox1" value="O"> O</label>
+<label><input type="radio" name="ox1" value="X"> X</label>
+<div class="ox-feedback"></div></div><div class="ox-item" data-answer="O">
+<div class="ox-num">2</div><div>--no-data 옵션은 행 데이터 없이 구조만 백업하는 데 사용한다.</div>
+<label><input type="radio" name="ox2" value="O"> O</label>
+<label><input type="radio" name="ox2" value="X"> X</label>
+<div class="ox-feedback"></div></div><div class="ox-item" data-answer="O">
+<div class="ox-num">3</div><div>--no-create-info 옵션은 CREATE TABLE 문을 제외하고 데이터 중심으로 백업한다.</div>
+<label><input type="radio" name="ox3" value="O"> O</label>
+<label><input type="radio" name="ox3" value="X"> X</label>
+<div class="ox-feedback"></div></div><div class="ox-item" data-answer="X">
+<div class="ox-num">4</div><div>백업 파일이 생성되었다면 복원 시험 없이도 항상 완전한 백업이라고 확신할 수 있다.</div>
+<label><input type="radio" name="ox4" value="O"> O</label>
+<label><input type="radio" name="ox4" value="X"> X</label>
+<div class="ox-feedback"></div></div><div class="ox-item" data-answer="O">
+<div class="ox-num">5</div><div>복원 후 테이블 목록과 행 수를 확인하는 것은 백업 검증에 도움이 된다.</div>
+<label><input type="radio" name="ox5" value="O"> O</label>
+<label><input type="radio" name="ox5" value="X"> X</label>
+<div class="ox-feedback"></div></div><div class="ox-item" data-answer="O">
+<div class="ox-num">6</div><div>사용자 입력을 SQL 문자열에 직접 연결하면 SQL 삽입 공격 위험이 커질 수 있다.</div>
+<label><input type="radio" name="ox6" value="O"> O</label>
+<label><input type="radio" name="ox6" value="X"> X</label>
+<div class="ox-feedback"></div></div><div class="ox-item" data-answer="O">
+<div class="ox-num">7</div><div>준비된 문장은 SQL 구조와 입력값을 분리하여 처리한다.</div>
+<label><input type="radio" name="ox7" value="O"> O</label>
+<label><input type="radio" name="ox7" value="X"> X</label>
+<div class="ox-feedback"></div></div><div class="ox-item" data-answer="O">
+<div class="ox-num">8</div><div>준비된 문장을 사용하면 입력값을 SQL 명령으로 해석할 가능성을 줄일 수 있다.</div>
+<label><input type="radio" name="ox8" value="O"> O</label>
+<label><input type="radio" name="ox8" value="X"> X</label>
+<div class="ox-feedback"></div></div><div class="ox-item" data-answer="X">
+<div class="ox-num">9</div><div>데이터베이스 백업은 한 번만 만들어 두면 이후 데이터 변경과 관계없이 충분하다.</div>
+<label><input type="radio" name="ox9" value="O"> O</label>
+<label><input type="radio" name="ox9" value="X"> X</label>
+<div class="ox-feedback"></div></div><div class="ox-item" data-answer="O">
+<div class="ox-num">10</div><div>오류 발생 시 ROLLBACK을 수행하면 일부 작업만 반영되는 문제를 줄일 수 있다.</div>
+<label><input type="radio" name="ox10" value="O"> O</label>
+<label><input type="radio" name="ox10" value="X"> X</label>
+<div class="ox-feedback"></div></div></div></section>
+<section id="ending"><h2 class="section-title">6. 수업 끝 이야기</h2><div class="ending-grid">
+<div class="ending-card poetry"><h3>🌙 시인의 이야기 — 초고를 남기는 사람은 실패를 두려워하지 않는다</h3><p>시인은 고친 흔적이 가득한 초고를 버리지 않습니다. 이전 문장이 다음 문장을 살릴 수 있기 때문입니다. 백업도 데이터에게 “다시 시작할 기회가 있다”고 말해 줍니다. 단, 숙제 파일 이름을 ‘최종_진짜최종_완전최종’로 만드는 것은 백업 전략이 아니라 문학 장르에 가깝습니다.</p></div>
+<div class="ending-card novel"><h3>📖 소설가의 이야기 — 복선은 사고 전에 준비된다</h3><p>좋은 소설의 해결책은 마지막 장에 갑자기 나타나지 않습니다. 앞부분에 복선으로 준비되어 있습니다. 장애가 난 뒤 백업을 만들 수는 없습니다. 복구의 희망은 사고 이전의 준비에서 시작됩니다.</p></div>
+<div class="ending-card drama"><h3>🎭 희곡인의 이야기 — 무대에는 대역과 예비 장치가 있다</h3><p>중요한 공연은 조명 장치가 하나 고장 나도 계속될 수 있도록 준비합니다. 데이터베이스도 한 파일이나 한 저장장치에 모든 운명을 맡겨서는 안 됩니다.</p></div>
+<div class="ending-card theater"><h3>🎬 연극인의 이야기 — 관객이 모르는 준비가 공연을 지킨다</h3><p>관객은 비상 조명과 예비 음향 장치를 보지 못하지만, 그것들이 공연의 안전을 지킵니다. 좋은 보안과 백업도 평소에는 조용하지만 필요한 순간 가장 큰 역할을 합니다.</p></div>
+<div class="ending-card music"><h3>🎼 음악인의 이야기 — 쉼표는 연주를 멈추는 것이 아니라 이어 가게 한다</h3><p>음악의 쉼표는 끝이 아니라 다음 소리를 준비하는 시간입니다. 장애 후의 복원도 마찬가지입니다. 잠시 멈췄더라도 다시 이어 갈 수 있으면 실패는 결말이 아닙니다. 준비된 문장은 음악회 좌석도 준비하고 SQL 공격도 막습니다. 이름이 참 성실합니다.</p></div>
+<div class="last-message"><strong>오늘의 오래 남는 마지막 이야기</strong><p>우리는 실수하지 않는 사람이 될 수는 없지만, 실수 후에 다시 시작할 수 있는 사람은 될 수 있습니다. 중요한 것은 넘어지지 않는 능력이 아니라 넘어졌을 때 돌아갈 지점을 준비하는 능력입니다.</p><p><strong>여러분의 공부와 꿈에도 백업을 만들어 두십시오. 배운 내용을 기록하고, 도움을 청할 사람을 기억하고, 실패했을 때 다시 시작할 작은 계획을 남겨 두십시오. 그리고 다른 사람의 입력과 기대가 여러분의 삶 전체를 마음대로 실행하지 않도록 건강한 경계도 세우십시오. 준비된 사람의 꿈은 한 번의 오류로 삭제되지 않습니다.</strong></p></div>
+</div></section>
+
+<section id="submit"><h2 class="section-title">7. 학번·이름 입력 및 결과 저장</h2><div class="card">
+<div class="student-box"><label><strong>학번</strong><input type="text" id="studentId" placeholder="예: 1101"></label>
+<label><strong>이름</strong><input type="text" id="studentName" placeholder="예: 홍길동"></label></div>
+<div class="action-bar"><button class="btn" onclick="gradeAll()">전체 채점</button>
+<button class="btn secondary" onclick="downloadResult()">TXT 결과 저장</button>
+<button class="btn danger" onclick="resetAll()">다시 풀기</button></div>
+<div id="scoreBox" class="score-box"></div><p>저장 파일명: 학번_이름_점수_28차시_응시시각.txt</p></div></section>
+</main>
+
+<script>
+let lastResult=null;
+function copyCode(b){navigator.clipboard.writeText(b.parentElement.querySelector('code').innerText);b.textContent='복사됨';setTimeout(()=>b.textContent='복사',900)}
+function selected(q){return [...q.querySelectorAll('input[type=checkbox]:checked')].map(x=>+x.value).sort()}
+function gradeAll(){
+ const sid=studentId.value.trim(),name=studentName.value.trim();
+ if(!sid||!name){alert('학번과 이름을 입력하세요.');return}
+ let c=0,o=0,detail=[];
+ document.querySelectorAll('.mini-quiz').forEach((q,i)=>{
+   let s=selected(q),ok=JSON.stringify(s)==='[0,1,2]',f=q.querySelector('.feedback');
+   f.textContent=ok?'정답입니다.':'오답입니다. 정답: 1, 2, 3번';f.className='feedback '+(ok?'good':'bad');
+   if(ok)c++;detail.push(`코드 ${i+1}: ${ok?'정답':'오답'} / 응답 ${s.map(x=>x+1).join(', ')||'미응답'}`);
+ });
+ document.querySelectorAll('.ox-item').forEach((q,i)=>{
+   let x=q.querySelector('input:checked'),v=x?x.value:'',ok=v===q.dataset.answer,f=q.querySelector('.ox-feedback');
+   f.textContent=ok?'정답':'오답 · 정답: '+q.dataset.answer;f.className='ox-feedback '+(ok?'good':'bad');
+   if(ok)o++;detail.push(`OX ${i+1}: ${ok?'정답':'오답'} / 응답 ${v||'미응답'}`);
+ });
+ let total=(c+o)*5,time=new Date();lastResult={sid,name,c,o,total,detail,time};
+ scoreBox.style.display='block';scoreBox.innerHTML=`총점 ${total}점 / 100점<br>복수정답 ${c} / 10 · OX ${o} / 10`;
+ scoreBox.scrollIntoView({behavior:'smooth'});
+}
+function pad(n){return String(n).padStart(2,'0')}
+function stamp(t){return `${t.getFullYear()}${pad(t.getMonth()+1)}${pad(t.getDate())}_${pad(t.getHours())}${pad(t.getMinutes())}${pad(t.getSeconds())}`}
+function downloadResult(){
+ if(!lastResult){gradeAll();if(!lastResult)return}
+ let r=lastResult,text=['MySQL 28차시 형성평가 결과',`학번: ${r.sid}`,`이름: ${r.name}`,
+ `점수: ${r.total}점`,`복수정답: ${r.c}/10`,`OX: ${r.o}/10`,`응시시각: ${r.time.toLocaleString()}`,'',...r.detail].join('\n');
+ let blob=new Blob(['\ufeff'+text],{type:'text/plain;charset=utf-8'}),a=document.createElement('a');
+ a.href=URL.createObjectURL(blob);a.download=`${r.sid}_${r.name}_${r.total}점_28차시_${stamp(r.time)}.txt`;a.click();
+ setTimeout(()=>URL.revokeObjectURL(a.href),1000);
+}
+function resetAll(){
+ document.querySelectorAll('input').forEach(x=>{if(x.type!=='text')x.checked=false});
+ document.querySelectorAll('.feedback,.ox-feedback').forEach(x=>x.textContent='');
+ scoreBox.style.display='none';lastResult=null;
+}
+</script></body></html>

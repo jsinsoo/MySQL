@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>MySQL 13차시 목표지향 개념기반 수업지도안</title>
+<style>
+:root{--navy:#16344f;--blue:#2f70e8;--sky:#eaf3ff;--mint:#eafaf4;--green:#238d66;--red:#df654f;--purple:#7057ce;--text:#26384a;--muted:#69798a;--line:#dbe5ef;--bg:#f5f8fc;--shadow:0 12px 28px rgba(22,52,79,.10)}
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;font-family:"Pretendard","Noto Sans KR","Malgun Gothic",sans-serif;color:var(--text);background:linear-gradient(180deg,#fcfdff,var(--bg));line-height:1.72}.topbar{position:sticky;top:0;z-index:40;background:#fffffff2;border-bottom:1px solid var(--line);backdrop-filter:blur(10px)}.topbar-inner{max-width:1240px;margin:auto;padding:10px 18px;display:flex;align-items:center;justify-content:space-between;gap:10px}.brand{font-weight:900;color:var(--navy)}.nav{display:flex;gap:6px;flex-wrap:wrap}.nav a{text-decoration:none;color:var(--navy);font-weight:800;font-size:.82rem;padding:6px 9px;border:1px solid var(--line);border-radius:999px}.btn{border:0;border-radius:11px;background:var(--blue);color:#fff;padding:10px 15px;font-weight:900;cursor:pointer}.hero,main{max-width:1240px;margin:auto;padding:0 18px}.hero{margin-top:28px}.hero-card{position:relative;overflow:hidden;background:linear-gradient(135deg,#16344f,#25638f 55%,#2f70e8);color:#fff;border-radius:28px;padding:42px;box-shadow:var(--shadow)}.hero-card:after{content:"Σ";position:absolute;right:55px;top:-10px;font-size:170px;font-weight:900;color:#ffffff12}.badge{display:inline-block;padding:6px 12px;border-radius:999px;background:#ffffff24;border:1px solid #ffffff44;font-weight:900}h1{font-size:clamp(2rem,4vw,3.2rem);line-height:1.15;margin:13px 0}.hero p{max-width:900px;color:#eaf3ff}.hero-grid{position:relative;z-index:2;display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-top:22px}.hero-stat{padding:14px;border-radius:16px;background:#ffffff1c;border:1px solid #ffffff33}.hero-stat strong{display:block}main{padding-bottom:70px}section{margin-top:30px}.section-title{color:var(--navy)}.grid{display:grid;grid-template-columns:repeat(2,1fr);gap:14px}.card,.story-block,.teacher-message,.ending-card,.last-message{background:#fff;border:1px solid var(--line);border-radius:20px;padding:22px;box-shadow:var(--shadow)}.tags{display:flex;gap:8px;flex-wrap:wrap}.tag{padding:7px 11px;border-radius:999px;background:var(--sky);color:var(--blue);font-weight:900}.concept-flow{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-top:15px}.concept-flow div{text-align:center;padding:13px;border-radius:14px;background:var(--mint);color:var(--green);font-weight:900}.story-wrap,.ending-grid,.code-list,.ox-list{display:grid;gap:14px}.humanities{border-left:7px solid #b47b35}.philosophy{border-left:7px solid var(--purple)}.science{border-left:7px solid var(--green)}.math{border-left:7px solid var(--blue)}.teacher-message{background:linear-gradient(135deg,#eef5ff,#fff)}.code-card{background:#fff;border:1px solid var(--line);border-radius:22px;box-shadow:var(--shadow);overflow:hidden}.code-head{display:flex;gap:15px;padding:20px}.num{min-width:46px;height:46px;display:grid;place-items:center;border-radius:14px;background:var(--navy);color:#fff;font-weight:900}.code-head h3{margin:0;color:var(--navy)}.code-head p{margin:4px 0 0;color:var(--muted)}pre{position:relative;margin:0;padding:22px;background:#101827;color:#eef6ff;overflow:auto;font:15px/1.6 Consolas,monospace}.copy-btn{position:absolute;right:12px;top:12px;border:1px solid #44536b;background:#1d2a3d;color:#fff;border-radius:9px;padding:6px 10px}.mini-quiz{padding:20px;background:#fbfdff}.choice{display:flex;gap:9px;padding:8px}.hint{color:var(--red);font-weight:800}.good{color:var(--green)}.bad{color:var(--red)}.feedback,.ox-feedback{font-weight:900}.ox-item{display:grid;grid-template-columns:42px 1fr auto auto;gap:12px;align-items:center;background:#fff;border:1px solid var(--line);border-radius:14px;padding:13px}.ox-num{width:34px;height:34px;display:grid;place-items:center;border-radius:10px;background:var(--mint);color:var(--green);font-weight:900}.ox-feedback{grid-column:2/5}.poetry{border-top:6px solid #da7b93}.novel{border-top:6px solid #aa7b4e}.drama{border-top:6px solid var(--purple)}.theater{border-top:6px solid var(--green)}.music{border-top:6px solid var(--blue)}.last-message{background:linear-gradient(135deg,#fff7df,#fff)}.student-box{display:grid;grid-template-columns:1fr 1fr;gap:12px}input[type=text]{width:100%;padding:12px;border:1px solid var(--line);border-radius:11px}.action-bar{display:flex;gap:10px;flex-wrap:wrap;margin-top:15px}.secondary{background:var(--navy)}.danger{background:var(--red)}.score-box{display:none;margin-top:16px;padding:18px;border-radius:16px;background:var(--mint);font-weight:900}
+@media(max-width:700px){.grid,.hero-grid,.student-box,.concept-flow{grid-template-columns:1fr}.nav{display:none}.hero-card{padding:28px 20px}.hero-card:after{display:none}}@media print{.topbar,.copy-btn,.action-bar{display:none!important}.card,.code-card,.story-block,.ending-card{box-shadow:none;break-inside:avoid}}
+</style>
+</head>
+<body>
+<header class="topbar"><div class="topbar-inner"><div class="brand">MySQL 13차시 · 집계 함수</div>
+<nav class="nav"><a href="#standard">성취기준</a><a href="#story">시작 이야기</a><a href="#codes">코드 10개</a><a href="#quiz">OX</a><a href="#ending">마무리</a><a href="#submit">제출</a></nav>
+<button class="btn" onclick="window.print()">인쇄</button></div></header>
+
+<div class="hero"><div class="hero-card"><span class="badge">목표지향 · 개념기반 · 데이터 요약</span>
+<h1>MySQL 13차시<br>집계 함수</h1>
+<p>COUNT, SUM, AVG, MAX, MIN을 활용하여 많은 행을 의미 있는 통계값으로 요약하고 데이터의 전체 경향을 해석합니다.</p>
+<div class="hero-grid"><div class="hero-stat"><strong>핵심 질문</strong>많은 데이터를 어떤 숫자로 요약해야 할까?</div>
+<div class="hero-stat"><strong>전이 목표</strong>목적에 맞는 집계값 선택</div><div class="hero-stat"><strong>실습</strong>집계 함수 코드 10개</div>
+<div class="hero-stat"><strong>평가</strong>복수정답 10 + OX 10</div></div></div></div>
+
+<main>
+<section id="standard"><h2 class="section-title">1. 성취기준과 학습 목표</h2>
+<div class="grid"><div class="card"><h3>성취기준</h3>
+<p>COUNT, SUM, AVG, MAX, MIN의 의미와 차이를 이해하고 데이터의 개수·합계·평균·최댓값·최솟값을 계산할 수 있다.</p>
+<p>WHERE, DISTINCT, ROUND 등과 집계 함수를 결합하여 목적에 맞는 통계 결과를 산출하고 해석할 수 있다.</p></div>
+<div class="card"><h3>학습 목표</h3><ol><li>COUNT(*)와 COUNT(열)의 차이를 설명한다.</li>
+<li>SUM과 AVG로 합계와 평균을 계산한다.</li><li>MAX와 MIN으로 데이터의 경계를 찾는다.</li>
+<li>조건·중복 제거·반올림과 집계 함수를 결합한다.</li></ol></div></div></section>
+
+<section><h2 class="section-title">2. 학습할 개념</h2><div class="card">
+<div class="tags"><span class="tag">COUNT(*)</span><span class="tag">COUNT(열)</span><span class="tag">SUM</span>
+<span class="tag">AVG</span><span class="tag">MAX</span><span class="tag">MIN</span><span class="tag">NULL 제외</span>
+<span class="tag">DISTINCT</span><span class="tag">WHERE + 집계</span><span class="tag">통계 요약</span></div>
+<div class="concept-flow"><div>데이터 모으기</div><div>질문 정하기</div><div>집계값 계산</div><div>결과 해석</div></div>
+<p><strong>일반화:</strong> 집계 함수는 여러 행을 하나의 통계값으로 요약하여 데이터 집합의 규모, 중심, 경계를 이해하게 한다.</p>
+<p><strong>핵심 질문:</strong> 같은 데이터라도 COUNT, SUM, AVG, MAX, MIN 중 무엇을 선택하느냐에 따라 어떤 해석 차이가 생길까?</p></div></section>
+
+<section id="story"><h2 class="section-title">3. 수업 시작 이야기</h2><div class="story-wrap">
+<div class="story-block humanities"><h3>📚 인문학자의 이야기 — 한 사람의 기록과 한 시대의 통계</h3><p>인문학자는 한 사람의 일기에서 삶의 결을 읽고, 여러 사람의 기록을 모아 한 시대의 분위기를 해석합니다. 개별 이야기는 소중하지만, 여러 기록을 함께 볼 때 사회 전체의 흐름도 드러납니다.</p><p>집계 함수는 많은 행을 하나의 의미 있는 숫자로 요약합니다. COUNT는 규모를, SUM은 전체량을, AVG는 중심을, MAX와 MIN은 경계를 보여 줍니다.</p></div>
+<div class="story-block philosophy"><h3>🏛 철학자의 이야기 — 평균은 모두를 설명할 수 있는가</h3><p>철학자는 평균이 편리한 동시에 불완전한 수치라는 점을 묻습니다. 평균 점수가 같아도 학생들의 분포는 전혀 다를 수 있습니다.</p><p>집계값은 진실의 전부가 아니라 진실을 바라보는 하나의 창입니다. 따라서 수치를 계산하는 능력과 함께, 그 수치가 무엇을 감추고 있는지도 생각해야 합니다.</p></div>
+<div class="story-block science"><h3>🔬 과학자의 이야기 — 관측을 요약하면 경향이 보인다</h3><p>과학자는 반복 측정한 온도나 반응 속도를 평균으로 정리하고, 최댓값과 최솟값으로 범위를 확인합니다. 수많은 관측값을 요약해야 실험의 경향과 이상을 발견할 수 있습니다.</p><p>집계 함수는 데이터 실험실의 기본 도구입니다. 정확한 질문을 던지고 적절한 집계값을 선택해야 믿을 만한 결론을 얻을 수 있습니다.</p></div>
+<div class="story-block math"><h3>➗ 수학자의 이야기 — 합, 평균, 극값은 집합의 성질을 드러낸다</h3><p>수학에서는 여러 수의 합과 평균, 가장 큰 값과 작은 값을 통해 수들의 구조를 이해합니다. 같은 합계를 가진 두 집합도 평균과 범위는 다를 수 있습니다.</p><p>집계 함수는 데이터 집합을 수학적 관점으로 바라보게 합니다. 어떤 값을 계산할 것인지가 곧 어떤 성질을 알고 싶은지에 대한 답입니다.</p></div>
+<div class="teacher-message"><strong>교사의 시작 이야기</strong><p>오늘은 많은 데이터를 짧은 숫자로 요약합니다. 그러나 숫자를 줄인다고 사람의 이야기도 줄어드는 것은 아닙니다. 평균 뒤에 숨은 노력, 최댓값 뒤에 숨은 도전, 최솟값 뒤에 숨은 성장 가능성을 함께 바라보는 따뜻한 데이터 분석가가 되어 봅시다.</p></div>
+</div></section>
+<section id="codes"><h2 class="section-title">4. 학습할 코드 10개와 상세 설명</h2><div class="code-list">
+<article class="code-card">
+<div class="code-head"><span class="num">01</span><div><h3>COUNT(*)로 전체 행 개수 세기</h3><p>students 테이블에 저장된 전체 행의 개수를 계산합니다. COUNT(*)는 NULL 포함 여부와 관계없이 행 자체를 셉니다.</p></div></div>
+<pre><code>SELECT COUNT(*) AS student_count
+FROM students;</code><button class="copy-btn" onclick="copyCode(this)">복사</button></pre>
+<div class="mini-quiz"><h4>코드 1에 대한 설명으로 옳은 것을 모두 고르세요.</h4>
+<p class="hint">옳은 설명 3개를 빠짐없이 선택하세요.</p><label class="choice"><input type="checkbox" value="0"><span>1. COUNT(*)는 전체 행의 개수를 센다.</span></label><label class="choice"><input type="checkbox" value="1"><span>2. NULL이 포함된 행도 행 개수에는 포함된다.</span></label><label class="choice"><input type="checkbox" value="2"><span>3. 결과 열에 student_count 별칭을 붙인다.</span></label><label class="choice"><input type="checkbox" value="3"><span>4. students 테이블의 모든 값을 합산한다.</span></label><label class="choice"><input type="checkbox" value="4"><span>5. COUNT(*)는 가장 큰 값을 찾는다.</span></label><div class="feedback"></div></div>
+</article>
+<article class="code-card">
+<div class="code-head"><span class="num">02</span><div><h3>COUNT(열)로 NULL이 아닌 값 세기</h3><p>email 열에서 NULL이 아닌 값의 개수만 계산합니다. COUNT(열)은 NULL 값을 제외한다는 점이 중요합니다.</p></div></div>
+<pre><code>SELECT COUNT(email) AS email_count
+FROM students;</code><button class="copy-btn" onclick="copyCode(this)">복사</button></pre>
+<div class="mini-quiz"><h4>코드 2에 대한 설명으로 옳은 것을 모두 고르세요.</h4>
+<p class="hint">옳은 설명 3개를 빠짐없이 선택하세요.</p><label class="choice"><input type="checkbox" value="0"><span>1. COUNT(email)은 NULL이 아닌 email 값만 센다.</span></label><label class="choice"><input type="checkbox" value="1"><span>2. email이 없는 행은 개수에서 제외된다.</span></label><label class="choice"><input type="checkbox" value="2"><span>3. 결과 열 별칭은 email_count이다.</span></label><label class="choice"><input type="checkbox" value="3"><span>4. COUNT(email)은 모든 행을 무조건 센다.</span></label><label class="choice"><input type="checkbox" value="4"><span>5. email 문자열의 글자 수를 센다.</span></label><div class="feedback"></div></div>
+</article>
+<article class="code-card">
+<div class="code-head"><span class="num">03</span><div><h3>SUM으로 총점 구하기</h3><p>score 열의 모든 수치를 더해 총점을 계산합니다. 숫자형 자료의 전체 규모를 파악할 때 사용합니다.</p></div></div>
+<pre><code>SELECT SUM(score) AS total_score
+FROM scores;</code><button class="copy-btn" onclick="copyCode(this)">복사</button></pre>
+<div class="mini-quiz"><h4>코드 3에 대한 설명으로 옳은 것을 모두 고르세요.</h4>
+<p class="hint">옳은 설명 3개를 빠짐없이 선택하세요.</p><label class="choice"><input type="checkbox" value="0"><span>1. SUM은 score 값의 합계를 계산한다.</span></label><label class="choice"><input type="checkbox" value="1"><span>2. 숫자형 열의 전체 규모를 파악할 수 있다.</span></label><label class="choice"><input type="checkbox" value="2"><span>3. 결과 열 이름을 total_score로 표시한다.</span></label><label class="choice"><input type="checkbox" value="3"><span>4. SUM은 평균을 구한다.</span></label><label class="choice"><input type="checkbox" value="4"><span>5. 원본 score 값을 모두 변경한다.</span></label><div class="feedback"></div></div>
+</article>
+<article class="code-card">
+<div class="code-head"><span class="num">04</span><div><h3>AVG로 평균 구하기</h3><p>score 열의 평균값을 계산합니다. AVG는 NULL 값을 제외하고 평균을 구합니다.</p></div></div>
+<pre><code>SELECT AVG(score) AS average_score
+FROM scores;</code><button class="copy-btn" onclick="copyCode(this)">복사</button></pre>
+<div class="mini-quiz"><h4>코드 4에 대한 설명으로 옳은 것을 모두 고르세요.</h4>
+<p class="hint">옳은 설명 3개를 빠짐없이 선택하세요.</p><label class="choice"><input type="checkbox" value="0"><span>1. AVG는 score의 평균값을 계산한다.</span></label><label class="choice"><input type="checkbox" value="1"><span>2. NULL 값은 평균 계산에서 제외된다.</span></label><label class="choice"><input type="checkbox" value="2"><span>3. 결과 열에 average_score 별칭을 사용한다.</span></label><label class="choice"><input type="checkbox" value="3"><span>4. AVG는 최댓값만 반환한다.</span></label><label class="choice"><input type="checkbox" value="4"><span>5. 모든 score를 같은 값으로 수정한다.</span></label><div class="feedback"></div></div>
+</article>
+<article class="code-card">
+<div class="code-head"><span class="num">05</span><div><h3>MAX로 최댓값 구하기</h3><p>score 열에서 가장 큰 값을 반환합니다. 성적, 가격, 온도 등에서 최고값을 찾을 때 활용합니다.</p></div></div>
+<pre><code>SELECT MAX(score) AS highest_score
+FROM scores;</code><button class="copy-btn" onclick="copyCode(this)">복사</button></pre>
+<div class="mini-quiz"><h4>코드 5에 대한 설명으로 옳은 것을 모두 고르세요.</h4>
+<p class="hint">옳은 설명 3개를 빠짐없이 선택하세요.</p><label class="choice"><input type="checkbox" value="0"><span>1. MAX는 가장 큰 score 값을 반환한다.</span></label><label class="choice"><input type="checkbox" value="1"><span>2. 최고 성적을 찾는 데 활용할 수 있다.</span></label><label class="choice"><input type="checkbox" value="2"><span>3. 결과 열 별칭은 highest_score이다.</span></label><label class="choice"><input type="checkbox" value="3"><span>4. MAX는 가장 작은 값을 반환한다.</span></label><label class="choice"><input type="checkbox" value="4"><span>5. 행 개수를 센다.</span></label><div class="feedback"></div></div>
+</article>
+<article class="code-card">
+<div class="code-head"><span class="num">06</span><div><h3>MIN으로 최솟값 구하기</h3><p>score 열에서 가장 작은 값을 반환합니다. 최저 성적이나 최소 비용 등을 찾을 수 있습니다.</p></div></div>
+<pre><code>SELECT MIN(score) AS lowest_score
+FROM scores;</code><button class="copy-btn" onclick="copyCode(this)">복사</button></pre>
+<div class="mini-quiz"><h4>코드 6에 대한 설명으로 옳은 것을 모두 고르세요.</h4>
+<p class="hint">옳은 설명 3개를 빠짐없이 선택하세요.</p><label class="choice"><input type="checkbox" value="0"><span>1. MIN은 가장 작은 score 값을 반환한다.</span></label><label class="choice"><input type="checkbox" value="1"><span>2. 최저 성적을 찾는 데 활용할 수 있다.</span></label><label class="choice"><input type="checkbox" value="2"><span>3. 결과 열 별칭은 lowest_score이다.</span></label><label class="choice"><input type="checkbox" value="3"><span>4. MIN은 합계를 계산한다.</span></label><label class="choice"><input type="checkbox" value="4"><span>5. NULL의 개수를 반환한다.</span></label><div class="feedback"></div></div>
+</article>
+<article class="code-card">
+<div class="code-head"><span class="num">07</span><div><h3>여러 집계 함수 한 번에 사용</h3><p>하나의 SELECT문에서 개수, 합계, 평균, 최댓값, 최솟값을 동시에 계산하여 전체 통계를 요약합니다.</p></div></div>
+<pre><code>SELECT
+    COUNT(*) AS count_students,
+    SUM(score) AS total_score,
+    AVG(score) AS average_score,
+    MAX(score) AS highest_score,
+    MIN(score) AS lowest_score
+FROM scores;</code><button class="copy-btn" onclick="copyCode(this)">복사</button></pre>
+<div class="mini-quiz"><h4>코드 7에 대한 설명으로 옳은 것을 모두 고르세요.</h4>
+<p class="hint">옳은 설명 3개를 빠짐없이 선택하세요.</p><label class="choice"><input type="checkbox" value="0"><span>1. 여러 집계 함수를 한 SELECT문에서 사용할 수 있다.</span></label><label class="choice"><input type="checkbox" value="1"><span>2. 개수·합계·평균·최댓값·최솟값을 함께 계산한다.</span></label><label class="choice"><input type="checkbox" value="2"><span>3. 전체 자료를 하나의 통계 행으로 요약할 수 있다.</span></label><label class="choice"><input type="checkbox" value="3"><span>4. 각 학생별로 반드시 여러 행을 출력한다.</span></label><label class="choice"><input type="checkbox" value="4"><span>5. 집계 함수는 동시에 사용할 수 없다.</span></label><div class="feedback"></div></div>
+</article>
+<article class="code-card">
+<div class="code-head"><span class="num">08</span><div><h3>WHERE와 집계 함수 결합</h3><p>먼저 2학년 자료만 선택한 뒤 그 범위에서 평균을 계산합니다. WHERE는 집계 전에 대상 행을 제한합니다.</p></div></div>
+<pre><code>SELECT AVG(score) AS grade2_average
+FROM scores
+WHERE grade = 2;</code><button class="copy-btn" onclick="copyCode(this)">복사</button></pre>
+<div class="mini-quiz"><h4>코드 8에 대한 설명으로 옳은 것을 모두 고르세요.</h4>
+<p class="hint">옳은 설명 3개를 빠짐없이 선택하세요.</p><label class="choice"><input type="checkbox" value="0"><span>1. WHERE가 먼저 대상 행을 제한한다.</span></label><label class="choice"><input type="checkbox" value="1"><span>2. 2학년 자료의 평균을 계산한다.</span></label><label class="choice"><input type="checkbox" value="2"><span>3. 조건과 집계 함수를 함께 사용할 수 있다.</span></label><label class="choice"><input type="checkbox" value="3"><span>4. 전체 학년의 평균만 계산한다.</span></label><label class="choice"><input type="checkbox" value="4"><span>5. WHERE는 집계가 끝난 뒤 결과 행을 수정한다.</span></label><div class="feedback"></div></div>
+</article>
+<article class="code-card">
+<div class="code-head"><span class="num">09</span><div><h3>DISTINCT와 COUNT 결합</h3><p>중복된 과목명을 제거한 뒤 서로 다른 과목의 개수를 계산합니다.</p></div></div>
+<pre><code>SELECT COUNT(DISTINCT subject) AS subject_count
+FROM scores;</code><button class="copy-btn" onclick="copyCode(this)">복사</button></pre>
+<div class="mini-quiz"><h4>코드 9에 대한 설명으로 옳은 것을 모두 고르세요.</h4>
+<p class="hint">옳은 설명 3개를 빠짐없이 선택하세요.</p><label class="choice"><input type="checkbox" value="0"><span>1. DISTINCT는 중복 과목명을 제거한다.</span></label><label class="choice"><input type="checkbox" value="1"><span>2. 서로 다른 과목의 개수를 계산한다.</span></label><label class="choice"><input type="checkbox" value="2"><span>3. COUNT와 DISTINCT를 함께 사용할 수 있다.</span></label><label class="choice"><input type="checkbox" value="3"><span>4. 과목 점수의 합계를 계산한다.</span></label><label class="choice"><input type="checkbox" value="4"><span>5. 중복 과목만 남긴다.</span></label><div class="feedback"></div></div>
+</article>
+<article class="code-card">
+<div class="code-head"><span class="num">10</span><div><h3>ROUND와 집계 함수 결합</h3><p>평균은 소수점 첫째 자리까지 반올림하고, 최댓값에서 최솟값을 빼 점수 범위를 계산합니다.</p></div></div>
+<pre><code>SELECT
+    ROUND(AVG(score), 1) AS rounded_average,
+    MAX(score) - MIN(score) AS score_range
+FROM scores;</code><button class="copy-btn" onclick="copyCode(this)">복사</button></pre>
+<div class="mini-quiz"><h4>코드 10에 대한 설명으로 옳은 것을 모두 고르세요.</h4>
+<p class="hint">옳은 설명 3개를 빠짐없이 선택하세요.</p><label class="choice"><input type="checkbox" value="0"><span>1. AVG 결과를 ROUND로 반올림한다.</span></label><label class="choice"><input type="checkbox" value="1"><span>2. MAX(score)-MIN(score)로 범위를 계산한다.</span></label><label class="choice"><input type="checkbox" value="2"><span>3. 집계 함수와 숫자 함수를 결합할 수 있다.</span></label><label class="choice"><input type="checkbox" value="3"><span>4. 점수 범위는 행 개수와 같다.</span></label><label class="choice"><input type="checkbox" value="4"><span>5. 원본 점수를 소수점 한 자리로 저장한다.</span></label><div class="feedback"></div></div>
+</article></div></section>
+<section id="quiz"><h2 class="section-title">5. 형성평가 OX 퀴즈 10개</h2><div class="ox-list"><div class="ox-item" data-answer="O">
+<div class="ox-num">1</div><div>COUNT(*)는 결과 행의 개수를 계산할 때 사용한다.</div>
+<label><input type="radio" name="ox1" value="O"> O</label>
+<label><input type="radio" name="ox1" value="X"> X</label>
+<div class="ox-feedback"></div></div><div class="ox-item" data-answer="X">
+<div class="ox-num">2</div><div>COUNT(열)은 NULL 값도 항상 포함한다.</div>
+<label><input type="radio" name="ox2" value="O"> O</label>
+<label><input type="radio" name="ox2" value="X"> X</label>
+<div class="ox-feedback"></div></div><div class="ox-item" data-answer="O">
+<div class="ox-num">3</div><div>SUM은 숫자 열의 합계를 계산한다.</div>
+<label><input type="radio" name="ox3" value="O"> O</label>
+<label><input type="radio" name="ox3" value="X"> X</label>
+<div class="ox-feedback"></div></div><div class="ox-item" data-answer="O">
+<div class="ox-num">4</div><div>AVG는 NULL 값을 제외하고 평균을 계산한다.</div>
+<label><input type="radio" name="ox4" value="O"> O</label>
+<label><input type="radio" name="ox4" value="X"> X</label>
+<div class="ox-feedback"></div></div><div class="ox-item" data-answer="X">
+<div class="ox-num">5</div><div>MAX는 가장 작은 값을 반환한다.</div>
+<label><input type="radio" name="ox5" value="O"> O</label>
+<label><input type="radio" name="ox5" value="X"> X</label>
+<div class="ox-feedback"></div></div><div class="ox-item" data-answer="O">
+<div class="ox-num">6</div><div>MIN은 가장 작은 값을 반환한다.</div>
+<label><input type="radio" name="ox6" value="O"> O</label>
+<label><input type="radio" name="ox6" value="X"> X</label>
+<div class="ox-feedback"></div></div><div class="ox-item" data-answer="O">
+<div class="ox-num">7</div><div>여러 집계 함수를 하나의 SELECT문에서 함께 사용할 수 있다.</div>
+<label><input type="radio" name="ox7" value="O"> O</label>
+<label><input type="radio" name="ox7" value="X"> X</label>
+<div class="ox-feedback"></div></div><div class="ox-item" data-answer="O">
+<div class="ox-num">8</div><div>WHERE는 집계 함수가 계산할 대상 행을 제한할 수 있다.</div>
+<label><input type="radio" name="ox8" value="O"> O</label>
+<label><input type="radio" name="ox8" value="X"> X</label>
+<div class="ox-feedback"></div></div><div class="ox-item" data-answer="O">
+<div class="ox-num">9</div><div>COUNT(DISTINCT 열)은 중복을 제거한 서로 다른 값의 개수를 센다.</div>
+<label><input type="radio" name="ox9" value="O"> O</label>
+<label><input type="radio" name="ox9" value="X"> X</label>
+<div class="ox-feedback"></div></div><div class="ox-item" data-answer="X">
+<div class="ox-num">10</div><div>집계 함수는 원본 테이블의 값을 자동으로 수정한다.</div>
+<label><input type="radio" name="ox10" value="O"> O</label>
+<label><input type="radio" name="ox10" value="X"> X</label>
+<div class="ox-feedback"></div></div></div></section>
+<section id="ending"><h2 class="section-title">6. 수업 끝 이야기</h2><div class="ending-grid">
+<div class="ending-card poetry"><h3>🌙 시인의 이야기 — 평균보다 오래 남는 한 줄</h3><p>시는 글자 수의 평균으로 감동을 계산하지 않습니다. 짧은 한 줄이 긴 하루를 위로하기도 합니다. 여러분의 가치도 AVG 하나로는 계산되지 않습니다.</p></div>
+<div class="ending-card novel"><h3>📖 소설가의 이야기 — COUNT가 세지 못하는 것</h3><p>소설가는 등장인물의 수를 셀 수 있지만, 각 인물이 남긴 여운까지 COUNT할 수는 없습니다. 친구 수보다 중요한 것은 한 사람에게 얼마나 진심이었는가일지도 모릅니다.</p></div>
+<div class="ending-card drama"><h3>🎭 희곡의 이야기 — MAX가 주인공은 아니다</h3><p>가장 긴 대사를 가진 배우가 반드시 주인공은 아닙니다. 때로는 짧은 한마디가 극의 방향을 바꿉니다. 데이터베이스도 MAX만 보고 결론을 내리면 조연들의 반란이 시작될 수 있습니다.</p></div>
+<div class="ending-card theater"><h3>🎬 연극인의 이야기 — MIN은 끝이 아니라 출발점</h3><p>연습 첫날의 가장 작은 목소리는 공연 날 가장 큰 박수가 될 수 있습니다. MIN은 부족함의 낙인이 아니라 성장의 시작 위치입니다.</p></div>
+<div class="ending-card music"><h3>🎼 음악인의 이야기 — SUM은 화음을 만든다</h3><p>한 음은 작아도 여러 음이 모이면 화음이 됩니다. SUM처럼 각자의 노력이 더해져 학급의 멋진 곡이 완성됩니다. 단, 숙제를 SUM한다고 자동으로 제출되지는 않습니다.</p></div>
+<div class="last-message"><strong>오늘의 오래 남는 마지막 이야기</strong><p>집계 함수는 많은 값을 하나의 숫자로 줄이지만, 여러분의 삶은 하나의 숫자로 줄어들 수 없습니다.</p><p><strong>COUNT는 시도한 횟수를 세고, SUM은 쌓아 온 노력을 더하며, AVG는 오늘의 위치를 보여 줍니다. MAX는 아직 닿지 못한 가능성을, MIN은 다시 시작할 자리를 알려 줍니다. 중요한 것은 현재의 결과가 아니라 다음 행을 계속 추가하는 용기입니다.</strong></p></div>
+</div></section>
+
+<section id="submit"><h2 class="section-title">7. 학번·이름 입력 및 결과 저장</h2><div class="card">
+<div class="student-box"><label><strong>학번</strong><input type="text" id="studentId" placeholder="예: 1101"></label>
+<label><strong>이름</strong><input type="text" id="studentName" placeholder="예: 홍길동"></label></div>
+<div class="action-bar"><button class="btn" onclick="gradeAll()">전체 채점</button>
+<button class="btn secondary" onclick="downloadResult()">TXT 결과 저장</button>
+<button class="btn danger" onclick="resetAll()">다시 풀기</button></div>
+<div id="scoreBox" class="score-box"></div><p>저장 파일명: 학번_이름_점수_13차시_응시시각.txt</p></div></section>
+</main>
+
+<script>
+let lastResult=null;
+function copyCode(b){navigator.clipboard.writeText(b.parentElement.querySelector('code').innerText);b.textContent='복사됨';setTimeout(()=>b.textContent='복사',900)}
+function selected(q){return [...q.querySelectorAll('input[type=checkbox]:checked')].map(x=>+x.value).sort()}
+function gradeAll(){
+ const sid=studentId.value.trim(),name=studentName.value.trim();
+ if(!sid||!name){alert('학번과 이름을 입력하세요.');return}
+ let c=0,o=0,detail=[];
+ document.querySelectorAll('.mini-quiz').forEach((q,i)=>{
+   let s=selected(q),ok=JSON.stringify(s)==='[0,1,2]',f=q.querySelector('.feedback');
+   f.textContent=ok?'정답입니다.':'오답입니다. 정답: 1, 2, 3번';f.className='feedback '+(ok?'good':'bad');
+   if(ok)c++;detail.push(`코드 ${i+1}: ${ok?'정답':'오답'} / 응답 ${s.map(x=>x+1).join(', ')||'미응답'}`);
+ });
+ document.querySelectorAll('.ox-item').forEach((q,i)=>{
+   let x=q.querySelector('input:checked'),v=x?x.value:'',ok=v===q.dataset.answer,f=q.querySelector('.ox-feedback');
+   f.textContent=ok?'정답':'오답 · 정답: '+q.dataset.answer;f.className='ox-feedback '+(ok?'good':'bad');
+   if(ok)o++;detail.push(`OX ${i+1}: ${ok?'정답':'오답'} / 응답 ${v||'미응답'}`);
+ });
+ let total=(c+o)*5,time=new Date();lastResult={sid,name,c,o,total,detail,time};
+ scoreBox.style.display='block';scoreBox.innerHTML=`총점 ${total}점 / 100점<br>복수정답 ${c} / 10 · OX ${o} / 10`;
+ scoreBox.scrollIntoView({behavior:'smooth'});
+}
+function pad(n){return String(n).padStart(2,'0')}
+function stamp(t){return `${t.getFullYear()}${pad(t.getMonth()+1)}${pad(t.getDate())}_${pad(t.getHours())}${pad(t.getMinutes())}${pad(t.getSeconds())}`}
+function downloadResult(){
+ if(!lastResult){gradeAll();if(!lastResult)return}
+ let r=lastResult,text=['MySQL 13차시 형성평가 결과',`학번: ${r.sid}`,`이름: ${r.name}`,
+ `점수: ${r.total}점`,`복수정답: ${r.c}/10`,`OX: ${r.o}/10`,`응시시각: ${r.time.toLocaleString()}`,'',...r.detail].join('\n');
+ let blob=new Blob(['\ufeff'+text],{type:'text/plain;charset=utf-8'}),a=document.createElement('a');
+ a.href=URL.createObjectURL(blob);a.download=`${r.sid}_${r.name}_${r.total}점_13차시_${stamp(r.time)}.txt`;a.click();
+ setTimeout(()=>URL.revokeObjectURL(a.href),1000);
+}
+function resetAll(){
+ document.querySelectorAll('input').forEach(x=>{if(x.type!=='text')x.checked=false});
+ document.querySelectorAll('.feedback,.ox-feedback').forEach(x=>x.textContent='');
+ scoreBox.style.display='none';lastResult=null;
+}
+</script></body></html>

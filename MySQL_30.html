@@ -1,0 +1,429 @@
+<!DOCTYPE html><html lang="ko"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>MySQL 30차시 목표지향 개념기반 수업지도안</title>
+<style>
+:root{--navy:#26344d;--blue:#346fa3;--teal:#358b83;--green:#2d8b68;--red:#d35a4c;--gold:#b58738;--purple:#7456aa;--text:#2d394c;--muted:#6e7889;--line:#dfe5ea;--bg:#f6f9fa;--shadow:0 12px 28px rgba(38,52,77,.10)}
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;font-family:"Pretendard","Noto Sans KR","Malgun Gothic",sans-serif;color:var(--text);background:linear-gradient(180deg,#fff,var(--bg));line-height:1.72}
+.topbar{position:sticky;top:0;z-index:30;background:#fffffff2;border-bottom:1px solid var(--line);backdrop-filter:blur(10px)}.topbar-inner{max-width:1240px;margin:auto;padding:10px 18px;display:flex;align-items:center;justify-content:space-between;gap:10px}.brand{font-weight:900;color:var(--navy)}.nav{display:flex;gap:6px;flex-wrap:wrap}.nav a{text-decoration:none;color:var(--navy);font-weight:800;font-size:.82rem;padding:6px 9px;border:1px solid var(--line);border-radius:999px}.btn{border:0;border-radius:10px;background:var(--blue);color:#fff;padding:10px 14px;font-weight:900;cursor:pointer}
+.hero,main{max-width:1240px;margin:auto;padding:0 18px}.hero{margin-top:28px}.hero-card{position:relative;overflow:hidden;padding:44px;border-radius:28px;color:white;background:linear-gradient(135deg,#26344d,#316e82 58%,#43a08e);box-shadow:var(--shadow)}.hero-card:after{content:"CREATE · READ · UPDATE · DELETE";position:absolute;right:10px;top:28px;font-size:34px;font-weight:900;color:#ffffff0d;transform:rotate(-5deg)}.badge{display:inline-block;padding:7px 12px;border-radius:999px;background:#ffffff22;border:1px solid #ffffff44;font-weight:900}h1{font-size:clamp(2rem,4vw,3.25rem);line-height:1.15;margin:13px 0}.hero-card>p{max-width:900px;color:#efffff}.stats{position:relative;z-index:2;display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-top:23px}.stat{padding:14px;border-radius:16px;background:#ffffff1a;border:1px solid #ffffff33}.stat strong{display:block}
+main{padding-bottom:70px}section{margin-top:30px}.section-title{color:var(--navy)}.grid{display:grid;grid-template-columns:repeat(2,1fr);gap:14px}.card,.story,.teacher,.ending,.last{background:#fff;border:1px solid var(--line);border-radius:20px;padding:22px;box-shadow:var(--shadow)}.concepts{display:flex;gap:8px;flex-wrap:wrap}.tag{padding:7px 11px;border-radius:999px;background:#eaf5f4;color:var(--teal);font-weight:900}.flow{display:grid;grid-template-columns:repeat(5,1fr);gap:9px;margin-top:16px}.flow div{padding:12px;text-align:center;border-radius:13px;background:#eaf5f4;color:var(--teal);font-weight:900}
+.story-list,.ending-list,.code-list,.ox-list{display:grid;gap:14px}.humanities{border-left:7px solid var(--gold)}.philosophy{border-left:7px solid var(--purple)}.science{border-left:7px solid var(--green)}.math{border-left:7px solid var(--blue)}.teacher,.last{background:linear-gradient(135deg,#eaf5f4,#fff)}
+.code-card{background:white;border:1px solid var(--line);border-radius:22px;overflow:hidden;box-shadow:var(--shadow)}.code-card header{display:flex;gap:15px;padding:20px}.number{min-width:46px;height:46px;border-radius:14px;background:var(--teal);color:white;display:grid;place-items:center;font-weight:900}.code-card h3,.code-card header p{margin:0}.code-card header p{color:var(--muted);margin-top:4px}pre{position:relative;margin:0;padding:22px;background:#20353c;color:#efffff;overflow:auto;font:15px/1.6 Consolas,monospace}pre button{position:absolute;right:12px;top:12px;border:1px solid #557077;background:#344b52;color:#fff;border-radius:8px;padding:6px 10px}.question{padding:20px;background:#fcfefe}.question>p{color:var(--red);font-weight:800}.choice{display:flex;gap:9px;padding:8px}.feedback,.ox-feedback{font-weight:900}.good{color:var(--green)}.bad{color:var(--red)}
+.ox-item{display:grid;grid-template-columns:40px 1fr auto auto;gap:12px;align-items:center;background:#fff;border:1px solid var(--line);border-radius:14px;padding:13px}.ox-number{width:34px;height:34px;border-radius:10px;background:#eaf5f4;color:var(--teal);display:grid;place-items:center;font-weight:900}.ox-feedback{grid-column:2/5}.ending{border-top:6px solid var(--teal)}.student{display:grid;grid-template-columns:1fr 1fr;gap:12px}.student input{width:100%;padding:12px;border:1px solid var(--line);border-radius:10px}.actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:15px}.dark{background:var(--navy)}.danger{background:var(--red)}#score{display:none;margin-top:15px;padding:17px;border-radius:14px;background:#edf8f2;font-weight:900}
+@media(max-width:760px){.grid,.stats,.student,.flow{grid-template-columns:1fr}.nav{display:none}.hero-card{padding:29px 20px}.hero-card:after{display:none}}
+@media print{.topbar,.actions,pre button{display:none!important}.card,.story,.ending,.code-card{box-shadow:none;break-inside:avoid}}
+</style>
+</head><body>
+<header class="topbar"><div class="topbar-inner"><div class="brand">MySQL 30차시 · 파이썬 CRUD 구현</div>
+<nav class="nav"><a href="#goal">목표</a><a href="#story">시작 이야기</a><a href="#codes">코드 10개</a><a href="#quiz">OX</a><a href="#ending">마무리</a><a href="#submit">제출</a></nav>
+<button class="btn" onclick="window.print()">인쇄</button></div></header>
+<div class="hero"><div class="hero-card"><span class="badge">목표지향 · 개념기반 · 데이터를 책임 있게 만들고 읽고 고치고 정리하기</span>
+<h1>MySQL 30차시<br>파이썬 CRUD 구현</h1>
+<p>Python과 MySQL을 연동하여 학생 정보를 입력·조회·수정·삭제하고 입력 검증, 트랜잭션, 메뉴 구조를 적용한 콘솔형 관리 프로그램을 완성합니다.</p>
+<div class="stats"><div class="stat"><strong>핵심 질문</strong>데이터의 생애주기를 안전하고 이해하기 쉬운 프로그램으로 어떻게 구현할까?</div>
+<div class="stat"><strong>전이 목표</strong>CRUD 기능의 구조화와 통합</div><div class="stat"><strong>실습</strong>파이썬 코드 10개</div><div class="stat"><strong>평가</strong>복수정답 10 + OX 10</div></div></div></div>
+<main>
+<section id="goal"><h2 class="section-title">1. 성취기준과 학습 목표</h2><div class="grid">
+<div class="card"><h3>성취기준</h3><p>Python과 MySQL의 연결 객체와 커서를 활용하여 데이터 입력, 전체·개별 조회, 수정, 삭제 기능을 함수로 구현할 수 있다.</p><p>Prepared Statement, 입력값 검증, commit(), rollback(), rowcount와 예외 처리를 적용하여 안전하고 신뢰할 수 있는 CRUD 프로그램을 구성할 수 있다.</p></div>
+<div class="card"><h3>학습 목표</h3><ol><li>MySQL 연결 기능을 함수로 작성한다.</li><li>CREATE·READ·UPDATE·DELETE 기능을 각각 구현한다.</li><li>입력값과 변경 결과를 검증한다.</li><li>CRUD 기능을 메뉴형 프로그램으로 통합한다.</li></ol></div></div></section>
+<section><h2 class="section-title">2. 학습할 개념</h2><div class="card"><div class="concepts">
+<span class="tag">CRUD</span><span class="tag">INSERT</span><span class="tag">SELECT</span><span class="tag">UPDATE</span><span class="tag">DELETE</span><span class="tag">Prepared Statement</span><span class="tag">fetchone()</span><span class="tag">fetchall()</span><span class="tag">commit()</span><span class="tag">rollback()</span><span class="tag">rowcount</span><span class="tag">입력 검증</span><span class="tag">메뉴 구조</span></div>
+<div class="flow"><div>입력 CREATE</div><div>조회 READ</div><div>수정 UPDATE</div><div>삭제 DELETE</div><div>검증·통합</div></div>
+<p><strong>일반화:</strong> 신뢰할 수 있는 CRUD 프로그램은 각 기능을 명확한 함수로 분리하고, 사용자 입력을 검증하며, SQL 매개변수와 트랜잭션을 통해 데이터의 정확성과 안전성을 지킨다.</p>
+<p><strong>핵심 질문:</strong> 기능을 왜 함수로 분리해야 하는가, 어떤 조회 결과에 fetchone()과 fetchall()을 사용해야 하는가, 수정·삭제 대상이 없음을 어떻게 확인하며, 오류가 발생했을 때 데이터 일관성을 어떻게 유지할 것인가?</p></div></section>
+<section id="story"><h2 class="section-title">3. 수업 시작 이야기</h2><div class="story-list">
+<div class="story humanities"><h3>📚 인문학자의 이야기 — 기록은 쌓는 것보다 돌보는 일이 더 중요하다</h3><p>도서관은 책을 받아 적재하는 곳에 머물지 않습니다. 새 책을 등록하고, 필요한 책을 찾고, 잘못된 정보를 수정하며, 폐기할 자료를 구분합니다. 데이터 관리도 같은 흐름을 가집니다.</p><p>CRUD는 프로그램의 네 가지 명령이 아니라 기록을 책임 있게 돌보는 기본 태도입니다.</p></div>
+<div class="story philosophy"><h3>🏛 철학자의 이야기 — 존재하게 하고, 이해하고, 변화시키고, 놓아주는 일</h3><p>우리는 무언가를 만들고, 바라보고, 고치고, 때로는 떠나보냅니다. CREATE, READ, UPDATE, DELETE도 디지털 세계에서 존재를 다루는 네 가지 기본 행동입니다.</p><p>중요한 것은 가능한 행동을 아는 것뿐 아니라 언제 어떤 행동을 해야 하는지 판단하는 것입니다.</p></div>
+<div class="story science"><h3>🔬 과학자의 이야기 — 실험 기록은 생성·관찰·수정·정리의 순환이다</h3><p>과학자는 실험 데이터를 만들고 관찰하며, 잘못 기록된 값을 수정하고, 의미 없는 중복 자료를 정리합니다. 그 과정에서 원본과 변경 이유를 신중하게 다룹니다.</p><p>오늘의 CRUD 실습은 데이터에 대한 정확성과 책임을 함께 배우는 작은 연구 과정입니다.</p></div>
+<div class="story math"><h3>➗ 수학자의 이야기 — 연산은 규칙이 있을 때 안전해진다</h3><p>수학의 연산은 대상과 조건이 명확해야 올바른 결과를 냅니다. 데이터 수정과 삭제도 어떤 행을 대상으로 할지 WHERE 조건을 분명히 해야 합니다.</p><p>조건 없는 DELETE가 두려운 이유는 수학에서 정의역을 확인하지 않고 계산하는 것과 비슷합니다.</p></div>
+<div class="teacher"><strong>교사의 시작 이야기</strong><p>오늘부터 데이터베이스는 화면 속 표가 아니라 여러분이 직접 움직이는 프로그램이 됩니다. 입력 버튼 하나는 새로운 기록을 만들고, 조회 기능은 필요한 사람을 찾으며, 수정은 실수를 바로잡고, 삭제는 더 이상 필요하지 않은 정보를 정리합니다. 그러나 힘이 커질수록 책임도 커집니다. 특히 UPDATE와 DELETE 앞에서는 한 번 더 조건을 읽는 습관을 들이십시오. 좋은 개발자는 빠르게 실행하는 사람이 아니라 데이터가 어떤 결과를 맞게 될지 생각하고 실행하는 사람입니다.</p></div>
+</div></section>
+<section id="codes"><h2 class="section-title">4. 학습할 코드 10개와 상세 설명</h2><div class="code-list"><article class="code-card">
+<header><span class="number">01</span><div><h3>MySQL 연결 함수</h3><p>MySQL 서버와 데이터베이스에 접속하는 기능을 함수로 분리합니다. 반복되는 연결 코드를 줄이고 여러 CRUD 함수에서 재사용할 수 있습니다.</p></div></header>
+<pre><code>import mysql.connector
+
+def get_connection():
+    return mysql.connector.connect(
+        host=&quot;localhost&quot;,
+        user=&quot;root&quot;,
+        password=&quot;비밀번호&quot;,
+        database=&quot;school_db&quot;
+    )
+
+conn = get_connection()
+
+if conn.is_connected():
+    print(&quot;MySQL 연결 성공&quot;)
+
+conn.close()</code><button onclick="copyCode(this)">복사</button></pre>
+<div class="question"><h4>코드 1에 대한 설명으로 옳은 것을 모두 고르세요.</h4>
+<p>옳은 설명 3개를 빠짐없이 선택하세요.</p><label class="choice"><input type="checkbox" value="0"><span>1. 연결 코드를 함수로 재사용한다.</span></label><label class="choice"><input type="checkbox" value="1"><span>2. school_db 데이터베이스에 접속한다.</span></label><label class="choice"><input type="checkbox" value="2"><span>3. 사용 후 연결을 닫는다.</span></label><label class="choice"><input type="checkbox" value="3"><span>4. 연결 함수는 테이블을 자동 삭제한다.</span></label><label class="choice"><input type="checkbox" value="4"><span>5. is_connected()는 데이터를 입력한다.</span></label><div class="feedback"></div></div></article><article class="code-card">
+<header><span class="number">02</span><div><h3>학생 정보 입력 CREATE</h3><p>INSERT INTO와 매개변수 바인딩을 사용하여 새 학생 정보를 안전하게 입력합니다. 데이터 변경 후 commit()으로 결과를 확정합니다.</p></div></header>
+<pre><code>def add_student(student_id, name, score):
+    conn = get_connection()
+    cur = conn.cursor()
+
+    sql = &#x27;&#x27;&#x27;
+    INSERT INTO students(
+        student_id,
+        name,
+        score
+    )
+    VALUES (%s, %s, %s)
+    &#x27;&#x27;&#x27;
+
+    cur.execute(
+        sql,
+        (student_id, name, score)
+    )
+
+    conn.commit()
+
+    print(cur.rowcount, &quot;건 입력 완료&quot;)
+
+    cur.close()
+    conn.close()</code><button onclick="copyCode(this)">복사</button></pre>
+<div class="question"><h4>코드 2에 대한 설명으로 옳은 것을 모두 고르세요.</h4>
+<p>옳은 설명 3개를 빠짐없이 선택하세요.</p><label class="choice"><input type="checkbox" value="0"><span>1. INSERT INTO로 새 행을 추가한다.</span></label><label class="choice"><input type="checkbox" value="1"><span>2. 매개변수 바인딩을 사용한다.</span></label><label class="choice"><input type="checkbox" value="2"><span>3. commit()으로 변경을 확정한다.</span></label><label class="choice"><input type="checkbox" value="3"><span>4. fetchall()로 데이터를 삭제한다.</span></label><label class="choice"><input type="checkbox" value="4"><span>5. rowcount는 비밀번호를 변경한다.</span></label><div class="feedback"></div></div></article><article class="code-card">
+<header><span class="number">03</span><div><h3>전체 학생 조회 READ</h3><p>SELECT와 fetchall()을 사용하여 모든 학생 정보를 조회합니다. dictionary=True를 사용하면 열 이름으로 값을 읽을 수 있습니다.</p></div></header>
+<pre><code>def show_all_students():
+    conn = get_connection()
+    cur = conn.cursor(dictionary=True)
+
+    cur.execute(&#x27;&#x27;&#x27;
+    SELECT student_id,
+           name,
+           score
+    FROM students
+    ORDER BY student_id
+    &#x27;&#x27;&#x27;)
+
+    rows = cur.fetchall()
+
+    for row in rows:
+        print(
+            row[&quot;student_id&quot;],
+            row[&quot;name&quot;],
+            row[&quot;score&quot;]
+        )
+
+    cur.close()
+    conn.close()</code><button onclick="copyCode(this)">복사</button></pre>
+<div class="question"><h4>코드 3에 대한 설명으로 옳은 것을 모두 고르세요.</h4>
+<p>옳은 설명 3개를 빠짐없이 선택하세요.</p><label class="choice"><input type="checkbox" value="0"><span>1. SELECT로 여러 행을 조회한다.</span></label><label class="choice"><input type="checkbox" value="1"><span>2. fetchall()을 사용한다.</span></label><label class="choice"><input type="checkbox" value="2"><span>3. 학번 순으로 정렬한다.</span></label><label class="choice"><input type="checkbox" value="3"><span>4. 모든 학생 점수를 수정한다.</span></label><label class="choice"><input type="checkbox" value="4"><span>5. dictionary=True는 테이블을 삭제한다.</span></label><div class="feedback"></div></div></article><article class="code-card">
+<header><span class="number">04</span><div><h3>학생 한 명 조회 READ</h3><p>WHERE 조건과 fetchone()으로 한 명의 학생을 조회합니다. 결과가 없을 때 None을 확인하여 사용자에게 안내합니다.</p></div></header>
+<pre><code>def find_student(student_id):
+    conn = get_connection()
+    cur = conn.cursor(dictionary=True)
+
+    cur.execute(
+        &#x27;&#x27;&#x27;
+        SELECT student_id,
+               name,
+               score
+        FROM students
+        WHERE student_id = %s
+        &#x27;&#x27;&#x27;,
+        (student_id,)
+    )
+
+    student = cur.fetchone()
+
+    if student is None:
+        print(&quot;학생을 찾을 수 없습니다.&quot;)
+    else:
+        print(student)
+
+    cur.close()
+    conn.close()</code><button onclick="copyCode(this)">복사</button></pre>
+<div class="question"><h4>코드 4에 대한 설명으로 옳은 것을 모두 고르세요.</h4>
+<p>옳은 설명 3개를 빠짐없이 선택하세요.</p><label class="choice"><input type="checkbox" value="0"><span>1. WHERE로 특정 학생을 찾는다.</span></label><label class="choice"><input type="checkbox" value="1"><span>2. fetchone()을 사용한다.</span></label><label class="choice"><input type="checkbox" value="2"><span>3. 결과가 없으면 None을 확인한다.</span></label><label class="choice"><input type="checkbox" value="3"><span>4. 모든 학생을 무조건 삭제한다.</span></label><label class="choice"><input type="checkbox" value="4"><span>5. WHERE는 데이터베이스를 생성한다.</span></label><div class="feedback"></div></div></article><article class="code-card">
+<header><span class="number">05</span><div><h3>학생 점수 수정 UPDATE</h3><p>UPDATE와 WHERE를 사용하여 특정 학생의 점수를 수정합니다. rowcount로 실제 변경 대상이 있었는지 확인합니다.</p></div></header>
+<pre><code>def update_score(student_id, new_score):
+    conn = get_connection()
+    cur = conn.cursor()
+
+    cur.execute(
+        &#x27;&#x27;&#x27;
+        UPDATE students
+        SET score = %s
+        WHERE student_id = %s
+        &#x27;&#x27;&#x27;,
+        (new_score, student_id)
+    )
+
+    conn.commit()
+
+    if cur.rowcount == 0:
+        print(&quot;수정할 학생이 없습니다.&quot;)
+    else:
+        print(&quot;점수 수정 완료&quot;)
+
+    cur.close()
+    conn.close()</code><button onclick="copyCode(this)">복사</button></pre>
+<div class="question"><h4>코드 5에 대한 설명으로 옳은 것을 모두 고르세요.</h4>
+<p>옳은 설명 3개를 빠짐없이 선택하세요.</p><label class="choice"><input type="checkbox" value="0"><span>1. 특정 학생의 점수를 수정한다.</span></label><label class="choice"><input type="checkbox" value="1"><span>2. WHERE 조건을 사용한다.</span></label><label class="choice"><input type="checkbox" value="2"><span>3. rowcount로 수정 여부를 확인한다.</span></label><label class="choice"><input type="checkbox" value="3"><span>4. WHERE 없이 전체 학생을 삭제한다.</span></label><label class="choice"><input type="checkbox" value="4"><span>5. UPDATE는 조회 전용 명령이다.</span></label><div class="feedback"></div></div></article><article class="code-card">
+<header><span class="number">06</span><div><h3>학생 정보 삭제 DELETE</h3><p>DELETE와 WHERE를 사용하여 특정 학생만 삭제합니다. WHERE가 빠지면 전체 행이 삭제될 수 있으므로 매우 주의해야 합니다.</p></div></header>
+<pre><code>def delete_student(student_id):
+    conn = get_connection()
+    cur = conn.cursor()
+
+    cur.execute(
+        &#x27;&#x27;&#x27;
+        DELETE FROM students
+        WHERE student_id = %s
+        &#x27;&#x27;&#x27;,
+        (student_id,)
+    )
+
+    conn.commit()
+
+    if cur.rowcount == 0:
+        print(&quot;삭제할 학생이 없습니다.&quot;)
+    else:
+        print(&quot;학생 정보 삭제 완료&quot;)
+
+    cur.close()
+    conn.close()</code><button onclick="copyCode(this)">복사</button></pre>
+<div class="question"><h4>코드 6에 대한 설명으로 옳은 것을 모두 고르세요.</h4>
+<p>옳은 설명 3개를 빠짐없이 선택하세요.</p><label class="choice"><input type="checkbox" value="0"><span>1. 특정 학생 행을 삭제한다.</span></label><label class="choice"><input type="checkbox" value="1"><span>2. WHERE 조건을 사용한다.</span></label><label class="choice"><input type="checkbox" value="2"><span>3. 삭제 대상 여부를 rowcount로 확인한다.</span></label><label class="choice"><input type="checkbox" value="3"><span>4. WHERE가 없어도 항상 안전하다.</span></label><label class="choice"><input type="checkbox" value="4"><span>5. DELETE는 새 행을 입력한다.</span></label><div class="feedback"></div></div></article><article class="code-card">
+<header><span class="number">07</span><div><h3>점수 입력 검증</h3><p>문자열 입력을 정수로 변환하고 0~100 범위를 검사합니다. 잘못된 입력을 데이터베이스에 저장하기 전에 차단합니다.</p></div></header>
+<pre><code>def validate_score(score_text):
+    try:
+        score = int(score_text)
+
+        if not 0 &lt;= score &lt;= 100:
+            raise ValueError(
+                &quot;점수는 0~100이어야 합니다.&quot;
+            )
+
+        return score
+
+    except ValueError as error:
+        print(&quot;입력 오류:&quot;, error)
+        return None
+
+score = validate_score(input(&quot;점수: &quot;))</code><button onclick="copyCode(this)">복사</button></pre>
+<div class="question"><h4>코드 7에 대한 설명으로 옳은 것을 모두 고르세요.</h4>
+<p>옳은 설명 3개를 빠짐없이 선택하세요.</p><label class="choice"><input type="checkbox" value="0"><span>1. 문자열을 정수로 변환한다.</span></label><label class="choice"><input type="checkbox" value="1"><span>2. 0~100 범위를 검사한다.</span></label><label class="choice"><input type="checkbox" value="2"><span>3. 잘못된 입력이면 None을 반환한다.</span></label><label class="choice"><input type="checkbox" value="3"><span>4. 모든 문자열을 자동으로 100점으로 만든다.</span></label><label class="choice"><input type="checkbox" value="4"><span>5. 예외가 나면 데이터베이스를 삭제한다.</span></label><div class="feedback"></div></div></article><article class="code-card">
+<header><span class="number">08</span><div><h3>트랜잭션과 롤백</h3><p>입력 과정에서 오류가 발생하면 rollback()으로 변경을 취소합니다. finally에서는 성공 여부와 관계없이 자원을 정리합니다.</p></div></header>
+<pre><code>def add_student_safely(
+    student_id,
+    name,
+    score
+):
+    conn = get_connection()
+    cur = conn.cursor()
+
+    try:
+        cur.execute(
+            &#x27;&#x27;&#x27;
+            INSERT INTO students
+            VALUES (%s, %s, %s)
+            &#x27;&#x27;&#x27;,
+            (student_id, name, score)
+        )
+
+        conn.commit()
+        print(&quot;저장 완료&quot;)
+
+    except mysql.connector.Error as error:
+        conn.rollback()
+        print(&quot;저장 실패:&quot;, error)
+
+    finally:
+        cur.close()
+        conn.close()</code><button onclick="copyCode(this)">복사</button></pre>
+<div class="question"><h4>코드 8에 대한 설명으로 옳은 것을 모두 고르세요.</h4>
+<p>옳은 설명 3개를 빠짐없이 선택하세요.</p><label class="choice"><input type="checkbox" value="0"><span>1. 오류 시 rollback()한다.</span></label><label class="choice"><input type="checkbox" value="1"><span>2. finally에서 자원을 닫는다.</span></label><label class="choice"><input type="checkbox" value="2"><span>3. 성공 시 commit()한다.</span></label><label class="choice"><input type="checkbox" value="3"><span>4. 오류가 나도 무조건 commit()한다.</span></label><label class="choice"><input type="checkbox" value="4"><span>5. rollback()은 테이블을 생성한다.</span></label><div class="feedback"></div></div></article><article class="code-card">
+<header><span class="number">09</span><div><h3>CRUD 메뉴 프로그램</h3><p>CRUD 기능을 메뉴로 연결하여 사용자가 원하는 작업을 선택할 수 있게 합니다. 반복문은 종료 메뉴를 선택할 때까지 프로그램을 유지합니다.</p></div></header>
+<pre><code>def print_menu():
+    print(&quot;\n[학생 관리 프로그램]&quot;)
+    print(&quot;1. 학생 입력&quot;)
+    print(&quot;2. 전체 조회&quot;)
+    print(&quot;3. 개별 조회&quot;)
+    print(&quot;4. 점수 수정&quot;)
+    print(&quot;5. 학생 삭제&quot;)
+    print(&quot;0. 종료&quot;)
+
+while True:
+    print_menu()
+    choice = input(&quot;메뉴 선택: &quot;)
+
+    if choice == &quot;2&quot;:
+        show_all_students()
+
+    elif choice == &quot;3&quot;:
+        student_id = input(&quot;학번: &quot;)
+        find_student(student_id)
+
+    elif choice == &quot;0&quot;:
+        print(&quot;프로그램을 종료합니다.&quot;)
+        break
+
+    else:
+        print(&quot;올바른 메뉴를 선택하세요.&quot;)</code><button onclick="copyCode(this)">복사</button></pre>
+<div class="question"><h4>코드 9에 대한 설명으로 옳은 것을 모두 고르세요.</h4>
+<p>옳은 설명 3개를 빠짐없이 선택하세요.</p><label class="choice"><input type="checkbox" value="0"><span>1. 메뉴 선택을 반복한다.</span></label><label class="choice"><input type="checkbox" value="1"><span>2. 0을 입력하면 종료한다.</span></label><label class="choice"><input type="checkbox" value="2"><span>3. 조회 기능을 함수로 호출한다.</span></label><label class="choice"><input type="checkbox" value="3"><span>4. 반복문 없이 계속 실행된다.</span></label><label class="choice"><input type="checkbox" value="4"><span>5. 모든 메뉴가 데이터 삭제를 수행한다.</span></label><div class="feedback"></div></div></article><article class="code-card">
+<header><span class="number">10</span><div><h3>통합 CRUD 프로그램</h3><p>입력, 조회, 수정, 삭제, 검증 기능을 하나의 실행 흐름으로 통합합니다. main() 함수는 프로그램의 시작점을 명확하게 보여 줍니다.</p></div></header>
+<pre><code>def main():
+    while True:
+        print_menu()
+        choice = input(&quot;메뉴 선택: &quot;).strip()
+
+        if choice == &quot;1&quot;:
+            student_id = input(&quot;학번: &quot;).strip()
+            name = input(&quot;이름: &quot;).strip()
+            score = validate_score(input(&quot;점수: &quot;))
+
+            if score is not None:
+                add_student(
+                    student_id,
+                    name,
+                    score
+                )
+
+        elif choice == &quot;2&quot;:
+            show_all_students()
+
+        elif choice == &quot;3&quot;:
+            find_student(
+                input(&quot;조회 학번: &quot;).strip()
+            )
+
+        elif choice == &quot;4&quot;:
+            student_id = input(&quot;수정 학번: &quot;).strip()
+            score = validate_score(input(&quot;새 점수: &quot;))
+
+            if score is not None:
+                update_score(
+                    student_id,
+                    score
+                )
+
+        elif choice == &quot;5&quot;:
+            delete_student(
+                input(&quot;삭제 학번: &quot;).strip()
+            )
+
+        elif choice == &quot;0&quot;:
+            print(&quot;이용해 주셔서 감사합니다.&quot;)
+            break
+
+        else:
+            print(&quot;0~5 중에서 선택하세요.&quot;)
+
+if __name__ == &quot;__main__&quot;:
+    main()</code><button onclick="copyCode(this)">복사</button></pre>
+<div class="question"><h4>코드 10에 대한 설명으로 옳은 것을 모두 고르세요.</h4>
+<p>옳은 설명 3개를 빠짐없이 선택하세요.</p><label class="choice"><input type="checkbox" value="0"><span>1. CRUD 기능을 통합한다.</span></label><label class="choice"><input type="checkbox" value="1"><span>2. 입력 검증을 함께 사용한다.</span></label><label class="choice"><input type="checkbox" value="2"><span>3. main()을 프로그램 시작점으로 사용한다.</span></label><label class="choice"><input type="checkbox" value="3"><span>4. 모든 입력을 검증 없이 저장한다.</span></label><label class="choice"><input type="checkbox" value="4"><span>5. __name__ 조건은 MySQL 서버를 삭제한다.</span></label><div class="feedback"></div></div></article></div></section>
+<section id="quiz"><h2 class="section-title">5. 형성평가 OX 퀴즈 10개</h2><div class="ox-list"><div class="ox-item" data-answer="O">
+<span class="ox-number">1</span><div>CRUD는 Create, Read, Update, Delete의 약자이다.</div>
+<label><input type="radio" name="ox1" value="O"> O</label>
+<label><input type="radio" name="ox1" value="X"> X</label><div class="ox-feedback"></div></div><div class="ox-item" data-answer="O">
+<span class="ox-number">2</span><div>데이터를 입력하거나 수정한 뒤에는 일반적으로 commit()으로 변경을 확정한다.</div>
+<label><input type="radio" name="ox2" value="O"> O</label>
+<label><input type="radio" name="ox2" value="X"> X</label><div class="ox-feedback"></div></div><div class="ox-item" data-answer="O">
+<span class="ox-number">3</span><div>SELECT 실행 결과 여러 행을 가져올 때 fetchall()을 사용할 수 있다.</div>
+<label><input type="radio" name="ox3" value="O"> O</label>
+<label><input type="radio" name="ox3" value="X"> X</label><div class="ox-feedback"></div></div><div class="ox-item" data-answer="O">
+<span class="ox-number">4</span><div>특정 행을 수정하거나 삭제할 때 WHERE 조건을 신중하게 사용해야 한다.</div>
+<label><input type="radio" name="ox4" value="O"> O</label>
+<label><input type="radio" name="ox4" value="X"> X</label><div class="ox-feedback"></div></div><div class="ox-item" data-answer="O">
+<span class="ox-number">5</span><div>Prepared Statement 방식은 사용자 입력을 SQL 구조와 분리하는 데 도움이 된다.</div>
+<label><input type="radio" name="ox5" value="O"> O</label>
+<label><input type="radio" name="ox5" value="X"> X</label><div class="ox-feedback"></div></div><div class="ox-item" data-answer="O">
+<span class="ox-number">6</span><div>rowcount는 INSERT, UPDATE, DELETE로 영향을 받은 행 수를 확인하는 데 활용할 수 있다.</div>
+<label><input type="radio" name="ox6" value="O"> O</label>
+<label><input type="radio" name="ox6" value="X"> X</label><div class="ox-feedback"></div></div><div class="ox-item" data-answer="O">
+<span class="ox-number">7</span><div>오류 발생 시 rollback()을 사용하면 확정되지 않은 변경을 취소할 수 있다.</div>
+<label><input type="radio" name="ox7" value="O"> O</label>
+<label><input type="radio" name="ox7" value="X"> X</label><div class="ox-feedback"></div></div><div class="ox-item" data-answer="X">
+<span class="ox-number">8</span><div>finally 블록은 오류가 발생했을 때만 실행된다.</div>
+<label><input type="radio" name="ox8" value="O"> O</label>
+<label><input type="radio" name="ox8" value="X"> X</label><div class="ox-feedback"></div></div><div class="ox-item" data-answer="O">
+<span class="ox-number">9</span><div>입력값 검증은 잘못된 데이터가 저장되는 것을 줄이는 데 도움이 된다.</div>
+<label><input type="radio" name="ox9" value="O"> O</label>
+<label><input type="radio" name="ox9" value="X"> X</label><div class="ox-feedback"></div></div><div class="ox-item" data-answer="X">
+<span class="ox-number">10</span><div>CRUD 프로그램에서는 연결과 커서를 닫지 않아도 항상 안전하다.</div>
+<label><input type="radio" name="ox10" value="O"> O</label>
+<label><input type="radio" name="ox10" value="X"> X</label><div class="ox-feedback"></div></div></div></section>
+<section id="ending"><h2 class="section-title">6. 수업 끝 이야기</h2><div class="ending-list">
+<div class="ending poetry"><h3>🌙 시인의 이야기 — 지우고 고치는 순간에도 문장은 성장한다</h3><p>시인은 첫 문장을 그대로 두지 않습니다. 더 정확한 단어로 바꾸고 불필요한 구절을 덜어 내며 작품을 완성합니다. UPDATE와 DELETE도 올바른 목적과 조건을 만날 때 데이터를 더 선명하게 만듭니다. 단, WHERE를 잊으면 시집 전체가 백지가 될 수 있습니다.</p></div>
+<div class="ending novel"><h3>📖 소설가의 이야기 — 인물의 변화가 이야기를 움직인다</h3><p>소설 속 인물은 처음 모습 그대로 머물지 않습니다. 경험을 통해 수정되고 새로운 관계를 만들어 갑니다. 데이터도 현실의 변화를 반영할 때 살아 있는 기록이 됩니다.</p></div>
+<div class="ending drama"><h3>🎭 희곡인의 이야기 — 등장과 퇴장에는 이유가 있어야 한다</h3><p>무대에서 인물이 등장하고 퇴장하는 데는 장면의 목적이 있습니다. 데이터의 CREATE와 DELETE에도 분명한 이유와 조건이 필요합니다. 아무 배우나 퇴장시키면 다음 장면의 JOIN이 매우 외로워집니다.</p></div>
+<div class="ending theater"><h3>🎬 연극인의 이야기 — 무대 뒤의 동선이 자연스러워야 관객이 편하다</h3><p>좋은 공연은 관객이 무대 전환의 어려움을 느끼지 않게 합니다. 좋은 CRUD 프로그램도 복잡한 SQL을 숨기고 이해하기 쉬운 메뉴와 안내를 제공합니다.</p></div>
+<div class="ending music"><h3>🎼 음악인의 이야기 — 네 가지 동작이 하나의 리듬이 된다</h3><p>음악은 음을 시작하고, 듣고, 조정하고, 멈추는 흐름 속에서 완성됩니다. CREATE, READ, UPDATE, DELETE도 조화롭게 연결될 때 하나의 서비스가 됩니다. DELETE만 계속 연주하면 현대음악에서도 꽤 과감한 편입니다.</p></div>
+<div class="last"><strong>오늘의 오래 남는 마지막 이야기</strong><p>프로그램을 만든다는 것은 명령을 실행하는 일이 아니라 누군가의 기록과 시간을 다루는 일입니다. 작은 오타 하나를 수정해 주는 기능은 누군가에게 신뢰가 되고, 필요한 정보를 빠르게 찾아 주는 조회는 누군가의 기다림을 줄여 줍니다.</p><p><strong>여러분의 삶도 CRUD처럼 성장합니다. 새로운 꿈을 만들고, 지난 경험을 돌아보고, 부족한 점을 고치고, 자신을 가로막는 두려움을 내려놓으십시오. 단, 실패한 경험까지 모두 삭제하지는 마십시오. 그 기록은 다음 선택을 더 현명하게 만드는 가장 귀한 데이터입니다.</strong></p></div>
+</div></section>
+<section id="submit"><h2 class="section-title">7. 학번·이름 입력 및 결과 저장</h2><div class="card">
+<div class="student"><label><strong>학번</strong><input type="text" id="studentId" placeholder="예: 1101"></label>
+<label><strong>이름</strong><input type="text" id="studentName" placeholder="예: 홍길동"></label></div>
+<div class="actions"><button class="btn" onclick="gradeAll()">전체 채점</button><button class="btn dark" onclick="downloadResult()">TXT 결과 저장</button><button class="btn danger" onclick="resetAll()">다시 풀기</button></div>
+<div id="score"></div><p>저장 파일명: 학번_이름_점수_30차시_응시시각.txt</p></div></section>
+</main>
+<script>
+let lastResult=null;
+function copyCode(button){
+ const text=button.parentElement.querySelector('code').innerText;
+ navigator.clipboard.writeText(text);
+ button.textContent='복사됨';
+ setTimeout(()=>button.textContent='복사',900);
+}
+function gradeAll(){
+ const sid=document.getElementById('studentId').value.trim();
+ const name=document.getElementById('studentName').value.trim();
+ if(!sid||!name){alert('학번과 이름을 입력하세요.');return;}
+ let codeScore=0,oxScore=0,details=[];
+ document.querySelectorAll('.question').forEach((q,i)=>{
+   const selected=[...q.querySelectorAll('input:checked')].map(x=>Number(x.value)).sort();
+   const ok=JSON.stringify(selected)==='[0,1,2]';
+   const f=q.querySelector('.feedback');
+   f.textContent=ok?'정답입니다.':'오답입니다. 정답: 1, 2, 3번';
+   f.className='feedback '+(ok?'good':'bad');
+   if(ok) codeScore++;
+   details.push(`코드 ${i+1}: ${ok?'정답':'오답'} / 응답 ${selected.map(x=>x+1).join(', ')||'미응답'}`);
+ });
+ document.querySelectorAll('.ox-item').forEach((q,i)=>{
+   const checked=q.querySelector('input:checked');
+   const value=checked?checked.value:'';
+   const ok=value===q.dataset.answer;
+   const f=q.querySelector('.ox-feedback');
+   f.textContent=ok?'정답':'오답 · 정답: '+q.dataset.answer;
+   f.className='ox-feedback '+(ok?'good':'bad');
+   if(ok) oxScore++;
+   details.push(`OX ${i+1}: ${ok?'정답':'오답'} / 응답 ${value||'미응답'}`);
+ });
+ const total=(codeScore+oxScore)*5;
+ const time=new Date();
+ lastResult={sid,name,codeScore,oxScore,total,time,details};
+ const box=document.getElementById('score');
+ box.style.display='block';
+ box.innerHTML=`총점 ${total}점 / 100점<br>복수정답 ${codeScore}/10 · OX ${oxScore}/10`;
+ box.scrollIntoView({behavior:'smooth'});
+}
+function pad(n){return String(n).padStart(2,'0');}
+function stamp(t){return `${t.getFullYear()}${pad(t.getMonth()+1)}${pad(t.getDate())}_${pad(t.getHours())}${pad(t.getMinutes())}${pad(t.getSeconds())}`;}
+function downloadResult(){
+ if(!lastResult){gradeAll();if(!lastResult)return;}
+ const r=lastResult;
+ const text=[
+  'MySQL 30차시 형성평가 결과',
+  `학번: ${r.sid}`,`이름: ${r.name}`,`점수: ${r.total}점`,
+  `복수정답: ${r.codeScore}/10`,`OX: ${r.oxScore}/10`,
+  `응시시각: ${r.time.toLocaleString()}`,'',...r.details
+ ].join('\n');
+ const blob=new Blob(['\ufeff'+text],{type:'text/plain;charset=utf-8'});
+ const a=document.createElement('a');
+ a.href=URL.createObjectURL(blob);
+ a.download=`${r.sid}_${r.name}_${r.total}점_30차시_${stamp(r.time)}.txt`;
+ a.click();
+ setTimeout(()=>URL.revokeObjectURL(a.href),1000);
+}
+function resetAll(){
+ document.querySelectorAll('input').forEach(x=>{if(x.type!=='text')x.checked=false;});
+ document.querySelectorAll('.feedback,.ox-feedback').forEach(x=>x.textContent='');
+ document.getElementById('score').style.display='none';
+ lastResult=null;
+}
+</script>
+</body></html>

@@ -1,0 +1,285 @@
+<!DOCTYPE html><html lang="ko"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>MySQL 1차시 목표지향 개념기반 수업지도안</title>
+<style>
+:root{--navy:#173650;--blue:#3478b7;--cyan:#3999a1;--green:#2c8a67;--red:#d45b4a;--gold:#b48635;--purple:#7455a9;--text:#2a3c4b;--muted:#6b7b87;--line:#dbe6eb;--bg:#f4f9fb;--shadow:0 12px 28px rgba(23,54,80,.10)}
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;font-family:"Pretendard","Noto Sans KR","Malgun Gothic",sans-serif;color:var(--text);background:linear-gradient(180deg,#fff,var(--bg));line-height:1.72}
+.topbar{position:sticky;top:0;z-index:30;background:#fffffff2;border-bottom:1px solid var(--line);backdrop-filter:blur(10px)}.topbar-inner{max-width:1240px;margin:auto;padding:10px 18px;display:flex;align-items:center;justify-content:space-between;gap:10px}.brand{font-weight:900;color:var(--navy)}.nav{display:flex;gap:6px;flex-wrap:wrap}.nav a{text-decoration:none;color:var(--navy);font-weight:800;font-size:.82rem;padding:6px 9px;border:1px solid var(--line);border-radius:999px}.btn{border:0;border-radius:10px;background:var(--blue);color:#fff;padding:10px 14px;font-weight:900;cursor:pointer}
+.hero,main{max-width:1240px;margin:auto;padding:0 18px}.hero{margin-top:28px}.hero-card{position:relative;overflow:hidden;padding:44px;border-radius:28px;color:white;background:linear-gradient(135deg,#173650,#286d91 58%,#39a0a5);box-shadow:var(--shadow)}.hero-card:after{content:"DATA · STRUCTURE · MEANING";position:absolute;right:10px;top:28px;font-size:38px;font-weight:900;color:#ffffff0d;transform:rotate(-5deg)}.badge{display:inline-block;padding:7px 12px;border-radius:999px;background:#ffffff22;border:1px solid #ffffff44;font-weight:900}h1{font-size:clamp(2rem,4vw,3.25rem);line-height:1.15;margin:13px 0}.hero-card>p{max-width:900px;color:#edfeff}.stats{position:relative;z-index:2;display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-top:23px}.stat{padding:14px;border-radius:16px;background:#ffffff1a;border:1px solid #ffffff33}.stat strong{display:block}
+main{padding-bottom:70px}section{margin-top:30px}.section-title{color:var(--navy)}.grid{display:grid;grid-template-columns:repeat(2,1fr);gap:14px}.card,.story,.teacher,.ending,.last{background:#fff;border:1px solid var(--line);border-radius:20px;padding:22px;box-shadow:var(--shadow)}.concepts{display:flex;gap:8px;flex-wrap:wrap}.tag{padding:7px 11px;border-radius:999px;background:#eaf7fa;color:var(--blue);font-weight:900}.flow{display:grid;grid-template-columns:repeat(5,1fr);gap:9px;margin-top:16px}.flow div{padding:12px;text-align:center;border-radius:13px;background:#eaf7fa;color:var(--blue);font-weight:900}
+.story-list,.ending-list,.code-list,.ox-list{display:grid;gap:14px}.humanities{border-left:7px solid var(--gold)}.philosophy{border-left:7px solid var(--purple)}.science{border-left:7px solid var(--green)}.math{border-left:7px solid var(--blue)}.teacher,.last{background:linear-gradient(135deg,#eaf7fa,#fff)}
+.code-card{background:white;border:1px solid var(--line);border-radius:22px;overflow:hidden;box-shadow:var(--shadow)}.code-card header{display:flex;gap:15px;padding:20px}.number{min-width:46px;height:46px;border-radius:14px;background:var(--blue);color:white;display:grid;place-items:center;font-weight:900}.code-card h3,.code-card header p{margin:0}.code-card header p{color:var(--muted);margin-top:4px}pre{position:relative;margin:0;padding:22px;background:#183443;color:#edfeff;overflow:auto;font:15px/1.6 Consolas,monospace}pre button{position:absolute;right:12px;top:12px;border:1px solid #527380;background:#2a4a58;color:#fff;border-radius:8px;padding:6px 10px}.question{padding:20px;background:#fbfeff}.question>p{color:var(--red);font-weight:800}.choice{display:flex;gap:9px;padding:8px}.feedback,.ox-feedback{font-weight:900}.good{color:var(--green)}.bad{color:var(--red)}
+.ox-item{display:grid;grid-template-columns:40px 1fr auto auto;gap:12px;align-items:center;background:#fff;border:1px solid var(--line);border-radius:14px;padding:13px}.ox-number{width:34px;height:34px;border-radius:10px;background:#eaf7fa;color:var(--blue);display:grid;place-items:center;font-weight:900}.ox-feedback{grid-column:2/5}.ending{border-top:6px solid var(--cyan)}.student{display:grid;grid-template-columns:1fr 1fr;gap:12px}.student input{width:100%;padding:12px;border:1px solid var(--line);border-radius:10px}.actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:15px}.dark{background:var(--navy)}.danger{background:var(--red)}#score{display:none;margin-top:15px;padding:17px;border-radius:14px;background:#edf8f2;font-weight:900}
+@media(max-width:760px){.grid,.stats,.student,.flow{grid-template-columns:1fr}.nav{display:none}.hero-card{padding:29px 20px}.hero-card:after{display:none}}
+@media print{.topbar,.actions,pre button{display:none!important}.card,.story,.ending,.code-card{box-shadow:none;break-inside:avoid}}
+</style>
+</head><body>
+<header class="topbar"><div class="topbar-inner"><div class="brand">MySQL 1차시 · 데이터베이스의 이해</div>
+<nav class="nav"><a href="#goal">목표</a><a href="#story">시작 이야기</a><a href="#codes">코드 10개</a><a href="#quiz">OX</a><a href="#ending">마무리</a><a href="#submit">제출</a></nav>
+<button class="btn" onclick="window.print()">인쇄</button></div></header>
+<div class="hero"><div class="hero-card"><span class="badge">목표지향 · 개념기반 · 흩어진 데이터를 의미 있는 구조로 바꾸기</span>
+<h1>MySQL 1차시<br>데이터베이스의 이해</h1>
+<p>데이터와 정보의 차이를 이해하고 데이터베이스, DBMS, 관계형 데이터베이스의 역할을 생활 속 사례와 간단한 코드로 탐구합니다.</p>
+<div class="stats"><div class="stat"><strong>핵심 질문</strong>왜 데이터를 그냥 모으지 않고 데이터베이스로 관리할까?</div>
+<div class="stat"><strong>전이 목표</strong>생활 속 데이터 관리 구조 설명</div><div class="stat"><strong>실습</strong>개념 코드 10개</div><div class="stat"><strong>평가</strong>복수정답 10 + OX 10</div></div></div></div>
+<main>
+<section id="goal"><h2 class="section-title">1. 성취기준과 학습 목표</h2><div class="grid">
+<div class="card"><h3>성취기준</h3><p>데이터와 정보의 차이를 설명하고 데이터베이스와 DBMS가 필요한 이유를 생활 속 사례와 연결하여 설명할 수 있다.</p><p>관계형 데이터베이스의 테이블, 행, 열, 기본키의 의미를 이해하고 MySQL이 제공하는 데이터 관리 기능을 구분할 수 있다.</p></div>
+<div class="card"><h3>학습 목표</h3><ol><li>데이터와 정보의 차이를 설명한다.</li><li>데이터베이스와 DBMS의 필요성을 사례로 설명한다.</li><li>테이블, 행, 열, 기본키의 개념을 구분한다.</li><li>MySQL 학습의 전체 흐름과 활용 가능성을 이해한다.</li></ol></div></div></section>
+<section><h2 class="section-title">2. 학습할 개념</h2><div class="card"><div class="concepts">
+<span class="tag">데이터</span><span class="tag">정보</span><span class="tag">데이터베이스</span><span class="tag">DBMS</span><span class="tag">RDBMS</span><span class="tag">MySQL</span><span class="tag">테이블</span><span class="tag">행</span><span class="tag">열</span><span class="tag">기본키</span><span class="tag">검색</span><span class="tag">보안·복구</span></div>
+<div class="flow"><div>데이터 수집</div><div>구조화</div><div>저장</div><div>검색·처리</div><div>정보 활용</div></div>
+<p><strong>일반화:</strong> 데이터베이스는 서로 관련된 데이터를 일정한 구조로 저장하고, DBMS는 이를 정확하고 안전하게 검색·수정·공유·복구할 수 있도록 관리한다.</p>
+<p><strong>핵심 질문:</strong> 데이터와 정보는 어떻게 다른가, 파일만으로 관리할 때 어떤 문제가 생기는가, 테이블의 행과 열은 현실의 대상을 어떻게 표현하며, 고유한 식별자는 왜 필요한가?</p></div></section>
+<section id="story"><h2 class="section-title">3. 수업 시작 이야기</h2><div class="story-list">
+<div class="story humanities"><h3>📚 인문학자의 이야기 — 기억은 흩어지지만 기록은 문명을 만든다</h3><p>인류는 중요한 경험을 기억에만 맡기지 않았습니다. 점토판, 종이, 도서관과 기록 보관소를 만들어 지식을 다음 세대에 전달했습니다. 데이터베이스는 디지털 시대의 정교한 기록 보관소입니다.</p><p>오늘 우리는 단순히 자료를 모으는 법이 아니라, 흩어진 사실을 잃지 않고 다시 찾을 수 있는 구조를 배우기 시작합니다.</p></div>
+<div class="story philosophy"><h3>🏛 철학자의 이야기 — 이름을 붙이는 순간 세계는 구분되기 시작한다</h3><p>철학은 존재를 묻고, 서로 다른 것을 어떻게 구별할지 고민합니다. 데이터베이스에서도 열 이름을 정하고 식별자를 부여하는 일은 대상을 정확히 이해하는 첫걸음입니다.</p><p>무엇을 저장할 것인지 결정하는 일은 결국 우리가 무엇을 중요하게 바라보는지 선택하는 일입니다.</p></div>
+<div class="story science"><h3>🔬 과학자의 이야기 — 관찰은 데이터가 되고 반복은 지식이 된다</h3><p>과학자는 한 번의 느낌보다 관찰과 측정 결과를 기록합니다. 여러 번 수집한 데이터에서 규칙을 찾고, 다른 사람이 다시 확인할 수 있게 합니다.</p><p>좋은 데이터베이스는 과학적 탐구의 기억 장치이며, 정확한 기록은 새로운 발견의 출발점입니다.</p></div>
+<div class="story math"><h3>➗ 수학자의 이야기 — 분류와 관계가 복잡함을 이해 가능한 구조로 바꾼다</h3><p>수학은 대상을 기준에 따라 분류하고 관계를 표현하여 복잡한 문제를 단순하게 만듭니다. 관계형 데이터베이스도 사람, 도서, 수업과 같은 대상을 테이블로 나누고 관계를 연결합니다.</p><p>구조를 잘 세우면 많은 데이터도 길을 잃지 않습니다.</p></div>
+<div class="teacher"><strong>교사의 시작 이야기</strong><p>첫 시간에는 어려운 명령어보다 한 가지 질문을 오래 붙잡아 봅시다. “왜 우리는 데이터를 그냥 파일에 모아 두지 않고 데이터베이스로 관리할까?” 여러분의 휴대전화 연락처, 학교 출결, 도서 대출, 병원 기록은 모두 정확히 저장되고 필요할 때 빠르게 찾아져야 합니다. 데이터베이스는 보이지 않는 곳에서 우리의 일상을 질서 있게 움직입니다. 오늘의 작은 개념 하나가 앞으로 만들 프로그램 전체의 뿌리가 될 것입니다.</p></div>
+</div></section>
+<section id="codes"><h2 class="section-title">4. 학습할 코드 10개와 상세 설명</h2><div class="code-list"><article class="code-card">
+<header><span class="number">01</span><div><h3>데이터와 정보의 차이</h3><p>숫자 자체는 데이터이고, 계산과 해석을 통해 의미를 부여하면 정보가 됩니다. 데이터베이스는 이러한 데이터를 체계적으로 저장하고 필요한 정보로 활용하게 합니다.</p></div></header>
+<pre><code>data = [18, 21, 20, 23, 19]
+
+average = sum(data) / len(data)
+
+print(&quot;원시 데이터:&quot;, data)
+print(&quot;평균 온도:&quot;, average)
+print(&quot;해석된 정보: 평균 온도는&quot;,
+      f&quot;{average:.1f}도입니다.&quot;)</code><button onclick="copyCode(this)">복사</button></pre>
+<div class="question"><h4>코드 1에 대한 설명으로 옳은 것을 모두 고르세요.</h4>
+<p>옳은 설명 3개를 빠짐없이 선택하세요.</p><label class="choice"><input type="checkbox" value="0"><span>1. 데이터를 계산해 의미 있는 정보로 바꾼다.</span></label><label class="choice"><input type="checkbox" value="1"><span>2. 평균값을 구한다.</span></label><label class="choice"><input type="checkbox" value="2"><span>3. 데이터와 정보의 차이를 보여 준다.</span></label><label class="choice"><input type="checkbox" value="3"><span>4. 데이터를 모두 삭제한다.</span></label><label class="choice"><input type="checkbox" value="4"><span>5. average는 문자열만 저장한다.</span></label><div class="feedback"></div></div></article><article class="code-card">
+<header><span class="number">02</span><div><h3>목록으로 학생 데이터 저장</h3><p>여러 학생의 정보를 목록으로 저장한 예입니다. 데이터가 적을 때는 가능하지만, 자료가 많아지면 검색·수정·중복 관리가 어려워질 수 있습니다.</p></div></header>
+<pre><code>students = [
+    [&quot;1101&quot;, &quot;김하늘&quot;, 92],
+    [&quot;1102&quot;, &quot;이별빛&quot;, 88],
+    [&quot;1103&quot;, &quot;박과학&quot;, 95]
+]
+
+for student in students:
+    print(
+        &quot;학번:&quot;, student[0],
+        &quot;이름:&quot;, student[1],
+        &quot;점수:&quot;, student[2]
+    )</code><button onclick="copyCode(this)">복사</button></pre>
+<div class="question"><h4>코드 2에 대한 설명으로 옳은 것을 모두 고르세요.</h4>
+<p>옳은 설명 3개를 빠짐없이 선택하세요.</p><label class="choice"><input type="checkbox" value="0"><span>1. 여러 학생 기록을 저장한다.</span></label><label class="choice"><input type="checkbox" value="1"><span>2. 반복문으로 각 학생을 출력한다.</span></label><label class="choice"><input type="checkbox" value="2"><span>3. 자료가 많아지면 관리가 복잡할 수 있다.</span></label><label class="choice"><input type="checkbox" value="3"><span>4. 각 학생은 데이터베이스 서버이다.</span></label><label class="choice"><input type="checkbox" value="4"><span>5. 목록은 기본키를 자동 생성한다.</span></label><div class="feedback"></div></div></article><article class="code-card">
+<header><span class="number">03</span><div><h3>딕셔너리로 구조화된 데이터</h3><p>딕셔너리는 값에 이름을 붙여 구조를 분명하게 만듭니다. 데이터베이스의 열 이름과 값의 관계를 이해하는 기초가 됩니다.</p></div></header>
+<pre><code>student = {
+    &quot;student_id&quot;: &quot;1101&quot;,
+    &quot;name&quot;: &quot;김하늘&quot;,
+    &quot;score&quot;: 92
+}
+
+print(student[&quot;student_id&quot;])
+print(student[&quot;name&quot;])
+print(student[&quot;score&quot;])</code><button onclick="copyCode(this)">복사</button></pre>
+<div class="question"><h4>코드 3에 대한 설명으로 옳은 것을 모두 고르세요.</h4>
+<p>옳은 설명 3개를 빠짐없이 선택하세요.</p><label class="choice"><input type="checkbox" value="0"><span>1. 키와 값으로 데이터를 표현한다.</span></label><label class="choice"><input type="checkbox" value="1"><span>2. 항목 이름으로 값을 찾는다.</span></label><label class="choice"><input type="checkbox" value="2"><span>3. 테이블 열과 값의 관계를 이해하는 데 도움을 준다.</span></label><label class="choice"><input type="checkbox" value="3"><span>4. 모든 값은 같은 자료형이어야 한다.</span></label><label class="choice"><input type="checkbox" value="4"><span>5. 딕셔너리는 SQL 명령이다.</span></label><div class="feedback"></div></div></article><article class="code-card">
+<header><span class="number">04</span><div><h3>CSV 형태의 데이터</h3><p>CSV는 쉼표로 열을 구분하는 간단한 데이터 형식입니다. 파일로 저장하기 쉽지만 여러 사용자가 동시에 안전하게 수정하거나 관계를 관리하기에는 한계가 있습니다.</p></div></header>
+<pre><code>csv_text = &#x27;&#x27;&#x27;student_id,name,score
+1101,김하늘,92
+1102,이별빛,88
+1103,박과학,95&#x27;&#x27;&#x27;
+
+print(csv_text)</code><button onclick="copyCode(this)">복사</button></pre>
+<div class="question"><h4>코드 4에 대한 설명으로 옳은 것을 모두 고르세요.</h4>
+<p>옳은 설명 3개를 빠짐없이 선택하세요.</p><label class="choice"><input type="checkbox" value="0"><span>1. 쉼표로 열을 구분한다.</span></label><label class="choice"><input type="checkbox" value="1"><span>2. 첫 줄은 항목 이름을 나타낸다.</span></label><label class="choice"><input type="checkbox" value="2"><span>3. 간단한 파일 데이터 형식의 예이다.</span></label><label class="choice"><input type="checkbox" value="3"><span>4. CSV는 항상 관계를 자동 관리한다.</span></label><label class="choice"><input type="checkbox" value="4"><span>5. CSV는 여러 사용자 권한을 자동 설정한다.</span></label><div class="feedback"></div></div></article><article class="code-card">
+<header><span class="number">05</span><div><h3>테이블 구조 표현</h3><p>관계형 데이터베이스는 데이터를 테이블로 표현합니다. 열은 데이터의 항목을, 행은 하나의 개별 기록을 나타냅니다.</p></div></header>
+<pre><code>columns = [
+    &quot;student_id&quot;,
+    &quot;name&quot;,
+    &quot;score&quot;
+]
+
+rows = [
+    [&quot;1101&quot;, &quot;김하늘&quot;, 92],
+    [&quot;1102&quot;, &quot;이별빛&quot;, 88],
+    [&quot;1103&quot;, &quot;박과학&quot;, 95]
+]
+
+print(&quot;열:&quot;, columns)
+
+for row in rows:
+    print(&quot;행:&quot;, row)</code><button onclick="copyCode(this)">복사</button></pre>
+<div class="question"><h4>코드 5에 대한 설명으로 옳은 것을 모두 고르세요.</h4>
+<p>옳은 설명 3개를 빠짐없이 선택하세요.</p><label class="choice"><input type="checkbox" value="0"><span>1. 열과 행을 구분한다.</span></label><label class="choice"><input type="checkbox" value="1"><span>2. 열은 데이터 항목을 나타낸다.</span></label><label class="choice"><input type="checkbox" value="2"><span>3. 행은 하나의 기록을 나타낸다.</span></label><label class="choice"><input type="checkbox" value="3"><span>4. 모든 행은 반드시 같은 사람이다.</span></label><label class="choice"><input type="checkbox" value="4"><span>5. 열은 데이터 삭제 명령이다.</span></label><div class="feedback"></div></div></article><article class="code-card">
+<header><span class="number">06</span><div><h3>기본키의 필요성</h3><p>이름이 같은 사람이 있어도 학번처럼 중복되지 않는 값이 있으면 각 기록을 구별할 수 있습니다. 이러한 식별자가 기본키의 핵심 역할입니다.</p></div></header>
+<pre><code>students = [
+    {&quot;student_id&quot;: &quot;1101&quot;, &quot;name&quot;: &quot;김하늘&quot;},
+    {&quot;student_id&quot;: &quot;1102&quot;, &quot;name&quot;: &quot;김하늘&quot;}
+]
+
+for student in students:
+    print(
+        student[&quot;student_id&quot;],
+        student[&quot;name&quot;]
+    )</code><button onclick="copyCode(this)">복사</button></pre>
+<div class="question"><h4>코드 6에 대한 설명으로 옳은 것을 모두 고르세요.</h4>
+<p>옳은 설명 3개를 빠짐없이 선택하세요.</p><label class="choice"><input type="checkbox" value="0"><span>1. 같은 이름의 사람을 구별한다.</span></label><label class="choice"><input type="checkbox" value="1"><span>2. 학번을 식별자로 활용한다.</span></label><label class="choice"><input type="checkbox" value="2"><span>3. 기본키의 필요성을 설명한다.</span></label><label class="choice"><input type="checkbox" value="3"><span>4. 이름은 언제나 유일하다.</span></label><label class="choice"><input type="checkbox" value="4"><span>5. 기본키는 중복되어야 한다.</span></label><div class="feedback"></div></div></article><article class="code-card">
+<header><span class="number">07</span><div><h3>데이터 검색 과정</h3><p>필요한 데이터를 조건에 따라 찾는 과정을 보여 줍니다. DBMS는 많은 데이터에서도 검색 조건을 효율적으로 처리하도록 도와줍니다.</p></div></header>
+<pre><code>students = [
+    {&quot;student_id&quot;: &quot;1101&quot;, &quot;name&quot;: &quot;김하늘&quot;},
+    {&quot;student_id&quot;: &quot;1102&quot;, &quot;name&quot;: &quot;이별빛&quot;},
+    {&quot;student_id&quot;: &quot;1103&quot;, &quot;name&quot;: &quot;박과학&quot;}
+]
+
+target = &quot;1102&quot;
+
+for student in students:
+    if student[&quot;student_id&quot;] == target:
+        print(&quot;검색 결과:&quot;, student)</code><button onclick="copyCode(this)">복사</button></pre>
+<div class="question"><h4>코드 7에 대한 설명으로 옳은 것을 모두 고르세요.</h4>
+<p>옳은 설명 3개를 빠짐없이 선택하세요.</p><label class="choice"><input type="checkbox" value="0"><span>1. 조건에 맞는 기록을 찾는다.</span></label><label class="choice"><input type="checkbox" value="1"><span>2. 학번 1102를 검색한다.</span></label><label class="choice"><input type="checkbox" value="2"><span>3. DBMS 검색 기능과 연결할 수 있다.</span></label><label class="choice"><input type="checkbox" value="3"><span>4. 모든 데이터를 무조건 수정한다.</span></label><label class="choice"><input type="checkbox" value="4"><span>5. target은 테이블을 삭제한다.</span></label><div class="feedback"></div></div></article><article class="code-card">
+<header><span class="number">08</span><div><h3>데이터 수정 과정</h3><p>저장된 데이터를 새로운 값으로 바꾸는 수정 작업입니다. 데이터베이스에서는 UPDATE와 같은 명령으로 조건에 맞는 데이터를 안전하게 수정합니다.</p></div></header>
+<pre><code>student = {
+    &quot;student_id&quot;: &quot;1101&quot;,
+    &quot;name&quot;: &quot;김하늘&quot;,
+    &quot;score&quot;: 82
+}
+
+student[&quot;score&quot;] = 92
+
+print(&quot;수정된 데이터:&quot;, student)</code><button onclick="copyCode(this)">복사</button></pre>
+<div class="question"><h4>코드 8에 대한 설명으로 옳은 것을 모두 고르세요.</h4>
+<p>옳은 설명 3개를 빠짐없이 선택하세요.</p><label class="choice"><input type="checkbox" value="0"><span>1. 기존 점수를 변경한다.</span></label><label class="choice"><input type="checkbox" value="1"><span>2. 수정 전후 데이터가 달라진다.</span></label><label class="choice"><input type="checkbox" value="2"><span>3. 데이터베이스 UPDATE 개념과 연결된다.</span></label><label class="choice"><input type="checkbox" value="3"><span>4. student_id를 자동 삭제한다.</span></label><label class="choice"><input type="checkbox" value="4"><span>5. 수정은 검색과 전혀 관계없다.</span></label><div class="feedback"></div></div></article><article class="code-card">
+<header><span class="number">09</span><div><h3>데이터베이스 관리 기능</h3><p>DBMS는 단순 저장을 넘어 검색, 수정, 삭제, 보안, 백업과 복구 등 데이터 관리에 필요한 기능을 제공합니다.</p></div></header>
+<pre><code>dbms_roles = {
+    &quot;저장&quot;: &quot;데이터를 체계적으로 보관&quot;,
+    &quot;검색&quot;: &quot;조건에 맞는 데이터 조회&quot;,
+    &quot;수정&quot;: &quot;기존 데이터 변경&quot;,
+    &quot;삭제&quot;: &quot;불필요한 데이터 제거&quot;,
+    &quot;보안&quot;: &quot;사용자별 접근 권한 관리&quot;,
+    &quot;복구&quot;: &quot;장애 후 데이터 복원&quot;
+}
+
+for role, description in dbms_roles.items():
+    print(role, &quot;:&quot;, description)</code><button onclick="copyCode(this)">복사</button></pre>
+<div class="question"><h4>코드 9에 대한 설명으로 옳은 것을 모두 고르세요.</h4>
+<p>옳은 설명 3개를 빠짐없이 선택하세요.</p><label class="choice"><input type="checkbox" value="0"><span>1. DBMS의 여러 역할을 정리한다.</span></label><label class="choice"><input type="checkbox" value="1"><span>2. 보안과 복구를 포함한다.</span></label><label class="choice"><input type="checkbox" value="2"><span>3. 저장·검색·수정·삭제 기능을 설명한다.</span></label><label class="choice"><input type="checkbox" value="3"><span>4. DBMS는 계산기 기능만 수행한다.</span></label><label class="choice"><input type="checkbox" value="4"><span>5. 복구 기능은 데이터 관리와 무관하다.</span></label><div class="feedback"></div></div></article><article class="code-card">
+<header><span class="number">10</span><div><h3>MySQL 학습 지도</h3><p>MySQL 학습의 전체 흐름을 보여 줍니다. 1차시는 명령어 암기보다 데이터베이스가 왜 필요한지 이해하는 출발점입니다.</p></div></header>
+<pre><code>mysql_learning_map = [
+    &quot;1. 데이터와 데이터베이스 이해&quot;,
+    &quot;2. MySQL 설치와 서버 접속&quot;,
+    &quot;3. 데이터베이스와 테이블 생성&quot;,
+    &quot;4. 데이터 입력·조회·수정·삭제&quot;,
+    &quot;5. 조인과 서브쿼리&quot;,
+    &quot;6. 설계·보안·트랜잭션&quot;,
+    &quot;7. 파이썬 연동 프로젝트&quot;
+]
+
+for step in mysql_learning_map:
+    print(step)</code><button onclick="copyCode(this)">복사</button></pre>
+<div class="question"><h4>코드 10에 대한 설명으로 옳은 것을 모두 고르세요.</h4>
+<p>옳은 설명 3개를 빠짐없이 선택하세요.</p><label class="choice"><input type="checkbox" value="0"><span>1. MySQL 학습 순서를 제시한다.</span></label><label class="choice"><input type="checkbox" value="1"><span>2. 기초에서 프로젝트로 확장한다.</span></label><label class="choice"><input type="checkbox" value="2"><span>3. 1차시의 위치를 전체 흐름 속에서 보여 준다.</span></label><label class="choice"><input type="checkbox" value="3"><span>4. 첫 시간부터 모든 심화 기능을 완성한다.</span></label><label class="choice"><input type="checkbox" value="4"><span>5. MySQL은 파이썬과 연결할 수 없다.</span></label><div class="feedback"></div></div></article></div></section>
+<section id="quiz"><h2 class="section-title">5. 형성평가 OX 퀴즈 10개</h2><div class="ox-list"><div class="ox-item" data-answer="O">
+<span class="ox-number">1</span><div>데이터는 관찰하거나 측정하여 얻은 값과 사실을 의미할 수 있다.</div>
+<label><input type="radio" name="ox1" value="O"> O</label>
+<label><input type="radio" name="ox1" value="X"> X</label><div class="ox-feedback"></div></div><div class="ox-item" data-answer="O">
+<span class="ox-number">2</span><div>정보는 데이터를 목적에 맞게 처리하고 해석하여 의미를 부여한 결과이다.</div>
+<label><input type="radio" name="ox2" value="O"> O</label>
+<label><input type="radio" name="ox2" value="X"> X</label><div class="ox-feedback"></div></div><div class="ox-item" data-answer="O">
+<span class="ox-number">3</span><div>데이터베이스는 관련 데이터를 체계적으로 저장하고 관리하는 구조이다.</div>
+<label><input type="radio" name="ox3" value="O"> O</label>
+<label><input type="radio" name="ox3" value="X"> X</label><div class="ox-feedback"></div></div><div class="ox-item" data-answer="O">
+<span class="ox-number">4</span><div>DBMS는 데이터 저장뿐 아니라 검색, 수정, 보안, 복구 기능도 제공한다.</div>
+<label><input type="radio" name="ox4" value="O"> O</label>
+<label><input type="radio" name="ox4" value="X"> X</label><div class="ox-feedback"></div></div><div class="ox-item" data-answer="O">
+<span class="ox-number">5</span><div>관계형 데이터베이스는 데이터를 주로 테이블 형태로 표현한다.</div>
+<label><input type="radio" name="ox5" value="O"> O</label>
+<label><input type="radio" name="ox5" value="X"> X</label><div class="ox-feedback"></div></div><div class="ox-item" data-answer="O">
+<span class="ox-number">6</span><div>테이블의 열은 데이터 항목을, 행은 하나의 기록을 나타낸다.</div>
+<label><input type="radio" name="ox6" value="O"> O</label>
+<label><input type="radio" name="ox6" value="X"> X</label><div class="ox-feedback"></div></div><div class="ox-item" data-answer="O">
+<span class="ox-number">7</span><div>기본키는 각 행을 고유하게 식별하는 데 사용될 수 있다.</div>
+<label><input type="radio" name="ox7" value="O"> O</label>
+<label><input type="radio" name="ox7" value="X"> X</label><div class="ox-feedback"></div></div><div class="ox-item" data-answer="X">
+<span class="ox-number">8</span><div>CSV 파일은 모든 데이터베이스 기능과 사용자 권한을 자동으로 제공한다.</div>
+<label><input type="radio" name="ox8" value="O"> O</label>
+<label><input type="radio" name="ox8" value="X"> X</label><div class="ox-feedback"></div></div><div class="ox-item" data-answer="O">
+<span class="ox-number">9</span><div>MySQL은 관계형 데이터베이스 관리 시스템의 한 종류이다.</div>
+<label><input type="radio" name="ox9" value="O"> O</label>
+<label><input type="radio" name="ox9" value="X"> X</label><div class="ox-feedback"></div></div><div class="ox-item" data-answer="X">
+<span class="ox-number">10</span><div>데이터베이스를 배우는 목적은 SQL 명령어를 의미 없이 암기하는 것뿐이다.</div>
+<label><input type="radio" name="ox10" value="O"> O</label>
+<label><input type="radio" name="ox10" value="X"> X</label><div class="ox-feedback"></div></div></div></section>
+<section id="ending"><h2 class="section-title">6. 수업 끝 이야기</h2><div class="ending-list">
+<div class="ending poetry"><h3>🌙 시인의 이야기 — 흩어진 단어가 자리를 찾으면 한 편의 시가 된다</h3><p>단어가 무작정 쌓여 있다고 시가 되지는 않습니다. 순서와 관계를 얻을 때 의미가 태어납니다. 데이터도 마찬가지입니다. 다만 시인은 쉼표를 자유롭게 쓰지만 CSV는 쉼표 하나에도 매우 진지합니다.</p></div>
+<div class="ending novel"><h3>📖 소설가의 이야기 — 수많은 인물도 이름과 관계가 있으면 이야기가 된다</h3><p>소설 속 인물이 아무리 많아도 관계와 사건이 정리되면 독자는 세계를 이해할 수 있습니다. 데이터베이스의 테이블과 관계도 복잡한 현실을 읽을 수 있는 이야기로 바꿉니다.</p></div>
+<div class="ending drama"><h3>🎭 희곡인의 이야기 — 등장인물 표가 있어야 무대가 혼란스럽지 않다</h3><p>희곡은 등장인물과 역할을 먼저 정리합니다. 데이터베이스도 어떤 대상과 항목을 저장할지 정해야 합니다. 배우 이름을 기본키로 쓰면 동명이인이 등장하는 순간 극의 장르가 미스터리로 바뀔 수 있습니다.</p></div>
+<div class="ending theater"><h3>🎬 연극인의 이야기 — 보이지 않는 무대 뒤의 질서가 공연을 살린다</h3><p>관객은 무대 뒤의 소품 목록과 조명 기록을 보지 못하지만, 그것들이 정확해야 공연이 이어집니다. 데이터베이스도 눈에 잘 보이지 않지만 서비스 전체를 지탱합니다.</p></div>
+<div class="ending music"><h3>🎼 음악인의 이야기 — 음표 하나하나는 데이터이고 연주는 정보다</h3><p>악보의 음표는 기록된 데이터이며, 연주자는 그것을 해석해 음악이라는 정보를 만듭니다. 오늘의 데이터도 언젠가 여러분의 분석과 프로그램을 만나 의미 있는 음악처럼 살아날 것입니다.</p></div>
+<div class="last"><strong>첫 시간의 오래 남는 마지막 이야기</strong><p>처음 배우는 개념은 작고 단순해 보입니다. 그러나 큰 건축물도 첫 선을 정확히 긋는 데서 시작하고, 긴 여행도 방향을 정하는 첫걸음에서 시작합니다.</p><p><strong>여러분 자신도 아직 완성된 데이터가 아닙니다. 매일의 경험을 저장하고, 실패에서 의미를 찾고, 좋은 관계를 연결하며 성장하는 살아 있는 데이터베이스입니다. 다른 사람과 비교해 자신을 삭제하지 말고, 오늘 배운 것을 차곡차곡 저장하십시오. 언젠가 그 기록들이 여러분만의 놀라운 이야기를 조회해 줄 것입니다.</strong></p></div>
+</div></section>
+<section id="submit"><h2 class="section-title">7. 학번·이름 입력 및 결과 저장</h2><div class="card">
+<div class="student"><label><strong>학번</strong><input type="text" id="studentId" placeholder="예: 1101"></label>
+<label><strong>이름</strong><input type="text" id="studentName" placeholder="예: 홍길동"></label></div>
+<div class="actions"><button class="btn" onclick="gradeAll()">전체 채점</button><button class="btn dark" onclick="downloadResult()">TXT 결과 저장</button><button class="btn danger" onclick="resetAll()">다시 풀기</button></div>
+<div id="score"></div><p>저장 파일명: 학번_이름_점수_1차시_응시시각.txt</p></div></section>
+</main>
+<script>
+let lastResult=null;
+function copyCode(button){
+ const text=button.parentElement.querySelector('code').innerText;
+ navigator.clipboard.writeText(text);
+ button.textContent='복사됨';
+ setTimeout(()=>button.textContent='복사',900);
+}
+function gradeAll(){
+ const sid=document.getElementById('studentId').value.trim();
+ const name=document.getElementById('studentName').value.trim();
+ if(!sid||!name){alert('학번과 이름을 입력하세요.');return;}
+ let codeScore=0,oxScore=0,details=[];
+ document.querySelectorAll('.question').forEach((q,i)=>{
+   const selected=[...q.querySelectorAll('input:checked')].map(x=>Number(x.value)).sort();
+   const ok=JSON.stringify(selected)==='[0,1,2]';
+   const f=q.querySelector('.feedback');
+   f.textContent=ok?'정답입니다.':'오답입니다. 정답: 1, 2, 3번';
+   f.className='feedback '+(ok?'good':'bad');
+   if(ok) codeScore++;
+   details.push(`코드 ${i+1}: ${ok?'정답':'오답'} / 응답 ${selected.map(x=>x+1).join(', ')||'미응답'}`);
+ });
+ document.querySelectorAll('.ox-item').forEach((q,i)=>{
+   const checked=q.querySelector('input:checked');
+   const value=checked?checked.value:'';
+   const ok=value===q.dataset.answer;
+   const f=q.querySelector('.ox-feedback');
+   f.textContent=ok?'정답':'오답 · 정답: '+q.dataset.answer;
+   f.className='ox-feedback '+(ok?'good':'bad');
+   if(ok) oxScore++;
+   details.push(`OX ${i+1}: ${ok?'정답':'오답'} / 응답 ${value||'미응답'}`);
+ });
+ const total=(codeScore+oxScore)*5;
+ const time=new Date();
+ lastResult={sid,name,codeScore,oxScore,total,time,details};
+ const box=document.getElementById('score');
+ box.style.display='block';
+ box.innerHTML=`총점 ${total}점 / 100점<br>복수정답 ${codeScore}/10 · OX ${oxScore}/10`;
+ box.scrollIntoView({behavior:'smooth'});
+}
+function pad(n){return String(n).padStart(2,'0');}
+function stamp(t){return `${t.getFullYear()}${pad(t.getMonth()+1)}${pad(t.getDate())}_${pad(t.getHours())}${pad(t.getMinutes())}${pad(t.getSeconds())}`;}
+function downloadResult(){
+ if(!lastResult){gradeAll();if(!lastResult)return;}
+ const r=lastResult;
+ const text=[
+  'MySQL 1차시 형성평가 결과',
+  `학번: ${r.sid}`,`이름: ${r.name}`,`점수: ${r.total}점`,
+  `복수정답: ${r.codeScore}/10`,`OX: ${r.oxScore}/10`,
+  `응시시각: ${r.time.toLocaleString()}`,'',...r.details
+ ].join('\n');
+ const blob=new Blob(['\ufeff'+text],{type:'text/plain;charset=utf-8'});
+ const a=document.createElement('a');
+ a.href=URL.createObjectURL(blob);
+ a.download=`${r.sid}_${r.name}_${r.total}점_1차시_${stamp(r.time)}.txt`;
+ a.click();
+ setTimeout(()=>URL.revokeObjectURL(a.href),1000);
+}
+function resetAll(){
+ document.querySelectorAll('input').forEach(x=>{if(x.type!=='text')x.checked=false;});
+ document.querySelectorAll('.feedback,.ox-feedback').forEach(x=>x.textContent='');
+ document.getElementById('score').style.display='none';
+ lastResult=null;
+}
+</script>
+</body></html>

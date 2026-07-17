@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>MySQL 29차시 목표지향 개념기반 수업지도안</title>
+<style>
+:root{--navy:#18364b;--blue:#2d78b3;--cyan:#e9f7fb;--green:#278a62;--red:#d85e49;--purple:#6d5ac5;--teal:#178c9c;--text:#293b49;--muted:#6b7b88;--line:#dbe7ed;--bg:#f4f8fa;--shadow:0 12px 28px rgba(24,54,75,.10)}
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;font-family:"Pretendard","Noto Sans KR","Malgun Gothic",sans-serif;color:var(--text);background:linear-gradient(180deg,#fcfeff,var(--bg));line-height:1.72}.topbar{position:sticky;top:0;z-index:40;background:#fffffff2;border-bottom:1px solid var(--line);backdrop-filter:blur(10px)}.topbar-inner{max-width:1240px;margin:auto;padding:10px 18px;display:flex;align-items:center;justify-content:space-between;gap:10px}.brand{font-weight:900;color:var(--navy)}.nav{display:flex;gap:6px;flex-wrap:wrap}.nav a{text-decoration:none;color:var(--navy);font-weight:800;font-size:.82rem;padding:6px 9px;border:1px solid var(--line);border-radius:999px}.btn{border:0;border-radius:11px;background:var(--blue);color:#fff;padding:10px 15px;font-weight:900;cursor:pointer}.hero,main{max-width:1240px;margin:auto;padding:0 18px}.hero{margin-top:28px}.hero-card{position:relative;overflow:hidden;background:linear-gradient(135deg,#18364b,#236276 55%,#248da2);color:#fff;border-radius:28px;padding:42px;box-shadow:var(--shadow)}.hero-card:after{content:"PYTHON ↔ MYSQL";position:absolute;right:14px;top:32px;font-size:48px;font-weight:900;color:#ffffff0d;transform:rotate(-5deg)}.badge{display:inline-block;padding:6px 12px;border-radius:999px;background:#ffffff24;border:1px solid #ffffff44;font-weight:900}h1{font-size:clamp(2rem,4vw,3.2rem);line-height:1.15;margin:13px 0}.hero p{max-width:900px;color:#e9fbff}.hero-grid{position:relative;z-index:2;display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-top:22px}.hero-stat{padding:14px;border-radius:16px;background:#ffffff1c;border:1px solid #ffffff33}.hero-stat strong{display:block}main{padding-bottom:70px}section{margin-top:30px}.section-title{color:var(--navy)}.grid{display:grid;grid-template-columns:repeat(2,1fr);gap:14px}.card,.story-block,.teacher-message,.ending-card,.last-message{background:#fff;border:1px solid var(--line);border-radius:20px;padding:22px;box-shadow:var(--shadow)}.tags{display:flex;gap:8px;flex-wrap:wrap}.tag{padding:7px 11px;border-radius:999px;background:var(--cyan);color:var(--teal);font-weight:900}.concept-flow{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-top:15px}.concept-flow div{text-align:center;padding:13px;border-radius:14px;background:var(--cyan);color:var(--teal);font-weight:900}.story-wrap,.ending-grid,.code-list,.ox-list{display:grid;gap:14px}.humanities{border-left:7px solid #b47b35}.philosophy{border-left:7px solid var(--purple)}.science{border-left:7px solid var(--green)}.math{border-left:7px solid var(--blue)}.teacher-message{background:linear-gradient(135deg,#eaf9fc,#fff)}.code-card{background:#fff;border:1px solid var(--line);border-radius:22px;box-shadow:var(--shadow);overflow:hidden}.code-head{display:flex;gap:15px;padding:20px}.num{min-width:46px;height:46px;display:grid;place-items:center;border-radius:14px;background:var(--teal);color:#fff;font-weight:900}.code-head h3{margin:0;color:var(--navy)}.code-head p{margin:4px 0 0;color:var(--muted)}pre{position:relative;margin:0;padding:22px;background:#102c35;color:#eaffff;overflow:auto;font:15px/1.6 Consolas,monospace}.copy-btn{position:absolute;right:12px;top:12px;border:1px solid #416a75;background:#1e4650;color:#fff;border-radius:9px;padding:6px 10px}.mini-quiz{padding:20px;background:#fbfdff}.choice{display:flex;gap:9px;padding:8px}.hint{color:var(--red);font-weight:800}.good{color:var(--green)}.bad{color:var(--red)}.feedback,.ox-feedback{font-weight:900}.ox-item{display:grid;grid-template-columns:42px 1fr auto auto;gap:12px;align-items:center;background:#fff;border:1px solid var(--line);border-radius:14px;padding:13px}.ox-num{width:34px;height:34px;display:grid;place-items:center;border-radius:10px;background:var(--cyan);color:var(--teal);font-weight:900}.ox-feedback{grid-column:2/5}.poetry{border-top:6px solid #da7b93}.novel{border-top:6px solid #aa7b4e}.drama{border-top:6px solid var(--purple)}.theater{border-top:6px solid var(--green)}.music{border-top:6px solid var(--blue)}.last-message{background:linear-gradient(135deg,#eaf9fc,#fff)}.student-box{display:grid;grid-template-columns:1fr 1fr;gap:12px}input[type=text]{width:100%;padding:12px;border:1px solid var(--line);border-radius:11px}.action-bar{display:flex;gap:10px;flex-wrap:wrap;margin-top:15px}.secondary{background:var(--navy)}.danger{background:var(--red)}.score-box{display:none;margin-top:16px;padding:18px;border-radius:16px;background:#edf8f2;font-weight:900}
+@media(max-width:700px){.grid,.hero-grid,.student-box,.concept-flow{grid-template-columns:1fr}.nav{display:none}.hero-card{padding:28px 20px}.hero-card:after{display:none}}@media print{.topbar,.copy-btn,.action-bar{display:none!important}.card,.code-card,.story-block,.ending-card{box-shadow:none;break-inside:avoid}}
+</style>
+</head>
+<body>
+<header class="topbar"><div class="topbar-inner"><div class="brand">MySQL 29차시 · 파이썬과 MySQL 연동</div>
+<nav class="nav"><a href="#standard">성취기준</a><a href="#story">시작 이야기</a><a href="#codes">코드 10개</a><a href="#quiz">OX</a><a href="#ending">마무리</a><a href="#submit">제출</a></nav>
+<button class="btn" onclick="window.print()">인쇄</button></div></header>
+
+<div class="hero"><div class="hero-card"><span class="badge">목표지향 · 개념기반 · 프로그램과 데이터베이스를 연결하는 첫걸음</span>
+<h1>MySQL 29차시<br>파이썬과 MySQL 연동</h1>
+<p>mysql-connector-python을 설치하고 연결 객체와 커서를 생성하여 SQL을 실행하고 결과를 처리하며, 매개변수 전달·예외 처리·자원 정리를 통해 안전한 데이터베이스 연결 프로그램을 구현합니다.</p>
+<div class="hero-grid"><div class="hero-stat"><strong>핵심 질문</strong>파이썬 프로그램이 MySQL과 어떻게 대화할까?</div>
+<div class="hero-stat"><strong>전이 목표</strong>연결·질의·결과 처리의 흐름 설계</div><div class="hero-stat"><strong>실습</strong>파이썬 연동 코드 10개</div>
+<div class="hero-stat"><strong>평가</strong>복수정답 10 + OX 10</div></div></div></div>
+
+<main>
+<section id="standard"><h2 class="section-title">1. 성취기준과 학습 목표</h2>
+<div class="grid"><div class="card"><h3>성취기준</h3>
+<p>파이썬과 MySQL을 연결하는 데 필요한 라이브러리와 연결 정보를 이해하고 연결 객체와 커서를 생성하여 SQL 문을 실행할 수 있다.</p>
+<p>fetchone(), fetchall(), 딕셔너리 커서, 매개변수 바인딩, 예외 처리와 자원 정리를 활용하여 안전하게 조회 결과를 처리할 수 있다.</p></div>
+<div class="card"><h3>학습 목표</h3><ol><li>mysql-connector-python을 설치하고 불러온다.</li>
+<li>connect()로 MySQL 서버에 연결한다.</li><li>cursor.execute()와 fetch 계열 메서드로 결과를 처리한다.</li>
+<li>매개변수 바인딩, 예외 처리, close()를 적용한 안전한 연결 프로그램을 작성한다.</li></ol></div></div></section>
+
+<section><h2 class="section-title">2. 학습할 개념</h2><div class="card">
+<div class="tags"><span class="tag">mysql-connector-python</span><span class="tag">connect()</span><span class="tag">Connection</span>
+<span class="tag">cursor()</span><span class="tag">execute()</span><span class="tag">fetchone()</span>
+<span class="tag">fetchall()</span><span class="tag">dictionary cursor</span><span class="tag">parameter binding</span>
+<span class="tag">cursor.description</span><span class="tag">try-except-finally</span><span class="tag">close()</span></div>
+<div class="concept-flow"><div>라이브러리 설치</div><div>서버 연결·커서 생성</div><div>SQL 실행·결과 처리</div><div>예외 처리·자원 정리</div></div>
+<p><strong>일반화:</strong> 파이썬과 MySQL의 연동은 연결 객체가 통신 경로를 만들고 커서가 SQL을 전달하며 fetch 메서드가 결과를 가져오는 과정으로 이루어지고, 안전한 프로그램은 입력값 분리와 예외 처리 및 자원 정리를 함께 고려한다.</p>
+<p><strong>핵심 질문:</strong> 연결 객체와 커서는 각각 어떤 역할을 하는가, 한 행과 여러 행을 어떻게 가져오는가, 사용자 입력과 SQL 구조를 어떻게 분리하며 연결 자원을 어떻게 안전하게 반환할 것인가?</p></div></section>
+
+<section id="story"><h2 class="section-title">3. 수업 시작 이야기</h2><div class="story-wrap">
+<div class="story-block humanities"><h3>📚 인문학자의 이야기 — 연결은 서로 다른 세계를 이해하게 한다</h3><p>인문학은 문학, 역사, 철학처럼 서로 다른 분야를 이어 인간을 더 넓게 이해하게 합니다. 하나의 지식만으로는 보이지 않던 의미가 연결을 통해 드러납니다.</p><p>오늘 파이썬과 MySQL도 서로 다른 세계에서 출발하지만 연결되는 순간 데이터를 저장하고 분석하며 활용하는 하나의 시스템이 됩니다.</p></div>
+<div class="story-block philosophy"><h3>🏛 철학자의 이야기 — 관계는 존재의 범위를 넓힌다</h3><p>철학자는 어떤 존재가 혼자 있을 때와 다른 존재와 관계를 맺을 때 어떻게 달라지는지 묻습니다. 파이썬은 계산과 흐름 제어에 강하고, MySQL은 데이터를 구조적으로 보관하는 데 강합니다.</p><p>둘의 연결은 각자의 한계를 줄이고 가능성을 넓히는 협력의 철학입니다.</p></div>
+<div class="story-block science"><h3>🔬 과학자의 이야기 — 관측 장치와 기록 장치는 함께 있어야 한다</h3><p>센서가 아무리 정확해도 측정값을 저장하지 않으면 변화의 의미를 분석할 수 없습니다. 반대로 저장 공간만 있고 관측 장치가 없다면 새로운 데이터가 들어오지 않습니다.</p><p>파이썬은 데이터를 수집하고 처리하는 관측 장치가 되고, MySQL은 그 결과를 오래 보관하는 기록 장치가 됩니다.</p></div>
+<div class="story-block math"><h3>➗ 수학자의 이야기 — 입력과 출력 사이의 통로가 계산을 완성한다</h3><p>수학의 함수는 입력을 받아 규칙에 따라 출력을 만듭니다. 데이터베이스 연결도 프로그램의 요청을 SQL로 전달하고 결과를 다시 프로그램으로 돌려주는 통로입니다.</p><p>연결 객체와 커서는 이 통로의 방향과 순서를 관리합니다.</p></div>
+<div class="teacher-message"><strong>교사의 시작 이야기</strong><p>지금까지 우리는 MySQL 안에서 SQL을 작성했습니다. 오늘부터는 파이썬 프로그램이 데이터베이스에게 질문하고 대답을 받게 됩니다. 처음 연결이 성공해 “MySQL 연결 성공”이라는 짧은 문장이 출력되는 순간은 작아 보이지만, 여러분의 프로그램이 실제 데이터 시스템으로 확장되는 중요한 출발점입니다. 연결은 단순한 기술이 아니라 서로 다른 도구가 함께 일하도록 만드는 설계입니다.</p></div>
+</div></section>
+<section id="codes"><h2 class="section-title">4. 학습할 코드 10개와 상세 설명</h2><div class="code-list">
+<article class="code-card">
+<div class="code-head"><span class="num">01</span><div><h3>mysql-connector-python 설치</h3><p>Windows 명령 프롬프트나 PowerShell에서 MySQL 연결용 파이썬 라이브러리를 설치합니다. 설치 후 Python 코드에서 mysql.connector를 불러올 수 있습니다.</p></div></div>
+<pre><code>py -m pip install mysql-connector-python</code><button class="copy-btn" onclick="copyCode(this)">복사</button></pre>
+<div class="mini-quiz"><h4>코드 1에 대한 설명으로 옳은 것을 모두 고르세요.</h4>
+<p class="hint">옳은 설명 3개를 빠짐없이 선택하세요.</p><label class="choice"><input type="checkbox" value="0"><span>1. 운영체제 터미널에서 실행한다.</span></label><label class="choice"><input type="checkbox" value="1"><span>2. 파이썬용 MySQL 연결 라이브러리를 설치한다.</span></label><label class="choice"><input type="checkbox" value="2"><span>3. 설치 후 mysql.connector를 사용할 수 있다.</span></label><label class="choice"><input type="checkbox" value="3"><span>4. MySQL 테이블을 삭제한다.</span></label><label class="choice"><input type="checkbox" value="4"><span>5. SQL SELECT문으로 실행한다.</span></label><div class="feedback"></div></div>
+</article>
+<article class="code-card">
+<div class="code-head"><span class="num">02</span><div><h3>라이브러리 불러오기와 버전 확인</h3><p>모듈이 정상적으로 설치되었는지 확인하고 버전 정보를 출력합니다. import 오류가 나면 설치된 파이썬 환경과 실행 중인 파이썬 환경이 같은지 점검해야 합니다.</p></div></div>
+<pre><code>import mysql.connector
+
+print(&quot;mysql-connector-python 불러오기 성공&quot;)
+print(mysql.connector.__version__)</code><button class="copy-btn" onclick="copyCode(this)">복사</button></pre>
+<div class="mini-quiz"><h4>코드 2에 대한 설명으로 옳은 것을 모두 고르세요.</h4>
+<p class="hint">옳은 설명 3개를 빠짐없이 선택하세요.</p><label class="choice"><input type="checkbox" value="0"><span>1. mysql.connector를 불러온다.</span></label><label class="choice"><input type="checkbox" value="1"><span>2. 설치 성공 여부를 확인할 수 있다.</span></label><label class="choice"><input type="checkbox" value="2"><span>3. 버전 정보를 출력할 수 있다.</span></label><label class="choice"><input type="checkbox" value="3"><span>4. MySQL 서버를 자동 삭제한다.</span></label><label class="choice"><input type="checkbox" value="4"><span>5. import 오류는 항상 SQL 문법 오류이다.</span></label><div class="feedback"></div></div>
+</article>
+<article class="code-card">
+<div class="code-head"><span class="num">03</span><div><h3>MySQL 서버에 연결</h3><p>host, 사용자, 비밀번호, 데이터베이스 이름을 지정해 MySQL 서버와 연결합니다. is_connected()로 연결 성공 여부를 확인합니다.</p></div></div>
+<pre><code>import mysql.connector
+
+connection = mysql.connector.connect(
+    host=&quot;localhost&quot;,
+    user=&quot;root&quot;,
+    password=&quot;비밀번호&quot;,
+    database=&quot;school_db&quot;
+)
+
+print(&quot;연결 상태:&quot;, connection.is_connected())</code><button class="copy-btn" onclick="copyCode(this)">복사</button></pre>
+<div class="mini-quiz"><h4>코드 3에 대한 설명으로 옳은 것을 모두 고르세요.</h4>
+<p class="hint">옳은 설명 3개를 빠짐없이 선택하세요.</p><label class="choice"><input type="checkbox" value="0"><span>1. localhost의 MySQL 서버에 연결한다.</span></label><label class="choice"><input type="checkbox" value="1"><span>2. 연결 정보로 사용자와 데이터베이스를 지정한다.</span></label><label class="choice"><input type="checkbox" value="2"><span>3. is_connected()로 상태를 확인한다.</span></label><label class="choice"><input type="checkbox" value="3"><span>4. 커서 없이 테이블을 자동 생성한다.</span></label><label class="choice"><input type="checkbox" value="4"><span>5. password 항목은 데이터베이스 이름이다.</span></label><div class="feedback"></div></div>
+</article>
+<article class="code-card">
+<div class="code-head"><span class="num">04</span><div><h3>커서 생성과 간단한 조회</h3><p>cursor()로 SQL 실행용 커서를 만들고 SELECT DATABASE()를 실행합니다. fetchone()은 결과 행 하나를 가져옵니다.</p></div></div>
+<pre><code>cursor = connection.cursor()
+
+cursor.execute(&quot;SELECT DATABASE()&quot;)
+database_name = cursor.fetchone()
+
+print(&quot;현재 데이터베이스:&quot;, database_name[0])</code><button class="copy-btn" onclick="copyCode(this)">복사</button></pre>
+<div class="mini-quiz"><h4>코드 4에 대한 설명으로 옳은 것을 모두 고르세요.</h4>
+<p class="hint">옳은 설명 3개를 빠짐없이 선택하세요.</p><label class="choice"><input type="checkbox" value="0"><span>1. SQL 실행용 커서를 만든다.</span></label><label class="choice"><input type="checkbox" value="1"><span>2. fetchone()으로 한 행을 가져온다.</span></label><label class="choice"><input type="checkbox" value="2"><span>3. 현재 데이터베이스 이름을 확인한다.</span></label><label class="choice"><input type="checkbox" value="3"><span>4. fetchone()은 모든 행을 반환한다.</span></label><label class="choice"><input type="checkbox" value="4"><span>5. cursor()는 연결을 종료한다.</span></label><div class="feedback"></div></div>
+</article>
+<article class="code-card">
+<div class="code-head"><span class="num">05</span><div><h3>학생 전체 조회</h3><p>fetchall()로 조회된 모든 행을 리스트 형태로 가져오고 반복문으로 한 행씩 출력합니다.</p></div></div>
+<pre><code>cursor.execute(&#x27;&#x27;&#x27;
+SELECT student_id,
+       student_name,
+       grade
+FROM students
+ORDER BY student_id
+&#x27;&#x27;&#x27;)
+
+rows = cursor.fetchall()
+
+for row in rows:
+    print(row)</code><button class="copy-btn" onclick="copyCode(this)">복사</button></pre>
+<div class="mini-quiz"><h4>코드 5에 대한 설명으로 옳은 것을 모두 고르세요.</h4>
+<p class="hint">옳은 설명 3개를 빠짐없이 선택하세요.</p><label class="choice"><input type="checkbox" value="0"><span>1. fetchall()로 모든 행을 가져온다.</span></label><label class="choice"><input type="checkbox" value="1"><span>2. 반복문으로 행을 출력한다.</span></label><label class="choice"><input type="checkbox" value="2"><span>3. student_id 순서로 정렬한다.</span></label><label class="choice"><input type="checkbox" value="3"><span>4. LIMIT 1만 조회한다.</span></label><label class="choice"><input type="checkbox" value="4"><span>5. rows는 반드시 문자열 하나이다.</span></label><div class="feedback"></div></div>
+</article>
+<article class="code-card">
+<div class="code-head"><span class="num">06</span><div><h3>딕셔너리 커서 활용</h3><p>dictionary=True를 사용하면 각 행을 튜플이 아닌 딕셔너리 형태로 받을 수 있어 열 이름으로 값을 읽을 수 있습니다.</p></div></div>
+<pre><code>dict_cursor = connection.cursor(dictionary=True)
+
+dict_cursor.execute(&#x27;&#x27;&#x27;
+SELECT student_id,
+       student_name,
+       grade
+FROM students
+LIMIT 5
+&#x27;&#x27;&#x27;)
+
+for row in dict_cursor.fetchall():
+    print(row[&quot;student_name&quot;], row[&quot;grade&quot;])</code><button class="copy-btn" onclick="copyCode(this)">복사</button></pre>
+<div class="mini-quiz"><h4>코드 6에 대한 설명으로 옳은 것을 모두 고르세요.</h4>
+<p class="hint">옳은 설명 3개를 빠짐없이 선택하세요.</p><label class="choice"><input type="checkbox" value="0"><span>1. dictionary=True를 사용한다.</span></label><label class="choice"><input type="checkbox" value="1"><span>2. 열 이름으로 값을 읽을 수 있다.</span></label><label class="choice"><input type="checkbox" value="2"><span>3. 결과 행이 딕셔너리 형태가 된다.</span></label><label class="choice"><input type="checkbox" value="3"><span>4. 항상 튜플만 반환한다.</span></label><label class="choice"><input type="checkbox" value="4"><span>5. student_name 열을 삭제한다.</span></label><div class="feedback"></div></div>
+</article>
+<article class="code-card">
+<div class="code-head"><span class="num">07</span><div><h3>매개변수로 안전하게 조건 조회</h3><p>사용자 입력을 SQL 문자열에 직접 결합하지 않고 %s 자리표시자와 튜플로 전달합니다. SQL 구조와 값을 분리해 안전성을 높입니다.</p></div></div>
+<pre><code>student_id = input(&quot;조회할 학번: &quot;)
+
+query = &#x27;&#x27;&#x27;
+SELECT student_id,
+       student_name,
+       grade
+FROM students
+WHERE student_id = %s
+&#x27;&#x27;&#x27;
+
+cursor.execute(query, (student_id,))
+student = cursor.fetchone()
+
+print(student)</code><button class="copy-btn" onclick="copyCode(this)">복사</button></pre>
+<div class="mini-quiz"><h4>코드 7에 대한 설명으로 옳은 것을 모두 고르세요.</h4>
+<p class="hint">옳은 설명 3개를 빠짐없이 선택하세요.</p><label class="choice"><input type="checkbox" value="0"><span>1. %s 자리표시자를 사용한다.</span></label><label class="choice"><input type="checkbox" value="1"><span>2. 입력값을 튜플로 별도 전달한다.</span></label><label class="choice"><input type="checkbox" value="2"><span>3. SQL 삽입 위험을 줄이는 데 도움이 된다.</span></label><label class="choice"><input type="checkbox" value="3"><span>4. 문자열 결합 방식이다.</span></label><label class="choice"><input type="checkbox" value="4"><span>5. (student_id,)의 쉼표는 필요 없다.</span></label><div class="feedback"></div></div>
+</article>
+<article class="code-card">
+<div class="code-head"><span class="num">08</span><div><h3>조회 결과 열 정보 확인</h3><p>cursor.description을 사용하면 조회 결과의 열 이름 등 메타데이터를 확인할 수 있습니다.</p></div></div>
+<pre><code>cursor.execute(&#x27;&#x27;&#x27;
+SELECT student_id,
+       student_name,
+       grade
+FROM students
+LIMIT 3
+&#x27;&#x27;&#x27;)
+
+print(&quot;열 정보:&quot;)
+for column in cursor.description:
+    print(column[0])
+
+print(&quot;데이터:&quot;)
+for row in cursor.fetchall():
+    print(row)</code><button class="copy-btn" onclick="copyCode(this)">복사</button></pre>
+<div class="mini-quiz"><h4>코드 8에 대한 설명으로 옳은 것을 모두 고르세요.</h4>
+<p class="hint">옳은 설명 3개를 빠짐없이 선택하세요.</p><label class="choice"><input type="checkbox" value="0"><span>1. cursor.description을 사용한다.</span></label><label class="choice"><input type="checkbox" value="1"><span>2. 조회 결과 열 이름을 확인할 수 있다.</span></label><label class="choice"><input type="checkbox" value="2"><span>3. 데이터와 메타데이터를 함께 살펴볼 수 있다.</span></label><label class="choice"><input type="checkbox" value="3"><span>4. 테이블 구조를 삭제한다.</span></label><label class="choice"><input type="checkbox" value="4"><span>5. description은 연결 비밀번호를 반환한다.</span></label><div class="feedback"></div></div>
+</article>
+<article class="code-card">
+<div class="code-head"><span class="num">09</span><div><h3>예외 처리를 포함한 연결</h3><p>연결 과정에서 발생할 수 있는 오류를 try-except로 처리합니다. 오류 내용을 출력하면 비밀번호, 서버 상태, 데이터베이스 이름 문제를 확인하는 데 도움이 됩니다.</p></div></div>
+<pre><code>import mysql.connector
+from mysql.connector import Error
+
+connection = None
+
+try:
+    connection = mysql.connector.connect(
+        host=&quot;localhost&quot;,
+        user=&quot;root&quot;,
+        password=&quot;비밀번호&quot;,
+        database=&quot;school_db&quot;
+    )
+
+    if connection.is_connected():
+        print(&quot;MySQL 연결 성공&quot;)
+
+except Error as error:
+    print(&quot;연결 오류:&quot;, error)</code><button class="copy-btn" onclick="copyCode(this)">복사</button></pre>
+<div class="mini-quiz"><h4>코드 9에 대한 설명으로 옳은 것을 모두 고르세요.</h4>
+<p class="hint">옳은 설명 3개를 빠짐없이 선택하세요.</p><label class="choice"><input type="checkbox" value="0"><span>1. try-except로 연결 오류를 처리한다.</span></label><label class="choice"><input type="checkbox" value="1"><span>2. Error 예외를 불러온다.</span></label><label class="choice"><input type="checkbox" value="2"><span>3. 연결 실패 원인을 확인하는 데 도움이 된다.</span></label><label class="choice"><input type="checkbox" value="3"><span>4. 오류가 발생해도 프로그램은 반드시 강제 종료된다.</span></label><label class="choice"><input type="checkbox" value="4"><span>5. connection은 처음부터 항상 연결된 상태이다.</span></label><div class="feedback"></div></div>
+</article>
+<article class="code-card">
+<div class="code-head"><span class="num">10</span><div><h3>커서와 연결 안전하게 닫기</h3><p>사용이 끝난 커서와 연결 객체를 닫아 자원을 반환합니다. finally 블록은 성공 여부와 관계없이 정리 작업을 수행하는 데 적합합니다.</p></div></div>
+<pre><code>finally:
+    if cursor is not None:
+        cursor.close()
+
+    if connection is not None and connection.is_connected():
+        connection.close()
+
+    print(&quot;MySQL 연결 종료&quot;)</code><button class="copy-btn" onclick="copyCode(this)">복사</button></pre>
+<div class="mini-quiz"><h4>코드 10에 대한 설명으로 옳은 것을 모두 고르세요.</h4>
+<p class="hint">옳은 설명 3개를 빠짐없이 선택하세요.</p><label class="choice"><input type="checkbox" value="0"><span>1. 커서를 닫는다.</span></label><label class="choice"><input type="checkbox" value="1"><span>2. 연결 객체를 닫는다.</span></label><label class="choice"><input type="checkbox" value="2"><span>3. finally는 정리 작업에 적합하다.</span></label><label class="choice"><input type="checkbox" value="3"><span>4. close()는 데이터베이스를 삭제한다.</span></label><label class="choice"><input type="checkbox" value="4"><span>5. 연결을 닫지 않아도 자원 관리에 영향이 없다.</span></label><div class="feedback"></div></div>
+</article></div></section>
+<section id="quiz"><h2 class="section-title">5. 형성평가 OX 퀴즈 10개</h2><div class="ox-list"><div class="ox-item" data-answer="O">
+<div class="ox-num">1</div><div>mysql-connector-python은 파이썬에서 MySQL 서버에 연결하는 데 사용할 수 있다.</div>
+<label><input type="radio" name="ox1" value="O"> O</label>
+<label><input type="radio" name="ox1" value="X"> X</label>
+<div class="ox-feedback"></div></div><div class="ox-item" data-answer="O">
+<div class="ox-num">2</div><div>mysql.connector.connect()에는 host, user, password, database 등의 연결 정보를 지정할 수 있다.</div>
+<label><input type="radio" name="ox2" value="O"> O</label>
+<label><input type="radio" name="ox2" value="X"> X</label>
+<div class="ox-feedback"></div></div><div class="ox-item" data-answer="O">
+<div class="ox-num">3</div><div>cursor.execute()는 SQL 문을 실행하는 데 사용한다.</div>
+<label><input type="radio" name="ox3" value="O"> O</label>
+<label><input type="radio" name="ox3" value="X"> X</label>
+<div class="ox-feedback"></div></div><div class="ox-item" data-answer="O">
+<div class="ox-num">4</div><div>fetchone()은 조회 결과에서 한 행을 가져온다.</div>
+<label><input type="radio" name="ox4" value="O"> O</label>
+<label><input type="radio" name="ox4" value="X"> X</label>
+<div class="ox-feedback"></div></div><div class="ox-item" data-answer="O">
+<div class="ox-num">5</div><div>fetchall()은 조회 결과의 모든 행을 가져올 수 있다.</div>
+<label><input type="radio" name="ox5" value="O"> O</label>
+<label><input type="radio" name="ox5" value="X"> X</label>
+<div class="ox-feedback"></div></div><div class="ox-item" data-answer="O">
+<div class="ox-num">6</div><div>dictionary=True 커서는 열 이름을 키로 사용하는 딕셔너리 형태의 행을 반환할 수 있다.</div>
+<label><input type="radio" name="ox6" value="O"> O</label>
+<label><input type="radio" name="ox6" value="X"> X</label>
+<div class="ox-feedback"></div></div><div class="ox-item" data-answer="X">
+<div class="ox-num">7</div><div>사용자 입력은 SQL 문자열에 직접 이어 붙이는 것이 가장 안전하다.</div>
+<label><input type="radio" name="ox7" value="O"> O</label>
+<label><input type="radio" name="ox7" value="X"> X</label>
+<div class="ox-feedback"></div></div><div class="ox-item" data-answer="O">
+<div class="ox-num">8</div><div>cursor.description을 통해 조회 결과의 열 정보를 확인할 수 있다.</div>
+<label><input type="radio" name="ox8" value="O"> O</label>
+<label><input type="radio" name="ox8" value="X"> X</label>
+<div class="ox-feedback"></div></div><div class="ox-item" data-answer="O">
+<div class="ox-num">9</div><div>연결 오류는 try-except를 이용해 처리할 수 있다.</div>
+<label><input type="radio" name="ox9" value="O"> O</label>
+<label><input type="radio" name="ox9" value="X"> X</label>
+<div class="ox-feedback"></div></div><div class="ox-item" data-answer="X">
+<div class="ox-num">10</div><div>프로그램이 끝날 때 커서와 연결 객체를 닫을 필요가 없다.</div>
+<label><input type="radio" name="ox10" value="O"> O</label>
+<label><input type="radio" name="ox10" value="X"> X</label>
+<div class="ox-feedback"></div></div></div></section>
+<section id="ending"><h2 class="section-title">6. 수업 끝 이야기</h2><div class="ending-grid">
+<div class="ending-card poetry"><h3>🌙 시인의 이야기 — 한 줄의 다리가 두 세계를 잇는다</h3><p>시는 짧은 한 줄로 먼 기억과 현재의 마음을 이어 줍니다. 데이터베이스 연결 코드도 몇 줄뿐이지만 파이썬과 MySQL이라는 두 세계를 연결합니다. 단, 비밀번호를 시처럼 공개적으로 낭송하면 보안 선생님이 운율과 상관없이 등장합니다.</p></div>
+<div class="ending-card novel"><h3>📖 소설가의 이야기 — 좋은 인물은 혼자 성장하지 않는다</h3><p>소설 속 인물은 다른 사람과 만나고 갈등하고 협력하며 성장합니다. 프로그램도 여러 기술과 연결될 때 더 큰 문제를 해결할 수 있습니다.</p></div>
+<div class="ending-card drama"><h3>🎭 희곡인의 이야기 — 대화는 질문과 응답으로 이루어진다</h3><p>희곡은 한 사람이 말하고 다른 사람이 응답하며 장면이 진행됩니다. cursor.execute()는 질문을 보내고 fetchone()과 fetchall()은 응답을 받는 데이터베이스의 대화법입니다.</p></div>
+<div class="ending-card theater"><h3>🎬 연극인의 이야기 — 무대 뒤 연결이 끊기면 장면도 멈춘다</h3><p>조명, 음향, 배우의 움직임은 보이지 않는 신호로 연결됩니다. 데이터베이스 연결도 눈에 잘 보이지 않지만 프로그램 전체를 움직입니다. 연결을 닫지 않으면 배우들이 퇴근했는데 조명만 밤새 켜진 셈입니다.</p></div>
+<div class="ending-card music"><h3>🎼 음악인의 이야기 — 다른 악기가 연결될 때 합주가 된다</h3><p>피아노와 바이올린은 서로 다른 소리를 내지만 같은 박자와 악보를 공유하면 음악이 됩니다. 파이썬과 MySQL도 연결 정보와 SQL이라는 공통 언어를 통해 하나의 프로그램을 연주합니다.</p></div>
+<div class="last-message"><strong>오늘의 오래 남는 마지막 이야기</strong><p>혼자 잘하는 능력도 중요하지만, 서로 다른 사람과 도구를 연결해 함께 결과를 만드는 능력은 더 큰 가능성을 엽니다. 연결은 자신을 잃는 것이 아니라 자신의 강점을 더 넓은 곳에 쓰는 방법입니다.</p><p><strong>여러분도 앞으로 새로운 분야를 만날 때 “나는 이것을 모른다”에서 멈추지 말고 “내가 아는 것과 어떻게 연결할 수 있을까?”라고 질문하십시오. 오늘 파이썬과 MySQL이 연결된 것처럼 작은 배움들이 이어지면 어느 날 여러분만의 큰 시스템과 꿈이 만들어질 것입니다.</strong></p></div>
+</div></section>
+
+<section id="submit"><h2 class="section-title">7. 학번·이름 입력 및 결과 저장</h2><div class="card">
+<div class="student-box"><label><strong>학번</strong><input type="text" id="studentId" placeholder="예: 1101"></label>
+<label><strong>이름</strong><input type="text" id="studentName" placeholder="예: 홍길동"></label></div>
+<div class="action-bar"><button class="btn" onclick="gradeAll()">전체 채점</button>
+<button class="btn secondary" onclick="downloadResult()">TXT 결과 저장</button>
+<button class="btn danger" onclick="resetAll()">다시 풀기</button></div>
+<div id="scoreBox" class="score-box"></div><p>저장 파일명: 학번_이름_점수_29차시_응시시각.txt</p></div></section>
+</main>
+
+<script>
+let lastResult=null;
+function copyCode(b){navigator.clipboard.writeText(b.parentElement.querySelector('code').innerText);b.textContent='복사됨';setTimeout(()=>b.textContent='복사',900)}
+function selected(q){return [...q.querySelectorAll('input[type=checkbox]:checked')].map(x=>+x.value).sort()}
+function gradeAll(){
+ const sid=studentId.value.trim(),name=studentName.value.trim();
+ if(!sid||!name){alert('학번과 이름을 입력하세요.');return}
+ let c=0,o=0,detail=[];
+ document.querySelectorAll('.mini-quiz').forEach((q,i)=>{
+   let s=selected(q),ok=JSON.stringify(s)==='[0,1,2]',f=q.querySelector('.feedback');
+   f.textContent=ok?'정답입니다.':'오답입니다. 정답: 1, 2, 3번';f.className='feedback '+(ok?'good':'bad');
+   if(ok)c++;detail.push(`코드 ${i+1}: ${ok?'정답':'오답'} / 응답 ${s.map(x=>x+1).join(', ')||'미응답'}`);
+ });
+ document.querySelectorAll('.ox-item').forEach((q,i)=>{
+   let x=q.querySelector('input:checked'),v=x?x.value:'',ok=v===q.dataset.answer,f=q.querySelector('.ox-feedback');
+   f.textContent=ok?'정답':'오답 · 정답: '+q.dataset.answer;f.className='ox-feedback '+(ok?'good':'bad');
+   if(ok)o++;detail.push(`OX ${i+1}: ${ok?'정답':'오답'} / 응답 ${v||'미응답'}`);
+ });
+ let total=(c+o)*5,time=new Date();lastResult={sid,name,c,o,total,detail,time};
+ scoreBox.style.display='block';scoreBox.innerHTML=`총점 ${total}점 / 100점<br>복수정답 ${c} / 10 · OX ${o} / 10`;
+ scoreBox.scrollIntoView({behavior:'smooth'});
+}
+function pad(n){return String(n).padStart(2,'0')}
+function stamp(t){return `${t.getFullYear()}${pad(t.getMonth()+1)}${pad(t.getDate())}_${pad(t.getHours())}${pad(t.getMinutes())}${pad(t.getSeconds())}`}
+function downloadResult(){
+ if(!lastResult){gradeAll();if(!lastResult)return}
+ let r=lastResult,text=['MySQL 29차시 형성평가 결과',`학번: ${r.sid}`,`이름: ${r.name}`,
+ `점수: ${r.total}점`,`복수정답: ${r.c}/10`,`OX: ${r.o}/10`,`응시시각: ${r.time.toLocaleString()}`,'',...r.detail].join('\n');
+ let blob=new Blob(['\ufeff'+text],{type:'text/plain;charset=utf-8'}),a=document.createElement('a');
+ a.href=URL.createObjectURL(blob);a.download=`${r.sid}_${r.name}_${r.total}점_29차시_${stamp(r.time)}.txt`;a.click();
+ setTimeout(()=>URL.revokeObjectURL(a.href),1000);
+}
+function resetAll(){
+ document.querySelectorAll('input').forEach(x=>{if(x.type!=='text')x.checked=false});
+ document.querySelectorAll('.feedback,.ox-feedback').forEach(x=>x.textContent='');
+ scoreBox.style.display='none';lastResult=null;
+}
+</script></body></html>

@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>MySQL 17차시 목표지향 개념기반 수업지도안</title>
+<style>
+:root{--navy:#18344f;--blue:#2f70e8;--sky:#eaf3ff;--mint:#eafaf4;--green:#238d66;--red:#df654f;--purple:#7057ce;--text:#26384a;--muted:#69798a;--line:#dbe5ef;--bg:#f5f8fc;--shadow:0 12px 28px rgba(24,52,79,.10)}
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;font-family:"Pretendard","Noto Sans KR","Malgun Gothic",sans-serif;color:var(--text);background:linear-gradient(180deg,#fcfdff,var(--bg));line-height:1.72}.topbar{position:sticky;top:0;z-index:40;background:#fffffff2;border-bottom:1px solid var(--line);backdrop-filter:blur(10px)}.topbar-inner{max-width:1240px;margin:auto;padding:10px 18px;display:flex;align-items:center;justify-content:space-between;gap:10px}.brand{font-weight:900;color:var(--navy)}.nav{display:flex;gap:6px;flex-wrap:wrap}.nav a{text-decoration:none;color:var(--navy);font-weight:800;font-size:.82rem;padding:6px 9px;border:1px solid var(--line);border-radius:999px}.btn{border:0;border-radius:11px;background:var(--blue);color:#fff;padding:10px 15px;font-weight:900;cursor:pointer}.hero,main{max-width:1240px;margin:auto;padding:0 18px}.hero{margin-top:28px}.hero-card{position:relative;overflow:hidden;background:linear-gradient(135deg,#18344f,#275f7d 55%,#3984ba);color:#fff;border-radius:28px;padding:42px;box-shadow:var(--shadow)}.hero-card:after{content:"LEFT ↔ RIGHT";position:absolute;right:18px;top:25px;font-size:64px;font-weight:900;color:#ffffff10;transform:rotate(-6deg)}.badge{display:inline-block;padding:6px 12px;border-radius:999px;background:#ffffff24;border:1px solid #ffffff44;font-weight:900}h1{font-size:clamp(2rem,4vw,3.2rem);line-height:1.15;margin:13px 0}.hero p{max-width:900px;color:#eaf3ff}.hero-grid{position:relative;z-index:2;display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-top:22px}.hero-stat{padding:14px;border-radius:16px;background:#ffffff1c;border:1px solid #ffffff33}.hero-stat strong{display:block}main{padding-bottom:70px}section{margin-top:30px}.section-title{color:var(--navy)}.grid{display:grid;grid-template-columns:repeat(2,1fr);gap:14px}.card,.story-block,.teacher-message,.ending-card,.last-message{background:#fff;border:1px solid var(--line);border-radius:20px;padding:22px;box-shadow:var(--shadow)}.tags{display:flex;gap:8px;flex-wrap:wrap}.tag{padding:7px 11px;border-radius:999px;background:var(--sky);color:var(--blue);font-weight:900}.concept-flow{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-top:15px}.concept-flow div{text-align:center;padding:13px;border-radius:14px;background:var(--mint);color:var(--green);font-weight:900}.story-wrap,.ending-grid,.code-list,.ox-list{display:grid;gap:14px}.humanities{border-left:7px solid #b47b35}.philosophy{border-left:7px solid var(--purple)}.science{border-left:7px solid var(--green)}.math{border-left:7px solid var(--blue)}.teacher-message{background:linear-gradient(135deg,#eef5ff,#fff)}.code-card{background:#fff;border:1px solid var(--line);border-radius:22px;box-shadow:var(--shadow);overflow:hidden}.code-head{display:flex;gap:15px;padding:20px}.num{min-width:46px;height:46px;display:grid;place-items:center;border-radius:14px;background:var(--navy);color:#fff;font-weight:900}.code-head h3{margin:0;color:var(--navy)}.code-head p{margin:4px 0 0;color:var(--muted)}pre{position:relative;margin:0;padding:22px;background:#101827;color:#eef6ff;overflow:auto;font:15px/1.6 Consolas,monospace}.copy-btn{position:absolute;right:12px;top:12px;border:1px solid #44536b;background:#1d2a3d;color:#fff;border-radius:9px;padding:6px 10px}.mini-quiz{padding:20px;background:#fbfdff}.choice{display:flex;gap:9px;padding:8px}.hint{color:var(--red);font-weight:800}.good{color:var(--green)}.bad{color:var(--red)}.feedback,.ox-feedback{font-weight:900}.ox-item{display:grid;grid-template-columns:42px 1fr auto auto;gap:12px;align-items:center;background:#fff;border:1px solid var(--line);border-radius:14px;padding:13px}.ox-num{width:34px;height:34px;display:grid;place-items:center;border-radius:10px;background:var(--mint);color:var(--green);font-weight:900}.ox-feedback{grid-column:2/5}.poetry{border-top:6px solid #da7b93}.novel{border-top:6px solid #aa7b4e}.drama{border-top:6px solid var(--purple)}.theater{border-top:6px solid var(--green)}.music{border-top:6px solid var(--blue)}.last-message{background:linear-gradient(135deg,#fff7df,#fff)}.student-box{display:grid;grid-template-columns:1fr 1fr;gap:12px}input[type=text]{width:100%;padding:12px;border:1px solid var(--line);border-radius:11px}.action-bar{display:flex;gap:10px;flex-wrap:wrap;margin-top:15px}.secondary{background:var(--navy)}.danger{background:var(--red)}.score-box{display:none;margin-top:16px;padding:18px;border-radius:16px;background:var(--mint);font-weight:900}
+@media(max-width:700px){.grid,.hero-grid,.student-box,.concept-flow{grid-template-columns:1fr}.nav{display:none}.hero-card{padding:28px 20px}.hero-card:after{display:none}}@media print{.topbar,.copy-btn,.action-bar{display:none!important}.card,.code-card,.story-block,.ending-card{box-shadow:none;break-inside:avoid}}
+</style>
+</head>
+<body>
+<header class="topbar"><div class="topbar-inner"><div class="brand">MySQL 17차시 · 외부 조인과 자체 조인</div>
+<nav class="nav"><a href="#standard">성취기준</a><a href="#story">시작 이야기</a><a href="#codes">코드 10개</a><a href="#quiz">OX</a><a href="#ending">마무리</a><a href="#submit">제출</a></nav>
+<button class="btn" onclick="window.print()">인쇄</button></div></header>
+
+<div class="hero"><div class="hero-card"><span class="badge">목표지향 · 개념기반 · 누락 없는 데이터 해석</span>
+<h1>MySQL 17차시<br>외부 조인과 자체 조인</h1>
+<p>일치하지 않는 자료까지 보존하는 LEFT JOIN·RIGHT JOIN과 같은 테이블 안의 관계를 조회하는 SELF JOIN을 학습합니다.</p>
+<div class="hero-grid"><div class="hero-stat"><strong>핵심 질문</strong>연결되지 않은 데이터까지 왜 살펴야 할까?</div>
+<div class="hero-stat"><strong>전이 목표</strong>누락과 계층 관계를 해석하는 조회 설계</div><div class="hero-stat"><strong>실습</strong>외부·자체 조인 코드 10개</div>
+<div class="hero-stat"><strong>평가</strong>복수정답 10 + OX 10</div></div></div></div>
+
+<main>
+<section id="standard"><h2 class="section-title">1. 성취기준과 학습 목표</h2>
+<div class="grid"><div class="card"><h3>성취기준</h3>
+<p>LEFT JOIN과 RIGHT JOIN을 사용하여 일치하지 않는 자료까지 포함한 조회 결과를 만들고 NULL의 의미를 해석할 수 있다.</p>
+<p>같은 테이블에 서로 다른 별칭을 부여하여 학생-멘토, 직원-관리자와 같은 계층 관계를 SELF JOIN으로 조회할 수 있다.</p></div>
+<div class="card"><h3>학습 목표</h3><ol><li>내부 조인과 외부 조인의 차이를 설명한다.</li>
+<li>LEFT JOIN과 RIGHT JOIN의 기준 테이블을 구분한다.</li><li>NULL을 활용하여 미연결 데이터를 찾는다.</li>
+<li>SELF JOIN으로 같은 테이블 내부의 관계를 조회한다.</li></ol></div></div></section>
+
+<section><h2 class="section-title">2. 학습할 개념</h2><div class="card">
+<div class="tags"><span class="tag">LEFT JOIN</span><span class="tag">RIGHT JOIN</span><span class="tag">OUTER JOIN</span>
+<span class="tag">SELF JOIN</span><span class="tag">NULL</span><span class="tag">IS NULL</span>
+<span class="tag">COALESCE</span><span class="tag">테이블 별칭</span><span class="tag">계층 관계</span><span class="tag">UNION</span></div>
+<div class="concept-flow"><div>기준 테이블 선택</div><div>일치 행 연결</div><div>미일치 행 보존</div><div>누락·관계 해석</div></div>
+<p><strong>일반화:</strong> 외부 조인은 관계가 없는 데이터도 결과에 남겨 누락과 미배정 상태를 발견하게 하며, 자체 조인은 같은 종류의 대상 사이에 존재하는 역할과 계층을 표현한다.</p>
+<p><strong>핵심 질문:</strong> 일치하지 않는 데이터를 남겨야 하는 상황은 언제이며, NULL과 별칭은 보이지 않는 관계를 어떻게 드러내는가?</p></div></section>
+
+<section id="story"><h2 class="section-title">3. 수업 시작 이야기</h2><div class="story-wrap">
+<div class="story-block humanities"><h3>📚 인문학자의 이야기 — 기록되지 않은 사람도 이야기 속에 남아야 한다</h3><p>역사는 종종 목소리가 큰 사람만 기록하고, 조용한 사람을 빠뜨립니다. 인문학은 기록에서 누락된 사람과 보이지 않는 삶을 다시 찾아내려 합니다.</p><p>외부 조인은 일치하는 데이터가 없더라도 기준 테이블의 행을 남깁니다. 수강 기록이 없는 학생, 담당자가 없는 업무, 예약되지 않은 장비도 데이터 속에서 사라지지 않게 합니다.</p></div>
+<div class="story-block philosophy"><h3>🏛 철학자의 이야기 — 연결되지 않았다는 이유로 존재가 사라지는 것은 아니다</h3><p>철학은 관계가 없다는 사실과 존재하지 않는다는 사실을 구분합니다. 아직 연결되지 않은 대상도 분명히 존재하며, 그 빈자리는 의미 있는 질문을 던집니다.</p><p>외부 조인의 NULL은 실패가 아니라 아직 관계가 맺어지지 않았다는 표시입니다. 데이터의 빈칸을 결함으로만 보지 않고 새로운 탐구의 출발점으로 볼 수 있습니다.</p></div>
+<div class="story-block science"><h3>🔬 과학자의 이야기 — 관측되지 않은 값도 중요한 단서다</h3><p>과학 실험에서 측정값이 없다는 사실은 단순한 공백이 아닙니다. 센서가 작동하지 않았는지, 현상이 발생하지 않았는지, 측정 조건이 달랐는지를 살펴야 합니다.</p><p>외부 조인은 값이 없는 행을 보존하여 누락의 원인을 분석할 기회를 줍니다. NULL을 발견하는 순간부터 새로운 과학적 질문이 시작됩니다.</p></div>
+<div class="story-block math"><h3>➗ 수학자의 이야기 — 전체집합을 잊지 않는 사고</h3><p>문제를 풀 때 특정 조건을 만족하는 원소만 보다가 전체집합을 잊으면 잘못된 결론에 도달할 수 있습니다. 외부 조인은 한쪽 전체집합을 유지하면서 다른 집합과의 대응을 확인합니다.</p><p>SELF JOIN은 하나의 집합 안에서도 원소 사이에 관계가 존재할 수 있음을 보여 줍니다. 학생과 멘토, 직원과 관리자처럼 같은 종류의 대상도 서로 다른 역할로 연결됩니다.</p></div>
+<div class="teacher-message"><strong>교사의 시작 이야기</strong><p>오늘은 연결된 데이터뿐 아니라 아직 연결되지 않은 데이터까지 바라보는 법을 배웁니다. 수강하지 않은 학생, 배정되지 않은 역할, 비어 있는 멘토 번호를 찾는 일은 누군가를 제외하기 위한 것이 아니라 필요한 도움과 기회를 발견하기 위한 일입니다. 데이터베이스의 좋은 조회는 보이는 것만 세지 않고, 보이지 않는 빈자리도 존중합니다.</p></div>
+</div></section>
+<section id="codes"><h2 class="section-title">4. 학습할 코드 10개와 상세 설명</h2><div class="code-list">
+<article class="code-card">
+<div class="code-head"><span class="num">01</span><div><h3>LEFT JOIN으로 모든 학생 조회</h3><p>students를 기준 테이블로 두고 모든 학생을 출력합니다. 수강 정보가 없는 학생은 course_id가 NULL로 표시됩니다.</p></div></div>
+<pre><code>SELECT s.student_id, s.student_name, e.course_id
+FROM students AS s
+LEFT JOIN enrollments AS e
+    ON s.student_id = e.student_id;</code><button class="copy-btn" onclick="copyCode(this)">복사</button></pre>
+<div class="mini-quiz"><h4>코드 1에 대한 설명으로 옳은 것을 모두 고르세요.</h4>
+<p class="hint">옳은 설명 3개를 빠짐없이 선택하세요.</p><label class="choice"><input type="checkbox" value="0"><span>1. students의 모든 행을 유지한다.</span></label><label class="choice"><input type="checkbox" value="1"><span>2. 수강 정보가 없으면 e.course_id는 NULL이 될 수 있다.</span></label><label class="choice"><input type="checkbox" value="2"><span>3. LEFT JOIN은 왼쪽 테이블을 기준으로 한다.</span></label><label class="choice"><input type="checkbox" value="3"><span>4. 수강 학생만 출력한다.</span></label><label class="choice"><input type="checkbox" value="4"><span>5. 오른쪽 테이블의 모든 행만 유지한다.</span></label><div class="feedback"></div></div>
+</article>
+<article class="code-card">
+<div class="code-head"><span class="num">02</span><div><h3>미수강 학생 찾기</h3><p>LEFT JOIN 결과에서 오른쪽 테이블의 값이 NULL인 행만 골라 수강 기록이 없는 학생을 찾습니다.</p></div></div>
+<pre><code>SELECT s.student_id, s.student_name
+FROM students AS s
+LEFT JOIN enrollments AS e
+    ON s.student_id = e.student_id
+WHERE e.student_id IS NULL;</code><button class="copy-btn" onclick="copyCode(this)">복사</button></pre>
+<div class="mini-quiz"><h4>코드 2에 대한 설명으로 옳은 것을 모두 고르세요.</h4>
+<p class="hint">옳은 설명 3개를 빠짐없이 선택하세요.</p><label class="choice"><input type="checkbox" value="0"><span>1. 미수강 학생을 찾는다.</span></label><label class="choice"><input type="checkbox" value="1"><span>2. e.student_id가 NULL인 행을 선택한다.</span></label><label class="choice"><input type="checkbox" value="2"><span>3. LEFT JOIN을 활용한다.</span></label><label class="choice"><input type="checkbox" value="3"><span>4. 수강 중인 학생만 출력한다.</span></label><label class="choice"><input type="checkbox" value="4"><span>5. WHERE 절은 학생 테이블을 삭제한다.</span></label><div class="feedback"></div></div>
+</article>
+<article class="code-card">
+<div class="code-head"><span class="num">03</span><div><h3>RIGHT JOIN으로 모든 과목 조회</h3><p>courses를 오른쪽 기준 테이블로 두어 수강생이 없는 과목도 모두 조회합니다.</p></div></div>
+<pre><code>SELECT e.student_id, c.course_id, c.course_name
+FROM enrollments AS e
+RIGHT JOIN courses AS c
+    ON e.course_id = c.course_id;</code><button class="copy-btn" onclick="copyCode(this)">복사</button></pre>
+<div class="mini-quiz"><h4>코드 3에 대한 설명으로 옳은 것을 모두 고르세요.</h4>
+<p class="hint">옳은 설명 3개를 빠짐없이 선택하세요.</p><label class="choice"><input type="checkbox" value="0"><span>1. courses의 모든 행을 유지한다.</span></label><label class="choice"><input type="checkbox" value="1"><span>2. 수강생이 없는 과목도 조회된다.</span></label><label class="choice"><input type="checkbox" value="2"><span>3. RIGHT JOIN은 오른쪽 테이블을 기준으로 한다.</span></label><label class="choice"><input type="checkbox" value="3"><span>4. 학생이 없는 행은 모두 제거된다.</span></label><label class="choice"><input type="checkbox" value="4"><span>5. courses 테이블이 왼쪽 기준이다.</span></label><div class="feedback"></div></div>
+</article>
+<article class="code-card">
+<div class="code-head"><span class="num">04</span><div><h3>수강생이 없는 과목 찾기</h3><p>RIGHT JOIN 결과에서 enrollments 쪽 값이 NULL인 행을 선택하여 수강생이 없는 과목을 찾습니다.</p></div></div>
+<pre><code>SELECT c.course_id, c.course_name
+FROM enrollments AS e
+RIGHT JOIN courses AS c
+    ON e.course_id = c.course_id
+WHERE e.course_id IS NULL;</code><button class="copy-btn" onclick="copyCode(this)">복사</button></pre>
+<div class="mini-quiz"><h4>코드 4에 대한 설명으로 옳은 것을 모두 고르세요.</h4>
+<p class="hint">옳은 설명 3개를 빠짐없이 선택하세요.</p><label class="choice"><input type="checkbox" value="0"><span>1. 수강생이 없는 과목을 찾는다.</span></label><label class="choice"><input type="checkbox" value="1"><span>2. e.course_id가 NULL인 행을 선택한다.</span></label><label class="choice"><input type="checkbox" value="2"><span>3. RIGHT JOIN 결과를 활용한다.</span></label><label class="choice"><input type="checkbox" value="3"><span>4. 수강생이 많은 과목만 찾는다.</span></label><label class="choice"><input type="checkbox" value="4"><span>5. 과목 테이블을 삭제한다.</span></label><div class="feedback"></div></div>
+</article>
+<article class="code-card">
+<div class="code-head"><span class="num">05</span><div><h3>LEFT JOIN과 집계 함수</h3><p>모든 과목을 유지하면서 과목별 수강 인원을 계산합니다. 수강생이 없는 과목도 0명으로 나타낼 수 있습니다.</p></div></div>
+<pre><code>SELECT c.course_name,
+       COUNT(e.student_id) AS student_count
+FROM courses AS c
+LEFT JOIN enrollments AS e
+    ON c.course_id = e.course_id
+GROUP BY c.course_id, c.course_name;</code><button class="copy-btn" onclick="copyCode(this)">복사</button></pre>
+<div class="mini-quiz"><h4>코드 5에 대한 설명으로 옳은 것을 모두 고르세요.</h4>
+<p class="hint">옳은 설명 3개를 빠짐없이 선택하세요.</p><label class="choice"><input type="checkbox" value="0"><span>1. 모든 과목을 유지한다.</span></label><label class="choice"><input type="checkbox" value="1"><span>2. COUNT(e.student_id)로 수강 인원을 센다.</span></label><label class="choice"><input type="checkbox" value="2"><span>3. 수강생이 없는 과목도 결과에 포함될 수 있다.</span></label><label class="choice"><input type="checkbox" value="3"><span>4. 수강생 없는 과목은 반드시 제외된다.</span></label><label class="choice"><input type="checkbox" value="4"><span>5. GROUP BY는 테이블을 합친다.</span></label><div class="feedback"></div></div>
+</article>
+<article class="code-card">
+<div class="code-head"><span class="num">06</span><div><h3>SELF JOIN으로 학생과 멘토 연결</h3><p>같은 students 테이블을 멘티와 멘토 역할로 나누어 자체 조인합니다. 별칭이 각 역할을 구분합니다.</p></div></div>
+<pre><code>SELECT mentee.student_name AS mentee_name,
+       mentor.student_name AS mentor_name
+FROM students AS mentee
+LEFT JOIN students AS mentor
+    ON mentee.mentor_id = mentor.student_id;</code><button class="copy-btn" onclick="copyCode(this)">복사</button></pre>
+<div class="mini-quiz"><h4>코드 6에 대한 설명으로 옳은 것을 모두 고르세요.</h4>
+<p class="hint">옳은 설명 3개를 빠짐없이 선택하세요.</p><label class="choice"><input type="checkbox" value="0"><span>1. 같은 students 테이블을 두 역할로 사용한다.</span></label><label class="choice"><input type="checkbox" value="1"><span>2. mentee와 mentor 별칭이 역할을 구분한다.</span></label><label class="choice"><input type="checkbox" value="2"><span>3. 멘토가 없는 학생도 LEFT JOIN으로 남을 수 있다.</span></label><label class="choice"><input type="checkbox" value="3"><span>4. 두 개의 서로 다른 데이터베이스를 조인한다.</span></label><label class="choice"><input type="checkbox" value="4"><span>5. SELF JOIN에서는 별칭을 사용할 수 없다.</span></label><div class="feedback"></div></div>
+</article>
+<article class="code-card">
+<div class="code-head"><span class="num">07</span><div><h3>SELF JOIN으로 직원과 관리자 조회</h3><p>employees 테이블을 자기 자신과 조인하여 직원과 관리자의 계층 관계를 한 번에 조회합니다.</p></div></div>
+<pre><code>SELECT emp.employee_name AS employee,
+       mgr.employee_name AS manager
+FROM employees AS emp
+LEFT JOIN employees AS mgr
+    ON emp.manager_id = mgr.employee_id;</code><button class="copy-btn" onclick="copyCode(this)">복사</button></pre>
+<div class="mini-quiz"><h4>코드 7에 대한 설명으로 옳은 것을 모두 고르세요.</h4>
+<p class="hint">옳은 설명 3개를 빠짐없이 선택하세요.</p><label class="choice"><input type="checkbox" value="0"><span>1. 직원과 관리자 관계를 조회한다.</span></label><label class="choice"><input type="checkbox" value="1"><span>2. 같은 employees 테이블을 두 번 사용한다.</span></label><label class="choice"><input type="checkbox" value="2"><span>3. emp와 mgr 별칭을 사용한다.</span></label><label class="choice"><input type="checkbox" value="3"><span>4. 관리자 정보만 삭제한다.</span></label><label class="choice"><input type="checkbox" value="4"><span>5. SELF JOIN은 반드시 INNER JOIN만 사용한다.</span></label><div class="feedback"></div></div>
+</article>
+<article class="code-card">
+<div class="code-head"><span class="num">08</span><div><h3>외부 조인과 조건 검색</h3><p>1학년 학생을 모두 유지하면서 수강 과목을 조회합니다. 수강 정보가 없는 학생도 결과에 남습니다.</p></div></div>
+<pre><code>SELECT s.student_name, c.course_name
+FROM students AS s
+LEFT JOIN enrollments AS e
+    ON s.student_id = e.student_id
+LEFT JOIN courses AS c
+    ON e.course_id = c.course_id
+WHERE s.grade = 1;</code><button class="copy-btn" onclick="copyCode(this)">복사</button></pre>
+<div class="mini-quiz"><h4>코드 8에 대한 설명으로 옳은 것을 모두 고르세요.</h4>
+<p class="hint">옳은 설명 3개를 빠짐없이 선택하세요.</p><label class="choice"><input type="checkbox" value="0"><span>1. 1학년 학생을 모두 유지한다.</span></label><label class="choice"><input type="checkbox" value="1"><span>2. 수강 과목이 없어도 학생은 남을 수 있다.</span></label><label class="choice"><input type="checkbox" value="2"><span>3. 두 번의 LEFT JOIN을 사용한다.</span></label><label class="choice"><input type="checkbox" value="3"><span>4. 수강 정보가 없는 학생은 반드시 제거된다.</span></label><label class="choice"><input type="checkbox" value="4"><span>5. WHERE가 courses의 모든 행을 보존한다.</span></label><div class="feedback"></div></div>
+</article>
+<article class="code-card">
+<div class="code-head"><span class="num">09</span><div><h3>COALESCE로 NULL 표현 바꾸기</h3><p>외부 조인 결과의 NULL을 COALESCE로 &#x27;미수강&#x27;이라는 읽기 쉬운 값으로 바꿉니다.</p></div></div>
+<pre><code>SELECT s.student_name,
+       COALESCE(c.course_name, &#x27;미수강&#x27;) AS course_status
+FROM students AS s
+LEFT JOIN enrollments AS e
+    ON s.student_id = e.student_id
+LEFT JOIN courses AS c
+    ON e.course_id = c.course_id;</code><button class="copy-btn" onclick="copyCode(this)">복사</button></pre>
+<div class="mini-quiz"><h4>코드 9에 대한 설명으로 옳은 것을 모두 고르세요.</h4>
+<p class="hint">옳은 설명 3개를 빠짐없이 선택하세요.</p><label class="choice"><input type="checkbox" value="0"><span>1. NULL을 &#x27;미수강&#x27;으로 표현한다.</span></label><label class="choice"><input type="checkbox" value="1"><span>2. COALESCE를 사용한다.</span></label><label class="choice"><input type="checkbox" value="2"><span>3. 외부 조인 결과를 읽기 쉽게 만든다.</span></label><label class="choice"><input type="checkbox" value="3"><span>4. NULL 값을 모두 0으로 바꾼다.</span></label><label class="choice"><input type="checkbox" value="4"><span>5. COALESCE는 테이블을 정렬한다.</span></label><div class="feedback"></div></div>
+</article>
+<article class="code-card">
+<div class="code-head"><span class="num">10</span><div><h3>UNION으로 전체 외부 조인 흉내 내기</h3><p>MySQL에는 FULL OUTER JOIN이 없으므로 LEFT JOIN과 RIGHT JOIN 결과를 UNION으로 합쳐 비슷한 결과를 만들 수 있습니다.</p></div></div>
+<pre><code>SELECT s.student_name, c.course_name
+FROM students AS s
+LEFT JOIN enrollments AS e
+    ON s.student_id = e.student_id
+LEFT JOIN courses AS c
+    ON e.course_id = c.course_id
+
+UNION
+
+SELECT s.student_name, c.course_name
+FROM students AS s
+RIGHT JOIN enrollments AS e
+    ON s.student_id = e.student_id
+RIGHT JOIN courses AS c
+    ON e.course_id = c.course_id;</code><button class="copy-btn" onclick="copyCode(this)">복사</button></pre>
+<div class="mini-quiz"><h4>코드 10에 대한 설명으로 옳은 것을 모두 고르세요.</h4>
+<p class="hint">옳은 설명 3개를 빠짐없이 선택하세요.</p><label class="choice"><input type="checkbox" value="0"><span>1. MySQL의 FULL OUTER JOIN 대체 방법이다.</span></label><label class="choice"><input type="checkbox" value="1"><span>2. LEFT JOIN과 RIGHT JOIN 결과를 UNION으로 합친다.</span></label><label class="choice"><input type="checkbox" value="2"><span>3. 양쪽의 일치하지 않는 데이터까지 포함하는 효과를 낼 수 있다.</span></label><label class="choice"><input type="checkbox" value="3"><span>4. MySQL에서 FULL OUTER JOIN을 직접 사용한다.</span></label><label class="choice"><input type="checkbox" value="4"><span>5. UNION은 두 테이블을 물리적으로 하나로 합친다.</span></label><div class="feedback"></div></div>
+</article></div></section>
+<section id="quiz"><h2 class="section-title">5. 형성평가 OX 퀴즈 10개</h2><div class="ox-list"><div class="ox-item" data-answer="O">
+<div class="ox-num">1</div><div>LEFT JOIN은 왼쪽 테이블의 모든 행을 유지한다.</div>
+<label><input type="radio" name="ox1" value="O"> O</label>
+<label><input type="radio" name="ox1" value="X"> X</label>
+<div class="ox-feedback"></div></div><div class="ox-item" data-answer="O">
+<div class="ox-num">2</div><div>RIGHT JOIN은 오른쪽 테이블의 모든 행을 유지한다.</div>
+<label><input type="radio" name="ox2" value="O"> O</label>
+<label><input type="radio" name="ox2" value="X"> X</label>
+<div class="ox-feedback"></div></div><div class="ox-item" data-answer="O">
+<div class="ox-num">3</div><div>외부 조인 결과에는 NULL이 나타날 수 있다.</div>
+<label><input type="radio" name="ox3" value="O"> O</label>
+<label><input type="radio" name="ox3" value="X"> X</label>
+<div class="ox-feedback"></div></div><div class="ox-item" data-answer="O">
+<div class="ox-num">4</div><div>미수강 학생을 찾을 때 오른쪽 테이블의 키가 NULL인지 확인할 수 있다.</div>
+<label><input type="radio" name="ox4" value="O"> O</label>
+<label><input type="radio" name="ox4" value="X"> X</label>
+<div class="ox-feedback"></div></div><div class="ox-item" data-answer="X">
+<div class="ox-num">5</div><div>SELF JOIN은 반드시 서로 다른 두 테이블을 사용한다.</div>
+<label><input type="radio" name="ox5" value="O"> O</label>
+<label><input type="radio" name="ox5" value="X"> X</label>
+<div class="ox-feedback"></div></div><div class="ox-item" data-answer="O">
+<div class="ox-num">6</div><div>자체 조인에서는 같은 테이블에 서로 다른 별칭을 부여할 수 있다.</div>
+<label><input type="radio" name="ox6" value="O"> O</label>
+<label><input type="radio" name="ox6" value="X"> X</label>
+<div class="ox-feedback"></div></div><div class="ox-item" data-answer="O">
+<div class="ox-num">7</div><div>COALESCE는 NULL을 다른 값으로 표현하는 데 사용할 수 있다.</div>
+<label><input type="radio" name="ox7" value="O"> O</label>
+<label><input type="radio" name="ox7" value="X"> X</label>
+<div class="ox-feedback"></div></div><div class="ox-item" data-answer="X">
+<div class="ox-num">8</div><div>MySQL은 FULL OUTER JOIN 문법을 직접 지원한다.</div>
+<label><input type="radio" name="ox8" value="O"> O</label>
+<label><input type="radio" name="ox8" value="X"> X</label>
+<div class="ox-feedback"></div></div><div class="ox-item" data-answer="O">
+<div class="ox-num">9</div><div>LEFT JOIN과 RIGHT JOIN은 기준이 되는 테이블 방향이 다르다.</div>
+<label><input type="radio" name="ox9" value="O"> O</label>
+<label><input type="radio" name="ox9" value="X"> X</label>
+<div class="ox-feedback"></div></div><div class="ox-item" data-answer="X">
+<div class="ox-num">10</div><div>외부 조인은 일치하지 않는 데이터를 무조건 제거한다.</div>
+<label><input type="radio" name="ox10" value="O"> O</label>
+<label><input type="radio" name="ox10" value="X"> X</label>
+<div class="ox-feedback"></div></div></div></section>
+<section id="ending"><h2 class="section-title">6. 수업 끝 이야기</h2><div class="ending-grid">
+<div class="ending-card poetry"><h3>🌙 시인의 이야기 — NULL도 한 줄의 여백이다</h3><p>시는 말하지 않은 부분까지 읽게 합니다. NULL도 데이터가 할 말을 잃은 것이 아니라 잠시 숨을 고르는 여백일 수 있습니다. 단, 시험 답안에서 너무 오래 침묵하면 점수도 함께 조용해집니다.</p></div>
+<div class="ending-card novel"><h3>📖 소설가의 이야기 — 아직 등장하지 않은 인물도 이야기를 바꿀 수 있다</h3><p>첫 장에 나오지 않은 인물이 마지막 장의 주인공이 되기도 합니다. 지금 어떤 관계에도 연결되지 않았다고 해서 여러분의 가능성이 없는 것은 아닙니다.</p></div>
+<div class="ending-card drama"><h3>🎭 희곡인의 이야기 — 조연이 무대 밖에 있다고 삭제하면 안 된다</h3><p>아직 대사가 없는 배우도 다음 장면을 준비하고 있습니다. LEFT JOIN은 그런 배우를 명단에서 지우지 않습니다. 다만 대기실에서 간식을 너무 많이 먹으면 COUNT가 늘 수 있습니다.</p></div>
+<div class="ending-card theater"><h3>🎬 연극인의 이야기 — 한 사람이 두 역할을 맡을 때</h3><p>한 배우가 왕과 광대를 동시에 연기할 수 있듯 SELF JOIN은 같은 테이블에 두 역할을 맡깁니다. 별칭이 없으면 관객도 SQL도 누가 누구인지 헷갈립니다.</p></div>
+<div class="ending-card music"><h3>🎼 음악인의 이야기 — 쉼표도 음악이다</h3><p>음표만 계속 이어지면 음악은 숨을 쉴 수 없습니다. 쉼표는 소리가 없지만 곡의 일부입니다. NULL도 적절히 해석하면 데이터가 들려주는 중요한 쉼표입니다.</p></div>
+<div class="last-message"><strong>오늘의 오래 남는 마지막 이야기</strong><p>삶은 INNER JOIN만으로 이루어지지 않습니다. 지금 나와 공통점이 없는 사람, 아직 기회를 만나지 못한 사람, 어느 관계에도 이름을 올리지 못한 사람도 모두 같은 결과표 안에 남아 있어야 합니다.</p><p><strong>여러분이 누군가와 아직 연결되지 않았다고 해서 부족한 것이 아닙니다. LEFT JOIN처럼 자신의 자리를 지키고, SELF JOIN처럼 스스로의 어제와 오늘을 비교하며 성장하십시오. 빈칸은 끝이 아니라 앞으로 채워질 가능성의 자리입니다. 여러분의 미래에는 아직 실행되지 않은 멋진 쿼리가 많이 남아 있습니다.</strong></p></div>
+</div></section>
+
+<section id="submit"><h2 class="section-title">7. 학번·이름 입력 및 결과 저장</h2><div class="card">
+<div class="student-box"><label><strong>학번</strong><input type="text" id="studentId" placeholder="예: 1101"></label>
+<label><strong>이름</strong><input type="text" id="studentName" placeholder="예: 홍길동"></label></div>
+<div class="action-bar"><button class="btn" onclick="gradeAll()">전체 채점</button>
+<button class="btn secondary" onclick="downloadResult()">TXT 결과 저장</button>
+<button class="btn danger" onclick="resetAll()">다시 풀기</button></div>
+<div id="scoreBox" class="score-box"></div><p>저장 파일명: 학번_이름_점수_17차시_응시시각.txt</p></div></section>
+</main>
+
+<script>
+let lastResult=null;
+function copyCode(b){navigator.clipboard.writeText(b.parentElement.querySelector('code').innerText);b.textContent='복사됨';setTimeout(()=>b.textContent='복사',900)}
+function selected(q){return [...q.querySelectorAll('input[type=checkbox]:checked')].map(x=>+x.value).sort()}
+function gradeAll(){
+ const sid=studentId.value.trim(),name=studentName.value.trim();
+ if(!sid||!name){alert('학번과 이름을 입력하세요.');return}
+ let c=0,o=0,detail=[];
+ document.querySelectorAll('.mini-quiz').forEach((q,i)=>{
+   let s=selected(q),ok=JSON.stringify(s)==='[0,1,2]',f=q.querySelector('.feedback');
+   f.textContent=ok?'정답입니다.':'오답입니다. 정답: 1, 2, 3번';f.className='feedback '+(ok?'good':'bad');
+   if(ok)c++;detail.push(`코드 ${i+1}: ${ok?'정답':'오답'} / 응답 ${s.map(x=>x+1).join(', ')||'미응답'}`);
+ });
+ document.querySelectorAll('.ox-item').forEach((q,i)=>{
+   let x=q.querySelector('input:checked'),v=x?x.value:'',ok=v===q.dataset.answer,f=q.querySelector('.ox-feedback');
+   f.textContent=ok?'정답':'오답 · 정답: '+q.dataset.answer;f.className='ox-feedback '+(ok?'good':'bad');
+   if(ok)o++;detail.push(`OX ${i+1}: ${ok?'정답':'오답'} / 응답 ${v||'미응답'}`);
+ });
+ let total=(c+o)*5,time=new Date();lastResult={sid,name,c,o,total,detail,time};
+ scoreBox.style.display='block';scoreBox.innerHTML=`총점 ${total}점 / 100점<br>복수정답 ${c} / 10 · OX ${o} / 10`;
+ scoreBox.scrollIntoView({behavior:'smooth'});
+}
+function pad(n){return String(n).padStart(2,'0')}
+function stamp(t){return `${t.getFullYear()}${pad(t.getMonth()+1)}${pad(t.getDate())}_${pad(t.getHours())}${pad(t.getMinutes())}${pad(t.getSeconds())}`}
+function downloadResult(){
+ if(!lastResult){gradeAll();if(!lastResult)return}
+ let r=lastResult,text=['MySQL 17차시 형성평가 결과',`학번: ${r.sid}`,`이름: ${r.name}`,
+ `점수: ${r.total}점`,`복수정답: ${r.c}/10`,`OX: ${r.o}/10`,`응시시각: ${r.time.toLocaleString()}`,'',...r.detail].join('\n');
+ let blob=new Blob(['\ufeff'+text],{type:'text/plain;charset=utf-8'}),a=document.createElement('a');
+ a.href=URL.createObjectURL(blob);a.download=`${r.sid}_${r.name}_${r.total}점_17차시_${stamp(r.time)}.txt`;a.click();
+ setTimeout(()=>URL.revokeObjectURL(a.href),1000);
+}
+function resetAll(){
+ document.querySelectorAll('input').forEach(x=>{if(x.type!=='text')x.checked=false});
+ document.querySelectorAll('.feedback,.ox-feedback').forEach(x=>x.textContent='');
+ scoreBox.style.display='none';lastResult=null;
+}
+</script></body></html>

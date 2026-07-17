@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<title>MySQL 수업지도안</title>
+
+<style>
+html, body{
+    margin:0;
+    padding:0;
+    width:100%;
+    height:100%;
+    overflow:hidden;
+    font-family:Arial, sans-serif;
+}
+
+/* 상단 메뉴 */
+#top{
+    height:36px;
+    padding:4px 8px;
+    border-bottom:1px solid #ccc;
+    background:#f5f5f5;
+    display:flex;
+    align-items:center;
+    gap:12px;
+}
+
+/* 아주 작은 드롭다운 */
+#fileSelect{
+    width:330px;
+    height:24px;
+    font-size:12px;
+}
+
+#teacherMail{
+    font-size:12px;
+    font-weight:bold;
+    color:#17324d;
+    text-decoration:none;
+    white-space:nowrap;
+}
+
+#teacherMail:hover{
+    color:#2f6fa3;
+    text-decoration:underline;
+}
+
+/* 본문 */
+#main{
+    width:100%;
+    height:calc(100vh - 36px);
+    border:none;
+}
+</style>
+</head>
+
+<body>
+
+<div id="top">
+    <select id="fileSelect"
+            onchange="loadPage(this.value)">
+
+<option value="MySQL_01.html">01. 데이터베이스의 이해</option>
+<option value="MySQL_02.html">02. MySQL 설치와 환경 구성</option>
+<option value="MySQL_03.html">03. 데이터베이스 생성과 관리</option>
+<option value="MySQL_04.html">04. 테이블과 자료형</option>
+<option value="MySQL_05.html">05. 데이터 입력</option>
+<option value="MySQL_06.html">06. 기본 조회</option>
+<option value="MySQL_07.html">07. 데이터 수정과 삭제</option>
+<option value="MySQL_08.html">08. 기초 종합 실습</option>
+<option value="MySQL_09.html">09. 조건 검색</option>
+<option value="MySQL_10.html">10. 범위·목록·문자 검색</option>
+<option value="MySQL_11.html">11. 정렬과 출력 제한</option>
+<option value="MySQL_12.html">12. 숫자·문자·날짜 함수</option>
+<option value="MySQL_13.html">13. 집계 함수</option>
+<option value="MySQL_14.html">14. 그룹화와 그룹 조건</option>
+<option value="MySQL_15.html">15. 관계와 외래키</option>
+<option value="MySQL_16.html">16. 내부 조인</option>
+<option value="MySQL_17.html">17. 외부 조인과 자체 조인</option>
+<option value="MySQL_18.html">18. 서브쿼리</option>
+<option value="MySQL_19.html">19. 데이터 모델링</option>
+<option value="MySQL_20.html">20. 정규화</option>
+<option value="MySQL_21.html">21. 제약 조건</option>
+<option value="MySQL_22.html">22. 뷰</option>
+<option value="MySQL_23.html">23. 인덱스와 성능</option>
+<option value="MySQL_24.html">24. 트랜잭션</option>
+<option value="MySQL_25.html">25. 사용자와 권한</option>
+<option value="MySQL_26.html">26. 저장 프로시저</option>
+<option value="MySQL_27.html">27. 함수와 트리거</option>
+<option value="MySQL_28.html">28. 백업·복원과 보안</option>
+<option value="MySQL_29.html">29. 파이썬과 MySQL 연동</option>
+<option value="MySQL_30.html">30. 파이썬 CRUD 구현</option>
+<option value="MySQL_31.html">31. 프로젝트 기획과 설계</option>
+<option value="MySQL_32.html">32. 프로젝트 구현</option>
+<option value="MySQL_33.html">33. 테스트와 개선</option>
+<option value="MySQL_34.html">34. 발표와 평가</option>
+
+    </select>
+
+<a id="teacherMail"
+   href="https://mail.google.com/mail/?view=cm&fs=1&to=onstar6395@js.hs.kr"
+   target="_blank"
+   style="font-size:12px;font-weight:bold;text-decoration:none;color:#17324d;">
+    📧 선생님 Gmail: onstar6395@js.hs.kr
+</a>
+
+</div>
+
+<iframe
+    id="main"
+    src="MySQL_01.html">
+</iframe>
+
+<script>
+function loadPage(file){
+    document.getElementById("main").src = file;
+}
+</script>
+
+</body>
+</html>

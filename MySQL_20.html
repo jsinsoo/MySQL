@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>MySQL 20차시 목표지향 개념기반 수업지도안</title>
+<style>
+:root{--navy:#20334a;--blue:#336fd8;--sky:#eaf3ff;--mint:#eaf9f1;--green:#278a62;--red:#dc654e;--purple:#7058c8;--orange:#d98636;--text:#293a4b;--muted:#6a7a8b;--line:#dbe5ee;--bg:#f5f8fc;--shadow:0 12px 28px rgba(32,51,74,.10)}
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;font-family:"Pretendard","Noto Sans KR","Malgun Gothic",sans-serif;color:var(--text);background:linear-gradient(180deg,#fcfdff,var(--bg));line-height:1.72}.topbar{position:sticky;top:0;z-index:40;background:#fffffff2;border-bottom:1px solid var(--line);backdrop-filter:blur(10px)}.topbar-inner{max-width:1240px;margin:auto;padding:10px 18px;display:flex;align-items:center;justify-content:space-between;gap:10px}.brand{font-weight:900;color:var(--navy)}.nav{display:flex;gap:6px;flex-wrap:wrap}.nav a{text-decoration:none;color:var(--navy);font-weight:800;font-size:.82rem;padding:6px 9px;border:1px solid var(--line);border-radius:999px}.btn{border:0;border-radius:11px;background:var(--blue);color:#fff;padding:10px 15px;font-weight:900;cursor:pointer}.hero,main{max-width:1240px;margin:auto;padding:0 18px}.hero{margin-top:28px}.hero-card{position:relative;overflow:hidden;background:linear-gradient(135deg,#20334a,#615248 55%,#c47b36);color:#fff;border-radius:28px;padding:42px;box-shadow:var(--shadow)}.hero-card:after{content:"1NF → 2NF → 3NF";position:absolute;right:18px;top:28px;font-size:55px;font-weight:900;color:#ffffff10;transform:rotate(-5deg)}.badge{display:inline-block;padding:6px 12px;border-radius:999px;background:#ffffff24;border:1px solid #ffffff44;font-weight:900}h1{font-size:clamp(2rem,4vw,3.2rem);line-height:1.15;margin:13px 0}.hero p{max-width:900px;color:#fff5e9}.hero-grid{position:relative;z-index:2;display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-top:22px}.hero-stat{padding:14px;border-radius:16px;background:#ffffff1c;border:1px solid #ffffff33}.hero-stat strong{display:block}main{padding-bottom:70px}section{margin-top:30px}.section-title{color:var(--navy)}.grid{display:grid;grid-template-columns:repeat(2,1fr);gap:14px}.card,.story-block,.teacher-message,.ending-card,.last-message{background:#fff;border:1px solid var(--line);border-radius:20px;padding:22px;box-shadow:var(--shadow)}.tags{display:flex;gap:8px;flex-wrap:wrap}.tag{padding:7px 11px;border-radius:999px;background:#fff2e7;color:var(--orange);font-weight:900}.concept-flow{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-top:15px}.concept-flow div{text-align:center;padding:13px;border-radius:14px;background:#fff4e8;color:#bb702c;font-weight:900}.story-wrap,.ending-grid,.code-list,.ox-list{display:grid;gap:14px}.humanities{border-left:7px solid #b47b35}.philosophy{border-left:7px solid var(--purple)}.science{border-left:7px solid var(--green)}.math{border-left:7px solid var(--blue)}.teacher-message{background:linear-gradient(135deg,#fff2e6,#fff)}.code-card{background:#fff;border:1px solid var(--line);border-radius:22px;box-shadow:var(--shadow);overflow:hidden}.code-head{display:flex;gap:15px;padding:20px}.num{min-width:46px;height:46px;display:grid;place-items:center;border-radius:14px;background:var(--orange);color:#fff;font-weight:900}.code-head h3{margin:0;color:var(--navy)}.code-head p{margin:4px 0 0;color:var(--muted)}pre{position:relative;margin:0;padding:22px;background:#221b18;color:#fff5e9;overflow:auto;font:15px/1.6 Consolas,monospace}.copy-btn{position:absolute;right:12px;top:12px;border:1px solid #6a5144;background:#3b2b24;color:#fff;border-radius:9px;padding:6px 10px}.mini-quiz{padding:20px;background:#fbfdff}.choice{display:flex;gap:9px;padding:8px}.hint{color:var(--red);font-weight:800}.good{color:var(--green)}.bad{color:var(--red)}.feedback,.ox-feedback{font-weight:900}.ox-item{display:grid;grid-template-columns:42px 1fr auto auto;gap:12px;align-items:center;background:#fff;border:1px solid var(--line);border-radius:14px;padding:13px}.ox-num{width:34px;height:34px;display:grid;place-items:center;border-radius:10px;background:#fff2e7;color:var(--orange);font-weight:900}.ox-feedback{grid-column:2/5}.poetry{border-top:6px solid #da7b93}.novel{border-top:6px solid #aa7b4e}.drama{border-top:6px solid var(--purple)}.theater{border-top:6px solid var(--green)}.music{border-top:6px solid var(--blue)}.last-message{background:linear-gradient(135deg,#fff7df,#fff)}.student-box{display:grid;grid-template-columns:1fr 1fr;gap:12px}input[type=text]{width:100%;padding:12px;border:1px solid var(--line);border-radius:11px}.action-bar{display:flex;gap:10px;flex-wrap:wrap;margin-top:15px}.secondary{background:var(--navy)}.danger{background:var(--red)}.score-box{display:none;margin-top:16px;padding:18px;border-radius:16px;background:var(--mint);font-weight:900}
+@media(max-width:700px){.grid,.hero-grid,.student-box,.concept-flow{grid-template-columns:1fr}.nav{display:none}.hero-card{padding:28px 20px}.hero-card:after{display:none}}@media print{.topbar,.copy-btn,.action-bar{display:none!important}.card,.code-card,.story-block,.ending-card{box-shadow:none;break-inside:avoid}}
+</style>
+</head>
+<body>
+<header class="topbar"><div class="topbar-inner"><div class="brand">MySQL 20차시 · 정규화</div>
+<nav class="nav"><a href="#standard">성취기준</a><a href="#story">시작 이야기</a><a href="#codes">코드 10개</a><a href="#quiz">OX</a><a href="#ending">마무리</a><a href="#submit">제출</a></nav>
+<button class="btn" onclick="window.print()">인쇄</button></div></header>
+
+<div class="hero"><div class="hero-card"><span class="badge">목표지향 · 개념기반 · 중복과 이상 현상 개선</span>
+<h1>MySQL 20차시<br>정규화</h1>
+<p>삽입·수정·삭제 이상을 이해하고 함수 종속을 분석하여 비정규 테이블을 제1·제2·제3정규형으로 개선합니다.</p>
+<div class="hero-grid"><div class="hero-stat"><strong>핵심 질문</strong>왜 같은 사실을 여러 곳에 저장하면 문제가 될까?</div>
+<div class="hero-stat"><strong>전이 목표</strong>중복과 종속성을 분석해 구조를 개선</div><div class="hero-stat"><strong>실습</strong>정규화 SQL 코드 10개</div>
+<div class="hero-stat"><strong>평가</strong>복수정답 10 + OX 10</div></div></div></div>
+
+<main>
+<section id="standard"><h2 class="section-title">1. 성취기준과 학습 목표</h2>
+<div class="grid"><div class="card"><h3>성취기준</h3>
+<p>비정규 테이블에서 발생할 수 있는 삽입·수정·삭제 이상을 설명하고, 속성 사이의 함수 종속을 분석할 수 있다.</p>
+<p>제1·제2·제3정규형의 기준에 따라 테이블을 분해하고 기본키와 외래키를 이용하여 정보 손실 없이 관계를 재구성할 수 있다.</p></div>
+<div class="card"><h3>학습 목표</h3><ol><li>데이터 중복과 세 가지 이상 현상을 구분한다.</li>
+<li>원자값과 함수 종속의 의미를 설명한다.</li><li>부분 함수 종속과 이행 함수 종속을 구분한다.</li>
+<li>비정규 테이블을 1NF·2NF·3NF로 개선한다.</li></ol></div></div></section>
+
+<section><h2 class="section-title">2. 학습할 개념</h2><div class="card">
+<div class="tags"><span class="tag">정규화</span><span class="tag">삽입 이상</span><span class="tag">수정 이상</span>
+<span class="tag">삭제 이상</span><span class="tag">함수 종속</span><span class="tag">부분 함수 종속</span>
+<span class="tag">이행 함수 종속</span><span class="tag">제1정규형</span><span class="tag">제2정규형</span><span class="tag">제3정규형</span></div>
+<div class="concept-flow"><div>중복·이상 발견</div><div>함수 종속 분석</div><div>테이블 단계적 분해</div><div>키 연결·조회 검증</div></div>
+<p><strong>일반화:</strong> 정규화는 같은 사실의 불필요한 반복을 줄이고 속성이 올바른 키에 의존하도록 테이블을 분해하여 데이터의 일관성과 무결성을 높이는 과정이다.</p>
+<p><strong>핵심 질문:</strong> 각 일반 속성은 기본키 전체에 직접 의존하는가, 아니면 기본키 일부나 다른 일반 속성에 의존하는가?</p></div></section>
+
+<section id="story"><h2 class="section-title">3. 수업 시작 이야기</h2><div class="story-wrap">
+<div class="story-block humanities"><h3>📚 인문학자의 이야기 — 기억을 정리해야 이야기가 왜곡되지 않는다</h3><p>오래된 일기를 읽다 보면 같은 사건이 여러 장에 조금씩 다르게 적혀 있을 때가 있습니다. 어느 기록이 맞는지 판단하기 어려워지고, 한 곳만 고치면 다른 곳에는 옛 내용이 남습니다.</p><p>정규화는 데이터의 기억을 정리하는 작업입니다. 같은 사실은 가능한 한 한곳에 두고, 필요한 곳에서는 관계를 통해 다시 불러옵니다.</p></div>
+<div class="story-block philosophy"><h3>🏛 철학자의 이야기 — 하나의 사실은 하나의 근거에서 출발한다</h3><p>철학은 같은 개념을 여러 뜻으로 뒤섞지 않고, 무엇이 무엇을 결정하는지 따져 묻습니다. 정규화도 속성 사이의 의존 관계를 살펴봅니다.</p><p>학생 번호가 학생 이름을 결정하고, 과목 번호가 과목 이름을 결정한다면 각각의 사실은 알맞은 테이블에 자리 잡아야 합니다.</p></div>
+<div class="story-block science"><h3>🔬 과학자의 이야기 — 변수의 역할을 분리하면 오류가 줄어든다</h3><p>과학 실험에서는 독립변수, 종속변수, 통제변수를 구분해야 결과를 제대로 해석할 수 있습니다. 서로 다른 역할을 한 표에 무질서하게 섞으면 원인을 찾기 어렵습니다.</p><p>정규화는 데이터의 역할을 분리하여 중복과 혼란을 줄이고, 변화의 원인을 더 분명하게 추적하게 합니다.</p></div>
+<div class="story-block math"><h3>➗ 수학자의 이야기 — 함수 종속은 무엇이 무엇을 결정하는가의 문제다</h3><p>함수에서 입력이 정해지면 출력이 결정됩니다. 데이터베이스에서도 학생 번호가 정해지면 학생 이름이 결정되는 것처럼 속성 사이에 함수적 관계가 존재합니다.</p><p>정규화는 이러한 함수 종속을 분석하여 부분 종속과 이행 종속을 제거하고 구조를 논리적으로 다듬습니다.</p></div>
+<div class="teacher-message"><strong>교사의 시작 이야기</strong><p>오늘의 목표는 테이블을 무조건 잘게 나누는 것이 아닙니다. 어떤 중복이 문제를 만들고, 어떤 속성이 어떤 키에 의존하는지 이유를 설명하며 나누는 것입니다. 정규화는 복잡한 현실을 깔끔하게 정리하는 기술이면서, 불필요한 반복을 줄이고 중요한 사실을 안전하게 지키는 사고법입니다.</p></div>
+</div></section>
+<section id="codes"><h2 class="section-title">4. 학습할 코드 10개와 상세 설명</h2><div class="code-list">
+<article class="code-card">
+<div class="code-head"><span class="num">01</span><div><h3>비정규 테이블의 문제 확인</h3><p>한 학생의 여러 과목을 course1, course2, course3처럼 반복 열에 저장한 비정규 구조입니다. 과목 수가 늘어날 때 열을 계속 추가해야 하므로 확장성과 검색 효율이 떨어집니다.</p></div></div>
+<pre><code>CREATE TABLE student_courses_raw (
+    student_id INT,
+    student_name VARCHAR(30),
+    course1 VARCHAR(50),
+    course2 VARCHAR(50),
+    course3 VARCHAR(50)
+);</code><button class="copy-btn" onclick="copyCode(this)">복사</button></pre>
+<div class="mini-quiz"><h4>코드 1에 대한 설명으로 옳은 것을 모두 고르세요.</h4>
+<p class="hint">옳은 설명 3개를 빠짐없이 선택하세요.</p><label class="choice"><input type="checkbox" value="0"><span>1. 반복되는 과목 열을 가진 비정규 구조이다.</span></label><label class="choice"><input type="checkbox" value="1"><span>2. 과목 수가 늘면 열을 추가해야 할 수 있다.</span></label><label class="choice"><input type="checkbox" value="2"><span>3. 확장성과 검색에 불리할 수 있다.</span></label><label class="choice"><input type="checkbox" value="3"><span>4. 이미 제3정규형을 만족한다.</span></label><label class="choice"><input type="checkbox" value="4"><span>5. course1과 course2는 기본키이다.</span></label><div class="feedback"></div></div>
+</article>
+<article class="code-card">
+<div class="code-head"><span class="num">02</span><div><h3>제1정규형을 위한 행 분리</h3><p>하나의 칸에는 하나의 값만 저장하도록 반복 열을 행으로 분리했습니다. 각 속성이 원자값을 가지므로 제1정규형 조건에 가까워집니다.</p></div></div>
+<pre><code>CREATE TABLE student_courses_1nf (
+    student_id INT,
+    student_name VARCHAR(30),
+    course_name VARCHAR(50),
+    PRIMARY KEY (student_id, course_name)
+);</code><button class="copy-btn" onclick="copyCode(this)">복사</button></pre>
+<div class="mini-quiz"><h4>코드 2에 대한 설명으로 옳은 것을 모두 고르세요.</h4>
+<p class="hint">옳은 설명 3개를 빠짐없이 선택하세요.</p><label class="choice"><input type="checkbox" value="0"><span>1. 한 칸에 하나의 과목값을 저장한다.</span></label><label class="choice"><input type="checkbox" value="1"><span>2. 반복 열을 행으로 분리한다.</span></label><label class="choice"><input type="checkbox" value="2"><span>3. 제1정규형의 원자값 원칙을 반영한다.</span></label><label class="choice"><input type="checkbox" value="3"><span>4. 한 칸에 여러 과목을 쉼표로 저장한다.</span></label><label class="choice"><input type="checkbox" value="4"><span>5. 기본키가 반드시 student_name이다.</span></label><div class="feedback"></div></div>
+</article>
+<article class="code-card">
+<div class="code-head"><span class="num">03</span><div><h3>부분 함수 종속 문제 확인</h3><p>복합 기본키는 student_id와 course_id이지만 student_name은 student_id에만, course_name은 course_id에만 의존합니다. 이는 부분 함수 종속입니다.</p></div></div>
+<pre><code>CREATE TABLE enrollments_1nf (
+    student_id INT,
+    course_id INT,
+    student_name VARCHAR(30),
+    course_name VARCHAR(50),
+    score INT,
+    PRIMARY KEY (student_id, course_id)
+);</code><button class="copy-btn" onclick="copyCode(this)">복사</button></pre>
+<div class="mini-quiz"><h4>코드 3에 대한 설명으로 옳은 것을 모두 고르세요.</h4>
+<p class="hint">옳은 설명 3개를 빠짐없이 선택하세요.</p><label class="choice"><input type="checkbox" value="0"><span>1. 복합 기본키를 사용한다.</span></label><label class="choice"><input type="checkbox" value="1"><span>2. student_name은 student_id에만 의존한다.</span></label><label class="choice"><input type="checkbox" value="2"><span>3. 부분 함수 종속이 존재한다.</span></label><label class="choice"><input type="checkbox" value="3"><span>4. 모든 일반 속성이 복합키 전체에만 의존한다.</span></label><label class="choice"><input type="checkbox" value="4"><span>5. course_name은 score에만 의존한다.</span></label><div class="feedback"></div></div>
+</article>
+<article class="code-card">
+<div class="code-head"><span class="num">04</span><div><h3>제2정규형으로 학생 테이블 분리</h3><p>복합키의 일부인 student_id에만 의존하던 student_name을 학생 테이블로 분리하여 부분 함수 종속을 제거합니다.</p></div></div>
+<pre><code>CREATE TABLE students (
+    student_id INT PRIMARY KEY,
+    student_name VARCHAR(30) NOT NULL
+);</code><button class="copy-btn" onclick="copyCode(this)">복사</button></pre>
+<div class="mini-quiz"><h4>코드 4에 대한 설명으로 옳은 것을 모두 고르세요.</h4>
+<p class="hint">옳은 설명 3개를 빠짐없이 선택하세요.</p><label class="choice"><input type="checkbox" value="0"><span>1. 학생 번호와 학생 이름을 분리한다.</span></label><label class="choice"><input type="checkbox" value="1"><span>2. 부분 함수 종속 제거에 도움을 준다.</span></label><label class="choice"><input type="checkbox" value="2"><span>3. student_id가 기본키이다.</span></label><label class="choice"><input type="checkbox" value="3"><span>4. 과목 이름을 저장하는 테이블이다.</span></label><label class="choice"><input type="checkbox" value="4"><span>5. student_name을 여러 수강 행마다 반복 저장한다.</span></label><div class="feedback"></div></div>
+</article>
+<article class="code-card">
+<div class="code-head"><span class="num">05</span><div><h3>제2정규형으로 과목 테이블 분리</h3><p>course_id에만 의존하던 course_name을 과목 테이블로 분리합니다. 이제 과목 이름이 수강 건수만큼 반복되지 않습니다.</p></div></div>
+<pre><code>CREATE TABLE courses (
+    course_id INT PRIMARY KEY,
+    course_name VARCHAR(50) NOT NULL
+);</code><button class="copy-btn" onclick="copyCode(this)">복사</button></pre>
+<div class="mini-quiz"><h4>코드 5에 대한 설명으로 옳은 것을 모두 고르세요.</h4>
+<p class="hint">옳은 설명 3개를 빠짐없이 선택하세요.</p><label class="choice"><input type="checkbox" value="0"><span>1. 과목 정보를 별도 테이블에 둔다.</span></label><label class="choice"><input type="checkbox" value="1"><span>2. course_name의 반복을 줄인다.</span></label><label class="choice"><input type="checkbox" value="2"><span>3. course_id가 기본키이다.</span></label><label class="choice"><input type="checkbox" value="3"><span>4. 학생 이름을 관리한다.</span></label><label class="choice"><input type="checkbox" value="4"><span>5. course_name은 복합 기본키 전체에 의존한다.</span></label><div class="feedback"></div></div>
+</article>
+<article class="code-card">
+<div class="code-head"><span class="num">06</span><div><h3>제2정규형의 수강 테이블</h3><p>수강 테이블에는 복합 기본키 전체에 의존하는 score만 남깁니다. 학생과 과목 정보는 외래키로 연결합니다.</p></div></div>
+<pre><code>CREATE TABLE enrollments (
+    student_id INT,
+    course_id INT,
+    score INT,
+    PRIMARY KEY (student_id, course_id),
+    FOREIGN KEY (student_id)
+        REFERENCES students(student_id),
+    FOREIGN KEY (course_id)
+        REFERENCES courses(course_id)
+);</code><button class="copy-btn" onclick="copyCode(this)">복사</button></pre>
+<div class="mini-quiz"><h4>코드 6에 대한 설명으로 옳은 것을 모두 고르세요.</h4>
+<p class="hint">옳은 설명 3개를 빠짐없이 선택하세요.</p><label class="choice"><input type="checkbox" value="0"><span>1. score는 학생과 과목의 조합에 대응한다.</span></label><label class="choice"><input type="checkbox" value="1"><span>2. 학생·과목 테이블을 외래키로 참조한다.</span></label><label class="choice"><input type="checkbox" value="2"><span>3. 복합 기본키를 사용한다.</span></label><label class="choice"><input type="checkbox" value="3"><span>4. student_name을 반복 저장한다.</span></label><label class="choice"><input type="checkbox" value="4"><span>5. 외래키 없이 독립적으로만 사용한다.</span></label><div class="feedback"></div></div>
+</article>
+<article class="code-card">
+<div class="code-head"><span class="num">07</span><div><h3>이행 함수 종속 문제 확인</h3><p>student_id가 department_id를 결정하고, department_id가 department_name을 결정합니다. 기본키가 아닌 속성을 거쳐 다른 속성이 결정되는 이행 함수 종속입니다.</p></div></div>
+<pre><code>CREATE TABLE students_2nf (
+    student_id INT PRIMARY KEY,
+    student_name VARCHAR(30),
+    department_id INT,
+    department_name VARCHAR(50)
+);</code><button class="copy-btn" onclick="copyCode(this)">복사</button></pre>
+<div class="mini-quiz"><h4>코드 7에 대한 설명으로 옳은 것을 모두 고르세요.</h4>
+<p class="hint">옳은 설명 3개를 빠짐없이 선택하세요.</p><label class="choice"><input type="checkbox" value="0"><span>1. 이행 함수 종속 예시이다.</span></label><label class="choice"><input type="checkbox" value="1"><span>2. department_name은 department_id에 의해 결정될 수 있다.</span></label><label class="choice"><input type="checkbox" value="2"><span>3. 제3정규형 개선 대상이다.</span></label><label class="choice"><input type="checkbox" value="3"><span>4. 부분 함수 종속만 존재한다.</span></label><label class="choice"><input type="checkbox" value="4"><span>5. department_name이 기본키이다.</span></label><div class="feedback"></div></div>
+</article>
+<article class="code-card">
+<div class="code-head"><span class="num">08</span><div><h3>제3정규형으로 학과 테이블 분리</h3><p>department_name을 별도 학과 테이블로 이동하여 이행 함수 종속을 제거했습니다. 학생 테이블에는 학과 번호만 남습니다.</p></div></div>
+<pre><code>CREATE TABLE departments (
+    department_id INT PRIMARY KEY,
+    department_name VARCHAR(50) NOT NULL
+);
+
+CREATE TABLE students_3nf (
+    student_id INT PRIMARY KEY,
+    student_name VARCHAR(30) NOT NULL,
+    department_id INT,
+    FOREIGN KEY (department_id)
+        REFERENCES departments(department_id)
+);</code><button class="copy-btn" onclick="copyCode(this)">복사</button></pre>
+<div class="mini-quiz"><h4>코드 8에 대한 설명으로 옳은 것을 모두 고르세요.</h4>
+<p class="hint">옳은 설명 3개를 빠짐없이 선택하세요.</p><label class="choice"><input type="checkbox" value="0"><span>1. 학과 정보를 별도 테이블로 분리한다.</span></label><label class="choice"><input type="checkbox" value="1"><span>2. 이행 함수 종속을 제거한다.</span></label><label class="choice"><input type="checkbox" value="2"><span>3. students_3nf는 department_id를 외래키로 가진다.</span></label><label class="choice"><input type="checkbox" value="3"><span>4. department_name을 학생마다 반복 저장한다.</span></label><label class="choice"><input type="checkbox" value="4"><span>5. 학생과 학과의 관계를 제거한다.</span></label><div class="feedback"></div></div>
+</article>
+<article class="code-card">
+<div class="code-head"><span class="num">09</span><div><h3>정규화된 구조에 데이터 입력</h3><p>학생·과목·수강 데이터를 각 테이블의 역할에 맞게 나누어 입력합니다. 동일한 이름이나 과목명이 불필요하게 반복되지 않습니다.</p></div></div>
+<pre><code>INSERT INTO students VALUES
+(101, &#x27;김별&#x27;),
+(102, &#x27;이하늘&#x27;);
+
+INSERT INTO courses VALUES
+(10, &#x27;데이터베이스&#x27;),
+(20, &#x27;인공지능&#x27;);
+
+INSERT INTO enrollments VALUES
+(101, 10, 95),
+(101, 20, 88),
+(102, 10, 91);</code><button class="copy-btn" onclick="copyCode(this)">복사</button></pre>
+<div class="mini-quiz"><h4>코드 9에 대한 설명으로 옳은 것을 모두 고르세요.</h4>
+<p class="hint">옳은 설명 3개를 빠짐없이 선택하세요.</p><label class="choice"><input type="checkbox" value="0"><span>1. 정규화된 세 테이블에 데이터를 입력한다.</span></label><label class="choice"><input type="checkbox" value="1"><span>2. 학생 이름과 과목명이 불필요하게 반복되지 않는다.</span></label><label class="choice"><input type="checkbox" value="2"><span>3. 수강 정보는 연결 테이블에 저장한다.</span></label><label class="choice"><input type="checkbox" value="3"><span>4. 모든 정보를 하나의 테이블에 입력한다.</span></label><label class="choice"><input type="checkbox" value="4"><span>5. INSERT는 정규화를 자동 수행한다.</span></label><div class="feedback"></div></div>
+</article>
+<article class="code-card">
+<div class="code-head"><span class="num">10</span><div><h3>정규화된 테이블 조인 조회</h3><p>정규화 과정에서 분리한 테이블을 조인하여 원래 필요한 학생별 과목과 점수 정보를 다시 조회합니다. 분리는 정보 손실이 아니라 중복을 줄이는 구조 개선입니다.</p></div></div>
+<pre><code>SELECT s.student_name,
+       c.course_name,
+       e.score
+FROM enrollments AS e
+JOIN students AS s
+    ON e.student_id = s.student_id
+JOIN courses AS c
+    ON e.course_id = c.course_id
+ORDER BY s.student_id, c.course_id;</code><button class="copy-btn" onclick="copyCode(this)">복사</button></pre>
+<div class="mini-quiz"><h4>코드 10에 대한 설명으로 옳은 것을 모두 고르세요.</h4>
+<p class="hint">옳은 설명 3개를 빠짐없이 선택하세요.</p><label class="choice"><input type="checkbox" value="0"><span>1. 분리된 테이블을 조인한다.</span></label><label class="choice"><input type="checkbox" value="1"><span>2. 학생명·과목명·점수를 함께 조회한다.</span></label><label class="choice"><input type="checkbox" value="2"><span>3. 정규화 후에도 필요한 정보를 재구성할 수 있다.</span></label><label class="choice"><input type="checkbox" value="3"><span>4. 정규화하면 조인을 사용할 수 없다.</span></label><label class="choice"><input type="checkbox" value="4"><span>5. ORDER BY는 테이블을 분해한다.</span></label><div class="feedback"></div></div>
+</article></div></section>
+<section id="quiz"><h2 class="section-title">5. 형성평가 OX 퀴즈 10개</h2><div class="ox-list"><div class="ox-item" data-answer="O">
+<div class="ox-num">1</div><div>정규화는 데이터 중복과 이상 현상을 줄이기 위한 설계 과정이다.</div>
+<label><input type="radio" name="ox1" value="O"> O</label>
+<label><input type="radio" name="ox1" value="X"> X</label>
+<div class="ox-feedback"></div></div><div class="ox-item" data-answer="O">
+<div class="ox-num">2</div><div>삽입 이상은 새로운 정보를 넣기 위해 불필요한 다른 정보까지 요구되는 문제이다.</div>
+<label><input type="radio" name="ox2" value="O"> O</label>
+<label><input type="radio" name="ox2" value="X"> X</label>
+<div class="ox-feedback"></div></div><div class="ox-item" data-answer="O">
+<div class="ox-num">3</div><div>수정 이상은 같은 사실이 여러 행에 중복되어 일부만 수정되는 문제이다.</div>
+<label><input type="radio" name="ox3" value="O"> O</label>
+<label><input type="radio" name="ox3" value="X"> X</label>
+<div class="ox-feedback"></div></div><div class="ox-item" data-answer="O">
+<div class="ox-num">4</div><div>삭제 이상은 한 정보를 삭제할 때 다른 필요한 정보까지 사라지는 문제이다.</div>
+<label><input type="radio" name="ox4" value="O"> O</label>
+<label><input type="radio" name="ox4" value="X"> X</label>
+<div class="ox-feedback"></div></div><div class="ox-item" data-answer="X">
+<div class="ox-num">5</div><div>제1정규형은 한 속성에 여러 값을 목록으로 저장하는 것을 권장한다.</div>
+<label><input type="radio" name="ox5" value="O"> O</label>
+<label><input type="radio" name="ox5" value="X"> X</label>
+<div class="ox-feedback"></div></div><div class="ox-item" data-answer="O">
+<div class="ox-num">6</div><div>제2정규형은 부분 함수 종속을 제거하는 것과 관련이 있다.</div>
+<label><input type="radio" name="ox6" value="O"> O</label>
+<label><input type="radio" name="ox6" value="X"> X</label>
+<div class="ox-feedback"></div></div><div class="ox-item" data-answer="O">
+<div class="ox-num">7</div><div>제3정규형은 이행 함수 종속을 제거하는 것과 관련이 있다.</div>
+<label><input type="radio" name="ox7" value="O"> O</label>
+<label><input type="radio" name="ox7" value="X"> X</label>
+<div class="ox-feedback"></div></div><div class="ox-item" data-answer="X">
+<div class="ox-num">8</div><div>정규화하면 테이블 수는 줄고 모든 정보가 한 테이블에 모인다.</div>
+<label><input type="radio" name="ox8" value="O"> O</label>
+<label><input type="radio" name="ox8" value="X"> X</label>
+<div class="ox-feedback"></div></div><div class="ox-item" data-answer="O">
+<div class="ox-num">9</div><div>정규화된 테이블은 조인을 통해 필요한 정보를 다시 결합할 수 있다.</div>
+<label><input type="radio" name="ox9" value="O"> O</label>
+<label><input type="radio" name="ox9" value="X"> X</label>
+<div class="ox-feedback"></div></div><div class="ox-item" data-answer="X">
+<div class="ox-num">10</div><div>정규화는 언제나 성능만 높이고 설계 복잡성에는 영향을 주지 않는다.</div>
+<label><input type="radio" name="ox10" value="O"> O</label>
+<label><input type="radio" name="ox10" value="X"> X</label>
+<div class="ox-feedback"></div></div></div></section>
+<section id="ending"><h2 class="section-title">6. 수업 끝 이야기</h2><div class="ending-grid">
+<div class="ending-card poetry"><h3>🌙 시인의 이야기 — 반복은 운율이지만 중복은 오류일 수 있다</h3><p>시에서 반복은 마음을 울리는 운율이 되지만, 데이터베이스에서 무분별한 반복은 수정 이상을 부릅니다. 시인은 반복을 사랑하고, DBA는 필요한 반복만 사랑합니다.</p></div>
+<div class="ending-card novel"><h3>📖 소설가의 이야기 — 등장인물 소개를 매 장마다 다시 쓰지 않는다</h3><p>소설은 인물의 이름과 배경을 한 번 정해 두고 사건 속에서 다시 불러옵니다. 매 장마다 생일이 바뀌면 독자는 혼란스럽고, 데이터베이스는 더 혼란스럽습니다.</p></div>
+<div class="ending-card drama"><h3>🎭 희곡인의 이야기 — 대사와 무대 지시는 각자의 자리에</h3><p>배우의 대사와 조명의 지시를 한 줄에 뒤섞으면 공연이 엉킵니다. 테이블도 역할에 따라 나누면 각 정보가 자기 자리에서 정확하게 움직입니다.</p></div>
+<div class="ending-card theater"><h3>🎬 연극인의 이야기 — 분장실을 나눈다고 배우가 사라지는 것은 아니다</h3><p>의상실, 소품실, 대기실을 나누어도 공연은 하나입니다. 테이블을 분리해도 조인하면 필요한 장면을 다시 완성할 수 있습니다.</p></div>
+<div class="ending-card music"><h3>🎼 음악인의 이야기 — 악기를 나누면 합주가 더 선명해진다</h3><p>모든 악기가 같은 음만 연주하면 소리는 커도 음악은 흐려집니다. 각 악기가 자기 역할을 맡고 지휘에 따라 연결될 때 아름다운 합주가 됩니다. 정규화는 데이터의 합주를 위한 편곡입니다.</p></div>
+<div class="last-message"><strong>오늘의 오래 남는 마지막 이야기</strong><p>삶에서도 같은 걱정과 실수를 마음속 여러 곳에 복사해 두면, 하나를 해결해도 다른 곳에서 다시 나타납니다. 정규화는 데이터만의 기술이 아니라 생각을 정리하는 태도이기도 합니다.</p><p><strong>내가 통제할 수 있는 것과 없는 것, 오늘 할 일과 내일 할 일, 나의 책임과 다른 사람의 책임을 구분해 보십시오. 나누는 것은 멀어지는 일이 아니라, 각자의 자리를 분명히 하여 더 건강하게 연결되는 일입니다. 여러분의 꿈도 한 번에 완성하려 하지 말고, 작은 목표로 정규화하여 하나씩 실현해 가십시오.</strong></p></div>
+</div></section>
+
+<section id="submit"><h2 class="section-title">7. 학번·이름 입력 및 결과 저장</h2><div class="card">
+<div class="student-box"><label><strong>학번</strong><input type="text" id="studentId" placeholder="예: 1101"></label>
+<label><strong>이름</strong><input type="text" id="studentName" placeholder="예: 홍길동"></label></div>
+<div class="action-bar"><button class="btn" onclick="gradeAll()">전체 채점</button>
+<button class="btn secondary" onclick="downloadResult()">TXT 결과 저장</button>
+<button class="btn danger" onclick="resetAll()">다시 풀기</button></div>
+<div id="scoreBox" class="score-box"></div><p>저장 파일명: 학번_이름_점수_20차시_응시시각.txt</p></div></section>
+</main>
+
+<script>
+let lastResult=null;
+function copyCode(b){navigator.clipboard.writeText(b.parentElement.querySelector('code').innerText);b.textContent='복사됨';setTimeout(()=>b.textContent='복사',900)}
+function selected(q){return [...q.querySelectorAll('input[type=checkbox]:checked')].map(x=>+x.value).sort()}
+function gradeAll(){
+ const sid=studentId.value.trim(),name=studentName.value.trim();
+ if(!sid||!name){alert('학번과 이름을 입력하세요.');return}
+ let c=0,o=0,detail=[];
+ document.querySelectorAll('.mini-quiz').forEach((q,i)=>{
+   let s=selected(q),ok=JSON.stringify(s)==='[0,1,2]',f=q.querySelector('.feedback');
+   f.textContent=ok?'정답입니다.':'오답입니다. 정답: 1, 2, 3번';f.className='feedback '+(ok?'good':'bad');
+   if(ok)c++;detail.push(`코드 ${i+1}: ${ok?'정답':'오답'} / 응답 ${s.map(x=>x+1).join(', ')||'미응답'}`);
+ });
+ document.querySelectorAll('.ox-item').forEach((q,i)=>{
+   let x=q.querySelector('input:checked'),v=x?x.value:'',ok=v===q.dataset.answer,f=q.querySelector('.ox-feedback');
+   f.textContent=ok?'정답':'오답 · 정답: '+q.dataset.answer;f.className='ox-feedback '+(ok?'good':'bad');
+   if(ok)o++;detail.push(`OX ${i+1}: ${ok?'정답':'오답'} / 응답 ${v||'미응답'}`);
+ });
+ let total=(c+o)*5,time=new Date();lastResult={sid,name,c,o,total,detail,time};
+ scoreBox.style.display='block';scoreBox.innerHTML=`총점 ${total}점 / 100점<br>복수정답 ${c} / 10 · OX ${o} / 10`;
+ scoreBox.scrollIntoView({behavior:'smooth'});
+}
+function pad(n){return String(n).padStart(2,'0')}
+function stamp(t){return `${t.getFullYear()}${pad(t.getMonth()+1)}${pad(t.getDate())}_${pad(t.getHours())}${pad(t.getMinutes())}${pad(t.getSeconds())}`}
+function downloadResult(){
+ if(!lastResult){gradeAll();if(!lastResult)return}
+ let r=lastResult,text=['MySQL 20차시 형성평가 결과',`학번: ${r.sid}`,`이름: ${r.name}`,
+ `점수: ${r.total}점`,`복수정답: ${r.c}/10`,`OX: ${r.o}/10`,`응시시각: ${r.time.toLocaleString()}`,'',...r.detail].join('\n');
+ let blob=new Blob(['\ufeff'+text],{type:'text/plain;charset=utf-8'}),a=document.createElement('a');
+ a.href=URL.createObjectURL(blob);a.download=`${r.sid}_${r.name}_${r.total}점_20차시_${stamp(r.time)}.txt`;a.click();
+ setTimeout(()=>URL.revokeObjectURL(a.href),1000);
+}
+function resetAll(){
+ document.querySelectorAll('input').forEach(x=>{if(x.type!=='text')x.checked=false});
+ document.querySelectorAll('.feedback,.ox-feedback').forEach(x=>x.textContent='');
+ scoreBox.style.display='none';lastResult=null;
+}
+</script></body></html>

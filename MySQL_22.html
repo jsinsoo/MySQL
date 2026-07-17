@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>MySQL 22차시 목표지향 개념기반 수업지도안</title>
+<style>
+:root{--navy:#17354f;--blue:#3574d4;--sky:#eaf3ff;--mint:#e9f9f5;--teal:#248f86;--green:#278a62;--red:#dc654e;--purple:#7058c8;--text:#293a4b;--muted:#6a7a8b;--line:#dbe5ee;--bg:#f5f8fc;--shadow:0 12px 28px rgba(23,53,79,.10)}
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;font-family:"Pretendard","Noto Sans KR","Malgun Gothic",sans-serif;color:var(--text);background:linear-gradient(180deg,#fcfdff,var(--bg));line-height:1.72}.topbar{position:sticky;top:0;z-index:40;background:#fffffff2;border-bottom:1px solid var(--line);backdrop-filter:blur(10px)}.topbar-inner{max-width:1240px;margin:auto;padding:10px 18px;display:flex;align-items:center;justify-content:space-between;gap:10px}.brand{font-weight:900;color:var(--navy)}.nav{display:flex;gap:6px;flex-wrap:wrap}.nav a{text-decoration:none;color:var(--navy);font-weight:800;font-size:.82rem;padding:6px 9px;border:1px solid var(--line);border-radius:999px}.btn{border:0;border-radius:11px;background:var(--blue);color:#fff;padding:10px 15px;font-weight:900;cursor:pointer}.hero,main{max-width:1240px;margin:auto;padding:0 18px}.hero{margin-top:28px}.hero-card{position:relative;overflow:hidden;background:linear-gradient(135deg,#17354f,#226b76 55%,#2aa18f);color:#fff;border-radius:28px;padding:42px;box-shadow:var(--shadow)}.hero-card:after{content:"CREATE VIEW";position:absolute;right:18px;top:28px;font-size:58px;font-weight:900;color:#ffffff0d;transform:rotate(-5deg)}.badge{display:inline-block;padding:6px 12px;border-radius:999px;background:#ffffff24;border:1px solid #ffffff44;font-weight:900}h1{font-size:clamp(2rem,4vw,3.2rem);line-height:1.15;margin:13px 0}.hero p{max-width:900px;color:#eafffa}.hero-grid{position:relative;z-index:2;display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-top:22px}.hero-stat{padding:14px;border-radius:16px;background:#ffffff1c;border:1px solid #ffffff33}.hero-stat strong{display:block}main{padding-bottom:70px}section{margin-top:30px}.section-title{color:var(--navy)}.grid{display:grid;grid-template-columns:repeat(2,1fr);gap:14px}.card,.story-block,.teacher-message,.ending-card,.last-message{background:#fff;border:1px solid var(--line);border-radius:20px;padding:22px;box-shadow:var(--shadow)}.tags{display:flex;gap:8px;flex-wrap:wrap}.tag{padding:7px 11px;border-radius:999px;background:var(--mint);color:var(--teal);font-weight:900}.concept-flow{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-top:15px}.concept-flow div{text-align:center;padding:13px;border-radius:14px;background:var(--mint);color:var(--teal);font-weight:900}.story-wrap,.ending-grid,.code-list,.ox-list{display:grid;gap:14px}.humanities{border-left:7px solid #b47b35}.philosophy{border-left:7px solid var(--purple)}.science{border-left:7px solid var(--green)}.math{border-left:7px solid var(--blue)}.teacher-message{background:linear-gradient(135deg,#e9faf6,#fff)}.code-card{background:#fff;border:1px solid var(--line);border-radius:22px;box-shadow:var(--shadow);overflow:hidden}.code-head{display:flex;gap:15px;padding:20px}.num{min-width:46px;height:46px;display:grid;place-items:center;border-radius:14px;background:var(--teal);color:#fff;font-weight:900}.code-head h3{margin:0;color:var(--navy)}.code-head p{margin:4px 0 0;color:var(--muted)}pre{position:relative;margin:0;padding:22px;background:#10242a;color:#eafffa;overflow:auto;font:15px/1.6 Consolas,monospace}.copy-btn{position:absolute;right:12px;top:12px;border:1px solid #3f6767;background:#193c3d;color:#fff;border-radius:9px;padding:6px 10px}.mini-quiz{padding:20px;background:#fbfdff}.choice{display:flex;gap:9px;padding:8px}.hint{color:var(--red);font-weight:800}.good{color:var(--green)}.bad{color:var(--red)}.feedback,.ox-feedback{font-weight:900}.ox-item{display:grid;grid-template-columns:42px 1fr auto auto;gap:12px;align-items:center;background:#fff;border:1px solid var(--line);border-radius:14px;padding:13px}.ox-num{width:34px;height:34px;display:grid;place-items:center;border-radius:10px;background:var(--mint);color:var(--teal);font-weight:900}.ox-feedback{grid-column:2/5}.poetry{border-top:6px solid #da7b93}.novel{border-top:6px solid #aa7b4e}.drama{border-top:6px solid var(--purple)}.theater{border-top:6px solid var(--green)}.music{border-top:6px solid var(--blue)}.last-message{background:linear-gradient(135deg,#eafaf6,#fff)}.student-box{display:grid;grid-template-columns:1fr 1fr;gap:12px}input[type=text]{width:100%;padding:12px;border:1px solid var(--line);border-radius:11px}.action-bar{display:flex;gap:10px;flex-wrap:wrap;margin-top:15px}.secondary{background:var(--navy)}.danger{background:var(--red)}.score-box{display:none;margin-top:16px;padding:18px;border-radius:16px;background:var(--mint);font-weight:900}
+@media(max-width:700px){.grid,.hero-grid,.student-box,.concept-flow{grid-template-columns:1fr}.nav{display:none}.hero-card{padding:28px 20px}.hero-card:after{display:none}}@media print{.topbar,.copy-btn,.action-bar{display:none!important}.card,.code-card,.story-block,.ending-card{box-shadow:none;break-inside:avoid}}
+</style>
+</head>
+<body>
+<header class="topbar"><div class="topbar-inner"><div class="brand">MySQL 22차시 · 뷰</div>
+<nav class="nav"><a href="#standard">성취기준</a><a href="#story">시작 이야기</a><a href="#codes">코드 10개</a><a href="#quiz">OX</a><a href="#ending">마무리</a><a href="#submit">제출</a></nav>
+<button class="btn" onclick="window.print()">인쇄</button></div></header>
+
+<div class="hero"><div class="hero-card"><span class="badge">목표지향 · 개념기반 · 데이터의 유용한 창</span>
+<h1>MySQL 22차시<br>뷰(View)</h1>
+<p>복잡한 조회를 가상 테이블로 단순화하고, 사용자별 정보 접근 범위를 제한하며, 안전하고 재사용 가능한 데이터 관점을 설계합니다.</p>
+<div class="hero-grid"><div class="hero-stat"><strong>핵심 질문</strong>같은 데이터를 목적에 따라 어떻게 다르게 보여 줄까?</div>
+<div class="hero-stat"><strong>전이 목표</strong>조회 재사용과 접근 통제를 함께 설계</div><div class="hero-stat"><strong>실습</strong>뷰 SQL 코드 10개</div>
+<div class="hero-stat"><strong>평가</strong>복수정답 10 + OX 10</div></div></div></div>
+
+<main>
+<section id="standard"><h2 class="section-title">1. 성취기준과 학습 목표</h2>
+<div class="grid"><div class="card"><h3>성취기준</h3>
+<p>뷰의 개념과 원본 테이블과의 관계를 이해하고, 단순 조회·조건 조회·조인·집계 결과를 가상 테이블로 정의할 수 있다.</p>
+<p>뷰를 활용하여 복잡한 질의를 재사용하고 정보 접근 범위를 제한하며, 뷰를 생성·변경·조회·삭제할 수 있다.</p></div>
+<div class="card"><h3>학습 목표</h3><ol><li>뷰와 실제 테이블의 차이를 설명한다.</li>
+<li>CREATE VIEW로 단순·조건·조인·집계 뷰를 생성한다.</li><li>뷰를 활용해 복잡한 조회를 단순화하고 민감한 열을 제한한다.</li>
+<li>ALTER VIEW, CREATE OR REPLACE VIEW, WITH CHECK OPTION, DROP VIEW를 활용한다.</li></ol></div></div></section>
+
+<section><h2 class="section-title">2. 학습할 개념</h2><div class="card">
+<div class="tags"><span class="tag">View</span><span class="tag">가상 테이블</span><span class="tag">CREATE VIEW</span>
+<span class="tag">ALTER VIEW</span><span class="tag">CREATE OR REPLACE</span><span class="tag">DROP VIEW</span>
+<span class="tag">WITH CHECK OPTION</span><span class="tag">조회 단순화</span><span class="tag">재사용</span><span class="tag">접근 제한</span></div>
+<div class="concept-flow"><div>반복 조회 찾기</div><div>필요한 열·행 선택</div><div>뷰 생성·재사용</div><div>접근 범위 검증</div></div>
+<p><strong>일반화:</strong> 뷰는 원본 데이터를 복사하지 않고 SELECT 문의 결과를 가상 테이블로 제공하여 복잡성을 감추고 재사용성과 보안을 높이는 데이터 접근 계층이다.</p>
+<p><strong>핵심 질문:</strong> 누구에게 어떤 열과 행을 보여 줄 것인가, 반복되는 조회를 어떻게 단순화할 것인가, 뷰를 통한 변경이 원래 조건을 지키도록 어떻게 제한할 것인가?</p></div></section>
+
+<section id="story"><h2 class="section-title">3. 수업 시작 이야기</h2><div class="story-wrap">
+<div class="story-block humanities"><h3>📚 인문학자의 이야기 — 같은 세계도 창문에 따라 다르게 보인다</h3><p>도시는 하나이지만 도서관 창문에서 바라본 풍경과 운동장 창문에서 바라본 풍경은 다릅니다. 창문은 도시를 새로 만들지 않지만, 필요한 장면을 선택해 보여 줍니다.</p><p>데이터베이스의 뷰도 원본 세계를 복사하지 않고 목적에 맞는 데이터의 창을 만듭니다. 학생에게는 학습 정보만, 행정 담당자에게는 업무 정보만 보여 줄 수 있습니다.</p></div>
+<div class="story-block philosophy"><h3>🏛 철학자의 이야기 — 관점은 사실을 없애지 않고 의미를 조직한다</h3><p>철학자는 하나의 사건도 관점에 따라 다르게 해석될 수 있다고 말합니다. 그러나 관점이 달라진다고 사실 자체가 사라지는 것은 아닙니다.</p><p>뷰는 원본 데이터를 바꾸지 않으면서 사용 목적에 맞는 관점을 제공합니다. 중요한 것은 관점이 진실을 왜곡하지 않고 필요한 의미를 분명하게 드러내는 것입니다.</p></div>
+<div class="story-block science"><h3>🔬 과학자의 이야기 — 관측 장비는 필요한 신호를 선택한다</h3><p>과학자는 모든 파장을 한꺼번에 보지 않습니다. 망원경의 필터와 현미경의 배율을 조절하여 연구 목적에 필요한 신호를 선택합니다.</p><p>뷰는 데이터베이스의 관측 장비입니다. 복잡한 원본 구조에서 필요한 열과 행만 선택하여 분석과 판단을 더 정확하게 만듭니다.</p></div>
+<div class="story-block math"><h3>➗ 수학자의 이야기 — 함수는 입력 전체를 새로운 표현으로 보여 준다</h3><p>함수는 같은 입력 집합을 목적에 맞는 출력으로 변환합니다. 원래 값은 존재하지만 우리는 계산에 필요한 결과를 중심으로 바라봅니다.</p><p>뷰도 SELECT라는 규칙을 통해 원본 테이블을 새로운 결과 집합으로 표현합니다. 조인, 조건, 집계는 뷰를 만드는 수학적 변환과 같습니다.</p></div>
+<div class="teacher-message"><strong>교사의 시작 이야기</strong><p>오늘 우리는 데이터를 더 많이 저장하는 법이 아니라, 이미 저장된 데이터를 더 지혜롭게 보여 주는 법을 배웁니다. 좋은 뷰는 복잡한 SQL을 줄이고, 실수를 예방하며, 개인정보가 불필요하게 노출되는 일을 막습니다. 모든 사람에게 모든 정보를 보여 주는 것이 투명성은 아닙니다. 필요한 사람에게 필요한 정보를 정확하게 보여 주는 것이 책임 있는 데이터 활용입니다.</p></div>
+</div></section>
+<section id="codes"><h2 class="section-title">4. 학습할 코드 10개와 상세 설명</h2><div class="code-list">
+<article class="code-card">
+<div class="code-head"><span class="num">01</span><div><h3>기본 뷰 생성</h3><p>학생 테이블에서 자주 사용하는 기본 열만 선택해 가상 테이블을 만듭니다. 실제 데이터는 원본 테이블에 저장되고 뷰는 SELECT 문의 결과 구조를 제공합니다.</p></div></div>
+<pre><code>CREATE VIEW student_basic_view AS
+SELECT student_id,
+       student_name,
+       grade
+FROM students;</code><button class="copy-btn" onclick="copyCode(this)">복사</button></pre>
+<div class="mini-quiz"><h4>코드 1에 대한 설명으로 옳은 것을 모두 고르세요.</h4>
+<p class="hint">옳은 설명 3개를 빠짐없이 선택하세요.</p><label class="choice"><input type="checkbox" value="0"><span>1. 학생의 일부 열만 보여 주는 뷰이다.</span></label><label class="choice"><input type="checkbox" value="1"><span>2. 실제 데이터는 원본 테이블에 저장된다.</span></label><label class="choice"><input type="checkbox" value="2"><span>3. 뷰는 SELECT 문의 결과 구조를 제공한다.</span></label><label class="choice"><input type="checkbox" value="3"><span>4. student_basic_view는 실제 데이터를 복사해 별도 저장한다.</span></label><label class="choice"><input type="checkbox" value="4"><span>5. 뷰를 만들면 students 테이블이 삭제된다.</span></label><div class="feedback"></div></div>
+</article>
+<article class="code-card">
+<div class="code-head"><span class="num">02</span><div><h3>조건이 포함된 뷰</h3><p>90점 이상인 성적만 보여 주는 뷰입니다. 사용자는 매번 WHERE 조건을 작성하지 않고도 같은 기준의 데이터를 조회할 수 있습니다.</p></div></div>
+<pre><code>CREATE VIEW high_score_view AS
+SELECT student_id,
+       subject,
+       score
+FROM scores
+WHERE score &gt;= 90;</code><button class="copy-btn" onclick="copyCode(this)">복사</button></pre>
+<div class="mini-quiz"><h4>코드 2에 대한 설명으로 옳은 것을 모두 고르세요.</h4>
+<p class="hint">옳은 설명 3개를 빠짐없이 선택하세요.</p><label class="choice"><input type="checkbox" value="0"><span>1. 90점 이상 성적만 조회한다.</span></label><label class="choice"><input type="checkbox" value="1"><span>2. WHERE 조건이 뷰 정의에 포함된다.</span></label><label class="choice"><input type="checkbox" value="2"><span>3. 같은 조건을 반복 작성하는 일을 줄일 수 있다.</span></label><label class="choice"><input type="checkbox" value="3"><span>4. 모든 점수를 무조건 보여 준다.</span></label><label class="choice"><input type="checkbox" value="4"><span>5. score 열을 자동으로 수정한다.</span></label><div class="feedback"></div></div>
+</article>
+<article class="code-card">
+<div class="code-head"><span class="num">03</span><div><h3>조인 결과를 뷰로 저장</h3><p>여러 테이블을 조인한 복잡한 조회를 하나의 뷰로 정의합니다. 이후에는 뷰를 하나의 테이블처럼 조회할 수 있어 SQL이 단순해집니다.</p></div></div>
+<pre><code>CREATE VIEW enrollment_summary_view AS
+SELECT s.student_name,
+       c.course_name,
+       e.score
+FROM enrollments AS e
+JOIN students AS s
+  ON e.student_id = s.student_id
+JOIN courses AS c
+  ON e.course_id = c.course_id;</code><button class="copy-btn" onclick="copyCode(this)">복사</button></pre>
+<div class="mini-quiz"><h4>코드 3에 대한 설명으로 옳은 것을 모두 고르세요.</h4>
+<p class="hint">옳은 설명 3개를 빠짐없이 선택하세요.</p><label class="choice"><input type="checkbox" value="0"><span>1. 여러 테이블의 조인 결과를 뷰로 만든다.</span></label><label class="choice"><input type="checkbox" value="1"><span>2. 학생명·과목명·점수를 함께 보여 준다.</span></label><label class="choice"><input type="checkbox" value="2"><span>3. 복잡한 조회를 단순하게 재사용할 수 있다.</span></label><label class="choice"><input type="checkbox" value="3"><span>4. 원본 테이블 없이도 독립적으로 데이터를 보관한다.</span></label><label class="choice"><input type="checkbox" value="4"><span>5. JOIN은 뷰에서 사용할 수 없다.</span></label><div class="feedback"></div></div>
+</article>
+<article class="code-card">
+<div class="code-head"><span class="num">04</span><div><h3>집계 결과 뷰 생성</h3><p>학년별 평균 점수와 학생 수를 계산한 집계 뷰입니다. 반복되는 GROUP BY와 집계 함수를 재사용할 수 있습니다.</p></div></div>
+<pre><code>CREATE VIEW class_average_view AS
+SELECT grade,
+       AVG(score) AS average_score,
+       COUNT(*) AS student_count
+FROM scores
+GROUP BY grade;</code><button class="copy-btn" onclick="copyCode(this)">복사</button></pre>
+<div class="mini-quiz"><h4>코드 4에 대한 설명으로 옳은 것을 모두 고르세요.</h4>
+<p class="hint">옳은 설명 3개를 빠짐없이 선택하세요.</p><label class="choice"><input type="checkbox" value="0"><span>1. 학년별 평균과 인원수를 계산한다.</span></label><label class="choice"><input type="checkbox" value="1"><span>2. GROUP BY가 사용된다.</span></label><label class="choice"><input type="checkbox" value="2"><span>3. 집계 조회를 재사용할 수 있다.</span></label><label class="choice"><input type="checkbox" value="3"><span>4. 각 학생의 원본 점수를 삭제한다.</span></label><label class="choice"><input type="checkbox" value="4"><span>5. COUNT(*)는 평균 점수를 계산한다.</span></label><div class="feedback"></div></div>
+</article>
+<article class="code-card">
+<div class="code-head"><span class="num">05</span><div><h3>민감한 열을 제외한 뷰</h3><p>주소, 전화번호, 보호자 연락처와 같은 민감한 열을 제외하고 공개 가능한 정보만 제공하는 뷰입니다. 정보 접근 범위를 줄이는 데 활용할 수 있습니다.</p></div></div>
+<pre><code>CREATE VIEW student_public_view AS
+SELECT student_id,
+       student_name,
+       grade
+FROM students;</code><button class="copy-btn" onclick="copyCode(this)">복사</button></pre>
+<div class="mini-quiz"><h4>코드 5에 대한 설명으로 옳은 것을 모두 고르세요.</h4>
+<p class="hint">옳은 설명 3개를 빠짐없이 선택하세요.</p><label class="choice"><input type="checkbox" value="0"><span>1. 민감한 열을 제외할 수 있다.</span></label><label class="choice"><input type="checkbox" value="1"><span>2. 공개 가능한 열만 제공한다.</span></label><label class="choice"><input type="checkbox" value="2"><span>3. 접근 범위를 줄이는 데 활용할 수 있다.</span></label><label class="choice"><input type="checkbox" value="3"><span>4. 원본 테이블의 민감한 열을 자동 삭제한다.</span></label><label class="choice"><input type="checkbox" value="4"><span>5. 뷰는 개인정보 보호와 전혀 관련이 없다.</span></label><div class="feedback"></div></div>
+</article>
+<article class="code-card">
+<div class="code-head"><span class="num">06</span><div><h3>뷰 조회</h3><p>생성된 뷰를 일반 테이블처럼 조회합니다. 뷰 위에서도 WHERE와 ORDER BY를 사용해 원하는 결과를 다시 필터링하고 정렬할 수 있습니다.</p></div></div>
+<pre><code>SELECT *
+FROM enrollment_summary_view
+WHERE score &gt;= 85
+ORDER BY score DESC;</code><button class="copy-btn" onclick="copyCode(this)">복사</button></pre>
+<div class="mini-quiz"><h4>코드 6에 대한 설명으로 옳은 것을 모두 고르세요.</h4>
+<p class="hint">옳은 설명 3개를 빠짐없이 선택하세요.</p><label class="choice"><input type="checkbox" value="0"><span>1. 뷰를 테이블처럼 조회한다.</span></label><label class="choice"><input type="checkbox" value="1"><span>2. WHERE와 ORDER BY를 추가로 사용할 수 있다.</span></label><label class="choice"><input type="checkbox" value="2"><span>3. 85점 이상을 내림차순으로 조회한다.</span></label><label class="choice"><input type="checkbox" value="3"><span>4. 뷰에서는 조건 검색을 사용할 수 없다.</span></label><label class="choice"><input type="checkbox" value="4"><span>5. ORDER BY는 뷰를 삭제한다.</span></label><div class="feedback"></div></div>
+</article>
+<article class="code-card">
+<div class="code-head"><span class="num">07</span><div><h3>ALTER VIEW로 정의 변경</h3><p>기존 뷰의 정의를 변경하여 class_no 열을 추가합니다. 원본 테이블의 데이터는 바뀌지 않고 뷰가 보여 주는 열 구성이 변경됩니다.</p></div></div>
+<pre><code>ALTER VIEW student_basic_view AS
+SELECT student_id,
+       student_name,
+       grade,
+       class_no
+FROM students;</code><button class="copy-btn" onclick="copyCode(this)">복사</button></pre>
+<div class="mini-quiz"><h4>코드 7에 대한 설명으로 옳은 것을 모두 고르세요.</h4>
+<p class="hint">옳은 설명 3개를 빠짐없이 선택하세요.</p><label class="choice"><input type="checkbox" value="0"><span>1. 기존 뷰의 정의를 변경한다.</span></label><label class="choice"><input type="checkbox" value="1"><span>2. class_no 열이 추가된다.</span></label><label class="choice"><input type="checkbox" value="2"><span>3. 원본 students 데이터는 그대로 유지된다.</span></label><label class="choice"><input type="checkbox" value="3"><span>4. ALTER VIEW는 원본 테이블의 행을 삭제한다.</span></label><label class="choice"><input type="checkbox" value="4"><span>5. student_id 열이 제거된다.</span></label><div class="feedback"></div></div>
+</article>
+<article class="code-card">
+<div class="code-head"><span class="num">08</span><div><h3>CREATE OR REPLACE VIEW</h3><p>뷰가 없으면 새로 만들고, 이미 있으면 정의를 교체합니다. 기존 90점 기준을 95점 이상으로 변경한 예시입니다.</p></div></div>
+<pre><code>CREATE OR REPLACE VIEW high_score_view AS
+SELECT student_id,
+       subject,
+       score
+FROM scores
+WHERE score &gt;= 95;</code><button class="copy-btn" onclick="copyCode(this)">복사</button></pre>
+<div class="mini-quiz"><h4>코드 8에 대한 설명으로 옳은 것을 모두 고르세요.</h4>
+<p class="hint">옳은 설명 3개를 빠짐없이 선택하세요.</p><label class="choice"><input type="checkbox" value="0"><span>1. 뷰가 없으면 생성할 수 있다.</span></label><label class="choice"><input type="checkbox" value="1"><span>2. 이미 있으면 정의를 교체한다.</span></label><label class="choice"><input type="checkbox" value="2"><span>3. 기준이 95점 이상으로 변경된다.</span></label><label class="choice"><input type="checkbox" value="3"><span>4. 기존 뷰가 있으면 항상 오류만 발생한다.</span></label><label class="choice"><input type="checkbox" value="4"><span>5. 모든 성적이 자동으로 95점이 된다.</span></label><div class="feedback"></div></div>
+</article>
+<article class="code-card">
+<div class="code-head"><span class="num">09</span><div><h3>WITH CHECK OPTION 적용</h3><p>이 뷰를 통해 데이터를 추가하거나 수정할 때 grade = 1 조건을 만족하도록 제한합니다. 뷰의 조건과 어긋나는 변경을 막는 안전장치입니다.</p></div></div>
+<pre><code>CREATE VIEW grade1_students_view AS
+SELECT student_id,
+       student_name,
+       grade
+FROM students
+WHERE grade = 1
+WITH CHECK OPTION;</code><button class="copy-btn" onclick="copyCode(this)">복사</button></pre>
+<div class="mini-quiz"><h4>코드 9에 대한 설명으로 옳은 것을 모두 고르세요.</h4>
+<p class="hint">옳은 설명 3개를 빠짐없이 선택하세요.</p><label class="choice"><input type="checkbox" value="0"><span>1. grade가 1인 행만 허용하는 조건을 유지한다.</span></label><label class="choice"><input type="checkbox" value="1"><span>2. WITH CHECK OPTION을 사용한다.</span></label><label class="choice"><input type="checkbox" value="2"><span>3. 뷰 조건을 벗어나는 변경을 막을 수 있다.</span></label><label class="choice"><input type="checkbox" value="3"><span>4. grade가 2인 학생만 입력하도록 한다.</span></label><label class="choice"><input type="checkbox" value="4"><span>5. 원본 테이블의 모든 행을 읽지 못하게 한다.</span></label><div class="feedback"></div></div>
+</article>
+<article class="code-card">
+<div class="code-head"><span class="num">10</span><div><h3>뷰 확인과 삭제</h3><p>현재 데이터베이스의 뷰 목록을 확인하고, 특정 뷰가 존재할 때만 안전하게 삭제합니다. DROP VIEW는 원본 테이블의 데이터를 삭제하지 않습니다.</p></div></div>
+<pre><code>SHOW FULL TABLES
+WHERE Table_type = &#x27;VIEW&#x27;;
+
+DROP VIEW IF EXISTS student_public_view;</code><button class="copy-btn" onclick="copyCode(this)">복사</button></pre>
+<div class="mini-quiz"><h4>코드 10에 대한 설명으로 옳은 것을 모두 고르세요.</h4>
+<p class="hint">옳은 설명 3개를 빠짐없이 선택하세요.</p><label class="choice"><input type="checkbox" value="0"><span>1. 뷰 목록을 확인할 수 있다.</span></label><label class="choice"><input type="checkbox" value="1"><span>2. IF EXISTS로 안전하게 삭제할 수 있다.</span></label><label class="choice"><input type="checkbox" value="2"><span>3. 뷰 삭제는 원본 테이블 데이터를 지우지 않는다.</span></label><label class="choice"><input type="checkbox" value="3"><span>4. DROP VIEW는 원본 테이블도 함께 삭제한다.</span></label><label class="choice"><input type="checkbox" value="4"><span>5. SHOW FULL TABLES는 새 뷰를 만든다.</span></label><div class="feedback"></div></div>
+</article></div></section>
+<section id="quiz"><h2 class="section-title">5. 형성평가 OX 퀴즈 10개</h2><div class="ox-list"><div class="ox-item" data-answer="O">
+<div class="ox-num">1</div><div>뷰는 하나 이상의 SELECT 문을 기반으로 만든 가상 테이블이다.</div>
+<label><input type="radio" name="ox1" value="O"> O</label>
+<label><input type="radio" name="ox1" value="X"> X</label>
+<div class="ox-feedback"></div></div><div class="ox-item" data-answer="X">
+<div class="ox-num">2</div><div>일반적인 뷰는 원본 데이터를 별도로 복사해 저장한다.</div>
+<label><input type="radio" name="ox2" value="O"> O</label>
+<label><input type="radio" name="ox2" value="X"> X</label>
+<div class="ox-feedback"></div></div><div class="ox-item" data-answer="O">
+<div class="ox-num">3</div><div>뷰를 사용하면 반복되는 복잡한 조회를 단순화할 수 있다.</div>
+<label><input type="radio" name="ox3" value="O"> O</label>
+<label><input type="radio" name="ox3" value="X"> X</label>
+<div class="ox-feedback"></div></div><div class="ox-item" data-answer="O">
+<div class="ox-num">4</div><div>뷰를 이용해 사용자가 볼 수 있는 열과 행의 범위를 제한할 수 있다.</div>
+<label><input type="radio" name="ox4" value="O"> O</label>
+<label><input type="radio" name="ox4" value="X"> X</label>
+<div class="ox-feedback"></div></div><div class="ox-item" data-answer="O">
+<div class="ox-num">5</div><div>조인과 집계 결과도 뷰로 정의할 수 있다.</div>
+<label><input type="radio" name="ox5" value="O"> O</label>
+<label><input type="radio" name="ox5" value="X"> X</label>
+<div class="ox-feedback"></div></div><div class="ox-item" data-answer="X">
+<div class="ox-num">6</div><div>ALTER VIEW는 원본 테이블의 모든 데이터를 변경한다.</div>
+<label><input type="radio" name="ox6" value="O"> O</label>
+<label><input type="radio" name="ox6" value="X"> X</label>
+<div class="ox-feedback"></div></div><div class="ox-item" data-answer="O">
+<div class="ox-num">7</div><div>CREATE OR REPLACE VIEW는 뷰 생성과 정의 교체에 사용할 수 있다.</div>
+<label><input type="radio" name="ox7" value="O"> O</label>
+<label><input type="radio" name="ox7" value="X"> X</label>
+<div class="ox-feedback"></div></div><div class="ox-item" data-answer="O">
+<div class="ox-num">8</div><div>WITH CHECK OPTION은 뷰의 조건을 벗어나는 변경을 제한할 수 있다.</div>
+<label><input type="radio" name="ox8" value="O"> O</label>
+<label><input type="radio" name="ox8" value="X"> X</label>
+<div class="ox-feedback"></div></div><div class="ox-item" data-answer="X">
+<div class="ox-num">9</div><div>DROP VIEW를 실행하면 항상 원본 테이블도 함께 삭제된다.</div>
+<label><input type="radio" name="ox9" value="O"> O</label>
+<label><input type="radio" name="ox9" value="X"> X</label>
+<div class="ox-feedback"></div></div><div class="ox-item" data-answer="O">
+<div class="ox-num">10</div><div>뷰 위에서도 WHERE, ORDER BY 등의 조건을 추가해 조회할 수 있다.</div>
+<label><input type="radio" name="ox10" value="O"> O</label>
+<label><input type="radio" name="ox10" value="X"> X</label>
+<div class="ox-feedback"></div></div></div></section>
+<section id="ending"><h2 class="section-title">6. 수업 끝 이야기</h2><div class="ending-grid">
+<div class="ending-card poetry"><h3>🌙 시인의 이야기 — 창문은 벽에 낸 짧은 시다</h3><p>창문은 세상 전체를 담지 않지만 한 조각의 빛으로 방 전체를 바꿉니다. 뷰도 모든 열을 보여 주지 않지만 필요한 정보만으로 충분한 의미를 만듭니다. 다만 창문을 너무 많이 열면 겨울에는 서버도 춥습니다.</p></div>
+<div class="ending-card novel"><h3>📖 소설가의 이야기 — 모든 인물의 주민등록번호를 소개할 필요는 없다</h3><p>좋은 소설은 장면에 필요한 정보만 보여 줍니다. 주인공이 아침을 먹는 장면에 데이터베이스 비밀번호까지 설명하면 독자도 작가도 지칩니다. 뷰는 이야기의 편집자입니다.</p></div>
+<div class="ending-card drama"><h3>🎭 희곡인의 이야기 — 관객은 무대 뒤 창고까지 볼 필요가 없다</h3><p>관객은 완성된 장면을 보고, 배우와 기술팀은 무대 뒤 구조를 압니다. 뷰는 복잡한 데이터의 무대 뒤를 감추고 필요한 장면만 정확하게 보여 줍니다.</p></div>
+<div class="ending-card theater"><h3>🎬 연극인의 이야기 — 같은 무대도 조명에 따라 다른 장면이 된다</h3><p>조명은 무대를 새로 만들지 않지만 인물과 감정을 다르게 드러냅니다. 뷰도 원본 테이블을 바꾸지 않고 목적에 맞는 장면을 비춥니다.</p></div>
+<div class="ending-card music"><h3>🎼 음악인의 이야기 — 믹서는 필요한 소리를 앞으로 보낸다</h3><p>합주에는 수많은 소리가 있지만 믹서는 노래에 필요한 소리를 선명하게 만듭니다. 모든 채널을 최대로 올리면 음악이 아니라 소음이 됩니다. SELECT *도 가끔은 같은 운명을 만납니다.</p></div>
+<div class="last-message"><strong>오늘의 오래 남는 마지막 이야기</strong><p>우리도 때때로 자신의 부족한 모습만 확대해서 바라봅니다. 그러나 한 번의 실패는 여러분 전체가 아니라 삶이라는 거대한 테이블에서 조회된 한 행일 뿐입니다.</p><p><strong>오늘의 어려움만 보여 주는 뷰를 잠시 닫고, 지금까지 견뎌 온 용기와 앞으로 성장할 가능성을 함께 조회해 보십시오. 관점은 현실을 숨기는 도구가 아니라 현실 속 희망을 발견하는 창입니다. 여러분의 원본 데이터에는 아직 읽지 않은 수많은 가능성의 행이 남아 있습니다.</strong></p></div>
+</div></section>
+
+<section id="submit"><h2 class="section-title">7. 학번·이름 입력 및 결과 저장</h2><div class="card">
+<div class="student-box"><label><strong>학번</strong><input type="text" id="studentId" placeholder="예: 1101"></label>
+<label><strong>이름</strong><input type="text" id="studentName" placeholder="예: 홍길동"></label></div>
+<div class="action-bar"><button class="btn" onclick="gradeAll()">전체 채점</button>
+<button class="btn secondary" onclick="downloadResult()">TXT 결과 저장</button>
+<button class="btn danger" onclick="resetAll()">다시 풀기</button></div>
+<div id="scoreBox" class="score-box"></div><p>저장 파일명: 학번_이름_점수_22차시_응시시각.txt</p></div></section>
+</main>
+
+<script>
+let lastResult=null;
+function copyCode(b){navigator.clipboard.writeText(b.parentElement.querySelector('code').innerText);b.textContent='복사됨';setTimeout(()=>b.textContent='복사',900)}
+function selected(q){return [...q.querySelectorAll('input[type=checkbox]:checked')].map(x=>+x.value).sort()}
+function gradeAll(){
+ const sid=studentId.value.trim(),name=studentName.value.trim();
+ if(!sid||!name){alert('학번과 이름을 입력하세요.');return}
+ let c=0,o=0,detail=[];
+ document.querySelectorAll('.mini-quiz').forEach((q,i)=>{
+   let s=selected(q),ok=JSON.stringify(s)==='[0,1,2]',f=q.querySelector('.feedback');
+   f.textContent=ok?'정답입니다.':'오답입니다. 정답: 1, 2, 3번';f.className='feedback '+(ok?'good':'bad');
+   if(ok)c++;detail.push(`코드 ${i+1}: ${ok?'정답':'오답'} / 응답 ${s.map(x=>x+1).join(', ')||'미응답'}`);
+ });
+ document.querySelectorAll('.ox-item').forEach((q,i)=>{
+   let x=q.querySelector('input:checked'),v=x?x.value:'',ok=v===q.dataset.answer,f=q.querySelector('.ox-feedback');
+   f.textContent=ok?'정답':'오답 · 정답: '+q.dataset.answer;f.className='ox-feedback '+(ok?'good':'bad');
+   if(ok)o++;detail.push(`OX ${i+1}: ${ok?'정답':'오답'} / 응답 ${v||'미응답'}`);
+ });
+ let total=(c+o)*5,time=new Date();lastResult={sid,name,c,o,total,detail,time};
+ scoreBox.style.display='block';scoreBox.innerHTML=`총점 ${total}점 / 100점<br>복수정답 ${c} / 10 · OX ${o} / 10`;
+ scoreBox.scrollIntoView({behavior:'smooth'});
+}
+function pad(n){return String(n).padStart(2,'0')}
+function stamp(t){return `${t.getFullYear()}${pad(t.getMonth()+1)}${pad(t.getDate())}_${pad(t.getHours())}${pad(t.getMinutes())}${pad(t.getSeconds())}`}
+function downloadResult(){
+ if(!lastResult){gradeAll();if(!lastResult)return}
+ let r=lastResult,text=['MySQL 22차시 형성평가 결과',`학번: ${r.sid}`,`이름: ${r.name}`,
+ `점수: ${r.total}점`,`복수정답: ${r.c}/10`,`OX: ${r.o}/10`,`응시시각: ${r.time.toLocaleString()}`,'',...r.detail].join('\n');
+ let blob=new Blob(['\ufeff'+text],{type:'text/plain;charset=utf-8'}),a=document.createElement('a');
+ a.href=URL.createObjectURL(blob);a.download=`${r.sid}_${r.name}_${r.total}점_22차시_${stamp(r.time)}.txt`;a.click();
+ setTimeout(()=>URL.revokeObjectURL(a.href),1000);
+}
+function resetAll(){
+ document.querySelectorAll('input').forEach(x=>{if(x.type!=='text')x.checked=false});
+ document.querySelectorAll('.feedback,.ox-feedback').forEach(x=>x.textContent='');
+ scoreBox.style.display='none';lastResult=null;
+}
+</script></body></html>
