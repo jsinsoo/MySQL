@@ -1,0 +1,611 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>MySQL 기초부터 응용·심화까지 100단계 완전학습</title>
+<style>
+:root{
+  --bg:#f6f8fb; --card:#ffffff; --text:#172033; --muted:#667085;
+  --line:#e5e7eb; --accent:#2563eb; --accent2:#0f766e; --code:#101827;
+  --codeText:#e5edf7; --warn:#fff7ed; --ok:#ecfdf5;
+}
+body.dark{
+  --bg:#0f172a; --card:#111827; --text:#f3f4f6; --muted:#9ca3af;
+  --line:#374151; --accent:#60a5fa; --accent2:#34d399; --code:#020617;
+  --codeText:#e5e7eb; --warn:#2a1f13; --ok:#0f2d24;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  margin:0; background:var(--bg); color:var(--text);
+  font-family:"Malgun Gothic","Apple SD Gothic Neo",Arial,sans-serif; line-height:1.72;
+}
+header{
+  position:sticky; top:0; z-index:20; background:color-mix(in srgb, var(--card) 92%, transparent);
+  backdrop-filter:blur(10px); border-bottom:1px solid var(--line);
+}
+.topbar{max-width:1200px; margin:auto; padding:12px 20px; display:flex; gap:10px; align-items:center; flex-wrap:wrap}
+.brand{font-weight:800; font-size:18px; margin-right:auto}
+button,select,input{font:inherit}
+.btn{
+  border:1px solid var(--line); background:var(--card); color:var(--text);
+  padding:8px 12px; border-radius:10px; cursor:pointer;
+}
+.btn:hover{border-color:var(--accent)}
+.progress-wrap{height:5px; background:var(--line)}
+#progress{height:100%; width:0%; background:var(--accent)}
+.hero{max-width:1200px; margin:24px auto 10px; padding:28px 22px}
+.hero h1{font-size:clamp(28px,4vw,48px); line-height:1.2; margin:0 0 12px}
+.hero p{color:var(--muted); max-width:900px}
+.layout{max-width:1200px; margin:auto; padding:0 20px 60px; display:grid; grid-template-columns:260px 1fr; gap:24px}
+aside{
+  position:sticky; top:88px; align-self:start; max-height:calc(100vh - 100px); overflow:auto;
+  background:var(--card); border:1px solid var(--line); border-radius:16px; padding:16px;
+}
+aside h3{margin:0 0 10px}
+aside a{display:block; color:var(--text); text-decoration:none; padding:7px 8px; border-radius:8px; font-size:14px}
+aside a:hover{background:var(--bg); color:var(--accent)}
+main{min-width:0}
+.section-title{
+  margin:28px 0 12px; padding:16px 18px; background:linear-gradient(135deg,var(--accent),var(--accent2));
+  color:#fff; border-radius:16px;
+}
+.step{
+  background:var(--card); border:1px solid var(--line); border-radius:16px; padding:20px;
+  margin:14px 0; box-shadow:0 3px 14px rgba(0,0,0,.04);
+}
+.step h3{margin:0 0 8px; font-size:20px}
+.badge{
+  display:inline-block; font-size:12px; font-weight:700; padding:4px 8px; border-radius:999px;
+  color:#fff; background:var(--accent); margin-right:8px
+}
+.desc{color:var(--muted); margin:4px 0 12px}
+pre{
+  position:relative; overflow:auto; background:var(--code); color:var(--codeText);
+  padding:16px; border-radius:12px; margin:10px 0; white-space:pre;
+}
+code{font-family:Consolas,"Courier New",monospace}
+.copy{
+  float:right; border:1px solid #475569; color:#e5e7eb; background:#1e293b;
+  border-radius:8px; padding:4px 8px; cursor:pointer; font-size:12px; margin-bottom:6px
+}
+.tip,.warn{
+  padding:12px 14px; border-radius:10px; margin-top:10px; border-left:4px solid;
+}
+.tip{background:var(--ok); border-color:#10b981}
+.warn{background:var(--warn); border-color:#f59e0b}
+.check{
+  display:flex; gap:8px; align-items:flex-start; margin-top:12px; font-size:14px
+}
+.check input{margin-top:5px; transform:scale(1.1)}
+.search{min-width:220px; flex:0 1 330px}
+.hidden{display:none!important}
+.summary-grid{display:grid; grid-template-columns:repeat(auto-fit,minmax(220px,1fr)); gap:12px}
+.summary-card{background:var(--card); border:1px solid var(--line); border-radius:14px; padding:16px}
+footer{max-width:1200px; margin:auto; padding:30px 20px 50px; color:var(--muted)}
+@media(max-width:850px){
+  .layout{grid-template-columns:1fr}
+  aside{position:relative; top:auto; max-height:none}
+}
+@media print{
+  header,aside,.copy,.check{display:none!important}
+  body{background:#fff;color:#000}
+  .layout{display:block; max-width:none}
+  .step{break-inside:avoid; box-shadow:none}
+  pre{white-space:pre-wrap}
+}
+</style>
+</head>
+<body>
+<header>
+  <div class="topbar">
+    <div class="brand">MySQL 100단계 완전학습</div>
+    <input id="search" class="btn search" placeholder="단계·명령어 검색">
+    <select id="jump" class="btn"><option value="">단계 이동</option></select>
+    <button class="btn" id="darkBtn">다크 모드</button>
+    <button class="btn" onclick="window.print()">인쇄/PDF</button>
+  </div>
+  <div class="progress-wrap"><div id="progress"></div></div>
+</header>
+
+<section class="hero">
+  <h1>MySQL 기초 → 응용 → 심화<br>100단계 완전학습</h1>
+  <p>MySQL을 처음 접하는 학습자가 데이터베이스 생성, CRUD, 조건 검색, 집계, JOIN, 서브쿼리, 뷰, 인덱스, 트랜잭션, 권한, 프로시저, 트리거, 실행계획까지 단계적으로 실습하도록 구성했습니다. 각 단계의 SQL을 직접 실행하고 체크박스로 학습 진도를 기록할 수 있습니다.</p>
+  <div class="tip"><b>권장 실습:</b> MySQL 창 A와 창 B를 동시에 열어 두면 71~80단계의 트랜잭션·동시성 실습을 더 잘 이해할 수 있습니다.</div>
+</section>
+
+<div class="layout">
+<aside>
+  <h3>목차</h3>
+  <a href="#s1">01~10 시작과 DB 기초</a>
+  <a href="#s2">11~20 테이블과 CRUD</a>
+  <a href="#s3">21~30 조건·정렬·문자열</a>
+  <a href="#s4">31~40 집계·GROUP BY</a>
+  <a href="#s5">41~50 테이블 설계·제약조건</a>
+  <a href="#s6">51~60 JOIN</a>
+  <a href="#s7">61~70 서브쿼리·집합·뷰</a>
+  <a href="#s8">71~80 트랜잭션·동시성</a>
+  <a href="#s9">81~90 인덱스·권한·백업</a>
+  <a href="#s10">91~100 프로시저·트리거·심화</a>
+</aside>
+
+<main id="content">
+
+<h2 class="section-title" id="s1">01~10. 시작과 데이터베이스 기초</h2>
+
+<div class="step" data-step="1"><h3><span class="badge">01</span>MySQL 접속</h3><p class="desc">CMD에서 root 계정으로 MySQL 서버에 접속합니다.</p><pre><code>mysql -u root -p</code></pre><div class="tip">비밀번호 입력 후 <code>mysql&gt;</code> 프롬프트가 나오면 성공입니다.</div></div>
+<div class="step" data-step="2"><h3><span class="badge">02</span>버전 확인</h3><pre><code>SELECT VERSION();</code></pre></div>
+<div class="step" data-step="3"><h3><span class="badge">03</span>현재 사용자 확인</h3><pre><code>SELECT USER(), CURRENT_USER();</code></pre></div>
+<div class="step" data-step="4"><h3><span class="badge">04</span>데이터베이스 목록</h3><pre><code>SHOW DATABASES;</code></pre></div>
+<div class="step" data-step="5"><h3><span class="badge">05</span>학습용 DB 생성</h3><pre><code>CREATE DATABASE mysql100;</code></pre></div>
+<div class="step" data-step="6"><h3><span class="badge">06</span>DB 선택</h3><pre><code>USE mysql100;</code></pre></div>
+<div class="step" data-step="7"><h3><span class="badge">07</span>현재 DB 확인</h3><pre><code>SELECT DATABASE();</code></pre></div>
+<div class="step" data-step="8"><h3><span class="badge">08</span>문자셋 확인</h3><pre><code>SHOW VARIABLES LIKE 'character_set_database';</code></pre></div>
+<div class="step" data-step="9"><h3><span class="badge">09</span>DB 생성문 확인</h3><pre><code>SHOW CREATE DATABASE mysql100;</code></pre></div>
+<div class="step" data-step="10"><h3><span class="badge">10</span>테이블 목록 확인</h3><pre><code>SHOW TABLES;</code></pre><div class="tip">아직 테이블이 없으므로 Empty set이 나올 수 있습니다.</div></div>
+
+<h2 class="section-title" id="s2">11~20. 테이블과 CRUD</h2>
+
+<div class="step" data-step="11"><h3><span class="badge">11</span>student 테이블 생성</h3><pre><code>CREATE TABLE student (
+    id INT PRIMARY KEY,
+    name VARCHAR(20) NOT NULL,
+    grade INT,
+    score INT
+);</code></pre></div>
+<div class="step" data-step="12"><h3><span class="badge">12</span>테이블 구조 확인</h3><pre><code>DESC student;</code></pre></div>
+<div class="step" data-step="13"><h3><span class="badge">13</span>한 행 INSERT</h3><pre><code>INSERT INTO student
+VALUES (1, '홍길동', 1, 95);</code></pre></div>
+<div class="step" data-step="14"><h3><span class="badge">14</span>여러 행 INSERT</h3><pre><code>INSERT INTO student VALUES
+(2, '김철수', 2, 88),
+(3, '이영희', 3, 100),
+(4, '박민수', 1, 72),
+(5, '최지우', 2, 91);</code></pre></div>
+<div class="step" data-step="15"><h3><span class="badge">15</span>전체 조회</h3><pre><code>SELECT * FROM student;</code></pre></div>
+<div class="step" data-step="16"><h3><span class="badge">16</span>일부 열 조회</h3><pre><code>SELECT name, score
+FROM student;</code></pre></div>
+<div class="step" data-step="17"><h3><span class="badge">17</span>UPDATE</h3><pre><code>UPDATE student
+SET score = 93
+WHERE id = 2;</code></pre></div>
+<div class="step" data-step="18"><h3><span class="badge">18</span>DELETE 연습</h3><pre><code>INSERT INTO student VALUES (6, '삭제연습', 3, 50);
+
+DELETE FROM student
+WHERE id = 6;</code></pre></div>
+<div class="step" data-step="19"><h3><span class="badge">19</span>특정 행 확인</h3><pre><code>SELECT *
+FROM student
+WHERE id = 2;</code></pre></div>
+<div class="step" data-step="20"><h3><span class="badge">20</span>PRIMARY KEY 중복 오류 체험</h3><pre><code>INSERT INTO student
+VALUES (1, '중복학생', 1, 80);</code></pre><div class="warn">id=1은 이미 존재하므로 <b>ERROR 1062 Duplicate entry</b>가 발생합니다. PRIMARY KEY는 중복될 수 없습니다.</div></div>
+
+<h2 class="section-title" id="s3">21~30. 조건·정렬·문자열 검색</h2>
+
+<div class="step" data-step="21"><h3><span class="badge">21</span>WHERE 기본</h3><pre><code>SELECT * FROM student
+WHERE score >= 90;</code></pre></div>
+<div class="step" data-step="22"><h3><span class="badge">22</span>AND 조건</h3><pre><code>SELECT * FROM student
+WHERE grade = 2 AND score >= 90;</code></pre></div>
+<div class="step" data-step="23"><h3><span class="badge">23</span>OR 조건</h3><pre><code>SELECT * FROM student
+WHERE grade = 1 OR score = 100;</code></pre></div>
+<div class="step" data-step="24"><h3><span class="badge">24</span>BETWEEN</h3><pre><code>SELECT * FROM student
+WHERE score BETWEEN 80 AND 95;</code></pre></div>
+<div class="step" data-step="25"><h3><span class="badge">25</span>IN</h3><pre><code>SELECT * FROM student
+WHERE grade IN (1, 3);</code></pre></div>
+<div class="step" data-step="26"><h3><span class="badge">26</span>NOT IN</h3><pre><code>SELECT * FROM student
+WHERE grade NOT IN (1, 3);</code></pre></div>
+<div class="step" data-step="27"><h3><span class="badge">27</span>LIKE 검색</h3><pre><code>SELECT * FROM student
+WHERE name LIKE '김%';</code></pre></div>
+<div class="step" data-step="28"><h3><span class="badge">28</span>ORDER BY</h3><pre><code>SELECT * FROM student
+ORDER BY score DESC;</code></pre></div>
+<div class="step" data-step="29"><h3><span class="badge">29</span>복수 기준 정렬</h3><pre><code>SELECT * FROM student
+ORDER BY grade ASC, score DESC;</code></pre></div>
+<div class="step" data-step="30"><h3><span class="badge">30</span>LIMIT</h3><pre><code>SELECT * FROM student
+ORDER BY score DESC
+LIMIT 3;</code></pre></div>
+
+<h2 class="section-title" id="s4">31~40. 집계 함수와 GROUP BY</h2>
+
+<div class="step" data-step="31"><h3><span class="badge">31</span>COUNT</h3><pre><code>SELECT COUNT(*) AS 학생수
+FROM student;</code></pre></div>
+<div class="step" data-step="32"><h3><span class="badge">32</span>AVG</h3><pre><code>SELECT AVG(score) AS 평균점수
+FROM student;</code></pre></div>
+<div class="step" data-step="33"><h3><span class="badge">33</span>MAX와 MIN</h3><pre><code>SELECT MAX(score) AS 최고,
+       MIN(score) AS 최저
+FROM student;</code></pre></div>
+<div class="step" data-step="34"><h3><span class="badge">34</span>SUM</h3><pre><code>SELECT SUM(score) AS 총점
+FROM student;</code></pre></div>
+<div class="step" data-step="35"><h3><span class="badge">35</span>GROUP BY</h3><pre><code>SELECT grade, AVG(score) AS 평균
+FROM student
+GROUP BY grade;</code></pre></div>
+<div class="step" data-step="36"><h3><span class="badge">36</span>그룹별 인원</h3><pre><code>SELECT grade, COUNT(*) AS 인원
+FROM student
+GROUP BY grade;</code></pre></div>
+<div class="step" data-step="37"><h3><span class="badge">37</span>HAVING</h3><pre><code>SELECT grade, AVG(score) AS 평균
+FROM student
+GROUP BY grade
+HAVING AVG(score) >= 90;</code></pre></div>
+<div class="step" data-step="38"><h3><span class="badge">38</span>DISTINCT</h3><pre><code>SELECT DISTINCT grade
+FROM student;</code></pre></div>
+<div class="step" data-step="39"><h3><span class="badge">39</span>계산 열</h3><pre><code>SELECT name, score, score + 5 AS 보너스점수
+FROM student;</code></pre></div>
+<div class="step" data-step="40"><h3><span class="badge">40</span>CASE 표현식</h3><pre><code>SELECT name, score,
+CASE
+    WHEN score >= 90 THEN 'A'
+    WHEN score >= 80 THEN 'B'
+    ELSE 'C'
+END AS 등급
+FROM student;</code></pre></div>
+
+<h2 class="section-title" id="s5">41~50. 테이블 설계와 제약조건</h2>
+
+<div class="step" data-step="41"><h3><span class="badge">41</span>AUTO_INCREMENT</h3><pre><code>CREATE TABLE member (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    name VARCHAR(30) NOT NULL
+);</code></pre></div>
+<div class="step" data-step="42"><h3><span class="badge">42</span>AUTO_INCREMENT 입력</h3><pre><code>INSERT INTO member(name) VALUES
+('Alice'), ('Bob'), ('Carol');
+
+SELECT * FROM member;</code></pre></div>
+<div class="step" data-step="43"><h3><span class="badge">43</span>DEFAULT</h3><pre><code>CREATE TABLE course (
+    id INT PRIMARY KEY,
+    title VARCHAR(50),
+    capacity INT DEFAULT 20
+);</code></pre></div>
+<div class="step" data-step="44"><h3><span class="badge">44</span>UNIQUE</h3><pre><code>CREATE TABLE account (
+    id INT PRIMARY KEY,
+    email VARCHAR(100) UNIQUE
+);</code></pre></div>
+<div class="step" data-step="45"><h3><span class="badge">45</span>CHECK</h3><pre><code>CREATE TABLE exam (
+    id INT PRIMARY KEY,
+    score INT CHECK (score BETWEEN 0 AND 100)
+);</code></pre></div>
+<div class="step" data-step="46"><h3><span class="badge">46</span>ALTER TABLE 열 추가</h3><pre><code>ALTER TABLE student
+ADD COLUMN city VARCHAR(20);</code></pre></div>
+<div class="step" data-step="47"><h3><span class="badge">47</span>열 수정</h3><pre><code>ALTER TABLE student
+MODIFY COLUMN name VARCHAR(40) NOT NULL;</code></pre></div>
+<div class="step" data-step="48"><h3><span class="badge">48</span>열 이름 변경</h3><pre><code>ALTER TABLE student
+RENAME COLUMN city TO hometown;</code></pre></div>
+<div class="step" data-step="49"><h3><span class="badge">49</span>열 삭제</h3><pre><code>ALTER TABLE student
+DROP COLUMN hometown;</code></pre></div>
+<div class="step" data-step="50"><h3><span class="badge">50</span>테이블 생성문 확인</h3><pre><code>SHOW CREATE TABLE student;</code></pre></div>
+
+<h2 class="section-title" id="s6">51~60. 관계형 모델과 JOIN</h2>
+
+<div class="step" data-step="51"><h3><span class="badge">51</span>department 테이블</h3><pre><code>CREATE TABLE department (
+    dept_id INT PRIMARY KEY,
+    dept_name VARCHAR(30)
+);
+
+INSERT INTO department VALUES
+(10, '정보과학'),
+(20, '수학'),
+(30, '물리');</code></pre></div>
+<div class="step" data-step="52"><h3><span class="badge">52</span>student에 dept_id 추가</h3><pre><code>ALTER TABLE student
+ADD COLUMN dept_id INT;</code></pre></div>
+<div class="step" data-step="53"><h3><span class="badge">53</span>학과 값 입력</h3><pre><code>UPDATE student SET dept_id = 10 WHERE id IN (1,2);
+UPDATE student SET dept_id = 20 WHERE id IN (3,4);
+UPDATE student SET dept_id = 30 WHERE id = 5;</code></pre></div>
+<div class="step" data-step="54"><h3><span class="badge">54</span>INNER JOIN</h3><pre><code>SELECT s.name, d.dept_name
+FROM student AS s
+INNER JOIN department AS d
+ON s.dept_id = d.dept_id;</code></pre></div>
+<div class="step" data-step="55"><h3><span class="badge">55</span>LEFT JOIN</h3><pre><code>SELECT s.name, d.dept_name
+FROM student s
+LEFT JOIN department d
+ON s.dept_id = d.dept_id;</code></pre></div>
+<div class="step" data-step="56"><h3><span class="badge">56</span>JOIN + WHERE</h3><pre><code>SELECT s.name, s.score, d.dept_name
+FROM student s
+JOIN department d
+ON s.dept_id = d.dept_id
+WHERE s.score >= 90;</code></pre></div>
+<div class="step" data-step="57"><h3><span class="badge">57</span>JOIN + GROUP BY</h3><pre><code>SELECT d.dept_name,
+       AVG(s.score) AS 평균점수
+FROM student s
+JOIN department d
+ON s.dept_id = d.dept_id
+GROUP BY d.dept_name;</code></pre></div>
+<div class="step" data-step="58"><h3><span class="badge">58</span>외래키 테이블 설계</h3><pre><code>CREATE TABLE enrollment (
+    enroll_id INT AUTO_INCREMENT PRIMARY KEY,
+    student_id INT,
+    course_id INT,
+    FOREIGN KEY (student_id) REFERENCES student(id),
+    FOREIGN KEY (course_id) REFERENCES course(id)
+);</code></pre></div>
+<div class="step" data-step="59"><h3><span class="badge">59</span>3개 테이블 JOIN 준비</h3><pre><code>INSERT INTO course(id, title, capacity) VALUES
+(101, '데이터베이스', 25),
+(102, '알고리즘', 20);
+
+INSERT INTO enrollment(student_id, course_id) VALUES
+(1,101),(2,101),(3,102),(5,102);</code></pre></div>
+<div class="step" data-step="60"><h3><span class="badge">60</span>3개 테이블 JOIN</h3><pre><code>SELECT s.name, c.title
+FROM enrollment e
+JOIN student s ON e.student_id = s.id
+JOIN course c ON e.course_id = c.id
+ORDER BY s.name;</code></pre></div>
+
+<h2 class="section-title" id="s7">61~70. 서브쿼리·집합·뷰</h2>
+
+<div class="step" data-step="61"><h3><span class="badge">61</span>평균보다 높은 학생</h3><pre><code>SELECT name, score
+FROM student
+WHERE score > (
+    SELECT AVG(score) FROM student
+);</code></pre></div>
+<div class="step" data-step="62"><h3><span class="badge">62</span>MAX 서브쿼리</h3><pre><code>SELECT name, score
+FROM student
+WHERE score = (
+    SELECT MAX(score) FROM student
+);</code></pre></div>
+<div class="step" data-step="63"><h3><span class="badge">63</span>IN 서브쿼리</h3><pre><code>SELECT name
+FROM student
+WHERE dept_id IN (
+    SELECT dept_id
+    FROM department
+    WHERE dept_name IN ('정보과학','수학')
+);</code></pre></div>
+<div class="step" data-step="64"><h3><span class="badge">64</span>EXISTS</h3><pre><code>SELECT d.dept_name
+FROM department d
+WHERE EXISTS (
+    SELECT 1
+    FROM student s
+    WHERE s.dept_id = d.dept_id
+);</code></pre></div>
+<div class="step" data-step="65"><h3><span class="badge">65</span>UNION</h3><pre><code>SELECT name FROM student WHERE grade = 1
+UNION
+SELECT name FROM student WHERE score >= 95;</code></pre></div>
+<div class="step" data-step="66"><h3><span class="badge">66</span>UNION ALL</h3><pre><code>SELECT name FROM student WHERE grade = 1
+UNION ALL
+SELECT name FROM student WHERE score >= 95;</code></pre></div>
+<div class="step" data-step="67"><h3><span class="badge">67</span>VIEW 생성</h3><pre><code>CREATE VIEW high_score_students AS
+SELECT id, name, score
+FROM student
+WHERE score >= 90;</code></pre></div>
+<div class="step" data-step="68"><h3><span class="badge">68</span>VIEW 조회</h3><pre><code>SELECT * FROM high_score_students;</code></pre></div>
+<div class="step" data-step="69"><h3><span class="badge">69</span>VIEW 정의 확인</h3><pre><code>SHOW CREATE VIEW high_score_students;</code></pre></div>
+<div class="step" data-step="70"><h3><span class="badge">70</span>VIEW 삭제</h3><pre><code>DROP VIEW high_score_students;</code></pre></div>
+
+<h2 class="section-title" id="s8">71~80. 트랜잭션과 동시성</h2>
+
+<div class="step" data-step="71"><h3><span class="badge">71</span>autocommit 확인</h3><pre><code>SELECT @@autocommit;</code></pre></div>
+<div class="step" data-step="72"><h3><span class="badge">72</span>트랜잭션 시작</h3><pre><code>START TRANSACTION;</code></pre></div>
+<div class="step" data-step="73"><h3><span class="badge">73</span>트랜잭션 안에서 UPDATE</h3><pre><code>UPDATE student
+SET score = 60
+WHERE id = 1;
+
+SELECT * FROM student WHERE id = 1;</code></pre></div>
+<div class="step" data-step="74"><h3><span class="badge">74</span>창 B에서 확인</h3><pre><code>USE mysql100;
+SELECT * FROM student WHERE id = 1;</code></pre><div class="tip">창 A가 아직 COMMIT하지 않았다면 창 B에서는 기존 값이 보일 수 있습니다.</div></div>
+<div class="step" data-step="75"><h3><span class="badge">75</span>ROLLBACK</h3><pre><code>ROLLBACK;
+
+SELECT * FROM student WHERE id = 1;</code></pre></div>
+<div class="step" data-step="76"><h3><span class="badge">76</span>COMMIT</h3><pre><code>START TRANSACTION;
+
+UPDATE student
+SET score = 98
+WHERE id = 1;
+
+COMMIT;</code></pre></div>
+<div class="step" data-step="77"><h3><span class="badge">77</span>SAVEPOINT</h3><pre><code>START TRANSACTION;
+
+UPDATE student SET score = 90 WHERE id = 1;
+SAVEPOINT p1;
+
+UPDATE student SET score = 70 WHERE id = 2;</code></pre></div>
+<div class="step" data-step="78"><h3><span class="badge">78</span>SAVEPOINT로 부분 취소</h3><pre><code>ROLLBACK TO p1;
+
+COMMIT;</code></pre></div>
+<div class="step" data-step="79"><h3><span class="badge">79</span>격리 수준 확인</h3><pre><code>SELECT @@transaction_isolation;</code></pre></div>
+<div class="step" data-step="80"><h3><span class="badge">80</span>두 세션 이해</h3><pre><code>SELECT CONNECTION_ID();</code></pre><div class="tip">창 A와 창 B에서 각각 실행하면 서로 다른 Connection ID가 나옵니다.</div></div>
+
+<h2 class="section-title" id="s9">81~90. 인덱스·권한·백업</h2>
+
+<div class="step" data-step="81"><h3><span class="badge">81</span>인덱스 확인</h3><pre><code>SHOW INDEX FROM student;</code></pre></div>
+<div class="step" data-step="82"><h3><span class="badge">82</span>인덱스 생성</h3><pre><code>CREATE INDEX idx_student_score
+ON student(score);</code></pre></div>
+<div class="step" data-step="83"><h3><span class="badge">83</span>EXPLAIN</h3><pre><code>EXPLAIN
+SELECT * FROM student
+WHERE score >= 90;</code></pre></div>
+<div class="step" data-step="84"><h3><span class="badge">84</span>복합 인덱스</h3><pre><code>CREATE INDEX idx_grade_score
+ON student(grade, score);</code></pre></div>
+<div class="step" data-step="85"><h3><span class="badge">85</span>인덱스 삭제</h3><pre><code>DROP INDEX idx_student_score
+ON student;</code></pre></div>
+<div class="step" data-step="86"><h3><span class="badge">86</span>사용자 목록 확인</h3><pre><code>SELECT user, host
+FROM mysql.user;</code></pre></div>
+<div class="step" data-step="87"><h3><span class="badge">87</span>학습용 사용자 생성</h3><pre><code>CREATE USER 'student1'@'localhost'
+IDENTIFIED BY 'Study1234!';</code></pre><div class="warn">실제 운영 환경에서는 더 강한 비밀번호 정책을 사용하세요.</div></div>
+<div class="step" data-step="88"><h3><span class="badge">88</span>권한 부여</h3><pre><code>GRANT SELECT, INSERT
+ON mysql100.*
+TO 'student1'@'localhost';</code></pre></div>
+<div class="step" data-step="89"><h3><span class="badge">89</span>권한 확인</h3><pre><code>SHOW GRANTS
+FOR 'student1'@'localhost';</code></pre></div>
+<div class="step" data-step="90"><h3><span class="badge">90</span>백업과 복원 개념</h3><pre><code>-- CMD에서 백업
+mysqldump -u root -p mysql100 > mysql100_backup.sql
+
+-- CMD에서 복원
+mysql -u root -p mysql100 < mysql100_backup.sql</code></pre><div class="tip">위 두 명령은 <code>mysql&gt;</code>가 아니라 Windows CMD에서 실행합니다.</div></div>
+
+<h2 class="section-title" id="s10">91~100. 프로시저·트리거·심화</h2>
+
+<div class="step" data-step="91"><h3><span class="badge">91</span>문자열 함수</h3><pre><code>SELECT name,
+       CHAR_LENGTH(name) AS 글자수,
+       CONCAT(name, ' 학생') AS 표시
+FROM student;</code></pre></div>
+<div class="step" data-step="92"><h3><span class="badge">92</span>숫자 함수</h3><pre><code>SELECT name,
+       score,
+       ROUND(score * 1.1, 1) AS 조정점수
+FROM student;</code></pre></div>
+<div class="step" data-step="93"><h3><span class="badge">93</span>날짜 함수</h3><pre><code>SELECT NOW(),
+       CURDATE(),
+       CURTIME();</code></pre></div>
+<div class="step" data-step="94"><h3><span class="badge">94</span>CTE</h3><pre><code>WITH top_students AS (
+    SELECT id, name, score
+    FROM student
+    WHERE score >= 90
+)
+SELECT *
+FROM top_students
+ORDER BY score DESC;</code></pre></div>
+<div class="step" data-step="95"><h3><span class="badge">95</span>윈도 함수 ROW_NUMBER</h3><pre><code>SELECT
+    name,
+    grade,
+    score,
+    ROW_NUMBER() OVER (
+        ORDER BY score DESC
+    ) AS 전체순위
+FROM student;</code></pre></div>
+<div class="step" data-step="96"><h3><span class="badge">96</span>학년별 순위</h3><pre><code>SELECT
+    name,
+    grade,
+    score,
+    RANK() OVER (
+        PARTITION BY grade
+        ORDER BY score DESC
+    ) AS 학년순위
+FROM student;</code></pre></div>
+<div class="step" data-step="97"><h3><span class="badge">97</span>저장 프로시저</h3><pre><code>DELIMITER //
+
+CREATE PROCEDURE show_high_score(IN min_score INT)
+BEGIN
+    SELECT name, score
+    FROM student
+    WHERE score >= min_score
+    ORDER BY score DESC;
+END //
+
+DELIMITER ;
+
+CALL show_high_score(90);</code></pre></div>
+<div class="step" data-step="98"><h3><span class="badge">98</span>트리거</h3><pre><code>CREATE TABLE score_log (
+    log_id INT AUTO_INCREMENT PRIMARY KEY,
+    student_id INT,
+    old_score INT,
+    new_score INT,
+    changed_at DATETIME
+);
+
+DELIMITER //
+
+CREATE TRIGGER trg_score_update
+AFTER UPDATE ON student
+FOR EACH ROW
+BEGIN
+    IF OLD.score <> NEW.score THEN
+        INSERT INTO score_log
+        (student_id, old_score, new_score, changed_at)
+        VALUES
+        (OLD.id, OLD.score, NEW.score, NOW());
+    END IF;
+END //
+
+DELIMITER ;</code></pre></div>
+<div class="step" data-step="99"><h3><span class="badge">99</span>트리거 테스트</h3><pre><code>UPDATE student
+SET score = 96
+WHERE id = 1;
+
+SELECT * FROM score_log;</code></pre></div>
+<div class="step" data-step="100"><h3><span class="badge">100</span>최종 종합 분석 쿼리</h3><pre><code>WITH dept_stats AS (
+    SELECT
+        d.dept_name,
+        COUNT(*) AS 학생수,
+        ROUND(AVG(s.score), 1) AS 평균점수,
+        MAX(s.score) AS 최고점수
+    FROM student s
+    JOIN department d
+      ON s.dept_id = d.dept_id
+    GROUP BY d.dept_name
+)
+SELECT
+    dept_name,
+    학생수,
+    평균점수,
+    최고점수,
+    RANK() OVER (
+        ORDER BY 평균점수 DESC
+    ) AS 평균순위
+FROM dept_stats
+ORDER BY 평균순위;</code></pre><div class="tip"><b>100단계 완주!</b> 이제 단순 SQL 문법을 넘어 관계형 설계, JOIN, 서브쿼리, 트랜잭션, 인덱스, 권한, CTE, 윈도 함수, 프로시저, 트리거까지 연결할 수 있습니다.</div></div>
+
+<h2 class="section-title">최종 학습 로드맵 요약</h2>
+<div class="summary-grid">
+  <div class="summary-card"><b>기초</b><br>DB 생성·선택, 테이블, INSERT, SELECT, UPDATE, DELETE</div>
+  <div class="summary-card"><b>검색</b><br>WHERE, LIKE, BETWEEN, IN, ORDER BY, LIMIT</div>
+  <div class="summary-card"><b>분석</b><br>COUNT, AVG, MAX, MIN, GROUP BY, HAVING, CASE</div>
+  <div class="summary-card"><b>설계</b><br>PK, FK, UNIQUE, CHECK, DEFAULT, ALTER TABLE</div>
+  <div class="summary-card"><b>관계</b><br>INNER JOIN, LEFT JOIN, 3-table JOIN</div>
+  <div class="summary-card"><b>응용</b><br>서브쿼리, EXISTS, UNION, VIEW</div>
+  <div class="summary-card"><b>데이터 무결성</b><br>TRANSACTION, COMMIT, ROLLBACK, SAVEPOINT</div>
+  <div class="summary-card"><b>심화</b><br>INDEX, EXPLAIN, USER, GRANT, CTE, WINDOW, PROCEDURE, TRIGGER</div>
+</div>
+
+</main>
+</div>
+
+<footer>
+  MySQL 100단계 완전학습 · 브라우저에서 실행되는 단일 HTML 파일 · 체크한 진도는 현재 브라우저에 자동 저장됩니다.
+</footer>
+
+<script>
+const steps = [...document.querySelectorAll('.step')];
+const jump = document.getElementById('jump');
+const progress = document.getElementById('progress');
+const search = document.getElementById('search');
+
+steps.forEach(step=>{
+  const n = step.dataset.step.padStart(2,'0');
+  const h = step.querySelector('h3').innerText.replace(/^\d+\s*/,'');
+  const opt = document.createElement('option');
+  opt.value = n;
+  opt.textContent = `${n}단계 ${h}`;
+  jump.appendChild(opt);
+
+  const pre = step.querySelector('pre');
+  if(pre){
+    const btn=document.createElement('button');
+    btn.className='copy'; btn.textContent='코드 복사';
+    btn.onclick=async()=>{
+      await navigator.clipboard.writeText(pre.innerText);
+      btn.textContent='복사됨';
+      setTimeout(()=>btn.textContent='코드 복사',1200);
+    };
+    pre.parentNode.insertBefore(btn, pre);
+  }
+
+  const check = document.createElement('label');
+  check.className='check';
+  check.innerHTML=`<input type="checkbox" data-check="${n}"> 이 단계를 직접 실행해 확인했습니다.`;
+  step.appendChild(check);
+});
+
+function updateProgress(){
+  const checks=[...document.querySelectorAll('[data-check]')];
+  const done=checks.filter(x=>x.checked).length;
+  progress.style.width=(done/100*100)+'%';
+}
+document.querySelectorAll('[data-check]').forEach(c=>{
+  const key='mysql100_'+c.dataset.check;
+  c.checked=localStorage.getItem(key)==='1';
+  c.addEventListener('change',()=>{
+    localStorage.setItem(key,c.checked?'1':'0');
+    updateProgress();
+  });
+});
+updateProgress();
+
+jump.addEventListener('change',()=>{
+  if(!jump.value) return;
+  const el=document.querySelector(`[data-step="${parseInt(jump.value)}"]`);
+  if(el) el.scrollIntoView({behavior:'smooth',block:'start'});
+});
+
+search.addEventListener('input',()=>{
+  const q=search.value.trim().toLowerCase();
+  steps.forEach(s=>{
+    s.classList.toggle('hidden', q && !s.innerText.toLowerCase().includes(q));
+  });
+});
+
+document.getElementById('darkBtn').onclick=()=>{
+  document.body.classList.toggle('dark');
+  localStorage.setItem('mysql100_dark',document.body.classList.contains('dark')?'1':'0');
+};
+if(localStorage.getItem('mysql100_dark')==='1') document.body.classList.add('dark');
+</script>
+</body>
+</html>
