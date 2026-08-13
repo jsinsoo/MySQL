@@ -1,0 +1,1030 @@
+<!doctype html><html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>OneCompiler MySQL 100예제 상세학습</title>
+<style>
+:root{--bg:#f4f7fb;--panel:#fff;--text:#172033;--muted:#607086;--line:#dbe3ee;--blue:#2563eb;--green:#0f766e;--code:#111827}*{box-sizing:border-box}body{margin:0;font-family:"Malgun Gothic","Apple SD Gothic Neo",sans-serif;background:var(--bg);color:var(--text);line-height:1.7}header{position:sticky;top:0;z-index:20;background:rgba(255,255,255,.97);border-bottom:1px solid var(--line)}.top{max-width:1200px;margin:auto;padding:12px 18px;display:flex;align-items:center;gap:10px;flex-wrap:wrap}.brand{font-weight:900;margin-right:auto}.brand small{display:block;font-size:11px;color:var(--muted);font-weight:500}input,select,button{font:inherit}input,select{border:1px solid var(--line);border-radius:9px;padding:8px 10px;background:#fff}button,.open{border:0;border-radius:8px;padding:8px 10px;cursor:pointer;text-decoration:none}.print{background:#111827;color:#fff}.open{background:var(--blue);color:#fff}.hero{max-width:1200px;margin:28px auto 16px;padding:0 18px}.heroBox{padding:25px;border:1px solid #cfe0fb;border-radius:18px;background:linear-gradient(135deg,#eff6ff,#ecfeff)}h1{font-size:clamp(28px,4vw,44px);line-height:1.2;margin:0 0 10px}.hero p{color:#40506a}.guide{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-top:16px}.g{background:#fff;border:1px solid var(--line);padding:11px;border-radius:10px}.info{max-width:1200px;margin:0 auto 15px;padding:0 18px;color:var(--muted);display:flex;justify-content:space-between}main{max-width:1200px;margin:auto;padding:0 18px 60px}.card{background:var(--panel);border:1px solid var(--line);border-radius:15px;margin:14px 0;overflow:hidden;box-shadow:0 4px 12px #0f172a0a}.head{padding:15px 17px;display:flex;justify-content:space-between;gap:10px;background:#fbfdff}.head h2{margin:5px 0 0;font-size:20px}.no{font-weight:900;color:var(--blue);margin-right:6px}.badge,.topic{font-size:12px;border-radius:999px;padding:3px 8px;margin-right:4px}.badge{background:#e7efff;color:#174ea6}.topic{background:#e4f6f1;color:#0f766e}.head button{background:#eef2f7}.body{padding:17px}.desc{background:#f8fafc;border-left:4px solid var(--blue);padding:13px 15px;border-radius:9px;margin-bottom:13px}.desc p{margin:6px 0}.result,.note{background:#fff;border:1px solid var(--line);padding:8px 10px;border-radius:7px;margin-top:8px}.codebox{background:var(--code);border-radius:11px;overflow:hidden}.bar{background:#1f2937;color:#dbeafe;padding:8px 11px;display:flex;justify-content:space-between;font-size:12px}.bar button{background:#e5edff;color:#1d4ed8;font-weight:700}pre{margin:0;padding:15px;overflow:auto;color:#e5e7eb;font:14px/1.55 Consolas,monospace}.hidden{display:none!important}footer{text-align:center;color:var(--muted);padding:30px}@media(max-width:760px){.guide{grid-template-columns:1fr 1fr}.top input{width:100%}}@media(max-width:480px){.guide{grid-template-columns:1fr}}@media print{header,.head button,.bar button,.open,.print{display:none!important}.body{display:block!important}body{background:#fff}.card{box-shadow:none;break-inside:avoid}}
+</style></head><body><header><div class="top"><div class="brand">MySQL 100단계<small>OneCompiler 온라인 실습 전자교재</small></div><input id="q" type="search" placeholder="JOIN, GROUP BY, CTE 검색" oninput="filterCards()"><select id="lv" onchange="filterCards()"><option value="">모든 난이도</option><option>기초</option><option>중급</option><option>고급</option></select><button class="print" onclick="print()">인쇄/PDF</button><a class="open" href="https://onecompiler.com/mysql" target="_blank">OneCompiler 열기</a></div></header><section class="hero"><div class="heroBox"><h1>설치 없이 배우는<br>MySQL 예제 100개</h1><p>각 예제는 가능한 한 독립 실행형으로 구성했습니다. 코드를 복사하여 OneCompiler MySQL 편집기에 붙여 넣고 Run을 누른 뒤 결과와 상세 설명을 비교하세요.</p><div class="guide"><div class="g"><b>1.</b> MySQL 편집기 열기</div><div class="g"><b>2.</b> 예제 코드 복사</div><div class="g"><b>3.</b> Run으로 실행</div><div class="g"><b>4.</b> 결과·설명 비교</div></div></div></section><div class="info"><span id="count">100개 예제 표시 중</span><span>기초 → 중급 → 고급</span></div><main><section class="card" data-level="기초" data-search="첫 select select 테이블 없이도 select로 문자열을 출력할 수 있습니다. as는 결과 열의 별칭입니다.">
+<div class="head"><div><span class="no">#001</span><span class="badge">기초</span><span class="topic">SELECT</span><h2>첫 SELECT</h2></div><button onclick="toggleCard(this)">접기</button></div>
+<div class="body"><div class="desc"><b>상세 설명</b><p>테이블 없이도 SELECT로 문자열을 출력할 수 있습니다. AS는 결과 열의 별칭입니다.</p><div class="result"><b>예상 결과:</b> Hello, MySQL!</div></div>
+<div class="codebox"><div class="bar"><span>OneCompiler에 복사하여 실행</span><button onclick="copyCode(this)">코드 복사</button></div><pre><code>SELECT &#x27;Hello, MySQL!&#x27; AS message;</code></pre></div></div></section><section class="card" data-level="기초" data-search="숫자 계산 select select 안에서 산술 연산을 수행할 수 있습니다. 쉼표로 여러 계산 결과를 한 행에 표시합니다.">
+<div class="head"><div><span class="no">#002</span><span class="badge">기초</span><span class="topic">SELECT</span><h2>숫자 계산</h2></div><button onclick="toggleCard(this)">접기</button></div>
+<div class="body"><div class="desc"><b>상세 설명</b><p>SELECT 안에서 산술 연산을 수행할 수 있습니다. 쉼표로 여러 계산 결과를 한 행에 표시합니다.</p><div class="result"><b>예상 결과:</b> 30 / 200 / 5</div></div>
+<div class="codebox"><div class="bar"><span>OneCompiler에 복사하여 실행</span><button onclick="copyCode(this)">코드 복사</button></div><pre><code>SELECT 10+20 AS sum_value, 10*20 AS product_value, 20/4 AS quotient_value;</code></pre></div></div></section><section class="card" data-level="기초" data-search="concat 문자열 결합 함수 concat()은 여러 문자열을 순서대로 이어 붙입니다.">
+<div class="head"><div><span class="no">#003</span><span class="badge">기초</span><span class="topic">함수</span><h2>CONCAT 문자열 결합</h2></div><button onclick="toggleCard(this)">접기</button></div>
+<div class="body"><div class="desc"><b>상세 설명</b><p>CONCAT()은 여러 문자열을 순서대로 이어 붙입니다.</p><div class="result"><b>예상 결과:</b> MySQL / 안녕 데이터베이스</div></div>
+<div class="codebox"><div class="bar"><span>OneCompiler에 복사하여 실행</span><button onclick="copyCode(this)">코드 복사</button></div><pre><code>SELECT CONCAT(&#x27;My&#x27;,&#x27;SQL&#x27;) AS word, CONCAT(&#x27;안녕&#x27;,&#x27; &#x27;,&#x27;데이터베이스&#x27;) AS greeting;</code></pre></div></div></section><section class="card" data-level="기초" data-search="대소문자 변환 함수 upper()는 대문자, lower()는 소문자로 바꿉니다.">
+<div class="head"><div><span class="no">#004</span><span class="badge">기초</span><span class="topic">함수</span><h2>대소문자 변환</h2></div><button onclick="toggleCard(this)">접기</button></div>
+<div class="body"><div class="desc"><b>상세 설명</b><p>UPPER()는 대문자, LOWER()는 소문자로 바꿉니다.</p><div class="result"><b>예상 결과:</b> MYSQL / database</div></div>
+<div class="codebox"><div class="bar"><span>OneCompiler에 복사하여 실행</span><button onclick="copyCode(this)">코드 복사</button></div><pre><code>SELECT UPPER(&#x27;mysql&#x27;) AS upper_text, LOWER(&#x27;DATABASE&#x27;) AS lower_text;</code></pre></div></div></section><section class="card" data-level="기초" data-search="문자열 길이 함수 char_length()는 문자 수를, length()는 바이트 수를 반환합니다. 한글에서는 두 개념의 차이를 관찰하기 좋습니다.">
+<div class="head"><div><span class="no">#005</span><span class="badge">기초</span><span class="topic">함수</span><h2>문자열 길이</h2></div><button onclick="toggleCard(this)">접기</button></div>
+<div class="body"><div class="desc"><b>상세 설명</b><p>CHAR_LENGTH()는 문자 수를, LENGTH()는 바이트 수를 반환합니다. 한글에서는 두 개념의 차이를 관찰하기 좋습니다.</p></div>
+<div class="codebox"><div class="bar"><span>OneCompiler에 복사하여 실행</span><button onclick="copyCode(this)">코드 복사</button></div><pre><code>SELECT CHAR_LENGTH(&#x27;데이터베이스&#x27;) AS chars, LENGTH(&#x27;MySQL&#x27;) AS bytes;</code></pre></div></div></section><section class="card" data-level="기초" data-search="round ceil floor 함수 round()는 반올림, ceil()은 올림, floor()는 내림입니다.">
+<div class="head"><div><span class="no">#006</span><span class="badge">기초</span><span class="topic">함수</span><h2>ROUND CEIL FLOOR</h2></div><button onclick="toggleCard(this)">접기</button></div>
+<div class="body"><div class="desc"><b>상세 설명</b><p>ROUND()는 반올림, CEIL()은 올림, FLOOR()는 내림입니다.</p><div class="result"><b>예상 결과:</b> 3.14 / 4 / 3</div></div>
+<div class="codebox"><div class="bar"><span>OneCompiler에 복사하여 실행</span><button onclick="copyCode(this)">코드 복사</button></div><pre><code>SELECT ROUND(3.141592,2) AS r, CEIL(3.14) AS c, FLOOR(3.99) AS f;</code></pre></div></div></section><section class="card" data-level="기초" data-search="나머지 mod 연산자 mod(a,b)와 %는 모두 나머지를 구합니다.">
+<div class="head"><div><span class="no">#007</span><span class="badge">기초</span><span class="topic">연산자</span><h2>나머지 MOD</h2></div><button onclick="toggleCard(this)">접기</button></div>
+<div class="body"><div class="desc"><b>상세 설명</b><p>MOD(a,b)와 %는 모두 나머지를 구합니다.</p><div class="result"><b>예상 결과:</b> 2 / 2</div></div>
+<div class="codebox"><div class="bar"><span>OneCompiler에 복사하여 실행</span><button onclick="copyCode(this)">코드 복사</button></div><pre><code>SELECT MOD(17,5) AS r1, 17 % 5 AS r2;</code></pre></div></div></section><section class="card" data-level="기초" data-search="현재 날짜와 시간 날짜 curdate(), curtime(), now()를 이용해 실행 시점의 날짜와 시간을 확인합니다.">
+<div class="head"><div><span class="no">#008</span><span class="badge">기초</span><span class="topic">날짜</span><h2>현재 날짜와 시간</h2></div><button onclick="toggleCard(this)">접기</button></div>
+<div class="body"><div class="desc"><b>상세 설명</b><p>CURDATE(), CURTIME(), NOW()를 이용해 실행 시점의 날짜와 시간을 확인합니다.</p><div class="note"><b>학습 포인트:</b> 실행할 때마다 값이 달라질 수 있습니다.</div></div>
+<div class="codebox"><div class="bar"><span>OneCompiler에 복사하여 실행</span><button onclick="copyCode(this)">코드 복사</button></div><pre><code>SELECT CURDATE() AS today, CURTIME() AS current_time, NOW() AS current_datetime;</code></pre></div></div></section><section class="card" data-level="기초" data-search="if 조건식 조건 if(조건, 참값, 거짓값)는 간단한 조건 분기를 표현합니다.">
+<div class="head"><div><span class="no">#009</span><span class="badge">기초</span><span class="topic">조건</span><h2>IF 조건식</h2></div><button onclick="toggleCard(this)">접기</button></div>
+<div class="body"><div class="desc"><b>상세 설명</b><p>IF(조건, 참값, 거짓값)는 간단한 조건 분기를 표현합니다.</p><div class="result"><b>예상 결과:</b> PASS</div></div>
+<div class="codebox"><div class="bar"><span>OneCompiler에 복사하여 실행</span><button onclick="copyCode(this)">코드 복사</button></div><pre><code>SELECT IF(85&gt;=60,&#x27;PASS&#x27;,&#x27;FAIL&#x27;) AS result;</code></pre></div></div></section><section class="card" data-level="기초" data-search="case 다중 조건 조건 case는 여러 when 조건을 위에서부터 검사해 첫 번째 참인 결과를 반환합니다.">
+<div class="head"><div><span class="no">#010</span><span class="badge">기초</span><span class="topic">조건</span><h2>CASE 다중 조건</h2></div><button onclick="toggleCard(this)">접기</button></div>
+<div class="body"><div class="desc"><b>상세 설명</b><p>CASE는 여러 WHEN 조건을 위에서부터 검사해 첫 번째 참인 결과를 반환합니다.</p><div class="result"><b>예상 결과:</b> A</div></div>
+<div class="codebox"><div class="bar"><span>OneCompiler에 복사하여 실행</span><button onclick="copyCode(this)">코드 복사</button></div><pre><code>SELECT CASE WHEN 92&gt;=90 THEN &#x27;A&#x27; WHEN 92&gt;=80 THEN &#x27;B&#x27; ELSE &#x27;C&#x27; END AS grade;</code></pre></div></div></section><section class="card" data-level="기초" data-search="학생 테이블 만들기 ddl create table로 열과 자료형을 정의합니다. primary key는 행을 유일하게 식별하고 not null은 필수 입력을 뜻합니다.">
+<div class="head"><div><span class="no">#011</span><span class="badge">기초</span><span class="topic">DDL</span><h2>학생 테이블 만들기</h2></div><button onclick="toggleCard(this)">접기</button></div>
+<div class="body"><div class="desc"><b>상세 설명</b><p>CREATE TABLE로 열과 자료형을 정의합니다. PRIMARY KEY는 행을 유일하게 식별하고 NOT NULL은 필수 입력을 뜻합니다.</p></div>
+<div class="codebox"><div class="bar"><span>OneCompiler에 복사하여 실행</span><button onclick="copyCode(this)">코드 복사</button></div><pre><code>DROP TABLE IF EXISTS student; CREATE TABLE student(id INT PRIMARY KEY,name VARCHAR(20) NOT NULL,grade INT,score INT); SHOW TABLES;</code></pre></div></div></section><section class="card" data-level="기초" data-search="한 행 insert insert insert into ... values로 한 행을 삽입합니다. 열 이름을 명시하면 값의 의미가 분명합니다.">
+<div class="head"><div><span class="no">#012</span><span class="badge">기초</span><span class="topic">INSERT</span><h2>한 행 INSERT</h2></div><button onclick="toggleCard(this)">접기</button></div>
+<div class="body"><div class="desc"><b>상세 설명</b><p>INSERT INTO ... VALUES로 한 행을 삽입합니다. 열 이름을 명시하면 값의 의미가 분명합니다.</p></div>
+<div class="codebox"><div class="bar"><span>OneCompiler에 복사하여 실행</span><button onclick="copyCode(this)">코드 복사</button></div><pre><code>DROP TABLE IF EXISTS student; CREATE TABLE student(id INT PRIMARY KEY,name VARCHAR(20),score INT); INSERT INTO student(id,name,score) VALUES(1,&#x27;홍길동&#x27;,95); SELECT * FROM student;</code></pre></div></div></section><section class="card" data-level="기초" data-search="여러 행 insert insert values 뒤에 여러 괄호를 쉼표로 이어 여러 행을 한 번에 삽입합니다.">
+<div class="head"><div><span class="no">#013</span><span class="badge">기초</span><span class="topic">INSERT</span><h2>여러 행 INSERT</h2></div><button onclick="toggleCard(this)">접기</button></div>
+<div class="body"><div class="desc"><b>상세 설명</b><p>VALUES 뒤에 여러 괄호를 쉼표로 이어 여러 행을 한 번에 삽입합니다.</p></div>
+<div class="codebox"><div class="bar"><span>OneCompiler에 복사하여 실행</span><button onclick="copyCode(this)">코드 복사</button></div><pre><code>DROP TABLE IF EXISTS student; CREATE TABLE student(id INT PRIMARY KEY,name VARCHAR(20),score INT); INSERT INTO student VALUES (1,&#x27;홍길동&#x27;,95),(2,&#x27;김철수&#x27;,88),(3,&#x27;이영희&#x27;,76); SELECT * FROM student;</code></pre></div></div></section><section class="card" data-level="기초" data-search="auto_increment ddl auto_increment는 행 삽입 시 자동 증가 번호를 생성합니다.">
+<div class="head"><div><span class="no">#014</span><span class="badge">기초</span><span class="topic">DDL</span><h2>AUTO_INCREMENT</h2></div><button onclick="toggleCard(this)">접기</button></div>
+<div class="body"><div class="desc"><b>상세 설명</b><p>AUTO_INCREMENT는 행 삽입 시 자동 증가 번호를 생성합니다.</p></div>
+<div class="codebox"><div class="bar"><span>OneCompiler에 복사하여 실행</span><button onclick="copyCode(this)">코드 복사</button></div><pre><code>DROP TABLE IF EXISTS book; CREATE TABLE book(id INT AUTO_INCREMENT PRIMARY KEY,title VARCHAR(50) NOT NULL); INSERT INTO book(title) VALUES(&#x27;데이터베이스 입문&#x27;),(&#x27;SQL 실습&#x27;); SELECT * FROM book;</code></pre></div></div></section><section class="card" data-level="기초" data-search="default 값 ddl default는 값을 생략했을 때 자동으로 사용할 기본값입니다.">
+<div class="head"><div><span class="no">#015</span><span class="badge">기초</span><span class="topic">DDL</span><h2>DEFAULT 값</h2></div><button onclick="toggleCard(this)">접기</button></div>
+<div class="body"><div class="desc"><b>상세 설명</b><p>DEFAULT는 값을 생략했을 때 자동으로 사용할 기본값입니다.</p><div class="note"><b>학습 포인트:</b> MySQL의 BOOLEAN은 보통 TINYINT(1) 형태로 다뤄집니다.</div></div>
+<div class="codebox"><div class="bar"><span>OneCompiler에 복사하여 실행</span><button onclick="copyCode(this)">코드 복사</button></div><pre><code>DROP TABLE IF EXISTS member; CREATE TABLE member(id INT PRIMARY KEY,name VARCHAR(20),active BOOLEAN DEFAULT TRUE); INSERT INTO member(id,name) VALUES(1,&#x27;민수&#x27;); SELECT * FROM member;</code></pre></div></div></section><section class="card" data-level="기초" data-search="null 저장 null null은 값이 없거나 알 수 없음을 나타냅니다. 빈 문자열이나 숫자 0과 다릅니다.">
+<div class="head"><div><span class="no">#016</span><span class="badge">기초</span><span class="topic">NULL</span><h2>NULL 저장</h2></div><button onclick="toggleCard(this)">접기</button></div>
+<div class="body"><div class="desc"><b>상세 설명</b><p>NULL은 값이 없거나 알 수 없음을 나타냅니다. 빈 문자열이나 숫자 0과 다릅니다.</p></div>
+<div class="codebox"><div class="bar"><span>OneCompiler에 복사하여 실행</span><button onclick="copyCode(this)">코드 복사</button></div><pre><code>DROP TABLE IF EXISTS member; CREATE TABLE member(id INT PRIMARY KEY,name VARCHAR(20),email VARCHAR(50)); INSERT INTO member VALUES(1,&#x27;민수&#x27;,NULL),(2,&#x27;서연&#x27;,&#x27;seo@example.com&#x27;); SELECT * FROM member;</code></pre></div></div></section><section class="card" data-level="기초" data-search="unique 제약조건 ddl unique는 지정한 열에 중복값이 들어가는 것을 막습니다.">
+<div class="head"><div><span class="no">#017</span><span class="badge">기초</span><span class="topic">DDL</span><h2>UNIQUE 제약조건</h2></div><button onclick="toggleCard(this)">접기</button></div>
+<div class="body"><div class="desc"><b>상세 설명</b><p>UNIQUE는 지정한 열에 중복값이 들어가는 것을 막습니다.</p></div>
+<div class="codebox"><div class="bar"><span>OneCompiler에 복사하여 실행</span><button onclick="copyCode(this)">코드 복사</button></div><pre><code>DROP TABLE IF EXISTS account; CREATE TABLE account(id INT PRIMARY KEY,username VARCHAR(30) UNIQUE); INSERT INTO account VALUES(1,&#x27;alpha&#x27;),(2,&#x27;beta&#x27;); SELECT * FROM account;</code></pre></div></div></section><section class="card" data-level="기초" data-search="check 제약조건 ddl check는 허용할 값의 조건을 테이블 정의에 포함합니다. 여기서는 점수를 0~100으로 제한합니다.">
+<div class="head"><div><span class="no">#018</span><span class="badge">기초</span><span class="topic">DDL</span><h2>CHECK 제약조건</h2></div><button onclick="toggleCard(this)">접기</button></div>
+<div class="body"><div class="desc"><b>상세 설명</b><p>CHECK는 허용할 값의 조건을 테이블 정의에 포함합니다. 여기서는 점수를 0~100으로 제한합니다.</p></div>
+<div class="codebox"><div class="bar"><span>OneCompiler에 복사하여 실행</span><button onclick="copyCode(this)">코드 복사</button></div><pre><code>DROP TABLE IF EXISTS student; CREATE TABLE student(id INT PRIMARY KEY,name VARCHAR(20),score INT CHECK(score BETWEEN 0 AND 100)); INSERT INTO student VALUES(1,&#x27;홍길동&#x27;,95); SELECT * FROM student;</code></pre></div></div></section><section class="card" data-level="기초" data-search="desc 테이블 구조 ddl desc 또는 describe는 열 이름, 자료형, null 허용 여부, 키 정보를 보여 줍니다.">
+<div class="head"><div><span class="no">#019</span><span class="badge">기초</span><span class="topic">DDL</span><h2>DESC 테이블 구조</h2></div><button onclick="toggleCard(this)">접기</button></div>
+<div class="body"><div class="desc"><b>상세 설명</b><p>DESC 또는 DESCRIBE는 열 이름, 자료형, NULL 허용 여부, 키 정보를 보여 줍니다.</p></div>
+<div class="codebox"><div class="bar"><span>OneCompiler에 복사하여 실행</span><button onclick="copyCode(this)">코드 복사</button></div><pre><code>DROP TABLE IF EXISTS student; CREATE TABLE student(id INT PRIMARY KEY,name VARCHAR(20),score INT); DESC student;</code></pre></div></div></section><section class="card" data-level="기초" data-search="alter table 열 추가 ddl alter table ... add로 기존 테이블에 새 열을 추가합니다.">
+<div class="head"><div><span class="no">#020</span><span class="badge">기초</span><span class="topic">DDL</span><h2>ALTER TABLE 열 추가</h2></div><button onclick="toggleCard(this)">접기</button></div>
+<div class="body"><div class="desc"><b>상세 설명</b><p>ALTER TABLE ... ADD로 기존 테이블에 새 열을 추가합니다.</p></div>
+<div class="codebox"><div class="bar"><span>OneCompiler에 복사하여 실행</span><button onclick="copyCode(this)">코드 복사</button></div><pre><code>DROP TABLE IF EXISTS student; CREATE TABLE student(id INT PRIMARY KEY,name VARCHAR(20)); ALTER TABLE student ADD score INT; DESC student;</code></pre></div></div></section><section class="card" data-level="기초" data-search="전체 행 조회 select select *는 모든 열을 조회합니다.">
+<div class="head"><div><span class="no">#021</span><span class="badge">기초</span><span class="topic">SELECT</span><h2>전체 행 조회</h2></div><button onclick="toggleCard(this)">접기</button></div>
+<div class="body"><div class="desc"><b>상세 설명</b><p>SELECT *는 모든 열을 조회합니다.</p></div>
+<div class="codebox"><div class="bar"><span>OneCompiler에 복사하여 실행</span><button onclick="copyCode(this)">코드 복사</button></div><pre><code>DROP TABLE IF EXISTS student;
+CREATE TABLE student (
+  id INT PRIMARY KEY,
+  name VARCHAR(20) NOT NULL,
+  grade INT,
+  score INT,
+  club VARCHAR(20)
+);
+INSERT INTO student VALUES
+(1,&#x27;홍길동&#x27;,1,95,&#x27;과학&#x27;),
+(2,&#x27;김철수&#x27;,2,88,&#x27;코딩&#x27;),
+(3,&#x27;이영희&#x27;,1,76,&#x27;과학&#x27;),
+(4,&#x27;박민수&#x27;,3,64,&#x27;로봇&#x27;),
+(5,&#x27;최서연&#x27;,2,91,&#x27;코딩&#x27;);
+SELECT * FROM student;</code></pre></div></div></section><section class="card" data-level="기초" data-search="필요한 열만 조회 select 필요한 열만 지정하면 결과가 간결하고 의도가 분명합니다.">
+<div class="head"><div><span class="no">#022</span><span class="badge">기초</span><span class="topic">SELECT</span><h2>필요한 열만 조회</h2></div><button onclick="toggleCard(this)">접기</button></div>
+<div class="body"><div class="desc"><b>상세 설명</b><p>필요한 열만 지정하면 결과가 간결하고 의도가 분명합니다.</p></div>
+<div class="codebox"><div class="bar"><span>OneCompiler에 복사하여 실행</span><button onclick="copyCode(this)">코드 복사</button></div><pre><code>DROP TABLE IF EXISTS student;
+CREATE TABLE student (
+  id INT PRIMARY KEY,
+  name VARCHAR(20) NOT NULL,
+  grade INT,
+  score INT,
+  club VARCHAR(20)
+);
+INSERT INTO student VALUES
+(1,&#x27;홍길동&#x27;,1,95,&#x27;과학&#x27;),
+(2,&#x27;김철수&#x27;,2,88,&#x27;코딩&#x27;),
+(3,&#x27;이영희&#x27;,1,76,&#x27;과학&#x27;),
+(4,&#x27;박민수&#x27;,3,64,&#x27;로봇&#x27;),
+(5,&#x27;최서연&#x27;,2,91,&#x27;코딩&#x27;);
+SELECT name,score FROM student;</code></pre></div></div></section><section class="card" data-level="기초" data-search="열 별칭 as select as는 결과에 표시될 열 이름을 바꿉니다. 원본 열 이름은 그대로입니다.">
+<div class="head"><div><span class="no">#023</span><span class="badge">기초</span><span class="topic">SELECT</span><h2>열 별칭 AS</h2></div><button onclick="toggleCard(this)">접기</button></div>
+<div class="body"><div class="desc"><b>상세 설명</b><p>AS는 결과에 표시될 열 이름을 바꿉니다. 원본 열 이름은 그대로입니다.</p></div>
+<div class="codebox"><div class="bar"><span>OneCompiler에 복사하여 실행</span><button onclick="copyCode(this)">코드 복사</button></div><pre><code>DROP TABLE IF EXISTS student;
+CREATE TABLE student (
+  id INT PRIMARY KEY,
+  name VARCHAR(20) NOT NULL,
+  grade INT,
+  score INT,
+  club VARCHAR(20)
+);
+INSERT INTO student VALUES
+(1,&#x27;홍길동&#x27;,1,95,&#x27;과학&#x27;),
+(2,&#x27;김철수&#x27;,2,88,&#x27;코딩&#x27;),
+(3,&#x27;이영희&#x27;,1,76,&#x27;과학&#x27;),
+(4,&#x27;박민수&#x27;,3,64,&#x27;로봇&#x27;),
+(5,&#x27;최서연&#x27;,2,91,&#x27;코딩&#x27;);
+SELECT name AS 학생이름,score AS 점수 FROM student;</code></pre></div></div></section><section class="card" data-level="기초" data-search="where 90점 이상 where where는 조건을 만족하는 행만 선택합니다.">
+<div class="head"><div><span class="no">#024</span><span class="badge">기초</span><span class="topic">WHERE</span><h2>WHERE 90점 이상</h2></div><button onclick="toggleCard(this)">접기</button></div>
+<div class="body"><div class="desc"><b>상세 설명</b><p>WHERE는 조건을 만족하는 행만 선택합니다.</p></div>
+<div class="codebox"><div class="bar"><span>OneCompiler에 복사하여 실행</span><button onclick="copyCode(this)">코드 복사</button></div><pre><code>DROP TABLE IF EXISTS student;
+CREATE TABLE student (
+  id INT PRIMARY KEY,
+  name VARCHAR(20) NOT NULL,
+  grade INT,
+  score INT,
+  club VARCHAR(20)
+);
+INSERT INTO student VALUES
+(1,&#x27;홍길동&#x27;,1,95,&#x27;과학&#x27;),
+(2,&#x27;김철수&#x27;,2,88,&#x27;코딩&#x27;),
+(3,&#x27;이영희&#x27;,1,76,&#x27;과학&#x27;),
+(4,&#x27;박민수&#x27;,3,64,&#x27;로봇&#x27;),
+(5,&#x27;최서연&#x27;,2,91,&#x27;코딩&#x27;);
+SELECT * FROM student WHERE score&gt;=90;</code></pre></div></div></section><section class="card" data-level="기초" data-search="and 조건 where and는 모든 조건이 참이어야 합니다.">
+<div class="head"><div><span class="no">#025</span><span class="badge">기초</span><span class="topic">WHERE</span><h2>AND 조건</h2></div><button onclick="toggleCard(this)">접기</button></div>
+<div class="body"><div class="desc"><b>상세 설명</b><p>AND는 모든 조건이 참이어야 합니다.</p></div>
+<div class="codebox"><div class="bar"><span>OneCompiler에 복사하여 실행</span><button onclick="copyCode(this)">코드 복사</button></div><pre><code>DROP TABLE IF EXISTS student;
+CREATE TABLE student (
+  id INT PRIMARY KEY,
+  name VARCHAR(20) NOT NULL,
+  grade INT,
+  score INT,
+  club VARCHAR(20)
+);
+INSERT INTO student VALUES
+(1,&#x27;홍길동&#x27;,1,95,&#x27;과학&#x27;),
+(2,&#x27;김철수&#x27;,2,88,&#x27;코딩&#x27;),
+(3,&#x27;이영희&#x27;,1,76,&#x27;과학&#x27;),
+(4,&#x27;박민수&#x27;,3,64,&#x27;로봇&#x27;),
+(5,&#x27;최서연&#x27;,2,91,&#x27;코딩&#x27;);
+SELECT * FROM student WHERE grade=2 AND score&gt;=85;</code></pre></div></div></section><section class="card" data-level="기초" data-search="or 조건 where or는 하나 이상의 조건이 참이면 선택합니다.">
+<div class="head"><div><span class="no">#026</span><span class="badge">기초</span><span class="topic">WHERE</span><h2>OR 조건</h2></div><button onclick="toggleCard(this)">접기</button></div>
+<div class="body"><div class="desc"><b>상세 설명</b><p>OR는 하나 이상의 조건이 참이면 선택합니다.</p></div>
+<div class="codebox"><div class="bar"><span>OneCompiler에 복사하여 실행</span><button onclick="copyCode(this)">코드 복사</button></div><pre><code>DROP TABLE IF EXISTS student;
+CREATE TABLE student (
+  id INT PRIMARY KEY,
+  name VARCHAR(20) NOT NULL,
+  grade INT,
+  score INT,
+  club VARCHAR(20)
+);
+INSERT INTO student VALUES
+(1,&#x27;홍길동&#x27;,1,95,&#x27;과학&#x27;),
+(2,&#x27;김철수&#x27;,2,88,&#x27;코딩&#x27;),
+(3,&#x27;이영희&#x27;,1,76,&#x27;과학&#x27;),
+(4,&#x27;박민수&#x27;,3,64,&#x27;로봇&#x27;),
+(5,&#x27;최서연&#x27;,2,91,&#x27;코딩&#x27;);
+SELECT * FROM student WHERE club=&#x27;과학&#x27; OR club=&#x27;로봇&#x27;;</code></pre></div></div></section><section class="card" data-level="기초" data-search="not 조건 where not은 조건의 결과를 반대로 만듭니다.">
+<div class="head"><div><span class="no">#027</span><span class="badge">기초</span><span class="topic">WHERE</span><h2>NOT 조건</h2></div><button onclick="toggleCard(this)">접기</button></div>
+<div class="body"><div class="desc"><b>상세 설명</b><p>NOT은 조건의 결과를 반대로 만듭니다.</p></div>
+<div class="codebox"><div class="bar"><span>OneCompiler에 복사하여 실행</span><button onclick="copyCode(this)">코드 복사</button></div><pre><code>DROP TABLE IF EXISTS student;
+CREATE TABLE student (
+  id INT PRIMARY KEY,
+  name VARCHAR(20) NOT NULL,
+  grade INT,
+  score INT,
+  club VARCHAR(20)
+);
+INSERT INTO student VALUES
+(1,&#x27;홍길동&#x27;,1,95,&#x27;과학&#x27;),
+(2,&#x27;김철수&#x27;,2,88,&#x27;코딩&#x27;),
+(3,&#x27;이영희&#x27;,1,76,&#x27;과학&#x27;),
+(4,&#x27;박민수&#x27;,3,64,&#x27;로봇&#x27;),
+(5,&#x27;최서연&#x27;,2,91,&#x27;코딩&#x27;);
+SELECT * FROM student WHERE NOT club=&#x27;코딩&#x27;;</code></pre></div></div></section><section class="card" data-level="기초" data-search="between 범위 where between은 양 끝값을 포함하는 범위를 검사합니다.">
+<div class="head"><div><span class="no">#028</span><span class="badge">기초</span><span class="topic">WHERE</span><h2>BETWEEN 범위</h2></div><button onclick="toggleCard(this)">접기</button></div>
+<div class="body"><div class="desc"><b>상세 설명</b><p>BETWEEN은 양 끝값을 포함하는 범위를 검사합니다.</p></div>
+<div class="codebox"><div class="bar"><span>OneCompiler에 복사하여 실행</span><button onclick="copyCode(this)">코드 복사</button></div><pre><code>DROP TABLE IF EXISTS student;
+CREATE TABLE student (
+  id INT PRIMARY KEY,
+  name VARCHAR(20) NOT NULL,
+  grade INT,
+  score INT,
+  club VARCHAR(20)
+);
+INSERT INTO student VALUES
+(1,&#x27;홍길동&#x27;,1,95,&#x27;과학&#x27;),
+(2,&#x27;김철수&#x27;,2,88,&#x27;코딩&#x27;),
+(3,&#x27;이영희&#x27;,1,76,&#x27;과학&#x27;),
+(4,&#x27;박민수&#x27;,3,64,&#x27;로봇&#x27;),
+(5,&#x27;최서연&#x27;,2,91,&#x27;코딩&#x27;);
+SELECT name,score FROM student WHERE score BETWEEN 70 AND 90;</code></pre></div></div></section><section class="card" data-level="기초" data-search="in 여러 후보 where in은 여러 후보값 중 하나와 일치하는지 검사합니다.">
+<div class="head"><div><span class="no">#029</span><span class="badge">기초</span><span class="topic">WHERE</span><h2>IN 여러 후보</h2></div><button onclick="toggleCard(this)">접기</button></div>
+<div class="body"><div class="desc"><b>상세 설명</b><p>IN은 여러 후보값 중 하나와 일치하는지 검사합니다.</p></div>
+<div class="codebox"><div class="bar"><span>OneCompiler에 복사하여 실행</span><button onclick="copyCode(this)">코드 복사</button></div><pre><code>DROP TABLE IF EXISTS student;
+CREATE TABLE student (
+  id INT PRIMARY KEY,
+  name VARCHAR(20) NOT NULL,
+  grade INT,
+  score INT,
+  club VARCHAR(20)
+);
+INSERT INTO student VALUES
+(1,&#x27;홍길동&#x27;,1,95,&#x27;과학&#x27;),
+(2,&#x27;김철수&#x27;,2,88,&#x27;코딩&#x27;),
+(3,&#x27;이영희&#x27;,1,76,&#x27;과학&#x27;),
+(4,&#x27;박민수&#x27;,3,64,&#x27;로봇&#x27;),
+(5,&#x27;최서연&#x27;,2,91,&#x27;코딩&#x27;);
+SELECT * FROM student WHERE club IN(&#x27;과학&#x27;,&#x27;로봇&#x27;);</code></pre></div></div></section><section class="card" data-level="기초" data-search="like 패턴 검색 where %는 길이에 상관없이 임의의 문자열을 뜻합니다.">
+<div class="head"><div><span class="no">#030</span><span class="badge">기초</span><span class="topic">WHERE</span><h2>LIKE 패턴 검색</h2></div><button onclick="toggleCard(this)">접기</button></div>
+<div class="body"><div class="desc"><b>상세 설명</b><p>%는 길이에 상관없이 임의의 문자열을 뜻합니다.</p></div>
+<div class="codebox"><div class="bar"><span>OneCompiler에 복사하여 실행</span><button onclick="copyCode(this)">코드 복사</button></div><pre><code>DROP TABLE IF EXISTS student;
+CREATE TABLE student (
+  id INT PRIMARY KEY,
+  name VARCHAR(20) NOT NULL,
+  grade INT,
+  score INT,
+  club VARCHAR(20)
+);
+INSERT INTO student VALUES
+(1,&#x27;홍길동&#x27;,1,95,&#x27;과학&#x27;),
+(2,&#x27;김철수&#x27;,2,88,&#x27;코딩&#x27;),
+(3,&#x27;이영희&#x27;,1,76,&#x27;과학&#x27;),
+(4,&#x27;박민수&#x27;,3,64,&#x27;로봇&#x27;),
+(5,&#x27;최서연&#x27;,2,91,&#x27;코딩&#x27;);
+SELECT * FROM student WHERE name LIKE &#x27;김%&#x27;;</code></pre></div></div></section><section class="card" data-level="기초" data-search="order by 오름차순 정렬 asc는 작은 값부터 큰 값 순입니다.">
+<div class="head"><div><span class="no">#031</span><span class="badge">기초</span><span class="topic">정렬</span><h2>ORDER BY 오름차순</h2></div><button onclick="toggleCard(this)">접기</button></div>
+<div class="body"><div class="desc"><b>상세 설명</b><p>ASC는 작은 값부터 큰 값 순입니다.</p></div>
+<div class="codebox"><div class="bar"><span>OneCompiler에 복사하여 실행</span><button onclick="copyCode(this)">코드 복사</button></div><pre><code>DROP TABLE IF EXISTS student;
+CREATE TABLE student (
+  id INT PRIMARY KEY,
+  name VARCHAR(20) NOT NULL,
+  grade INT,
+  score INT,
+  club VARCHAR(20)
+);
+INSERT INTO student VALUES
+(1,&#x27;홍길동&#x27;,1,95,&#x27;과학&#x27;),
+(2,&#x27;김철수&#x27;,2,88,&#x27;코딩&#x27;),
+(3,&#x27;이영희&#x27;,1,76,&#x27;과학&#x27;),
+(4,&#x27;박민수&#x27;,3,64,&#x27;로봇&#x27;),
+(5,&#x27;최서연&#x27;,2,91,&#x27;코딩&#x27;);
+SELECT name,score FROM student ORDER BY score ASC;</code></pre></div></div></section><section class="card" data-level="기초" data-search="order by 내림차순 정렬 desc는 큰 값부터 작은 값 순입니다.">
+<div class="head"><div><span class="no">#032</span><span class="badge">기초</span><span class="topic">정렬</span><h2>ORDER BY 내림차순</h2></div><button onclick="toggleCard(this)">접기</button></div>
+<div class="body"><div class="desc"><b>상세 설명</b><p>DESC는 큰 값부터 작은 값 순입니다.</p></div>
+<div class="codebox"><div class="bar"><span>OneCompiler에 복사하여 실행</span><button onclick="copyCode(this)">코드 복사</button></div><pre><code>DROP TABLE IF EXISTS student;
+CREATE TABLE student (
+  id INT PRIMARY KEY,
+  name VARCHAR(20) NOT NULL,
+  grade INT,
+  score INT,
+  club VARCHAR(20)
+);
+INSERT INTO student VALUES
+(1,&#x27;홍길동&#x27;,1,95,&#x27;과학&#x27;),
+(2,&#x27;김철수&#x27;,2,88,&#x27;코딩&#x27;),
+(3,&#x27;이영희&#x27;,1,76,&#x27;과학&#x27;),
+(4,&#x27;박민수&#x27;,3,64,&#x27;로봇&#x27;),
+(5,&#x27;최서연&#x27;,2,91,&#x27;코딩&#x27;);
+SELECT name,score FROM student ORDER BY score DESC;</code></pre></div></div></section><section class="card" data-level="기초" data-search="여러 열 정렬 정렬 앞 열부터 정렬하고 동률일 때 다음 열을 사용합니다.">
+<div class="head"><div><span class="no">#033</span><span class="badge">기초</span><span class="topic">정렬</span><h2>여러 열 정렬</h2></div><button onclick="toggleCard(this)">접기</button></div>
+<div class="body"><div class="desc"><b>상세 설명</b><p>앞 열부터 정렬하고 동률일 때 다음 열을 사용합니다.</p></div>
+<div class="codebox"><div class="bar"><span>OneCompiler에 복사하여 실행</span><button onclick="copyCode(this)">코드 복사</button></div><pre><code>DROP TABLE IF EXISTS student;
+CREATE TABLE student (
+  id INT PRIMARY KEY,
+  name VARCHAR(20) NOT NULL,
+  grade INT,
+  score INT,
+  club VARCHAR(20)
+);
+INSERT INTO student VALUES
+(1,&#x27;홍길동&#x27;,1,95,&#x27;과학&#x27;),
+(2,&#x27;김철수&#x27;,2,88,&#x27;코딩&#x27;),
+(3,&#x27;이영희&#x27;,1,76,&#x27;과학&#x27;),
+(4,&#x27;박민수&#x27;,3,64,&#x27;로봇&#x27;),
+(5,&#x27;최서연&#x27;,2,91,&#x27;코딩&#x27;);
+SELECT grade,name,score FROM student ORDER BY grade ASC,score DESC;</code></pre></div></div></section><section class="card" data-level="기초" data-search="limit 상위 3명 정렬 order by와 limit를 결합해 상위 n개 행을 얻습니다.">
+<div class="head"><div><span class="no">#034</span><span class="badge">기초</span><span class="topic">정렬</span><h2>LIMIT 상위 3명</h2></div><button onclick="toggleCard(this)">접기</button></div>
+<div class="body"><div class="desc"><b>상세 설명</b><p>ORDER BY와 LIMIT를 결합해 상위 N개 행을 얻습니다.</p></div>
+<div class="codebox"><div class="bar"><span>OneCompiler에 복사하여 실행</span><button onclick="copyCode(this)">코드 복사</button></div><pre><code>DROP TABLE IF EXISTS student;
+CREATE TABLE student (
+  id INT PRIMARY KEY,
+  name VARCHAR(20) NOT NULL,
+  grade INT,
+  score INT,
+  club VARCHAR(20)
+);
+INSERT INTO student VALUES
+(1,&#x27;홍길동&#x27;,1,95,&#x27;과학&#x27;),
+(2,&#x27;김철수&#x27;,2,88,&#x27;코딩&#x27;),
+(3,&#x27;이영희&#x27;,1,76,&#x27;과학&#x27;),
+(4,&#x27;박민수&#x27;,3,64,&#x27;로봇&#x27;),
+(5,&#x27;최서연&#x27;,2,91,&#x27;코딩&#x27;);
+SELECT name,score FROM student ORDER BY score DESC LIMIT 3;</code></pre></div></div></section><section class="card" data-level="기초" data-search="distinct 중복 제거 select distinct는 중복 결과를 제거합니다.">
+<div class="head"><div><span class="no">#035</span><span class="badge">기초</span><span class="topic">SELECT</span><h2>DISTINCT 중복 제거</h2></div><button onclick="toggleCard(this)">접기</button></div>
+<div class="body"><div class="desc"><b>상세 설명</b><p>DISTINCT는 중복 결과를 제거합니다.</p></div>
+<div class="codebox"><div class="bar"><span>OneCompiler에 복사하여 실행</span><button onclick="copyCode(this)">코드 복사</button></div><pre><code>DROP TABLE IF EXISTS student;
+CREATE TABLE student (
+  id INT PRIMARY KEY,
+  name VARCHAR(20) NOT NULL,
+  grade INT,
+  score INT,
+  club VARCHAR(20)
+);
+INSERT INTO student VALUES
+(1,&#x27;홍길동&#x27;,1,95,&#x27;과학&#x27;),
+(2,&#x27;김철수&#x27;,2,88,&#x27;코딩&#x27;),
+(3,&#x27;이영희&#x27;,1,76,&#x27;과학&#x27;),
+(4,&#x27;박민수&#x27;,3,64,&#x27;로봇&#x27;),
+(5,&#x27;최서연&#x27;,2,91,&#x27;코딩&#x27;);
+SELECT DISTINCT club FROM student;</code></pre></div></div></section><section class="card" data-level="기초" data-search="update 한 행 update update는 기존 값을 수정합니다. where가 없으면 모든 행이 바뀔 수 있습니다.">
+<div class="head"><div><span class="no">#036</span><span class="badge">기초</span><span class="topic">UPDATE</span><h2>UPDATE 한 행</h2></div><button onclick="toggleCard(this)">접기</button></div>
+<div class="body"><div class="desc"><b>상세 설명</b><p>UPDATE는 기존 값을 수정합니다. WHERE가 없으면 모든 행이 바뀔 수 있습니다.</p></div>
+<div class="codebox"><div class="bar"><span>OneCompiler에 복사하여 실행</span><button onclick="copyCode(this)">코드 복사</button></div><pre><code>DROP TABLE IF EXISTS student;
+CREATE TABLE student (
+  id INT PRIMARY KEY,
+  name VARCHAR(20) NOT NULL,
+  grade INT,
+  score INT,
+  club VARCHAR(20)
+);
+INSERT INTO student VALUES
+(1,&#x27;홍길동&#x27;,1,95,&#x27;과학&#x27;),
+(2,&#x27;김철수&#x27;,2,88,&#x27;코딩&#x27;),
+(3,&#x27;이영희&#x27;,1,76,&#x27;과학&#x27;),
+(4,&#x27;박민수&#x27;,3,64,&#x27;로봇&#x27;),
+(5,&#x27;최서연&#x27;,2,91,&#x27;코딩&#x27;);
+UPDATE student SET score=90 WHERE id=2; SELECT * FROM student WHERE id=2;</code></pre></div></div></section><section class="card" data-level="기초" data-search="update 여러 열 update set에서 쉼표로 여러 열을 동시에 수정할 수 있습니다.">
+<div class="head"><div><span class="no">#037</span><span class="badge">기초</span><span class="topic">UPDATE</span><h2>UPDATE 여러 열</h2></div><button onclick="toggleCard(this)">접기</button></div>
+<div class="body"><div class="desc"><b>상세 설명</b><p>SET에서 쉼표로 여러 열을 동시에 수정할 수 있습니다.</p></div>
+<div class="codebox"><div class="bar"><span>OneCompiler에 복사하여 실행</span><button onclick="copyCode(this)">코드 복사</button></div><pre><code>DROP TABLE IF EXISTS student;
+CREATE TABLE student (
+  id INT PRIMARY KEY,
+  name VARCHAR(20) NOT NULL,
+  grade INT,
+  score INT,
+  club VARCHAR(20)
+);
+INSERT INTO student VALUES
+(1,&#x27;홍길동&#x27;,1,95,&#x27;과학&#x27;),
+(2,&#x27;김철수&#x27;,2,88,&#x27;코딩&#x27;),
+(3,&#x27;이영희&#x27;,1,76,&#x27;과학&#x27;),
+(4,&#x27;박민수&#x27;,3,64,&#x27;로봇&#x27;),
+(5,&#x27;최서연&#x27;,2,91,&#x27;코딩&#x27;);
+UPDATE student SET grade=2,score=80 WHERE id=3; SELECT * FROM student WHERE id=3;</code></pre></div></div></section><section class="card" data-level="기초" data-search="delete 조건 삭제 delete delete는 조건에 맞는 행을 삭제합니다. where 생략에 특히 주의합니다.">
+<div class="head"><div><span class="no">#038</span><span class="badge">기초</span><span class="topic">DELETE</span><h2>DELETE 조건 삭제</h2></div><button onclick="toggleCard(this)">접기</button></div>
+<div class="body"><div class="desc"><b>상세 설명</b><p>DELETE는 조건에 맞는 행을 삭제합니다. WHERE 생략에 특히 주의합니다.</p></div>
+<div class="codebox"><div class="bar"><span>OneCompiler에 복사하여 실행</span><button onclick="copyCode(this)">코드 복사</button></div><pre><code>DROP TABLE IF EXISTS student;
+CREATE TABLE student (
+  id INT PRIMARY KEY,
+  name VARCHAR(20) NOT NULL,
+  grade INT,
+  score INT,
+  club VARCHAR(20)
+);
+INSERT INTO student VALUES
+(1,&#x27;홍길동&#x27;,1,95,&#x27;과학&#x27;),
+(2,&#x27;김철수&#x27;,2,88,&#x27;코딩&#x27;),
+(3,&#x27;이영희&#x27;,1,76,&#x27;과학&#x27;),
+(4,&#x27;박민수&#x27;,3,64,&#x27;로봇&#x27;),
+(5,&#x27;최서연&#x27;,2,91,&#x27;코딩&#x27;);
+DELETE FROM student WHERE score&lt;70; SELECT * FROM student;</code></pre></div></div></section><section class="card" data-level="기초" data-search="is null 검사 null null은 = null이 아니라 is null로 검사합니다.">
+<div class="head"><div><span class="no">#039</span><span class="badge">기초</span><span class="topic">NULL</span><h2>IS NULL 검사</h2></div><button onclick="toggleCard(this)">접기</button></div>
+<div class="body"><div class="desc"><b>상세 설명</b><p>NULL은 = NULL이 아니라 IS NULL로 검사합니다.</p></div>
+<div class="codebox"><div class="bar"><span>OneCompiler에 복사하여 실행</span><button onclick="copyCode(this)">코드 복사</button></div><pre><code>DROP TABLE IF EXISTS member; CREATE TABLE member(id INT PRIMARY KEY,name VARCHAR(20),phone VARCHAR(20)); INSERT INTO member VALUES(1,&#x27;민수&#x27;,NULL),(2,&#x27;서연&#x27;,&#x27;010-1234&#x27;); SELECT * FROM member WHERE phone IS NULL;</code></pre></div></div></section><section class="card" data-level="기초" data-search="coalesce null 대체 null coalesce는 왼쪽부터 첫 번째 null이 아닌 값을 반환합니다.">
+<div class="head"><div><span class="no">#040</span><span class="badge">기초</span><span class="topic">NULL</span><h2>COALESCE NULL 대체</h2></div><button onclick="toggleCard(this)">접기</button></div>
+<div class="body"><div class="desc"><b>상세 설명</b><p>COALESCE는 왼쪽부터 첫 번째 NULL이 아닌 값을 반환합니다.</p></div>
+<div class="codebox"><div class="bar"><span>OneCompiler에 복사하여 실행</span><button onclick="copyCode(this)">코드 복사</button></div><pre><code>DROP TABLE IF EXISTS member; CREATE TABLE member(id INT PRIMARY KEY,name VARCHAR(20),phone VARCHAR(20)); INSERT INTO member VALUES(1,&#x27;민수&#x27;,NULL),(2,&#x27;서연&#x27;,&#x27;010-1234&#x27;); SELECT name,COALESCE(phone,&#x27;미등록&#x27;) AS phone FROM member;</code></pre></div></div></section><section class="card" data-level="중급" data-search="count 행 개수 집계 count(*)는 전체 행 수를 셉니다.">
+<div class="head"><div><span class="no">#041</span><span class="badge">중급</span><span class="topic">집계</span><h2>COUNT 행 개수</h2></div><button onclick="toggleCard(this)">접기</button></div>
+<div class="body"><div class="desc"><b>상세 설명</b><p>COUNT(*)는 전체 행 수를 셉니다.</p></div>
+<div class="codebox"><div class="bar"><span>OneCompiler에 복사하여 실행</span><button onclick="copyCode(this)">코드 복사</button></div><pre><code>DROP TABLE IF EXISTS student;
+CREATE TABLE student (
+  id INT PRIMARY KEY,
+  name VARCHAR(20) NOT NULL,
+  grade INT,
+  score INT,
+  club VARCHAR(20)
+);
+INSERT INTO student VALUES
+(1,&#x27;홍길동&#x27;,1,95,&#x27;과학&#x27;),
+(2,&#x27;김철수&#x27;,2,88,&#x27;코딩&#x27;),
+(3,&#x27;이영희&#x27;,1,76,&#x27;과학&#x27;),
+(4,&#x27;박민수&#x27;,3,64,&#x27;로봇&#x27;),
+(5,&#x27;최서연&#x27;,2,91,&#x27;코딩&#x27;);
+SELECT COUNT(*) AS student_count FROM student;</code></pre></div></div></section><section class="card" data-level="중급" data-search="sum avg 집계 sum은 합계, avg는 평균입니다.">
+<div class="head"><div><span class="no">#042</span><span class="badge">중급</span><span class="topic">집계</span><h2>SUM AVG</h2></div><button onclick="toggleCard(this)">접기</button></div>
+<div class="body"><div class="desc"><b>상세 설명</b><p>SUM은 합계, AVG는 평균입니다.</p></div>
+<div class="codebox"><div class="bar"><span>OneCompiler에 복사하여 실행</span><button onclick="copyCode(this)">코드 복사</button></div><pre><code>DROP TABLE IF EXISTS student;
+CREATE TABLE student (
+  id INT PRIMARY KEY,
+  name VARCHAR(20) NOT NULL,
+  grade INT,
+  score INT,
+  club VARCHAR(20)
+);
+INSERT INTO student VALUES
+(1,&#x27;홍길동&#x27;,1,95,&#x27;과학&#x27;),
+(2,&#x27;김철수&#x27;,2,88,&#x27;코딩&#x27;),
+(3,&#x27;이영희&#x27;,1,76,&#x27;과학&#x27;),
+(4,&#x27;박민수&#x27;,3,64,&#x27;로봇&#x27;),
+(5,&#x27;최서연&#x27;,2,91,&#x27;코딩&#x27;);
+SELECT SUM(score) AS total,AVG(score) AS average FROM student;</code></pre></div></div></section><section class="card" data-level="중급" data-search="min max 집계 min과 max는 최솟값과 최댓값입니다.">
+<div class="head"><div><span class="no">#043</span><span class="badge">중급</span><span class="topic">집계</span><h2>MIN MAX</h2></div><button onclick="toggleCard(this)">접기</button></div>
+<div class="body"><div class="desc"><b>상세 설명</b><p>MIN과 MAX는 최솟값과 최댓값입니다.</p></div>
+<div class="codebox"><div class="bar"><span>OneCompiler에 복사하여 실행</span><button onclick="copyCode(this)">코드 복사</button></div><pre><code>DROP TABLE IF EXISTS student;
+CREATE TABLE student (
+  id INT PRIMARY KEY,
+  name VARCHAR(20) NOT NULL,
+  grade INT,
+  score INT,
+  club VARCHAR(20)
+);
+INSERT INTO student VALUES
+(1,&#x27;홍길동&#x27;,1,95,&#x27;과학&#x27;),
+(2,&#x27;김철수&#x27;,2,88,&#x27;코딩&#x27;),
+(3,&#x27;이영희&#x27;,1,76,&#x27;과학&#x27;),
+(4,&#x27;박민수&#x27;,3,64,&#x27;로봇&#x27;),
+(5,&#x27;최서연&#x27;,2,91,&#x27;코딩&#x27;);
+SELECT MIN(score) AS min_score,MAX(score) AS max_score FROM student;</code></pre></div></div></section><section class="card" data-level="중급" data-search="학년별 평균 group by group by로 학년별 그룹을 만들고 각 그룹 평균을 계산합니다.">
+<div class="head"><div><span class="no">#044</span><span class="badge">중급</span><span class="topic">GROUP BY</span><h2>학년별 평균</h2></div><button onclick="toggleCard(this)">접기</button></div>
+<div class="body"><div class="desc"><b>상세 설명</b><p>GROUP BY로 학년별 그룹을 만들고 각 그룹 평균을 계산합니다.</p></div>
+<div class="codebox"><div class="bar"><span>OneCompiler에 복사하여 실행</span><button onclick="copyCode(this)">코드 복사</button></div><pre><code>DROP TABLE IF EXISTS student;
+CREATE TABLE student (
+  id INT PRIMARY KEY,
+  name VARCHAR(20) NOT NULL,
+  grade INT,
+  score INT,
+  club VARCHAR(20)
+);
+INSERT INTO student VALUES
+(1,&#x27;홍길동&#x27;,1,95,&#x27;과학&#x27;),
+(2,&#x27;김철수&#x27;,2,88,&#x27;코딩&#x27;),
+(3,&#x27;이영희&#x27;,1,76,&#x27;과학&#x27;),
+(4,&#x27;박민수&#x27;,3,64,&#x27;로봇&#x27;),
+(5,&#x27;최서연&#x27;,2,91,&#x27;코딩&#x27;);
+SELECT grade,ROUND(AVG(score),1) AS avg_score FROM student GROUP BY grade;</code></pre></div></div></section><section class="card" data-level="중급" data-search="동아리별 인원 group by 같은 동아리를 그룹으로 묶어 인원 수를 계산합니다.">
+<div class="head"><div><span class="no">#045</span><span class="badge">중급</span><span class="topic">GROUP BY</span><h2>동아리별 인원</h2></div><button onclick="toggleCard(this)">접기</button></div>
+<div class="body"><div class="desc"><b>상세 설명</b><p>같은 동아리를 그룹으로 묶어 인원 수를 계산합니다.</p></div>
+<div class="codebox"><div class="bar"><span>OneCompiler에 복사하여 실행</span><button onclick="copyCode(this)">코드 복사</button></div><pre><code>DROP TABLE IF EXISTS student;
+CREATE TABLE student (
+  id INT PRIMARY KEY,
+  name VARCHAR(20) NOT NULL,
+  grade INT,
+  score INT,
+  club VARCHAR(20)
+);
+INSERT INTO student VALUES
+(1,&#x27;홍길동&#x27;,1,95,&#x27;과학&#x27;),
+(2,&#x27;김철수&#x27;,2,88,&#x27;코딩&#x27;),
+(3,&#x27;이영희&#x27;,1,76,&#x27;과학&#x27;),
+(4,&#x27;박민수&#x27;,3,64,&#x27;로봇&#x27;),
+(5,&#x27;최서연&#x27;,2,91,&#x27;코딩&#x27;);
+SELECT club,COUNT(*) AS people FROM student GROUP BY club;</code></pre></div></div></section><section class="card" data-level="중급" data-search="having 그룹 조건 group by having은 group by 결과 그룹을 조건으로 거릅니다.">
+<div class="head"><div><span class="no">#046</span><span class="badge">중급</span><span class="topic">GROUP BY</span><h2>HAVING 그룹 조건</h2></div><button onclick="toggleCard(this)">접기</button></div>
+<div class="body"><div class="desc"><b>상세 설명</b><p>HAVING은 GROUP BY 결과 그룹을 조건으로 거릅니다.</p></div>
+<div class="codebox"><div class="bar"><span>OneCompiler에 복사하여 실행</span><button onclick="copyCode(this)">코드 복사</button></div><pre><code>DROP TABLE IF EXISTS student;
+CREATE TABLE student (
+  id INT PRIMARY KEY,
+  name VARCHAR(20) NOT NULL,
+  grade INT,
+  score INT,
+  club VARCHAR(20)
+);
+INSERT INTO student VALUES
+(1,&#x27;홍길동&#x27;,1,95,&#x27;과학&#x27;),
+(2,&#x27;김철수&#x27;,2,88,&#x27;코딩&#x27;),
+(3,&#x27;이영희&#x27;,1,76,&#x27;과학&#x27;),
+(4,&#x27;박민수&#x27;,3,64,&#x27;로봇&#x27;),
+(5,&#x27;최서연&#x27;,2,91,&#x27;코딩&#x27;);
+SELECT club,AVG(score) AS avg_score FROM student GROUP BY club HAVING AVG(score)&gt;=80;</code></pre></div></div></section><section class="card" data-level="중급" data-search="where 후 group by group by where가 먼저 행을 거른 뒤 group by가 실행됩니다.">
+<div class="head"><div><span class="no">#047</span><span class="badge">중급</span><span class="topic">GROUP BY</span><h2>WHERE 후 GROUP BY</h2></div><button onclick="toggleCard(this)">접기</button></div>
+<div class="body"><div class="desc"><b>상세 설명</b><p>WHERE가 먼저 행을 거른 뒤 GROUP BY가 실행됩니다.</p></div>
+<div class="codebox"><div class="bar"><span>OneCompiler에 복사하여 실행</span><button onclick="copyCode(this)">코드 복사</button></div><pre><code>DROP TABLE IF EXISTS student;
+CREATE TABLE student (
+  id INT PRIMARY KEY,
+  name VARCHAR(20) NOT NULL,
+  grade INT,
+  score INT,
+  club VARCHAR(20)
+);
+INSERT INTO student VALUES
+(1,&#x27;홍길동&#x27;,1,95,&#x27;과학&#x27;),
+(2,&#x27;김철수&#x27;,2,88,&#x27;코딩&#x27;),
+(3,&#x27;이영희&#x27;,1,76,&#x27;과학&#x27;),
+(4,&#x27;박민수&#x27;,3,64,&#x27;로봇&#x27;),
+(5,&#x27;최서연&#x27;,2,91,&#x27;코딩&#x27;);
+SELECT grade,COUNT(*) AS people,AVG(score) AS avg_score FROM student WHERE score&gt;=70 GROUP BY grade;</code></pre></div></div></section><section class="card" data-level="중급" data-search="집계 결과 정렬 group by 집계 별칭을 order by에서 사용할 수 있습니다.">
+<div class="head"><div><span class="no">#048</span><span class="badge">중급</span><span class="topic">GROUP BY</span><h2>집계 결과 정렬</h2></div><button onclick="toggleCard(this)">접기</button></div>
+<div class="body"><div class="desc"><b>상세 설명</b><p>집계 별칭을 ORDER BY에서 사용할 수 있습니다.</p></div>
+<div class="codebox"><div class="bar"><span>OneCompiler에 복사하여 실행</span><button onclick="copyCode(this)">코드 복사</button></div><pre><code>DROP TABLE IF EXISTS student;
+CREATE TABLE student (
+  id INT PRIMARY KEY,
+  name VARCHAR(20) NOT NULL,
+  grade INT,
+  score INT,
+  club VARCHAR(20)
+);
+INSERT INTO student VALUES
+(1,&#x27;홍길동&#x27;,1,95,&#x27;과학&#x27;),
+(2,&#x27;김철수&#x27;,2,88,&#x27;코딩&#x27;),
+(3,&#x27;이영희&#x27;,1,76,&#x27;과학&#x27;),
+(4,&#x27;박민수&#x27;,3,64,&#x27;로봇&#x27;),
+(5,&#x27;최서연&#x27;,2,91,&#x27;코딩&#x27;);
+SELECT club,ROUND(AVG(score),1) AS avg_score FROM student GROUP BY club ORDER BY avg_score DESC;</code></pre></div></div></section><section class="card" data-level="중급" data-search="count distinct 집계 중복을 제거한 값의 개수를 셉니다.">
+<div class="head"><div><span class="no">#049</span><span class="badge">중급</span><span class="topic">집계</span><h2>COUNT DISTINCT</h2></div><button onclick="toggleCard(this)">접기</button></div>
+<div class="body"><div class="desc"><b>상세 설명</b><p>중복을 제거한 값의 개수를 셉니다.</p></div>
+<div class="codebox"><div class="bar"><span>OneCompiler에 복사하여 실행</span><button onclick="copyCode(this)">코드 복사</button></div><pre><code>DROP TABLE IF EXISTS student;
+CREATE TABLE student (
+  id INT PRIMARY KEY,
+  name VARCHAR(20) NOT NULL,
+  grade INT,
+  score INT,
+  club VARCHAR(20)
+);
+INSERT INTO student VALUES
+(1,&#x27;홍길동&#x27;,1,95,&#x27;과학&#x27;),
+(2,&#x27;김철수&#x27;,2,88,&#x27;코딩&#x27;),
+(3,&#x27;이영희&#x27;,1,76,&#x27;과학&#x27;),
+(4,&#x27;박민수&#x27;,3,64,&#x27;로봇&#x27;),
+(5,&#x27;최서연&#x27;,2,91,&#x27;코딩&#x27;);
+SELECT COUNT(DISTINCT club) AS club_types FROM student;</code></pre></div></div></section><section class="card" data-level="중급" data-search="조건부 집계 집계 case를 sum 안에 넣으면 여러 조건별 개수를 한 번에 셀 수 있습니다.">
+<div class="head"><div><span class="no">#050</span><span class="badge">중급</span><span class="topic">집계</span><h2>조건부 집계</h2></div><button onclick="toggleCard(this)">접기</button></div>
+<div class="body"><div class="desc"><b>상세 설명</b><p>CASE를 SUM 안에 넣으면 여러 조건별 개수를 한 번에 셀 수 있습니다.</p></div>
+<div class="codebox"><div class="bar"><span>OneCompiler에 복사하여 실행</span><button onclick="copyCode(this)">코드 복사</button></div><pre><code>DROP TABLE IF EXISTS student;
+CREATE TABLE student (
+  id INT PRIMARY KEY,
+  name VARCHAR(20) NOT NULL,
+  grade INT,
+  score INT,
+  club VARCHAR(20)
+);
+INSERT INTO student VALUES
+(1,&#x27;홍길동&#x27;,1,95,&#x27;과학&#x27;),
+(2,&#x27;김철수&#x27;,2,88,&#x27;코딩&#x27;),
+(3,&#x27;이영희&#x27;,1,76,&#x27;과학&#x27;),
+(4,&#x27;박민수&#x27;,3,64,&#x27;로봇&#x27;),
+(5,&#x27;최서연&#x27;,2,91,&#x27;코딩&#x27;);
+SELECT SUM(CASE WHEN score&gt;=90 THEN 1 ELSE 0 END) AS high_count,SUM(CASE WHEN score&lt;70 THEN 1 ELSE 0 END) AS low_count FROM student;</code></pre></div></div></section><section class="card" data-level="중급" data-search="inner join join inner join은 양쪽에서 조건이 일치하는 행만 결합합니다.">
+<div class="head"><div><span class="no">#051</span><span class="badge">중급</span><span class="topic">JOIN</span><h2>INNER JOIN</h2></div><button onclick="toggleCard(this)">접기</button></div>
+<div class="body"><div class="desc"><b>상세 설명</b><p>INNER JOIN은 양쪽에서 조건이 일치하는 행만 결합합니다.</p></div>
+<div class="codebox"><div class="bar"><span>OneCompiler에 복사하여 실행</span><button onclick="copyCode(this)">코드 복사</button></div><pre><code>DROP TABLE IF EXISTS enrollment;
+DROP TABLE IF EXISTS course;
+DROP TABLE IF EXISTS student;
+CREATE TABLE student(id INT PRIMARY KEY,name VARCHAR(20));
+CREATE TABLE course(course_id INT PRIMARY KEY,course_name VARCHAR(30));
+CREATE TABLE enrollment(student_id INT,course_id INT,score INT);
+INSERT INTO student VALUES (1,&#x27;홍길동&#x27;),(2,&#x27;김철수&#x27;),(3,&#x27;이영희&#x27;),(4,&#x27;박민수&#x27;);
+INSERT INTO course VALUES (101,&#x27;데이터베이스&#x27;),(102,&#x27;파이썬&#x27;),(103,&#x27;인공지능&#x27;);
+INSERT INTO enrollment VALUES (1,101,95),(1,102,90),(2,101,85),(3,103,88);
+SELECT s.name,c.course_name,e.score FROM enrollment e INNER JOIN student s ON e.student_id=s.id INNER JOIN course c ON e.course_id=c.course_id;</code></pre></div></div></section><section class="card" data-level="중급" data-search="left join join left join은 왼쪽의 모든 행을 유지하므로 수강 기록이 없는 학생도 나타납니다.">
+<div class="head"><div><span class="no">#052</span><span class="badge">중급</span><span class="topic">JOIN</span><h2>LEFT JOIN</h2></div><button onclick="toggleCard(this)">접기</button></div>
+<div class="body"><div class="desc"><b>상세 설명</b><p>LEFT JOIN은 왼쪽의 모든 행을 유지하므로 수강 기록이 없는 학생도 나타납니다.</p></div>
+<div class="codebox"><div class="bar"><span>OneCompiler에 복사하여 실행</span><button onclick="copyCode(this)">코드 복사</button></div><pre><code>DROP TABLE IF EXISTS enrollment;
+DROP TABLE IF EXISTS course;
+DROP TABLE IF EXISTS student;
+CREATE TABLE student(id INT PRIMARY KEY,name VARCHAR(20));
+CREATE TABLE course(course_id INT PRIMARY KEY,course_name VARCHAR(30));
+CREATE TABLE enrollment(student_id INT,course_id INT,score INT);
+INSERT INTO student VALUES (1,&#x27;홍길동&#x27;),(2,&#x27;김철수&#x27;),(3,&#x27;이영희&#x27;),(4,&#x27;박민수&#x27;);
+INSERT INTO course VALUES (101,&#x27;데이터베이스&#x27;),(102,&#x27;파이썬&#x27;),(103,&#x27;인공지능&#x27;);
+INSERT INTO enrollment VALUES (1,101,95),(1,102,90),(2,101,85),(3,103,88);
+SELECT s.name,e.course_id,e.score FROM student s LEFT JOIN enrollment e ON s.id=e.student_id ORDER BY s.id;</code></pre></div></div></section><section class="card" data-level="중급" data-search="right join join right join은 오른쪽 테이블의 모든 행을 유지합니다.">
+<div class="head"><div><span class="no">#053</span><span class="badge">중급</span><span class="topic">JOIN</span><h2>RIGHT JOIN</h2></div><button onclick="toggleCard(this)">접기</button></div>
+<div class="body"><div class="desc"><b>상세 설명</b><p>RIGHT JOIN은 오른쪽 테이블의 모든 행을 유지합니다.</p></div>
+<div class="codebox"><div class="bar"><span>OneCompiler에 복사하여 실행</span><button onclick="copyCode(this)">코드 복사</button></div><pre><code>DROP TABLE IF EXISTS enrollment;
+DROP TABLE IF EXISTS course;
+DROP TABLE IF EXISTS student;
+CREATE TABLE student(id INT PRIMARY KEY,name VARCHAR(20));
+CREATE TABLE course(course_id INT PRIMARY KEY,course_name VARCHAR(30));
+CREATE TABLE enrollment(student_id INT,course_id INT,score INT);
+INSERT INTO student VALUES (1,&#x27;홍길동&#x27;),(2,&#x27;김철수&#x27;),(3,&#x27;이영희&#x27;),(4,&#x27;박민수&#x27;);
+INSERT INTO course VALUES (101,&#x27;데이터베이스&#x27;),(102,&#x27;파이썬&#x27;),(103,&#x27;인공지능&#x27;);
+INSERT INTO enrollment VALUES (1,101,95),(1,102,90),(2,101,85),(3,103,88);
+SELECT c.course_name,e.student_id FROM enrollment e RIGHT JOIN course c ON e.course_id=c.course_id;</code></pre></div></div></section><section class="card" data-level="중급" data-search="join 후 where join join으로 결합한 뒤 where로 필요한 행만 고릅니다.">
+<div class="head"><div><span class="no">#054</span><span class="badge">중급</span><span class="topic">JOIN</span><h2>JOIN 후 WHERE</h2></div><button onclick="toggleCard(this)">접기</button></div>
+<div class="body"><div class="desc"><b>상세 설명</b><p>JOIN으로 결합한 뒤 WHERE로 필요한 행만 고릅니다.</p></div>
+<div class="codebox"><div class="bar"><span>OneCompiler에 복사하여 실행</span><button onclick="copyCode(this)">코드 복사</button></div><pre><code>DROP TABLE IF EXISTS enrollment;
+DROP TABLE IF EXISTS course;
+DROP TABLE IF EXISTS student;
+CREATE TABLE student(id INT PRIMARY KEY,name VARCHAR(20));
+CREATE TABLE course(course_id INT PRIMARY KEY,course_name VARCHAR(30));
+CREATE TABLE enrollment(student_id INT,course_id INT,score INT);
+INSERT INTO student VALUES (1,&#x27;홍길동&#x27;),(2,&#x27;김철수&#x27;),(3,&#x27;이영희&#x27;),(4,&#x27;박민수&#x27;);
+INSERT INTO course VALUES (101,&#x27;데이터베이스&#x27;),(102,&#x27;파이썬&#x27;),(103,&#x27;인공지능&#x27;);
+INSERT INTO enrollment VALUES (1,101,95),(1,102,90),(2,101,85),(3,103,88);
+SELECT s.name,c.course_name,e.score FROM enrollment e JOIN student s ON e.student_id=s.id JOIN course c ON e.course_id=c.course_id WHERE e.score&gt;=90;</code></pre></div></div></section><section class="card" data-level="중급" data-search="join + group by join 결합한 결과를 과목별로 다시 그룹화합니다.">
+<div class="head"><div><span class="no">#055</span><span class="badge">중급</span><span class="topic">JOIN</span><h2>JOIN + GROUP BY</h2></div><button onclick="toggleCard(this)">접기</button></div>
+<div class="body"><div class="desc"><b>상세 설명</b><p>결합한 결과를 과목별로 다시 그룹화합니다.</p></div>
+<div class="codebox"><div class="bar"><span>OneCompiler에 복사하여 실행</span><button onclick="copyCode(this)">코드 복사</button></div><pre><code>DROP TABLE IF EXISTS enrollment;
+DROP TABLE IF EXISTS course;
+DROP TABLE IF EXISTS student;
+CREATE TABLE student(id INT PRIMARY KEY,name VARCHAR(20));
+CREATE TABLE course(course_id INT PRIMARY KEY,course_name VARCHAR(30));
+CREATE TABLE enrollment(student_id INT,course_id INT,score INT);
+INSERT INTO student VALUES (1,&#x27;홍길동&#x27;),(2,&#x27;김철수&#x27;),(3,&#x27;이영희&#x27;),(4,&#x27;박민수&#x27;);
+INSERT INTO course VALUES (101,&#x27;데이터베이스&#x27;),(102,&#x27;파이썬&#x27;),(103,&#x27;인공지능&#x27;);
+INSERT INTO enrollment VALUES (1,101,95),(1,102,90),(2,101,85),(3,103,88);
+SELECT c.course_name,COUNT(*) AS people,ROUND(AVG(e.score),1) AS avg_score FROM enrollment e JOIN course c ON e.course_id=c.course_id GROUP BY c.course_id,c.course_name;</code></pre></div></div></section><section class="card" data-level="중급" data-search="수강하지 않은 학생 join left join 뒤 오른쪽 키가 null인 행을 찾으면 대응 데이터가 없는 왼쪽 행을 찾을 수 있습니다.">
+<div class="head"><div><span class="no">#056</span><span class="badge">중급</span><span class="topic">JOIN</span><h2>수강하지 않은 학생</h2></div><button onclick="toggleCard(this)">접기</button></div>
+<div class="body"><div class="desc"><b>상세 설명</b><p>LEFT JOIN 뒤 오른쪽 키가 NULL인 행을 찾으면 대응 데이터가 없는 왼쪽 행을 찾을 수 있습니다.</p></div>
+<div class="codebox"><div class="bar"><span>OneCompiler에 복사하여 실행</span><button onclick="copyCode(this)">코드 복사</button></div><pre><code>DROP TABLE IF EXISTS enrollment;
+DROP TABLE IF EXISTS course;
+DROP TABLE IF EXISTS student;
+CREATE TABLE student(id INT PRIMARY KEY,name VARCHAR(20));
+CREATE TABLE course(course_id INT PRIMARY KEY,course_name VARCHAR(30));
+CREATE TABLE enrollment(student_id INT,course_id INT,score INT);
+INSERT INTO student VALUES (1,&#x27;홍길동&#x27;),(2,&#x27;김철수&#x27;),(3,&#x27;이영희&#x27;),(4,&#x27;박민수&#x27;);
+INSERT INTO course VALUES (101,&#x27;데이터베이스&#x27;),(102,&#x27;파이썬&#x27;),(103,&#x27;인공지능&#x27;);
+INSERT INTO enrollment VALUES (1,101,95),(1,102,90),(2,101,85),(3,103,88);
+SELECT s.id,s.name FROM student s LEFT JOIN enrollment e ON s.id=e.student_id WHERE e.student_id IS NULL;</code></pre></div></div></section><section class="card" data-level="중급" data-search="과목별 최고점 join left join을 쓰면 수강생이 없는 과목도 남길 수 있습니다.">
+<div class="head"><div><span class="no">#057</span><span class="badge">중급</span><span class="topic">JOIN</span><h2>과목별 최고점</h2></div><button onclick="toggleCard(this)">접기</button></div>
+<div class="body"><div class="desc"><b>상세 설명</b><p>LEFT JOIN을 쓰면 수강생이 없는 과목도 남길 수 있습니다.</p></div>
+<div class="codebox"><div class="bar"><span>OneCompiler에 복사하여 실행</span><button onclick="copyCode(this)">코드 복사</button></div><pre><code>DROP TABLE IF EXISTS enrollment;
+DROP TABLE IF EXISTS course;
+DROP TABLE IF EXISTS student;
+CREATE TABLE student(id INT PRIMARY KEY,name VARCHAR(20));
+CREATE TABLE course(course_id INT PRIMARY KEY,course_name VARCHAR(30));
+CREATE TABLE enrollment(student_id INT,course_id INT,score INT);
+INSERT INTO student VALUES (1,&#x27;홍길동&#x27;),(2,&#x27;김철수&#x27;),(3,&#x27;이영희&#x27;),(4,&#x27;박민수&#x27;);
+INSERT INTO course VALUES (101,&#x27;데이터베이스&#x27;),(102,&#x27;파이썬&#x27;),(103,&#x27;인공지능&#x27;);
+INSERT INTO enrollment VALUES (1,101,95),(1,102,90),(2,101,85),(3,103,88);
+SELECT c.course_name,MAX(e.score) AS max_score FROM course c LEFT JOIN enrollment e ON c.course_id=e.course_id GROUP BY c.course_id,c.course_name;</code></pre></div></div></section><section class="card" data-level="중급" data-search="세 테이블 join join 연결 테이블을 통해 학생·수강·과목 정보를 하나로 합칩니다.">
+<div class="head"><div><span class="no">#058</span><span class="badge">중급</span><span class="topic">JOIN</span><h2>세 테이블 JOIN</h2></div><button onclick="toggleCard(this)">접기</button></div>
+<div class="body"><div class="desc"><b>상세 설명</b><p>연결 테이블을 통해 학생·수강·과목 정보를 하나로 합칩니다.</p></div>
+<div class="codebox"><div class="bar"><span>OneCompiler에 복사하여 실행</span><button onclick="copyCode(this)">코드 복사</button></div><pre><code>DROP TABLE IF EXISTS enrollment;
+DROP TABLE IF EXISTS course;
+DROP TABLE IF EXISTS student;
+CREATE TABLE student(id INT PRIMARY KEY,name VARCHAR(20));
+CREATE TABLE course(course_id INT PRIMARY KEY,course_name VARCHAR(30));
+CREATE TABLE enrollment(student_id INT,course_id INT,score INT);
+INSERT INTO student VALUES (1,&#x27;홍길동&#x27;),(2,&#x27;김철수&#x27;),(3,&#x27;이영희&#x27;),(4,&#x27;박민수&#x27;);
+INSERT INTO course VALUES (101,&#x27;데이터베이스&#x27;),(102,&#x27;파이썬&#x27;),(103,&#x27;인공지능&#x27;);
+INSERT INTO enrollment VALUES (1,101,95),(1,102,90),(2,101,85),(3,103,88);
+SELECT s.name,c.course_name,e.score FROM student s JOIN enrollment e ON s.id=e.student_id JOIN course c ON e.course_id=c.course_id ORDER BY s.name,c.course_name;</code></pre></div></div></section><section class="card" data-level="중급" data-search="cross join join cross join은 가능한 모든 조합을 만들어 2×3=6행을 만듭니다.">
+<div class="head"><div><span class="no">#059</span><span class="badge">중급</span><span class="topic">JOIN</span><h2>CROSS JOIN</h2></div><button onclick="toggleCard(this)">접기</button></div>
+<div class="body"><div class="desc"><b>상세 설명</b><p>CROSS JOIN은 가능한 모든 조합을 만들어 2×3=6행을 만듭니다.</p></div>
+<div class="codebox"><div class="bar"><span>OneCompiler에 복사하여 실행</span><button onclick="copyCode(this)">코드 복사</button></div><pre><code>DROP TABLE IF EXISTS size_tbl; DROP TABLE IF EXISTS color_tbl; CREATE TABLE color_tbl(color VARCHAR(10)); CREATE TABLE size_tbl(size VARCHAR(10)); INSERT INTO color_tbl VALUES(&#x27;Red&#x27;),(&#x27;Blue&#x27;); INSERT INTO size_tbl VALUES(&#x27;S&#x27;),(&#x27;M&#x27;),(&#x27;L&#x27;); SELECT * FROM color_tbl CROSS JOIN size_tbl;</code></pre></div></div></section><section class="card" data-level="중급" data-search="self join join self join은 같은 테이블에 서로 다른 별칭을 붙여 자기 자신과 결합합니다.">
+<div class="head"><div><span class="no">#060</span><span class="badge">중급</span><span class="topic">JOIN</span><h2>Self JOIN</h2></div><button onclick="toggleCard(this)">접기</button></div>
+<div class="body"><div class="desc"><b>상세 설명</b><p>Self JOIN은 같은 테이블에 서로 다른 별칭을 붙여 자기 자신과 결합합니다.</p></div>
+<div class="codebox"><div class="bar"><span>OneCompiler에 복사하여 실행</span><button onclick="copyCode(this)">코드 복사</button></div><pre><code>DROP TABLE IF EXISTS employee; CREATE TABLE employee(id INT PRIMARY KEY,name VARCHAR(20),manager_id INT); INSERT INTO employee VALUES(1,&#x27;대표&#x27;,NULL),(2,&#x27;팀장&#x27;,1),(3,&#x27;사원A&#x27;,2),(4,&#x27;사원B&#x27;,2); SELECT e.name AS employee,m.name AS manager FROM employee e LEFT JOIN employee m ON e.manager_id=m.id;</code></pre></div></div></section><section class="card" data-level="중급" data-search="평균보다 높은 점수 서브쿼리 서브쿼리가 전체 평균을 먼저 계산하고 바깥 쿼리가 그보다 높은 학생을 찾습니다.">
+<div class="head"><div><span class="no">#061</span><span class="badge">중급</span><span class="topic">서브쿼리</span><h2>평균보다 높은 점수</h2></div><button onclick="toggleCard(this)">접기</button></div>
+<div class="body"><div class="desc"><b>상세 설명</b><p>서브쿼리가 전체 평균을 먼저 계산하고 바깥 쿼리가 그보다 높은 학생을 찾습니다.</p></div>
+<div class="codebox"><div class="bar"><span>OneCompiler에 복사하여 실행</span><button onclick="copyCode(this)">코드 복사</button></div><pre><code>DROP TABLE IF EXISTS student;
+CREATE TABLE student (
+  id INT PRIMARY KEY,
+  name VARCHAR(20) NOT NULL,
+  grade INT,
+  score INT,
+  club VARCHAR(20)
+);
+INSERT INTO student VALUES
+(1,&#x27;홍길동&#x27;,1,95,&#x27;과학&#x27;),
+(2,&#x27;김철수&#x27;,2,88,&#x27;코딩&#x27;),
+(3,&#x27;이영희&#x27;,1,76,&#x27;과학&#x27;),
+(4,&#x27;박민수&#x27;,3,64,&#x27;로봇&#x27;),
+(5,&#x27;최서연&#x27;,2,91,&#x27;코딩&#x27;);
+SELECT name,score FROM student WHERE score&gt;(SELECT AVG(score) FROM student);</code></pre></div></div></section><section class="card" data-level="중급" data-search="최고 점수 학생 서브쿼리 서브쿼리의 단일 값과 바깥 행을 비교합니다.">
+<div class="head"><div><span class="no">#062</span><span class="badge">중급</span><span class="topic">서브쿼리</span><h2>최고 점수 학생</h2></div><button onclick="toggleCard(this)">접기</button></div>
+<div class="body"><div class="desc"><b>상세 설명</b><p>서브쿼리의 단일 값과 바깥 행을 비교합니다.</p></div>
+<div class="codebox"><div class="bar"><span>OneCompiler에 복사하여 실행</span><button onclick="copyCode(this)">코드 복사</button></div><pre><code>DROP TABLE IF EXISTS student;
+CREATE TABLE student (
+  id INT PRIMARY KEY,
+  name VARCHAR(20) NOT NULL,
+  grade INT,
+  score INT,
+  club VARCHAR(20)
+);
+INSERT INTO student VALUES
+(1,&#x27;홍길동&#x27;,1,95,&#x27;과학&#x27;),
+(2,&#x27;김철수&#x27;,2,88,&#x27;코딩&#x27;),
+(3,&#x27;이영희&#x27;,1,76,&#x27;과학&#x27;),
+(4,&#x27;박민수&#x27;,3,64,&#x27;로봇&#x27;),
+(5,&#x27;최서연&#x27;,2,91,&#x27;코딩&#x27;);
+SELECT name,score FROM student WHERE score=(SELECT MAX(score) FROM student);</code></pre></div></div></section><section class="card" data-level="중급" data-search="in 서브쿼리 서브쿼리 여러 id가 반환되므로 in으로 비교합니다.">
+<div class="head"><div><span class="no">#063</span><span class="badge">중급</span><span class="topic">서브쿼리</span><h2>IN 서브쿼리</h2></div><button onclick="toggleCard(this)">접기</button></div>
+<div class="body"><div class="desc"><b>상세 설명</b><p>여러 id가 반환되므로 IN으로 비교합니다.</p></div>
+<div class="codebox"><div class="bar"><span>OneCompiler에 복사하여 실행</span><button onclick="copyCode(this)">코드 복사</button></div><pre><code>DROP TABLE IF EXISTS enrollment;
+DROP TABLE IF EXISTS course;
+DROP TABLE IF EXISTS student;
+CREATE TABLE student(id INT PRIMARY KEY,name VARCHAR(20));
+CREATE TABLE course(course_id INT PRIMARY KEY,course_name VARCHAR(30));
+CREATE TABLE enrollment(student_id INT,course_id INT,score INT);
+INSERT INTO student VALUES (1,&#x27;홍길동&#x27;),(2,&#x27;김철수&#x27;),(3,&#x27;이영희&#x27;),(4,&#x27;박민수&#x27;);
+INSERT INTO course VALUES (101,&#x27;데이터베이스&#x27;),(102,&#x27;파이썬&#x27;),(103,&#x27;인공지능&#x27;);
+INSERT INTO enrollment VALUES (1,101,95),(1,102,90),(2,101,85),(3,103,88);
+SELECT name FROM student WHERE id IN(SELECT student_id FROM enrollment WHERE score&gt;=90);</code></pre></div></div></section><section class="card" data-level="중급" data-search="exists 서브쿼리 exists는 관련 행의 존재 여부만 검사합니다.">
+<div class="head"><div><span class="no">#064</span><span class="badge">중급</span><span class="topic">서브쿼리</span><h2>EXISTS</h2></div><button onclick="toggleCard(this)">접기</button></div>
+<div class="body"><div class="desc"><b>상세 설명</b><p>EXISTS는 관련 행의 존재 여부만 검사합니다.</p></div>
+<div class="codebox"><div class="bar"><span>OneCompiler에 복사하여 실행</span><button onclick="copyCode(this)">코드 복사</button></div><pre><code>DROP TABLE IF EXISTS enrollment;
+DROP TABLE IF EXISTS course;
+DROP TABLE IF EXISTS student;
+CREATE TABLE student(id INT PRIMARY KEY,name VARCHAR(20));
+CREATE TABLE course(course_id INT PRIMARY KEY,course_name VARCHAR(30));
+CREATE TABLE enrollment(student_id INT,course_id INT,score INT);
+INSERT INTO student VALUES (1,&#x27;홍길동&#x27;),(2,&#x27;김철수&#x27;),(3,&#x27;이영희&#x27;),(4,&#x27;박민수&#x27;);
+INSERT INTO course VALUES (101,&#x27;데이터베이스&#x27;),(102,&#x27;파이썬&#x27;),(103,&#x27;인공지능&#x27;);
+INSERT INTO enrollment VALUES (1,101,95),(1,102,90),(2,101,85),(3,103,88);
+SELECT s.id,s.name FROM student s WHERE EXISTS(SELECT 1 FROM enrollment e WHERE e.student_id=s.id);</code></pre></div></div></section><section class="card" data-level="중급" data-search="not exists 서브쿼리 not exists는 관련 데이터가 하나도 없는 행을 찾습니다.">
+<div class="head"><div><span class="no">#065</span><span class="badge">중급</span><span class="topic">서브쿼리</span><h2>NOT EXISTS</h2></div><button onclick="toggleCard(this)">접기</button></div>
+<div class="body"><div class="desc"><b>상세 설명</b><p>NOT EXISTS는 관련 데이터가 하나도 없는 행을 찾습니다.</p></div>
+<div class="codebox"><div class="bar"><span>OneCompiler에 복사하여 실행</span><button onclick="copyCode(this)">코드 복사</button></div><pre><code>DROP TABLE IF EXISTS enrollment;
+DROP TABLE IF EXISTS course;
+DROP TABLE IF EXISTS student;
+CREATE TABLE student(id INT PRIMARY KEY,name VARCHAR(20));
+CREATE TABLE course(course_id INT PRIMARY KEY,course_name VARCHAR(30));
+CREATE TABLE enrollment(student_id INT,course_id INT,score INT);
+INSERT INTO student VALUES (1,&#x27;홍길동&#x27;),(2,&#x27;김철수&#x27;),(3,&#x27;이영희&#x27;),(4,&#x27;박민수&#x27;);
+INSERT INTO course VALUES (101,&#x27;데이터베이스&#x27;),(102,&#x27;파이썬&#x27;),(103,&#x27;인공지능&#x27;);
+INSERT INTO enrollment VALUES (1,101,95),(1,102,90),(2,101,85),(3,103,88);
+SELECT s.id,s.name FROM student s WHERE NOT EXISTS(SELECT 1 FROM enrollment e WHERE e.student_id=s.id);</code></pre></div></div></section><section class="card" data-level="중급" data-search="상관 서브쿼리 서브쿼리 바깥 행의 course_id를 안쪽 쿼리가 참조해 같은 과목 평균과 비교합니다.">
+<div class="head"><div><span class="no">#066</span><span class="badge">중급</span><span class="topic">서브쿼리</span><h2>상관 서브쿼리</h2></div><button onclick="toggleCard(this)">접기</button></div>
+<div class="body"><div class="desc"><b>상세 설명</b><p>바깥 행의 course_id를 안쪽 쿼리가 참조해 같은 과목 평균과 비교합니다.</p></div>
+<div class="codebox"><div class="bar"><span>OneCompiler에 복사하여 실행</span><button onclick="copyCode(this)">코드 복사</button></div><pre><code>DROP TABLE IF EXISTS enrollment;
+DROP TABLE IF EXISTS course;
+DROP TABLE IF EXISTS student;
+CREATE TABLE student(id INT PRIMARY KEY,name VARCHAR(20));
+CREATE TABLE course(course_id INT PRIMARY KEY,course_name VARCHAR(30));
+CREATE TABLE enrollment(student_id INT,course_id INT,score INT);
+INSERT INTO student VALUES (1,&#x27;홍길동&#x27;),(2,&#x27;김철수&#x27;),(3,&#x27;이영희&#x27;),(4,&#x27;박민수&#x27;);
+INSERT INTO course VALUES (101,&#x27;데이터베이스&#x27;),(102,&#x27;파이썬&#x27;),(103,&#x27;인공지능&#x27;);
+INSERT INTO enrollment VALUES (1,101,95),(1,102,90),(2,101,85),(3,103,88);
+SELECT e.student_id,e.course_id,e.score FROM enrollment e WHERE e.score&gt;(SELECT AVG(e2.score) FROM enrollment e2 WHERE e2.course_id=e.course_id);</code></pre></div></div></section><section class="card" data-level="중급" data-search="from 안 서브쿼리 서브쿼리 from 안의 파생 테이블은 임시 결과처럼 사용할 수 있으며 mysql에서는 별칭이 필요합니다.">
+<div class="head"><div><span class="no">#067</span><span class="badge">중급</span><span class="topic">서브쿼리</span><h2>FROM 안 서브쿼리</h2></div><button onclick="toggleCard(this)">접기</button></div>
+<div class="body"><div class="desc"><b>상세 설명</b><p>FROM 안의 파생 테이블은 임시 결과처럼 사용할 수 있으며 MySQL에서는 별칭이 필요합니다.</p></div>
+<div class="codebox"><div class="bar"><span>OneCompiler에 복사하여 실행</span><button onclick="copyCode(this)">코드 복사</button></div><pre><code>DROP TABLE IF EXISTS student;
+CREATE TABLE student (
+  id INT PRIMARY KEY,
+  name VARCHAR(20) NOT NULL,
+  grade INT,
+  score INT,
+  club VARCHAR(20)
+);
+INSERT INTO student VALUES
+(1,&#x27;홍길동&#x27;,1,95,&#x27;과학&#x27;),
+(2,&#x27;김철수&#x27;,2,88,&#x27;코딩&#x27;),
+(3,&#x27;이영희&#x27;,1,76,&#x27;과학&#x27;),
+(4,&#x27;박민수&#x27;,3,64,&#x27;로봇&#x27;),
+(5,&#x27;최서연&#x27;,2,91,&#x27;코딩&#x27;);
+SELECT grade,avg_score FROM (SELECT grade,AVG(score) AS avg_score FROM student GROUP BY grade) AS g WHERE avg_score&gt;=80;</code></pre></div></div></section><section class="card" data-level="중급" data-search="스칼라 서브쿼리 서브쿼리 한 값만 반환하는 서브쿼리를 select 목록에 넣을 수 있습니다.">
+<div class="head"><div><span class="no">#068</span><span class="badge">중급</span><span class="topic">서브쿼리</span><h2>스칼라 서브쿼리</h2></div><button onclick="toggleCard(this)">접기</button></div>
+<div class="body"><div class="desc"><b>상세 설명</b><p>한 값만 반환하는 서브쿼리를 SELECT 목록에 넣을 수 있습니다.</p></div>
+<div class="codebox"><div class="bar"><span>OneCompiler에 복사하여 실행</span><button onclick="copyCode(this)">코드 복사</button></div><pre><code>DROP TABLE IF EXISTS student;
+CREATE TABLE student (
+  id INT PRIMARY KEY,
+  name VARCHAR(20) NOT NULL,
+  grade INT,
+  score INT,
+  club VARCHAR(20)
+);
+INSERT INTO student VALUES
+(1,&#x27;홍길동&#x27;,1,95,&#x27;과학&#x27;),
+(2,&#x27;김철수&#x27;,2,88,&#x27;코딩&#x27;),
+(3,&#x27;이영희&#x27;,1,76,&#x27;과학&#x27;),
+(4,&#x27;박민수&#x27;,3,64,&#x27;로봇&#x27;),
+(5,&#x27;최서연&#x27;,2,91,&#x27;코딩&#x27;);
+SELECT name,score,(SELECT ROUND(AVG(score),1) FROM student) AS overall_avg FROM student;</code></pre></div></div></section><section class="card" data-level="중급" data-search="두 번째 높은 점수 서브쿼리 최고점보다 작은 값 중 최댓값을 다시 구합니다.">
+<div class="head"><div><span class="no">#069</span><span class="badge">중급</span><span class="topic">서브쿼리</span><h2>두 번째 높은 점수</h2></div><button onclick="toggleCard(this)">접기</button></div>
+<div class="body"><div class="desc"><b>상세 설명</b><p>최고점보다 작은 값 중 최댓값을 다시 구합니다.</p></div>
+<div class="codebox"><div class="bar"><span>OneCompiler에 복사하여 실행</span><button onclick="copyCode(this)">코드 복사</button></div><pre><code>DROP TABLE IF EXISTS student;
+CREATE TABLE student (
+  id INT PRIMARY KEY,
+  name VARCHAR(20) NOT NULL,
+  grade INT,
+  score INT,
+  club VARCHAR(20)
+);
+INSERT INTO student VALUES
+(1,&#x27;홍길동&#x27;,1,95,&#x27;과학&#x27;),
+(2,&#x27;김철수&#x27;,2,88,&#x27;코딩&#x27;),
+(3,&#x27;이영희&#x27;,1,76,&#x27;과학&#x27;),
+(4,&#x27;박민수&#x27;,3,64,&#x27;로봇&#x27;),
+(5,&#x27;최서연&#x27;,2,91,&#x27;코딩&#x27;);
+SELECT MAX(score) AS second_highest FROM student WHERE score&lt;(SELECT MAX(score) FROM student);</code></pre></div></div></section><section class="card" data-level="중급" data-search="서브쿼리 update 서브쿼리 같은 테이블을 읽어 갱신할 때 파생 테이블을 한 단계 두는 mysql 실습 예제입니다.">
+<div class="head"><div><span class="no">#070</span><span class="badge">중급</span><span class="topic">서브쿼리</span><h2>서브쿼리 UPDATE</h2></div><button onclick="toggleCard(this)">접기</button></div>
+<div class="body"><div class="desc"><b>상세 설명</b><p>같은 테이블을 읽어 갱신할 때 파생 테이블을 한 단계 두는 MySQL 실습 예제입니다.</p></div>
+<div class="codebox"><div class="bar"><span>OneCompiler에 복사하여 실행</span><button onclick="copyCode(this)">코드 복사</button></div><pre><code>DROP TABLE IF EXISTS student;
+CREATE TABLE student (
+  id INT PRIMARY KEY,
+  name VARCHAR(20) NOT NULL,
+  grade INT,
+  score INT,
+  club VARCHAR(20)
+);
+INSERT INTO student VALUES
+(1,&#x27;홍길동&#x27;,1,95,&#x27;과학&#x27;),
+(2,&#x27;김철수&#x27;,2,88,&#x27;코딩&#x27;),
+(3,&#x27;이영희&#x27;,1,76,&#x27;과학&#x27;),
+(4,&#x27;박민수&#x27;,3,64,&#x27;로봇&#x27;),
+(5,&#x27;최서연&#x27;,2,91,&#x27;코딩&#x27;);
+UPDATE student SET score=score+2 WHERE id IN(SELECT id FROM (SELECT id FROM student WHERE score&lt;80) AS x); SELECT * FROM student;</code></pre></div></div></section><section class="card" data-level="중급" data-search="substring 문자열 함수 문자열의 일부를 추출합니다. 위치는 1부터 시작합니다.">
+<div class="head"><div><span class="no">#071</span><span class="badge">중급</span><span class="topic">문자열 함수</span><h2>SUBSTRING</h2></div><button onclick="toggleCard(this)">접기</button></div>
+<div class="body"><div class="desc"><b>상세 설명</b><p>문자열의 일부를 추출합니다. 위치는 1부터 시작합니다.</p><div class="result"><b>예상 결과:</b> DATA / BASE</div></div>
+<div class="codebox"><div class="bar"><span>OneCompiler에 복사하여 실행</span><button onclick="copyCode(this)">코드 복사</button></div><pre><code>SELECT SUBSTRING(&#x27;DATABASE&#x27;,1,4) AS p1,SUBSTRING(&#x27;DATABASE&#x27;,5) AS p2;</code></pre></div></div></section><section class="card" data-level="중급" data-search="trim 문자열 함수 양끝 공백을 제거합니다.">
+<div class="head"><div><span class="no">#072</span><span class="badge">중급</span><span class="topic">문자열 함수</span><h2>TRIM</h2></div><button onclick="toggleCard(this)">접기</button></div>
+<div class="body"><div class="desc"><b>상세 설명</b><p>양끝 공백을 제거합니다.</p><div class="result"><b>예상 결과:</b> [MySQL]</div></div>
+<div class="codebox"><div class="bar"><span>OneCompiler에 복사하여 실행</span><button onclick="copyCode(this)">코드 복사</button></div><pre><code>SELECT CONCAT(&#x27;[&#x27;,TRIM(&#x27;   MySQL   &#x27;),&#x27;]&#x27;) AS trimmed;</code></pre></div></div></section><section class="card" data-level="중급" data-search="replace 문자열 함수 특정 문자열을 다른 문자열로 치환합니다.">
+<div class="head"><div><span class="no">#073</span><span class="badge">중급</span><span class="topic">문자열 함수</span><h2>REPLACE</h2></div><button onclick="toggleCard(this)">접기</button></div>
+<div class="body"><div class="desc"><b>상세 설명</b><p>특정 문자열을 다른 문자열로 치환합니다.</p><div class="result"><b>예상 결과:</b> I like MySQL</div></div>
+<div class="codebox"><div class="bar"><span>OneCompiler에 복사하여 실행</span><button onclick="copyCode(this)">코드 복사</button></div><pre><code>SELECT REPLACE(&#x27;I like Java&#x27;,&#x27;Java&#x27;,&#x27;MySQL&#x27;) AS result;</code></pre></div></div></section><section class="card" data-level="중급" data-search="lpad rpad 문자열 함수 정해진 길이가 될 때까지 왼쪽 또는 오른쪽을 채웁니다.">
+<div class="head"><div><span class="no">#074</span><span class="badge">중급</span><span class="topic">문자열 함수</span><h2>LPAD RPAD</h2></div><button onclick="toggleCard(this)">접기</button></div>
+<div class="body"><div class="desc"><b>상세 설명</b><p>정해진 길이가 될 때까지 왼쪽 또는 오른쪽을 채웁니다.</p><div class="result"><b>예상 결과:</b> 00025 / SQL...</div></div>
+<div class="codebox"><div class="bar"><span>OneCompiler에 복사하여 실행</span><button onclick="copyCode(this)">코드 복사</button></div><pre><code>SELECT LPAD(&#x27;25&#x27;,5,&#x27;0&#x27;) AS left_pad,RPAD(&#x27;SQL&#x27;,6,&#x27;.&#x27;) AS right_pad;</code></pre></div></div></section><section class="card" data-level="중급" data-search="date_add date_sub 날짜 함수 날짜에 지정 기간을 더하거나 뺍니다.">
+<div class="head"><div><span class="no">#075</span><span class="badge">중급</span><span class="topic">날짜 함수</span><h2>DATE_ADD DATE_SUB</h2></div><button onclick="toggleCard(this)">접기</button></div>
+<div class="body"><div class="desc"><b>상세 설명</b><p>날짜에 지정 기간을 더하거나 뺍니다.</p></div>
+<div class="codebox"><div class="bar"><span>OneCompiler에 복사하여 실행</span><button onclick="copyCode(this)">코드 복사</button></div><pre><code>SELECT DATE_ADD(&#x27;2026-08-13&#x27;,INTERVAL 7 DAY) AS after7,DATE_SUB(&#x27;2026-08-13&#x27;,INTERVAL 1 MONTH) AS before1m;</code></pre></div></div></section><section class="card" data-level="중급" data-search="datediff 날짜 함수 두 날짜 사이의 일수 차이를 반환합니다.">
+<div class="head"><div><span class="no">#076</span><span class="badge">중급</span><span class="topic">날짜 함수</span><h2>DATEDIFF</h2></div><button onclick="toggleCard(this)">접기</button></div>
+<div class="body"><div class="desc"><b>상세 설명</b><p>두 날짜 사이의 일수 차이를 반환합니다.</p><div class="result"><b>예상 결과:</b> 7</div></div>
+<div class="codebox"><div class="bar"><span>OneCompiler에 복사하여 실행</span><button onclick="copyCode(this)">코드 복사</button></div><pre><code>SELECT DATEDIFF(&#x27;2026-08-20&#x27;,&#x27;2026-08-13&#x27;) AS days;</code></pre></div></div></section><section class="card" data-level="중급" data-search="year month day 날짜 함수 날짜에서 연·월·일을 추출합니다.">
+<div class="head"><div><span class="no">#077</span><span class="badge">중급</span><span class="topic">날짜 함수</span><h2>YEAR MONTH DAY</h2></div><button onclick="toggleCard(this)">접기</button></div>
+<div class="body"><div class="desc"><b>상세 설명</b><p>날짜에서 연·월·일을 추출합니다.</p><div class="result"><b>예상 결과:</b> 2026 / 8 / 13</div></div>
+<div class="codebox"><div class="bar"><span>OneCompiler에 복사하여 실행</span><button onclick="copyCode(this)">코드 복사</button></div><pre><code>SELECT YEAR(&#x27;2026-08-13&#x27;) AS y,MONTH(&#x27;2026-08-13&#x27;) AS m,DAY(&#x27;2026-08-13&#x27;) AS d;</code></pre></div></div></section><section class="card" data-level="중급" data-search="date_format 날짜 함수 날짜를 원하는 문자열 형식으로 표시합니다.">
+<div class="head"><div><span class="no">#078</span><span class="badge">중급</span><span class="topic">날짜 함수</span><h2>DATE_FORMAT</h2></div><button onclick="toggleCard(this)">접기</button></div>
+<div class="body"><div class="desc"><b>상세 설명</b><p>날짜를 원하는 문자열 형식으로 표시합니다.</p></div>
+<div class="codebox"><div class="bar"><span>OneCompiler에 복사하여 실행</span><button onclick="copyCode(this)">코드 복사</button></div><pre><code>SELECT DATE_FORMAT(&#x27;2026-08-13&#x27;,&#x27;%Y년 %m월 %d일&#x27;) AS formatted;</code></pre></div></div></section><section class="card" data-level="중급" data-search="timestampdiff 날짜 함수 지정 단위로 두 날짜/시각의 차이를 계산합니다.">
+<div class="head"><div><span class="no">#079</span><span class="badge">중급</span><span class="topic">날짜 함수</span><h2>TIMESTAMPDIFF</h2></div><button onclick="toggleCard(this)">접기</button></div>
+<div class="body"><div class="desc"><b>상세 설명</b><p>지정 단위로 두 날짜/시각의 차이를 계산합니다.</p></div>
+<div class="codebox"><div class="bar"><span>OneCompiler에 복사하여 실행</span><button onclick="copyCode(this)">코드 복사</button></div><pre><code>SELECT TIMESTAMPDIFF(YEAR,&#x27;2008-03-15&#x27;,&#x27;2026-08-13&#x27;) AS years;</code></pre></div></div></section><section class="card" data-level="중급" data-search="ifnull null 첫 인수가 null이면 두 번째 값을 반환합니다.">
+<div class="head"><div><span class="no">#080</span><span class="badge">중급</span><span class="topic">NULL</span><h2>IFNULL</h2></div><button onclick="toggleCard(this)">접기</button></div>
+<div class="body"><div class="desc"><b>상세 설명</b><p>첫 인수가 NULL이면 두 번째 값을 반환합니다.</p><div class="result"><b>예상 결과:</b> 대체값 / MySQL</div></div>
+<div class="codebox"><div class="bar"><span>OneCompiler에 복사하여 실행</span><button onclick="copyCode(this)">코드 복사</button></div><pre><code>SELECT IFNULL(NULL,&#x27;대체값&#x27;) AS r1,IFNULL(&#x27;MySQL&#x27;,&#x27;대체값&#x27;) AS r2;</code></pre></div></div></section><section class="card" data-level="고급" data-search="view 만들기 view view는 select 결과에 이름을 붙여 가상 테이블처럼 사용합니다.">
+<div class="head"><div><span class="no">#081</span><span class="badge">고급</span><span class="topic">VIEW</span><h2>VIEW 만들기</h2></div><button onclick="toggleCard(this)">접기</button></div>
+<div class="body"><div class="desc"><b>상세 설명</b><p>VIEW는 SELECT 결과에 이름을 붙여 가상 테이블처럼 사용합니다.</p></div>
+<div class="codebox"><div class="bar"><span>OneCompiler에 복사하여 실행</span><button onclick="copyCode(this)">코드 복사</button></div><pre><code>DROP TABLE IF EXISTS student;
+CREATE TABLE student (
+  id INT PRIMARY KEY,
+  name VARCHAR(20) NOT NULL,
+  grade INT,
+  score INT,
+  club VARCHAR(20)
+);
+INSERT INTO student VALUES
+(1,&#x27;홍길동&#x27;,1,95,&#x27;과학&#x27;),
+(2,&#x27;김철수&#x27;,2,88,&#x27;코딩&#x27;),
+(3,&#x27;이영희&#x27;,1,76,&#x27;과학&#x27;),
+(4,&#x27;박민수&#x27;,3,64,&#x27;로봇&#x27;),
+(5,&#x27;최서연&#x27;,2,91,&#x27;코딩&#x27;);
+DROP VIEW IF EXISTS high_score_student; CREATE VIEW high_score_student AS SELECT id,name,score FROM student WHERE score&gt;=90; SELECT * FROM high_score_student;</code></pre></div></div></section><section class="card" data-level="고급" data-search="view 교체 view create or replace view는 기존 뷰 정의를 새 쿼리로 바꿉니다.">
+<div class="head"><div><span class="no">#082</span><span class="badge">고급</span><span class="topic">VIEW</span><h2>VIEW 교체</h2></div><button onclick="toggleCard(this)">접기</button></div>
+<div class="body"><div class="desc"><b>상세 설명</b><p>CREATE OR REPLACE VIEW는 기존 뷰 정의를 새 쿼리로 바꿉니다.</p></div>
+<div class="codebox"><div class="bar"><span>OneCompiler에 복사하여 실행</span><button onclick="copyCode(this)">코드 복사</button></div><pre><code>DROP TABLE IF EXISTS student;
+CREATE TABLE student (
+  id INT PRIMARY KEY,
+  name VARCHAR(20) NOT NULL,
+  grade INT,
+  score INT,
+  club VARCHAR(20)
+);
+INSERT INTO student VALUES
+(1,&#x27;홍길동&#x27;,1,95,&#x27;과학&#x27;),
+(2,&#x27;김철수&#x27;,2,88,&#x27;코딩&#x27;),
+(3,&#x27;이영희&#x27;,1,76,&#x27;과학&#x27;),
+(4,&#x27;박민수&#x27;,3,64,&#x27;로봇&#x27;),
+(5,&#x27;최서연&#x27;,2,91,&#x27;코딩&#x27;);
+DROP VIEW IF EXISTS student_summary; CREATE VIEW student_summary AS SELECT id,name,score FROM student; CREATE OR REPLACE VIEW student_summary AS SELECT id,name,grade,score FROM student; SELECT * FROM student_summary;</code></pre></div></div></section><section class="card" data-level="고급" data-search="index 생성 index 인덱스는 검색을 빠르게 할 수 있지만 저장 공간과 쓰기 비용이 추가됩니다.">
+<div class="head"><div><span class="no">#083</span><span class="badge">고급</span><span class="topic">INDEX</span><h2>INDEX 생성</h2></div><button onclick="toggleCard(this)">접기</button></div>
+<div class="body"><div class="desc"><b>상세 설명</b><p>인덱스는 검색을 빠르게 할 수 있지만 저장 공간과 쓰기 비용이 추가됩니다.</p></div>
+<div class="codebox"><div class="bar"><span>OneCompiler에 복사하여 실행</span><button onclick="copyCode(this)">코드 복사</button></div><pre><code>DROP TABLE IF EXISTS student;
+CREATE TABLE student (
+  id INT PRIMARY KEY,
+  name VARCHAR(20) NOT NULL,
+  grade INT,
+  score INT,
+  club VARCHAR(20)
+);
+INSERT INTO student VALUES
+(1,&#x27;홍길동&#x27;,1,95,&#x27;과학&#x27;),
+(2,&#x27;김철수&#x27;,2,88,&#x27;코딩&#x27;),
+(3,&#x27;이영희&#x27;,1,76,&#x27;과학&#x27;),
+(4,&#x27;박민수&#x27;,3,64,&#x27;로봇&#x27;),
+(5,&#x27;최서연&#x27;,2,91,&#x27;코딩&#x27;);
+CREATE INDEX idx_student_score ON student(score); SHOW INDEX FROM student;</code></pre></div></div></section><section class="card" data-level="고급" data-search="복합 index index 복합 인덱스는 여러 열을 함께 인덱싱하며 열 순서가 중요합니다.">
+<div class="head"><div><span class="no">#084</span><span class="badge">고급</span><span class="topic">INDEX</span><h2>복합 INDEX</h2></div><button onclick="toggleCard(this)">접기</button></div>
+<div class="body"><div class="desc"><b>상세 설명</b><p>복합 인덱스는 여러 열을 함께 인덱싱하며 열 순서가 중요합니다.</p></div>
+<div class="codebox"><div class="bar"><span>OneCompiler에 복사하여 실행</span><button onclick="copyCode(this)">코드 복사</button></div><pre><code>DROP TABLE IF EXISTS student;
+CREATE TABLE student (
+  id INT PRIMARY KEY,
+  name VARCHAR(20) NOT NULL,
+  grade INT,
+  score INT,
+  club VARCHAR(20)
+);
+INSERT INTO student VALUES
+(1,&#x27;홍길동&#x27;,1,95,&#x27;과학&#x27;),
+(2,&#x27;김철수&#x27;,2,88,&#x27;코딩&#x27;),
+(3,&#x27;이영희&#x27;,1,76,&#x27;과학&#x27;),
+(4,&#x27;박민수&#x27;,3,64,&#x27;로봇&#x27;),
+(5,&#x27;최서연&#x27;,2,91,&#x27;코딩&#x27;);
+CREATE INDEX idx_grade_score ON student(grade,score); SHOW INDEX FROM student;</code></pre></div></div></section><section class="card" data-level="고급" data-search="foreign key 제약조건 foreign key는 다른 테이블의 키를 참조해 관계 무결성을 유지합니다.">
+<div class="head"><div><span class="no">#085</span><span class="badge">고급</span><span class="topic">제약조건</span><h2>FOREIGN KEY</h2></div><button onclick="toggleCard(this)">접기</button></div>
+<div class="body"><div class="desc"><b>상세 설명</b><p>FOREIGN KEY는 다른 테이블의 키를 참조해 관계 무결성을 유지합니다.</p></div>
+<div class="codebox"><div class="bar"><span>OneCompiler에 복사하여 실행</span><button onclick="copyCode(this)">코드 복사</button></div><pre><code>DROP TABLE IF EXISTS enrollment_fk; DROP TABLE IF EXISTS student_fk; CREATE TABLE student_fk(id INT PRIMARY KEY,name VARCHAR(20)); CREATE TABLE enrollment_fk(id INT PRIMARY KEY,student_id INT,subject VARCHAR(20),FOREIGN KEY(student_id) REFERENCES student_fk(id)); INSERT INTO student_fk VALUES(1,&#x27;홍길동&#x27;); INSERT INTO enrollment_fk VALUES(1,1,&#x27;MySQL&#x27;); SELECT * FROM enrollment_fk;</code></pre></div></div></section><section class="card" data-level="고급" data-search="on delete cascade 제약조건 부모 행 삭제 시 참조하는 자식 행도 함께 삭제됩니다.">
+<div class="head"><div><span class="no">#086</span><span class="badge">고급</span><span class="topic">제약조건</span><h2>ON DELETE CASCADE</h2></div><button onclick="toggleCard(this)">접기</button></div>
+<div class="body"><div class="desc"><b>상세 설명</b><p>부모 행 삭제 시 참조하는 자식 행도 함께 삭제됩니다.</p></div>
+<div class="codebox"><div class="bar"><span>OneCompiler에 복사하여 실행</span><button onclick="copyCode(this)">코드 복사</button></div><pre><code>DROP TABLE IF EXISTS child_tbl; DROP TABLE IF EXISTS parent_tbl; CREATE TABLE parent_tbl(id INT PRIMARY KEY,name VARCHAR(20)); CREATE TABLE child_tbl(id INT PRIMARY KEY,parent_id INT,FOREIGN KEY(parent_id) REFERENCES parent_tbl(id) ON DELETE CASCADE); INSERT INTO parent_tbl VALUES(1,&#x27;부모&#x27;); INSERT INTO child_tbl VALUES(10,1); DELETE FROM parent_tbl WHERE id=1; SELECT * FROM child_tbl;</code></pre></div></div></section><section class="card" data-level="고급" data-search="트랜잭션 commit 트랜잭션 여러 sql을 하나의 논리 작업 단위로 묶고 commit으로 확정합니다.">
+<div class="head"><div><span class="no">#087</span><span class="badge">고급</span><span class="topic">트랜잭션</span><h2>트랜잭션 COMMIT</h2></div><button onclick="toggleCard(this)">접기</button></div>
+<div class="body"><div class="desc"><b>상세 설명</b><p>여러 SQL을 하나의 논리 작업 단위로 묶고 COMMIT으로 확정합니다.</p></div>
+<div class="codebox"><div class="bar"><span>OneCompiler에 복사하여 실행</span><button onclick="copyCode(this)">코드 복사</button></div><pre><code>DROP TABLE IF EXISTS bank_account; CREATE TABLE bank_account(id INT PRIMARY KEY,balance INT); INSERT INTO bank_account VALUES(1,10000),(2,5000); START TRANSACTION; UPDATE bank_account SET balance=balance-1000 WHERE id=1; UPDATE bank_account SET balance=balance+1000 WHERE id=2; COMMIT; SELECT * FROM bank_account;</code></pre></div></div></section><section class="card" data-level="고급" data-search="트랜잭션 rollback 트랜잭션 rollback은 아직 확정하지 않은 변경을 취소합니다.">
+<div class="head"><div><span class="no">#088</span><span class="badge">고급</span><span class="topic">트랜잭션</span><h2>트랜잭션 ROLLBACK</h2></div><button onclick="toggleCard(this)">접기</button></div>
+<div class="body"><div class="desc"><b>상세 설명</b><p>ROLLBACK은 아직 확정하지 않은 변경을 취소합니다.</p></div>
+<div class="codebox"><div class="bar"><span>OneCompiler에 복사하여 실행</span><button onclick="copyCode(this)">코드 복사</button></div><pre><code>DROP TABLE IF EXISTS bank_account; CREATE TABLE bank_account(id INT PRIMARY KEY,balance INT); INSERT INTO bank_account VALUES(1,10000); START TRANSACTION; UPDATE bank_account SET balance=balance-3000 WHERE id=1; ROLLBACK; SELECT * FROM bank_account;</code></pre></div></div></section><section class="card" data-level="고급" data-search="savepoint 트랜잭션 savepoint를 이용하면 트랜잭션 전체가 아니라 특정 지점 이후만 되돌릴 수 있습니다.">
+<div class="head"><div><span class="no">#089</span><span class="badge">고급</span><span class="topic">트랜잭션</span><h2>SAVEPOINT</h2></div><button onclick="toggleCard(this)">접기</button></div>
+<div class="body"><div class="desc"><b>상세 설명</b><p>SAVEPOINT를 이용하면 트랜잭션 전체가 아니라 특정 지점 이후만 되돌릴 수 있습니다.</p></div>
+<div class="codebox"><div class="bar"><span>OneCompiler에 복사하여 실행</span><button onclick="copyCode(this)">코드 복사</button></div><pre><code>DROP TABLE IF EXISTS t; CREATE TABLE t(id INT PRIMARY KEY,value INT); INSERT INTO t VALUES(1,10); START TRANSACTION; UPDATE t SET value=20 WHERE id=1; SAVEPOINT s1; UPDATE t SET value=30 WHERE id=1; ROLLBACK TO s1; COMMIT; SELECT * FROM t;</code></pre></div></div></section><section class="card" data-level="고급" data-search="truncate ddl 테이블 구조는 유지하면서 모든 행을 제거합니다.">
+<div class="head"><div><span class="no">#090</span><span class="badge">고급</span><span class="topic">DDL</span><h2>TRUNCATE</h2></div><button onclick="toggleCard(this)">접기</button></div>
+<div class="body"><div class="desc"><b>상세 설명</b><p>테이블 구조는 유지하면서 모든 행을 제거합니다.</p><div class="result"><b>예상 결과:</b> 0</div></div>
+<div class="codebox"><div class="bar"><span>OneCompiler에 복사하여 실행</span><button onclick="copyCode(this)">코드 복사</button></div><pre><code>DROP TABLE IF EXISTS temp_data; CREATE TABLE temp_data(id INT); INSERT INTO temp_data VALUES(1),(2),(3); TRUNCATE TABLE temp_data; SELECT COUNT(*) AS row_count FROM temp_data;</code></pre></div></div></section><section class="card" data-level="고급" data-search="with cte cte with로 이름 붙인 임시 결과를 만들어 복잡한 쿼리를 단계적으로 읽기 쉽게 합니다.">
+<div class="head"><div><span class="no">#091</span><span class="badge">고급</span><span class="topic">CTE</span><h2>WITH CTE</h2></div><button onclick="toggleCard(this)">접기</button></div>
+<div class="body"><div class="desc"><b>상세 설명</b><p>WITH로 이름 붙인 임시 결과를 만들어 복잡한 쿼리를 단계적으로 읽기 쉽게 합니다.</p></div>
+<div class="codebox"><div class="bar"><span>OneCompiler에 복사하여 실행</span><button onclick="copyCode(this)">코드 복사</button></div><pre><code>DROP TABLE IF EXISTS student;
+CREATE TABLE student (
+  id INT PRIMARY KEY,
+  name VARCHAR(20) NOT NULL,
+  grade INT,
+  score INT,
+  club VARCHAR(20)
+);
+INSERT INTO student VALUES
+(1,&#x27;홍길동&#x27;,1,95,&#x27;과학&#x27;),
+(2,&#x27;김철수&#x27;,2,88,&#x27;코딩&#x27;),
+(3,&#x27;이영희&#x27;,1,76,&#x27;과학&#x27;),
+(4,&#x27;박민수&#x27;,3,64,&#x27;로봇&#x27;),
+(5,&#x27;최서연&#x27;,2,91,&#x27;코딩&#x27;);
+WITH high_score AS(SELECT id,name,score FROM student WHERE score&gt;=90) SELECT * FROM high_score ORDER BY score DESC;</code></pre></div></div></section><section class="card" data-level="고급" data-search="cte + 집계 cte 집계 결과를 cte에 넣은 뒤 바깥 쿼리에서 다시 조건을 적용합니다.">
+<div class="head"><div><span class="no">#092</span><span class="badge">고급</span><span class="topic">CTE</span><h2>CTE + 집계</h2></div><button onclick="toggleCard(this)">접기</button></div>
+<div class="body"><div class="desc"><b>상세 설명</b><p>집계 결과를 CTE에 넣은 뒤 바깥 쿼리에서 다시 조건을 적용합니다.</p></div>
+<div class="codebox"><div class="bar"><span>OneCompiler에 복사하여 실행</span><button onclick="copyCode(this)">코드 복사</button></div><pre><code>DROP TABLE IF EXISTS student;
+CREATE TABLE student (
+  id INT PRIMARY KEY,
+  name VARCHAR(20) NOT NULL,
+  grade INT,
+  score INT,
+  club VARCHAR(20)
+);
+INSERT INTO student VALUES
+(1,&#x27;홍길동&#x27;,1,95,&#x27;과학&#x27;),
+(2,&#x27;김철수&#x27;,2,88,&#x27;코딩&#x27;),
+(3,&#x27;이영희&#x27;,1,76,&#x27;과학&#x27;),
+(4,&#x27;박민수&#x27;,3,64,&#x27;로봇&#x27;),
+(5,&#x27;최서연&#x27;,2,91,&#x27;코딩&#x27;);
+WITH grade_avg AS(SELECT grade,AVG(score) AS avg_score FROM student GROUP BY grade) SELECT grade,ROUND(avg_score,1) AS avg_score FROM grade_avg WHERE avg_score&gt;=80;</code></pre></div></div></section><section class="card" data-level="고급" data-search="row_number 윈도 함수 정렬 기준에 따라 각 행에 고유 순번을 부여합니다.">
+<div class="head"><div><span class="no">#093</span><span class="badge">고급</span><span class="topic">윈도 함수</span><h2>ROW_NUMBER</h2></div><button onclick="toggleCard(this)">접기</button></div>
+<div class="body"><div class="desc"><b>상세 설명</b><p>정렬 기준에 따라 각 행에 고유 순번을 부여합니다.</p></div>
+<div class="codebox"><div class="bar"><span>OneCompiler에 복사하여 실행</span><button onclick="copyCode(this)">코드 복사</button></div><pre><code>DROP TABLE IF EXISTS student;
+CREATE TABLE student (
+  id INT PRIMARY KEY,
+  name VARCHAR(20) NOT NULL,
+  grade INT,
+  score INT,
+  club VARCHAR(20)
+);
+INSERT INTO student VALUES
+(1,&#x27;홍길동&#x27;,1,95,&#x27;과학&#x27;),
+(2,&#x27;김철수&#x27;,2,88,&#x27;코딩&#x27;),
+(3,&#x27;이영희&#x27;,1,76,&#x27;과학&#x27;),
+(4,&#x27;박민수&#x27;,3,64,&#x27;로봇&#x27;),
+(5,&#x27;최서연&#x27;,2,91,&#x27;코딩&#x27;);
+SELECT name,score,ROW_NUMBER() OVER(ORDER BY score DESC) AS row_num FROM student;</code></pre></div></div></section><section class="card" data-level="고급" data-search="rank 윈도 함수 동점자에게 같은 순위를 주고 다음 순위를 건너뜁니다. 예: 1,2,2,4.">
+<div class="head"><div><span class="no">#094</span><span class="badge">고급</span><span class="topic">윈도 함수</span><h2>RANK</h2></div><button onclick="toggleCard(this)">접기</button></div>
+<div class="body"><div class="desc"><b>상세 설명</b><p>동점자에게 같은 순위를 주고 다음 순위를 건너뜁니다. 예: 1,2,2,4.</p></div>
+<div class="codebox"><div class="bar"><span>OneCompiler에 복사하여 실행</span><button onclick="copyCode(this)">코드 복사</button></div><pre><code>DROP TABLE IF EXISTS score_tbl; CREATE TABLE score_tbl(name VARCHAR(20),score INT); INSERT INTO score_tbl VALUES(&#x27;A&#x27;,100),(&#x27;B&#x27;,90),(&#x27;C&#x27;,90),(&#x27;D&#x27;,80); SELECT name,score,RANK() OVER(ORDER BY score DESC) AS rank_no FROM score_tbl;</code></pre></div></div></section><section class="card" data-level="고급" data-search="dense_rank 윈도 함수 동점 다음 순위를 건너뛰지 않습니다. 예: 1,2,2,3.">
+<div class="head"><div><span class="no">#095</span><span class="badge">고급</span><span class="topic">윈도 함수</span><h2>DENSE_RANK</h2></div><button onclick="toggleCard(this)">접기</button></div>
+<div class="body"><div class="desc"><b>상세 설명</b><p>동점 다음 순위를 건너뛰지 않습니다. 예: 1,2,2,3.</p></div>
+<div class="codebox"><div class="bar"><span>OneCompiler에 복사하여 실행</span><button onclick="copyCode(this)">코드 복사</button></div><pre><code>DROP TABLE IF EXISTS score_tbl; CREATE TABLE score_tbl(name VARCHAR(20),score INT); INSERT INTO score_tbl VALUES(&#x27;A&#x27;,100),(&#x27;B&#x27;,90),(&#x27;C&#x27;,90),(&#x27;D&#x27;,80); SELECT name,score,DENSE_RANK() OVER(ORDER BY score DESC) AS rank_no FROM score_tbl;</code></pre></div></div></section><section class="card" data-level="고급" data-search="partition by 윈도 함수 partition by를 쓰면 학년별로 순위를 따로 계산합니다.">
+<div class="head"><div><span class="no">#096</span><span class="badge">고급</span><span class="topic">윈도 함수</span><h2>PARTITION BY</h2></div><button onclick="toggleCard(this)">접기</button></div>
+<div class="body"><div class="desc"><b>상세 설명</b><p>PARTITION BY를 쓰면 학년별로 순위를 따로 계산합니다.</p></div>
+<div class="codebox"><div class="bar"><span>OneCompiler에 복사하여 실행</span><button onclick="copyCode(this)">코드 복사</button></div><pre><code>DROP TABLE IF EXISTS student;
+CREATE TABLE student (
+  id INT PRIMARY KEY,
+  name VARCHAR(20) NOT NULL,
+  grade INT,
+  score INT,
+  club VARCHAR(20)
+);
+INSERT INTO student VALUES
+(1,&#x27;홍길동&#x27;,1,95,&#x27;과학&#x27;),
+(2,&#x27;김철수&#x27;,2,88,&#x27;코딩&#x27;),
+(3,&#x27;이영희&#x27;,1,76,&#x27;과학&#x27;),
+(4,&#x27;박민수&#x27;,3,64,&#x27;로봇&#x27;),
+(5,&#x27;최서연&#x27;,2,91,&#x27;코딩&#x27;);
+SELECT grade,name,score,RANK() OVER(PARTITION BY grade ORDER BY score DESC) AS grade_rank FROM student;</code></pre></div></div></section><section class="card" data-level="고급" data-search="누적 합계 윈도 함수 윈도 sum은 원래 행을 유지하면서 누적 합계를 계산합니다.">
+<div class="head"><div><span class="no">#097</span><span class="badge">고급</span><span class="topic">윈도 함수</span><h2>누적 합계</h2></div><button onclick="toggleCard(this)">접기</button></div>
+<div class="body"><div class="desc"><b>상세 설명</b><p>윈도 SUM은 원래 행을 유지하면서 누적 합계를 계산합니다.</p></div>
+<div class="codebox"><div class="bar"><span>OneCompiler에 복사하여 실행</span><button onclick="copyCode(this)">코드 복사</button></div><pre><code>DROP TABLE IF EXISTS student;
+CREATE TABLE student (
+  id INT PRIMARY KEY,
+  name VARCHAR(20) NOT NULL,
+  grade INT,
+  score INT,
+  club VARCHAR(20)
+);
+INSERT INTO student VALUES
+(1,&#x27;홍길동&#x27;,1,95,&#x27;과학&#x27;),
+(2,&#x27;김철수&#x27;,2,88,&#x27;코딩&#x27;),
+(3,&#x27;이영희&#x27;,1,76,&#x27;과학&#x27;),
+(4,&#x27;박민수&#x27;,3,64,&#x27;로봇&#x27;),
+(5,&#x27;최서연&#x27;,2,91,&#x27;코딩&#x27;);
+SELECT name,score,SUM(score) OVER(ORDER BY id ROWS BETWEEN UNBOUNDED PRECEDING AND CURRENT ROW) AS running_total FROM student;</code></pre></div></div></section><section class="card" data-level="고급" data-search="lag 이전 행 윈도 함수 lag는 이전 행 값을 가져와 전후 비교에 사용합니다.">
+<div class="head"><div><span class="no">#098</span><span class="badge">고급</span><span class="topic">윈도 함수</span><h2>LAG 이전 행</h2></div><button onclick="toggleCard(this)">접기</button></div>
+<div class="body"><div class="desc"><b>상세 설명</b><p>LAG는 이전 행 값을 가져와 전후 비교에 사용합니다.</p></div>
+<div class="codebox"><div class="bar"><span>OneCompiler에 복사하여 실행</span><button onclick="copyCode(this)">코드 복사</button></div><pre><code>DROP TABLE IF EXISTS student;
+CREATE TABLE student (
+  id INT PRIMARY KEY,
+  name VARCHAR(20) NOT NULL,
+  grade INT,
+  score INT,
+  club VARCHAR(20)
+);
+INSERT INTO student VALUES
+(1,&#x27;홍길동&#x27;,1,95,&#x27;과학&#x27;),
+(2,&#x27;김철수&#x27;,2,88,&#x27;코딩&#x27;),
+(3,&#x27;이영희&#x27;,1,76,&#x27;과학&#x27;),
+(4,&#x27;박민수&#x27;,3,64,&#x27;로봇&#x27;),
+(5,&#x27;최서연&#x27;,2,91,&#x27;코딩&#x27;);
+SELECT id,name,score,LAG(score) OVER(ORDER BY id) AS previous_score FROM student;</code></pre></div></div></section><section class="card" data-level="고급" data-search="재귀 cte 1~10 재귀 cte 재귀 cte는 이전 단계 결과를 다시 참조합니다. 종료 조건이 반드시 필요합니다.">
+<div class="head"><div><span class="no">#099</span><span class="badge">고급</span><span class="topic">재귀 CTE</span><h2>재귀 CTE 1~10</h2></div><button onclick="toggleCard(this)">접기</button></div>
+<div class="body"><div class="desc"><b>상세 설명</b><p>재귀 CTE는 이전 단계 결과를 다시 참조합니다. 종료 조건이 반드시 필요합니다.</p><div class="result"><b>예상 결과:</b> 1부터 10까지</div></div>
+<div class="codebox"><div class="bar"><span>OneCompiler에 복사하여 실행</span><button onclick="copyCode(this)">코드 복사</button></div><pre><code>WITH RECURSIVE numbers AS(SELECT 1 AS n UNION ALL SELECT n+1 FROM numbers WHERE n&lt;10) SELECT * FROM numbers;</code></pre></div></div></section><section class="card" data-level="고급" data-search="재귀 cte 조직도 재귀 cte 루트에서 시작해 manager_id 관계를 따라 자식 노드를 반복 탐색합니다. 트리 구조를 sql로 학습하기 좋은 예입니다.">
+<div class="head"><div><span class="no">#100</span><span class="badge">고급</span><span class="topic">재귀 CTE</span><h2>재귀 CTE 조직도</h2></div><button onclick="toggleCard(this)">접기</button></div>
+<div class="body"><div class="desc"><b>상세 설명</b><p>루트에서 시작해 manager_id 관계를 따라 자식 노드를 반복 탐색합니다. 트리 구조를 SQL로 학습하기 좋은 예입니다.</p></div>
+<div class="codebox"><div class="bar"><span>OneCompiler에 복사하여 실행</span><button onclick="copyCode(this)">코드 복사</button></div><pre><code>DROP TABLE IF EXISTS employee_tree; CREATE TABLE employee_tree(id INT PRIMARY KEY,name VARCHAR(20),manager_id INT); INSERT INTO employee_tree VALUES(1,&#x27;대표&#x27;,NULL),(2,&#x27;개발팀장&#x27;,1),(3,&#x27;연구팀장&#x27;,1),(4,&#x27;개발자A&#x27;,2),(5,&#x27;개발자B&#x27;,2); WITH RECURSIVE org AS(SELECT id,name,manager_id,0 AS depth FROM employee_tree WHERE manager_id IS NULL UNION ALL SELECT e.id,e.name,e.manager_id,org.depth+1 FROM employee_tree e JOIN org ON e.manager_id=org.id) SELECT * FROM org ORDER BY depth,id;</code></pre></div></div></section></main><footer>OneCompiler MySQL 100예제 상세학습</footer><script>
+function copyCode(b){const t=b.closest('.codebox').querySelector('code').innerText;navigator.clipboard.writeText(t).then(()=>{let x=b.textContent;b.textContent='복사됨!';setTimeout(()=>b.textContent=x,1000)})}function toggleCard(b){const x=b.closest('.card').querySelector('.body');const c=x.classList.toggle('hidden');b.textContent=c?'펼치기':'접기'}function filterCards(){const q=document.getElementById('q').value.trim().toLowerCase(),lv=document.getElementById('lv').value;let n=0;document.querySelectorAll('.card').forEach(c=>{const ok=(!q||c.dataset.search.includes(q))&&(!lv||c.dataset.level===lv);c.classList.toggle('hidden',!ok);if(ok)n++});document.getElementById('count').textContent=n+'개 예제 표시 중'}
+</script></body></html>
